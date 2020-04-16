@@ -11,4 +11,3 @@ Route::group(['middleware' => 'language'], function () {
 
     Route::get('/home', 'HomeController@index')->name('home');
 });
-
