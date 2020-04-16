@@ -42,6 +42,18 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Switcher
+                </div>
+                <div class="card-body">
+                    {{ language()->flag() }}
+                    <hr>
+                    {{ language()->flags() }}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
