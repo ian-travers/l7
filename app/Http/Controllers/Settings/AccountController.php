@@ -13,16 +13,16 @@ class AccountController extends Controller
 
     public function profile()
     {
-        return view('auth.profile', ['user' => auth()->user()]);
+        return view('settings.profile', ['user' => auth()->user()]);
     }
 
     public function account()
     {
-        return view('auth.account', ['user' => auth()->user()]);
+        return view('settings.account', ['user' => auth()->user()]);
     }
 
     public function team()
     {
-        return view('auth.team', ['user' => auth()->user()]);
+        return view('settings.team', ['user' => auth()->user()]);
     }
 }
