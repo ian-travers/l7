@@ -49,7 +49,7 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a id="selectLang" class="nav-link dropdown-toggle" href="#" role="button"
+                        <a id="selectLang" class="nav-link" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ language()->flag() }}
                         </a>
