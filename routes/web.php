@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 Route::group(['middleware' => 'language'], function () {
     Route::get('/', function () {
         return view('welcome');
@@ -22,6 +20,6 @@ Route::group(['middleware' => 'language'], function () {
             Route::get('/profile', 'AccountController@profile')->name('profile');
             Route::get('/account', 'AccountController@account')->name('account');
             Route::get('/team', 'AccountController@team')->name('team');
-        });
-
+        }
+    );
 });
