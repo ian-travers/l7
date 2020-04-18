@@ -18,6 +18,7 @@ return [
     'logout' => 'Выход',
     'remember-me' => 'Запомнить меня',
     'register' => 'Регистрация',
+    'nickname' => 'NFSU никнейм',
     'name' => 'Имя',
     'verify-email-address' => 'Подтвердита ваш e-mail',
     'fresh-verification-sent' => 'Новая ссылка для подтверждения отправлена на ваш e-mail адрес.',

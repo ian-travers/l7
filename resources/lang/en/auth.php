@@ -18,6 +18,7 @@ return [
     'logout' => 'Logout',
     'remember-me' => 'Remember Me',
     'register' => 'Register',
+    'nickname' => 'NFSU Username',
     'name' => 'Name',
     'verify-email-address' => 'Verify Your Email Address',
     'fresh-verification-sent' => 'A fresh verification link has been sent to your email address.',
