@@ -6,6 +6,8 @@ return [
 
     // passwords
     'reset-password' => 'Reset Password',
+    'request-reset-password-intro' => 'Enter your email address and we will send you a link to reset your password.',
+    'resetting-password-intro' => 'Repeat an email address and set a new password.',
     'email' => 'E-Mail Address',
     'send-reset-link' => 'Send Password Reset Link',
     'confirm-password' => 'Confirm Password',
@@ -24,5 +26,7 @@ return [
     'fresh-verification-sent' => 'A fresh verification link has been sent to your email address.',
     'check-email-for-verification' => 'Before proceeding, please check your email for a verification link.',
     'not-receive-email' => 'If you did not receive the email',
-    'request-another' => 'click here to request another'
+    'request-another' => 'click here to request another',
+    'create-account' => 'Create your personal account.',
+    'new-question' => 'New to NFSU Cup?',
 ];

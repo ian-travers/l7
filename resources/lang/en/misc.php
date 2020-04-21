@@ -2,5 +2,6 @@
 
 return [
     'dashboard' => 'Dashboard',
-    'you-are-logged' => 'You are logged in!'
+    'you-are-logged' => 'You are logged in!',
+    'cancel' => 'Cancel',
 ];

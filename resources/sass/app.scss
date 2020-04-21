@@ -21,5 +21,106 @@
     left: 0;
     width: 4px;
     content: "";
-    background-color: #e36209;
+    background-color: $accent-border-color;
 }
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.bg-image {
+    background: url("../../public/images/map.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.border-2 {
+    border-width:2px !important;
+}
+
+.border-accent {
+    border-color: $accent-border-color !important;
+}
+
+.dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
+.app-content {
+    flex: 1;
+}
+
+.constrain {
+    max-width: 26rem;
+}
+
+footer {
+    background-color: $nfsu-game-color;
+}
+.navbar-nfsu-cup {
+    background-color: $nfsu-game-color;
+}
+
+.logo-img {
+    height: 55px;
+    padding-right: .3rem;
+}
+
+// navbar color from NFS underground theme
+.dropdown-nfsu {
+    @include hover-focus {
+        @include gradient-bg($nfsu-game-color);
+    }
+
+    &.active,
+    &:active {
+        @include gradient-bg($nfsu-game-color);
+    }
+}
+
+.navbar-dark {
+    .navbar-nav {
+        .nav-link-nfsu {
+            color: $navbar-dark-color;
+            @include hover-focus {
+                color: $navbar-dark-hover-color;
+            }
+        }
+        .nav-link-nfsu.show,
+        .nav-link-nfsu.active {
+            color: $navbar-dark-active-color;
+        }
+    }
+}
+
+// widths
+.w-30 {
+    width: 30% !important;
+}
+
+.w-40 {
+    width: 40% !important;
+}
+
+.w-60 {
+    width: 60% !important;
+}
+
+.w-70 {
+    width: 70% !important;
+}
+
+.w-80 {
+    width: 80% !important;
+}
+
