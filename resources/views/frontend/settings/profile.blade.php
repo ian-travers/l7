@@ -1,7 +1,7 @@
 @php /** @var \App\User $user */ @endphp
 
-<x-layout>
-    <div class="container">
+<x-frontend-layout :title="__('settings.profile') . ':: ' .config('app.name')">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
                 <x-settings-menu />
@@ -43,5 +43,5 @@
             </div>
         </div>
     </div>
-</x-layout>
+</x-frontend-layout>
 

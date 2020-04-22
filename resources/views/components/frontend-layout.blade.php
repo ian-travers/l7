@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ $title }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -16,8 +16,8 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css', 'build') }}" rel="stylesheet">
 </head>
-<body>
-<div id="app">
+<body class="bg-image">
+<div id="app" class="full-overlay darkest-overlay">
     @include('layouts._topnav')
 
     <main class="py-4">

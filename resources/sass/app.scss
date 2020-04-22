@@ -46,13 +46,20 @@ body {
     border-color: $accent-border-color !important;
 }
 
-.dark-overlay {
+.full-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     min-height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
+}
+
+.dark-overlay {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.darkest-overlay {
+    background: rgba(0, 0, 0, 0.7);
 }
 
 
