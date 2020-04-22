@@ -40,26 +40,26 @@
             <ul class="navbar-nav ml-auto">
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('auth.login') }}</a>
                     </li>
 
                     @if (Route::has('register'))
                         <li class="nav-item border border-light rounded">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('auth.register') }}</a>
                         </li>
                     @endif
                 @else
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->username }} <span class="caret"></span>
+                            {{ Auth::user()->nickname }} <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right navbar-nfsu-cup border border-light" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('auth.logout') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
