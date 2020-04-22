@@ -18,10 +18,10 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 0;
+    left: -1px;
     width: 4px;
     content: "";
-    background-color: $accent-border-color;
+    background-color: $primary;
 }
 
 body {
@@ -59,9 +59,8 @@ body {
 }
 
 .darkest-overlay {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
 }
-
 
 .app-content {
     flex: 1;

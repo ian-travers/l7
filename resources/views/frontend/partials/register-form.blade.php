@@ -1,63 +1,51 @@
-<form method="post" action="{{ route('register') }}">
+<div class="form-group">
+    <label for="nickname">{{ __('auth.nickname') }}</label>
+    <input id="nickname" type="text"
+           class="form-control @error('nickname') is-invalid @enderror" name="nickname"
+           value="{{ old('nickname') }}" required autocomplete="nickname" autofocus>
 
-    @csrf
+    @error('nickname')
+    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+    @enderror
+</div>
 
-    <div class="form-group">
-        <label for="nickname">{{ __('auth.nickname') }}</label>
-        <input id="nickname" type="text"
-               class="form-control @error('nickname') is-invalid @enderror" name="nickname"
-               value="{{ old('nickname') }}" required autocomplete="nickname" autofocus>
+<div class="form-group">
+    <label for="name">{{ __('auth.name') }}</label>
+    <input id="name" type="text"
+           class="form-control @error('name') is-invalid @enderror" name="name"
+           value="{{ old('name') }}" autocomplete="name">
 
-        @error('nickname')
-        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-        @enderror
-    </div>
+    @error('name')
+    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+    @enderror
+</div>
 
-    <div class="form-group">
-        <label for="name">{{ __('auth.name') }}</label>
-        <input id="name" type="text"
-               class="form-control @error('name') is-invalid @enderror" name="name"
-               value="{{ old('name') }}" autocomplete="name">
+<div class="form-group">
+    <label for="email">{{ __('auth.email') }}</label>
+    <input id="email" type="email"
+           class="form-control @error('email') is-invalid @enderror" name="email"
+           value="{{ old('email') }}" required autocomplete="email">
 
-        @error('name')
-        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-        @enderror
-    </div>
+    @error('email')
+    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+    @enderror
+</div>
 
-    <div class="form-group">
-        <label for="email">{{ __('auth.email') }}</label>
-        <input id="email" type="email"
-               class="form-control @error('email') is-invalid @enderror" name="email"
-               value="{{ old('email') }}" required autocomplete="email">
+<div class="form-group">
+    <label for="password">{{ __('auth.password') }}</label>
+    <input id="password" type="password"
+           class="form-control @error('password') is-invalid @enderror" name="password"
+           required autocomplete="new-password">
 
-        @error('email')
-        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-        @enderror
-    </div>
+    @error('password')
+    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+    @enderror
+</div>
 
-    <div class="form-group">
-        <label for="password">{{ __('auth.password') }}</label>
-        <input id="password" type="password"
-               class="form-control @error('password') is-invalid @enderror" name="password"
-               required autocomplete="new-password">
+<div class="form-group">
+    <label for="password-confirm">{{ __('auth.confirm-password') }}</label>
+    <input id="password-confirm" type="password" class="form-control"
+           name="password_confirmation" required autocomplete="new-password">
+</div>
 
-        @error('password')
-        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-        @enderror
-    </div>
-
-    <div class="form-group">
-        <label for="password-confirm">{{ __('auth.confirm-password') }}</label>
-        <input id="password-confirm" type="password" class="form-control"
-               name="password_confirmation" required autocomplete="new-password">
-    </div>
-
-    <div class="d-flex align-items-end mb-0 mt-3">
-        <button type="submit" class="btn btn-outline-primary btn-lg">
-            {{ __('auth.register') }}
-        </button>
-        <button class="ml-auto btn btn-outline-secondary btn-sm" type="button"
-                onclick="window.history.back()">{{ __('misc.cancel') }}</button>
-    </div>
-</form>
 

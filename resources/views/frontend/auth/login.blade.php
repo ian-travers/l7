@@ -40,8 +40,8 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-end mb-0 mt-3">
-                        <button type="submit" class="btn btn-outline-primary btn-lg">{{ __('auth.login') }}</button>
-                        <button class="ml-auto btn btn-outline-secondary btn-sm" type="button"
+                        <button type="submit" class="btn btn-primary btn-lg">{{ __('auth.login') }}</button>
+                        <button class="ml-auto btn btn-secondary btn-sm" type="button"
                                 onclick="window.history.back()">{{ __('misc.cancel') }}</button>
                     </div>
                 </form>

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark navbar-nfsu-cup">
-    <div class="container-fluid">
+    <div class="container">
         <a href="{{ url('/') }}">
             <img class="logo-img rounded-circle" src="/images/logo.png" alt="NFSU Cup">
             <span class="navbar-brand h3">NFSU Cup</span>
@@ -18,7 +18,8 @@
                     <a class="nav-link" href="#">{{ __('Tourneys') }}</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">{{ __('Stats') }}</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button"
+                       data-toggle="dropdown">{{ __('Stats') }}</a>
                     <div class="dropdown-menu navbar-nfsu-cup border border-light">
                         <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('Personal Standings') }}</a>
                         <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('Teams Standings') }}</a>
@@ -26,7 +27,8 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">{{ __('Game Server') }} <span class="caret"></span>
+                    <a class="nav-link dropdown-toggle" href="#" role="button"
+                       data-toggle="dropdown">{{ __('Game Server') }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu navbar-nfsu-cup border border-light">
                         <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('Monitor') }}</a>
@@ -55,7 +57,8 @@
                             {{ Auth::user()->nickname }} <span class="caret"></span>
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-right navbar-nfsu-cup border border-light" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu dropdown-menu-right navbar-nfsu-cup border border-light"
+                             aria-labelledby="navbarDropdown">
                             <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -69,6 +72,15 @@
                         </div>
                     </li>
                 @endguest
+                <li class="dropdown navbar-nfsu-cup">
+                    <a id="selectLang" class="nav-link" href="#" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ language()->flag() }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-nfsu-cup border border-light">
+                        {{ language()->flags() }}
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

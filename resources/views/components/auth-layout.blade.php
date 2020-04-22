@@ -15,7 +15,7 @@
         <div class="container constrain">
             <div class="row justify-content-center">
                 <a href="{{ url("/") }}">
-                    <img src="/images/logo_70x70.png" alt="logo" class="rounded-circle border border-accent border-2">
+                    <img src="/images/logo_70x70.png" alt="logo" class="rounded-circle border border-primary border-2">
                 </a>
             </div>
 
