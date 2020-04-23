@@ -23,3 +23,5 @@ Route::group(['middleware' => 'language'], function () {
         }
     );
 });
+
+
