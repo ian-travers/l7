@@ -10,17 +10,6 @@
 </div>
 
 <div class="form-group">
-    <label for="name">{{ __('auth.name') }}</label>
-    <input id="name" type="text"
-           class="form-control @error('name') is-invalid @enderror" name="name"
-           value="{{ old('name') }}" autocomplete="name">
-
-    @error('name')
-    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-    @enderror
-</div>
-
-<div class="form-group">
     <label for="email">{{ __('auth.email') }}</label>
     <input id="email" type="email"
            class="form-control @error('email') is-invalid @enderror" name="email"
