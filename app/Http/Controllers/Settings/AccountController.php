@@ -7,7 +7,7 @@ use App\User;
 
 class AccountController extends Controller
 {
-    public function __construct()
+    public function __construct(User $user)
     {
         $this->middleware('auth');
     }
@@ -22,10 +22,17 @@ class AccountController extends Controller
         /** @var User $user */
         $user = auth()->user();
 
+        request()->validate([
+            'nickname' => 'required|string|min:3|max:15|regex:/^[a-zA-Z0-9]{3,15}$/s|unique:users,nickname,' . $user->id,
+            'name' => 'nullable|string|max:40',
+        ]);
+
         $user->update([
             'nickname' => request('nickname'),
             'name' => request('name')
         ]);
+
+        return redirect()->route('settings.profile');
     }
 
     public function account()

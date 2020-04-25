@@ -13,26 +13,33 @@
                         <hr>
                         <div class="row">
                             <div class="col-md-6">
-                                <form action="#">
+                                <form action="{{ route('settings.profile.update') }}" method="post">
+
+                                    @csrf
+
                                     <div class="form-group">
                                         <label for="nickname">{{ __('auth.nickname') }}</label>
-                                        <input id="nickname" type="text"
-                                               class="form-control @error('nickname') is-invalid @enderror" name="nickname"
-                                               value="{{ old('nickname') }}" required autocomplete="nickname" autofocus>
+                                        <input id="nickname" type="text" maxlength="15"
+                                               class="form-control @error('nickname') is-invalid @enderror"
+                                               name="nickname"
+                                               value="{{ old('nickname', $user->nickname) }}" required
+                                               autocomplete="nickname" autofocus>
 
                                         @error('nickname')
-                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                        <span class="invalid-feedback"
+                                              role="alert"><strong>{{ $message }}</strong></span>
                                         @enderror
                                     </div>
 
                                     <div class="form-group">
                                         <em><label for="name">{{ __('auth.name') }} ({{ __('misc.optional') }})</label></em>
-                                        <input id="name" type="text"
+                                        <input id="name" type="text" maxlength="40"
                                                class="form-control @error('name') is-invalid @enderror" name="name"
-                                               value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                               value="{{ old('name', $user->name) }}" autocomplete="name" autofocus>
 
                                         @error('name')
-                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                        <span class="invalid-feedback"
+                                              role="alert"><strong>{{ $message }}</strong></span>
                                         @enderror
                                     </div>
 
