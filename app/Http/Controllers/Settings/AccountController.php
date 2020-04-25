@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
+use App\User;
 
 class AccountController extends Controller
 {
@@ -14,6 +15,17 @@ class AccountController extends Controller
     public function profile()
     {
         return view('frontend.settings.profile', ['user' => auth()->user()]);
+    }
+
+    public function updateProfile()
+    {
+        /** @var User $user */
+        $user = auth()->user();
+
+        $user->update([
+            'nickname' => request('nickname'),
+            'name' => request('name')
+        ]);
     }
 
     public function account()
