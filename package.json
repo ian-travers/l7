@@ -12,7 +12,9 @@
     "devDependencies": {
         "axios": "^0.19",
         "bootstrap": "^4.0.0",
+        "bootstrap-select": "^1.13.16",
         "cross-env": "^7.0",
+        "i18n-iso-countries": "^5.2.0",
         "jquery": "3.4.1",
         "laravel-mix": "^5.0.4",
         "lodash": "^4.17.13",
@@ -21,6 +23,7 @@
         "sass": "^1.26.3",
         "sass-loader": "^8.0.2",
         "vue": "^2.5.17",
-        "vue-template-compiler": "^2.6.10"
+        "vue-template-compiler": "^2.6.10",
+        "world-flags-sprite": "^0.0.2"
     }
 }

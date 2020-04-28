@@ -15,9 +15,15 @@
                         @endif
 
                         {{ __('misc.you-are-logged') }}
+
+                        <div class="form-group">
+                            <hr>
+                            <select-country locale="{{ app()->getLocale() }}" title="{{ __('misc.select-your-country') }}"></select-country>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+

@@ -7,6 +7,12 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Bootstrap select
+@import '~bootstrap-select/sass/bootstrap-select';
+
+// World flags sprite
+@import '~world-flags-sprite/stylesheets/flags16.css';
+
 .active-vertical-menu {
     color: #000;
     pointer-events: none;
@@ -128,5 +134,11 @@ footer {
 
 .w-80 {
     width: 80% !important;
+}
+
+// Select options class
+.inline-flag {
+    margin-right: 3px;
+    margin-top: 2px;
 }
 
