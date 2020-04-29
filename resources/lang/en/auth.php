@@ -18,6 +18,7 @@ return [
     'register' => 'Register',
     'nickname' => 'NFSU Username',
     'name' => 'Name',
+    'country' => 'Country',
     'verify-email-address' => 'Verify Your Email Address',
     'fresh-verification-sent' => 'A fresh verification link has been sent to your email address.',
     'check-email-for-verification' => 'Before proceeding, please check your email for a verification link.',

@@ -18,6 +18,7 @@ return [
     'register' => 'Регистрация',
     'nickname' => 'NFSU никнейм',
     'name' => 'Имя',
+    'country' => 'Страна',
     'verify-email-address' => 'Подтвердите ваш email',
     'fresh-verification-sent' => 'Новая ссылка для подтверждения отправлена на ваш email адрес.',
     'check-email-for-verification' => 'Проверьте свою электронную почту. На ваш email отправлено письмо со ссылкой подтверждения.',

@@ -2,8 +2,8 @@
     <select
         class="selectpicker form-control f16"
         :title="this.title"
-        data-style="btn-primary"
         data-live-search="true"
+        onchange="console.log(this.value)"
     >
         <option
             v-for="(country, code) in allCountries"
@@ -34,6 +34,12 @@
             countries.registerLocale(langs_en);
             countries.registerLocale(langs_ru);
             this.allCountries = countries.getNames(this.locale);
+        },
+
+        methods: {
+            ssd() {
+                alert('12300');
+            }
         }
     }
 </script>

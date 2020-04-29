@@ -21,6 +21,11 @@
 </div>
 
 <div class="form-group">
+    <label for="country">{{ __('auth.country') }}</label>
+    <select-country name="country" locale="{{ app()->getLocale() }}" title="{{ __('misc.select-your-country') }}"></select-country>
+</div>
+
+<div class="form-group">
     <label for="password">{{ __('auth.password') }}</label>
     <input id="password" type="password"
            class="form-control @error('password') is-invalid @enderror" name="password"
