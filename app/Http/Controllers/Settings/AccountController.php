@@ -34,7 +34,8 @@ class AccountController extends Controller
             'country' => request('country'),
         ]);
 
-        return redirect()->route('settings.profile');
+        return redirect()->route('settings.profile')
+            ->with('flash', 'Profile Updated');
     }
 
     public function account()

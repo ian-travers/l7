@@ -20,6 +20,8 @@
 <div id="app" class="full-overlay darkest-overlay">
     @include('layouts._topnav')
 
+    <flash content="{{ session('flash') }}"></flash>
+
     <main class="py-4">
         {{ $slot }}
     </main>
