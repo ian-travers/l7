@@ -18,10 +18,11 @@ class ProfileTest extends TestCase
         $user = create(User::class);
         $this->signIn($user);
 
-        $this->post('/settings/profile', ['nickname' => 'NEED4FUN', 'name' => 'Jane Doe']);
+        $this->post('/settings/profile', ['nickname' => 'NEED4FUN', 'name' => 'Jane Doe', 'country' => 'US']);
 
         $this->assertEquals('NEED4FUN', $user->nickname);
         $this->assertEquals('Jane Doe', $user->name);
+        $this->assertEquals('US', $user->country);
     }
 
     /** @test */

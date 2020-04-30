@@ -22,7 +22,12 @@
 
 <div class="form-group">
     <label for="country">{{ __('auth.country') }}</label>
-    <select-country name="country" locale="{{ app()->getLocale() }}" title="{{ __('misc.select-your-country') }}"></select-country>
+    <select-country
+        name="country"
+        locale="{{ app()->getLocale() }}"
+        title="{{ __('misc.select-your-country') }}"
+        value="{{ old('country') }}"
+    ></select-country>
 </div>
 
 <div class="form-group">

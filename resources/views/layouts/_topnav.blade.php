@@ -59,6 +59,7 @@
 
                         <div class="dropdown-menu dropdown-menu-right navbar-nfsu-cup border border-light"
                              aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="{{ route('settings.profile') }}">{{ __('auth.settings') }}</a>
                             <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

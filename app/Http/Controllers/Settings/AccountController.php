@@ -7,7 +7,7 @@ use App\User;
 
 class AccountController extends Controller
 {
-    public function __construct(User $user)
+    public function __construct()
     {
         $this->middleware('auth');
     }
@@ -25,11 +25,13 @@ class AccountController extends Controller
         request()->validate([
             'nickname' => 'required|string|min:3|max:15|regex:/^[a-zA-Z0-9]{3,15}$/s|unique:users,nickname,' . $user->id,
             'name' => 'nullable|string|max:40',
+            'country' => 'required|string:2'
         ]);
 
         $user->update([
             'nickname' => request('nickname'),
-            'name' => request('name')
+            'name' => request('name'),
+            'country' => request('country'),
         ]);
 
         return redirect()->route('settings.profile');

@@ -43,6 +43,12 @@
                                         @enderror
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="country">{{ __('auth.country') }}</label>
+                                        <select-country name="country" locale="{{ $user->locale }}"
+                                                        value="{{ old('country', $user->country) }}"></select-country>
+                                    </div>
+
                                     <button type="submit" class="btn btn-primary btn-lg">
                                         {{ __('misc.update') }}
                                     </button>

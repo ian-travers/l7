@@ -2,8 +2,8 @@
     <select
         class="selectpicker form-control f16"
         :title="this.title"
+        :value="this.value"
         data-live-search="true"
-        onchange="console.log(this.value)"
     >
         <option
             v-for="(country, code) in allCountries"
@@ -20,7 +20,7 @@
     import langs_ru from "i18n-iso-countries/langs/ru.json";
 
     export default {
-        props: ['locale', 'title'],
+        props: ['locale', 'title', 'value'],
 
         components: {countries, langs_en, langs_ru},
 
@@ -35,12 +35,6 @@
             countries.registerLocale(langs_ru);
             this.allCountries = countries.getNames(this.locale);
         },
-
-        methods: {
-            ssd() {
-                alert('12300');
-            }
-        }
     }
 </script>
 
