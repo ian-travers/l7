@@ -15,6 +15,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string|null $name
  * @property string $country
  * @property string $locale
+ * @property string|null $avatar_path
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
@@ -26,6 +27,7 @@ use Illuminate\Notifications\Notifiable;
  * @method static Builder|User newModelQuery()
  * @method static Builder|User newQuery()
  * @method static Builder|User query()
+ * @method static Builder|User whereAvatarPath($value)
  * @method static Builder|User whereCountry($value)
  * @method static Builder|User whereCreatedAt($value)
  * @method static Builder|User whereEmail($value)
@@ -49,7 +51,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nickname', 'name', 'locale', 'country', 'email', 'password',
+        'nickname', 'name', 'locale', 'country', 'avatar_path', 'email', 'password',
     ];
 
     /**
