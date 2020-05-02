@@ -34,8 +34,13 @@ class AccountController extends Controller
             'country' => request('country'),
         ]);
 
+        response()->json();
+
         return redirect()->route('settings.profile')
-            ->with('flash', 'Profile Updated');
+            ->with('flash', json_encode([
+                'title' => 'Done',
+                'message' => 'Profile Updated'
+            ]));
     }
 
     public function account()

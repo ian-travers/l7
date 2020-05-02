@@ -7,11 +7,13 @@
 
         created() {
             if (this.content) {
+                const data = JSON.parse(this.content);
+
                 iziToast.success({
-                    title: 'Success',
-                    message: this.content,
+                    title: data.title,
+                    message: data.message,
                 })
             }
-        }
+        },
     }
 </script>
