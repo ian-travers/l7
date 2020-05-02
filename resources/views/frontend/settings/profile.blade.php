@@ -12,7 +12,7 @@
                         <h3>{{ __('settings.profile') }}</h3>
                         <hr>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <form action="{{ route('settings.profile.update') }}" method="post">
 
                                     @csrf
@@ -54,8 +54,34 @@
                                     </button>
                                 </form>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
+                                <div class="text-center">
 
+                                    <p>{{ __('Avatar') }}</p>
+
+                                    @if($user->avatar_path)
+                                        <img src="{{ asset('storage/' . $user->avatar_path) }}" alt="" width="100%">
+
+                                    @else
+                                        <p>{{ __('You have not an avatar.') }}</p>
+
+                                    @endif
+
+                                    <hr>
+
+                                    <form method="post" action="{{ route('settings.profile.avatar') }}"
+                                          enctype="multipart/form-data">
+
+                                        @csrf
+
+                                        <div class="form-group">
+                                            <input type="file" id="custom_avatar" name="avatar">
+                                            <button type="submit"
+                                                    class="btn btn-primary mt-1">{{ __('Add Avatar') }}</button>
+                                        </div>
+
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

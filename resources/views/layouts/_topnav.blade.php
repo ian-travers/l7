@@ -54,12 +54,20 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
+                            @if(Auth::user()->avatar_path)
+
+                                <img src="{{ asset('storage/' . Auth::user()->avatar_path) }}" class="rounded-circle mr-1" width="30" height="30">
+
+                            @endif
+
                             {{ Auth::user()->nickname }} <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right navbar-nfsu-cup border border-light"
                              aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="{{ route('settings.profile') }}">{{ __('auth.settings') }}</a>
+                            <a class="dropdown-item dropdown-nfsu nav-link-nfsu"
+                               href="{{ route('settings.profile') }}">{{ __('auth.settings') }}</a>
                             <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
