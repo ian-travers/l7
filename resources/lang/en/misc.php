@@ -7,4 +7,5 @@ return [
     'select-your-country' => 'Select your country...',
     'optional' => 'optional',
     'update' => 'Update',
+    'browse' => 'Browse...',
 ];

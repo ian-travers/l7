@@ -57,7 +57,7 @@
                             <div class="col-md-5">
                                 <div class="text-center">
 
-                                    <p>{{ __('Avatar') }}</p>
+                                    <p>{{ __('auth.avatar') }}</p>
 
                                     @if($user->avatar_path)
                                         <img src="{{ asset('storage/' . $user->avatar_path) }}" alt="" width="100%">
@@ -69,18 +69,62 @@
 
                                     <hr>
 
-                                    <form method="post" action="{{ route('settings.profile.avatar') }}"
-                                          enctype="multipart/form-data">
+                                    <button
+                                        type="button"
+                                        data-toggle="modal"
+                                        data-target="#imageForm"
+                                        class="btn btn-light btn-lg mb-2 border"
+                                    >
+                                        {{ __('auth.upload-new-avatar') }}
+                                    </button>
+                                    <br>
+                                    <a href="#" class="btn btn-light btn-sm border">{{ __('auth.without-avatar') }}</a>
 
-                                        @csrf
+                                    <div id="imageForm" class="modal fade" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title"
+                                                        id="exampleModalCenterTitle">{{ __('auth.select-image-for-avatar') }}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form method="post" action="{{ route('settings.profile.avatar') }}"
+                                                          enctype="multipart/form-data">
 
-                                        <div class="form-group">
-                                            <input type="file" id="custom_avatar" name="avatar">
-                                            <button type="submit"
-                                                    class="btn btn-primary mt-1">{{ __('Add Avatar') }}</button>
+                                                        @csrf
+
+                                                        <input type="file" name="avatar" class="file" accept="image/*">
+                                                        <div class="input-group my-3">
+                                                            <input type="text" class="form-control" disabled
+                                                                   placeholder="{{ __('auth.upload-file') }}" id="file">
+                                                            <div class="input-group-append">
+                                                                <button type="button" class="browse btn btn-primary">
+                                                                    {{ __('misc.browse') }}
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <img src="https://placehold.it/80x80" id="preview"
+                                                             class="img-thumbnail" alt="">
+
+                                                        <hr>
+                                                        <strong>OLLDDD</strong>
+                                                        <div class="form-group">
+                                                            <button type="submit"
+                                                                    class="btn btn-primary mt-1 d-block">{{ __('auth.upload-avatar') }}</button>
+                                                        </div>
+
+                                                    </form>
+                                                </div>
+
+                                            </div>
+
                                         </div>
+                                    </div>
 
-                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -89,5 +133,26 @@
             </div>
         </div>
     </div>
+
+    @section('script')
+        <script type="text/javascript">
+            $(document).on("click", ".browse", function() {
+                var file = $(this).parents().find(".file");
+                file.trigger("click");
+            });
+            $('input[type="file"]').change(function(e) {
+                var fileName = e.target.files[0].name;
+                $("#file").val(fileName);
+
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    // get loaded data and render thumbnail.
+                    document.getElementById("preview").src = e.target.result;
+                };
+                // read the image file as a data URL.
+                reader.readAsDataURL(this.files[0]);
+            });
+        </script>
+    @endsection
 </x-frontend-layout>
 

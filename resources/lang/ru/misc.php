@@ -7,4 +7,5 @@ return [
     'select-your-country' => 'Выберите вашу страну...',
     'optional' => 'не обязательно',
     'update' => 'Сохранить',
+    'browse' => 'Выбрать...',
 ];

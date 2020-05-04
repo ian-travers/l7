@@ -26,4 +26,10 @@ return [
     'request-another' => 'нажмите здесь для запроса нового.',
     'create-account' => 'Регистрация учетной записи.',
     'new-question' => 'Первый раз на NFSU Cup?',
+    'select-image-for-avatar' => 'Изображение для аватара',
+    'avatar' => 'Аватар',
+    'upload-avatar' => 'Загрузить аватар',
+    'upload-new-avatar' => 'Загрузить новый аватар',
+    'without-avatar' => 'Не использовать аватар',
+    'upload-file' => 'Файл для загрузки',
 ];
