@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('select-country', require('./components/SelectCountry').default);
 Vue.component('flash', require('./components/Flash').default);
+Vue.component('avatar-form', require('./components/AvatarForm').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
