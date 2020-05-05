@@ -1,6 +1,6 @@
 @php /** @var \App\User $user */ @endphp
 
-<x-frontend-layout :title="__('settings.profile') . ':: ' .config('app.name')">
+<x-frontend-layout :title="__('settings.profile') . ':: ' . config('app.name')">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
@@ -84,8 +84,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title"
-                                                        id="exampleModalCenterTitle">{{ __('auth.select-image-for-avatar') }}</h5>
+                                                    <h5 class="modal-title">{{ __('auth.select-image-for-avatar') }}</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
@@ -97,7 +96,7 @@
 
                                                         @csrf
 
-                                                        <input type="file" name="avatar" class="file" accept="image/*">
+                                                        <input id="imageFile" type="file" name="avatar" class="file" accept="image/*">
                                                         <div class="input-group my-3">
                                                             <input type="text" class="form-control" disabled
                                                                    placeholder="{{ __('auth.upload-file') }}" id="file">
@@ -113,8 +112,13 @@
                                                         <hr>
                                                         <strong>OLLDDD</strong>
                                                         <div class="form-group">
-                                                            <button type="submit"
-                                                                    class="btn btn-primary mt-1 d-block">{{ __('auth.upload-avatar') }}</button>
+                                                            <button
+                                                                id="ajaxSubmit"
+                                                                type="submit"
+                                                                class="btn btn-primary mt-1 d-block"
+                                                            >
+                                                                {{ __('auth.upload-avatar') }}
+                                                            </button>
                                                         </div>
 
                                                     </form>
@@ -124,7 +128,6 @@
 
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -136,16 +139,16 @@
 
     @section('script')
         <script type="text/javascript">
-            $(document).on("click", ".browse", function() {
+            $(document).on("click", ".browse", function () {
                 var file = $(this).parents().find(".file");
                 file.trigger("click");
             });
-            $('input[type="file"]').change(function(e) {
+            $('input[type="file"]').change(function (e) {
                 var fileName = e.target.files[0].name;
                 $("#file").val(fileName);
 
                 var reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     // get loaded data and render thumbnail.
                     document.getElementById("preview").src = e.target.result;
                 };

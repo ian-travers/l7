@@ -46,7 +46,7 @@ class AccountController extends Controller
     public function updateAvatar()
     {
         $this->validate(request(), [
-            'avatar' => 'required|image',
+            'avatar' => 'required|image|file|max:2048',
         ]);
 
         /** @var User $user */
