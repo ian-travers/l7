@@ -71,4 +71,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function withoutAvatar()
+    {
+        $this->update([
+            'avatar_path' => null,
+        ]);
+    }
 }

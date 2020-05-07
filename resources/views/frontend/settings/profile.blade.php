@@ -63,7 +63,7 @@
                                         <img src="{{ asset('storage/' . $user->avatar_path) }}" alt="" width="100%">
 
                                     @else
-                                        <p>{{ __('You have not an avatar.') }}</p>
+                                        <p>{{ __('auth.have-not-avatar') }}</p>
 
                                     @endif
 
@@ -78,7 +78,14 @@
                                         {{ __('auth.upload-new-avatar') }}
                                     </button>
                                     <br>
-                                    <a href="#" class="btn btn-light btn-sm border">{{ __('auth.without-avatar') }}</a>
+
+                                    <form method="post" action="{{ route('settings.profile.no-avatar') }}">
+
+                                        @csrf
+
+                                        <button type="submit" class="btn btn-light btn-sm border">{{ __('auth.without-avatar') }}</button>
+                                    </form>
+
 
                                     {{-- Modal form--}}
                                     <avatar-form

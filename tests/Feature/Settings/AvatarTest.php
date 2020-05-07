@@ -44,4 +44,23 @@ class AvatarTest extends TestCase
         $this->assertEquals('avatars/' . $file->hashName(), auth()->user()->avatar_path);
         Storage::disk('public')->assertExists('avatars/' . $file->hashName());
     }
+
+    /** @test */
+    function user_may_remove_avatar_from_their_profile()
+    {
+        $this->signIn();
+
+        Storage::fake('public');
+
+        $this->json('post', 'settings/profile/avatar', [
+            'avatar' => $file = UploadedFile::fake()->image('avatar.jpg'),
+        ]);
+
+        $this->assertNotNull(auth()->user()->avatar_path);
+        $this->assertEquals('avatars/' . $file->hashName(), auth()->user()->avatar_path);
+
+        $this->json('post', 'settings/profile/no-avatar');
+        $this->assertNull(auth()->user()->avatar_path);
+
+    }
 }

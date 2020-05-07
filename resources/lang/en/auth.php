@@ -33,4 +33,5 @@ return [
     'without-avatar' => 'Without Avatar',
     'upload-file' => 'File for Uploading',
     'browse' => 'Browse',
+    'have-not-avatar' => 'You have not an avatar.',
 ];

@@ -74,6 +74,19 @@ class AccountController extends Controller
         ]));
     }
 
+    public function removeAvatar()
+    {
+        /** @var User $user */
+        $user = auth()->user();
+
+        $user->withoutAvatar();
+
+        return back()->with('flash', json_encode([
+            'title' => __('flash.success'),
+            'message' => __('flash.avatar-is-removed'),
+        ]));
+    }
+
     public function account()
     {
         return view('frontend.settings.account', ['user' => auth()->user()]);
