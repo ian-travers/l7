@@ -61,6 +61,30 @@ class AvatarTest extends TestCase
 
         $this->json('post', 'settings/profile/no-avatar');
         $this->assertNull(auth()->user()->avatar_path);
+    }
 
+    /** @test */
+    function avatar_file_is_deleted_when_user_change_or_remove_avatar()
+    {
+        $this->signIn();
+
+        Storage::fake('public');
+
+        $this->json('post', 'settings/profile/avatar', [
+            'avatar' => $file = UploadedFile::fake()->image('avatar.jpg'),
+        ]);
+
+        Storage::disk('public')->assertExists('avatars/' . $file->hashName());
+
+        // Changing avatar
+        $this->json('post', 'settings/profile/avatar', [
+            'avatar' => $newFile = UploadedFile::fake()->image('new-avatar.jpg'),
+        ]);
+        Storage::disk('public')->assertMissing('avatars/' . $file->hashName());
+        Storage::disk('public')->assertExists('avatars/' . $newFile->hashName());
+
+        // Removing avatar
+        $this->json('post', 'settings/profile/no-avatar');
+        Storage::disk('public')->assertMissing('avatars/' . $newFile->hashName());
     }
 }

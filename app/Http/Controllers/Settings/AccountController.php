@@ -54,6 +54,7 @@ class AccountController extends Controller
         /** @var User $user */
         $user = auth()->user();
 
+        $user->removeAvatarFile();
         $user->update([
             'avatar_path' => request()->file('avatar')->store('avatars', 'public'),
         ]);

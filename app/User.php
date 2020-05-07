@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Storage;
 
 /**
  * App\User
@@ -74,8 +75,15 @@ class User extends Authenticatable
 
     public function withoutAvatar()
     {
+        $this->removeAvatarFile();
+
         $this->update([
             'avatar_path' => null,
         ]);
+    }
+
+    public function removeAvatarFile()
+    {
+        Storage::disk('public')->delete($this->avatar_path);
     }
 }
