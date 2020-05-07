@@ -70,6 +70,7 @@ class RegisterController extends Controller
             'nickname' => $data['nickname'],
             'email' => $data['email'],
             'country' => $data['country'],
+            'avatar_path' => 'avatars/default.webp',
             'password' => Hash::make($data['password']),
         ]);
     }
