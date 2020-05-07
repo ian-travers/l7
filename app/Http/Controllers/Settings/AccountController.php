@@ -36,8 +36,8 @@ class AccountController extends Controller
         ]);
 
         return back()->with('flash', json_encode([
-            'title' => __('Done'),
-            'message' => __('Profile has been updated.'),
+            'title' => __('flash.success'),
+            'message' => __('flash.profile-updated'),
         ]));
     }
 
