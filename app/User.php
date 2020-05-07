@@ -73,7 +73,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function withoutAvatar()
+    public function withoutAvatar(): void
     {
         $this->removeAvatarFile();
 
@@ -82,8 +82,8 @@ class User extends Authenticatable
         ]);
     }
 
-    public function removeAvatarFile()
+    public function removeAvatarFile(): bool
     {
-        Storage::disk('public')->delete($this->avatar_path);
+        return Storage::disk('public')->delete($this->avatar_path);
     }
 }

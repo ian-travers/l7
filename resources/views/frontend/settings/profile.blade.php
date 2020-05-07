@@ -82,11 +82,8 @@
                                     <form method="post" action="{{ route('settings.profile.no-avatar') }}">
 
                                         @csrf
-
                                         <button type="submit" class="btn btn-light btn-sm border">{{ __('auth.without-avatar') }}</button>
                                     </form>
-
-
                                     {{-- Modal form--}}
                                     <avatar-form
                                         header_title="{{ __('auth.select-image-for-avatar') }}"
