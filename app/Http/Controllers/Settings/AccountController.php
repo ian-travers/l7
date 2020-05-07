@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
 
 class AccountController extends Controller
 {
@@ -14,7 +16,7 @@ class AccountController extends Controller
 
     /**
      * @return \Illuminate\Http\RedirectResponse
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function updateProfile()
     {
@@ -40,8 +42,8 @@ class AccountController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Illuminate\Validation\ValidationException
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|Response
+     * @throws ValidationException
      */
     public function updateAvatar()
     {
@@ -56,9 +58,19 @@ class AccountController extends Controller
             'avatar_path' => request()->file('avatar')->store('avatars', 'public'),
         ]);
 
+        if (request()->wantsJson()) {
+            return response([
+                'flash' => [
+                    'title' => __('flash.warning'),
+                    'message' => __('flash.image-not-selected'),
+                ],
+                'reload' => route('settings.profile'),
+            ], Response::HTTP_OK);
+        }
+
         return back()->with('flash', json_encode([
-            'title' => __('Success'),
-            'message' => __('Avatar has been updated.'),
+            'title' => __('flash.success'),
+            'message' => __('flash.avatar-is-updated'),
         ]));
     }
 

@@ -28,8 +28,9 @@ return [
     'new-question' => 'New at NFSU Cup?',
     'select-image-for-avatar' => 'Select Image for Avatar',
     'avatar' => 'Avatar',
-    'upload-avatar' => 'Upload Avatar',
+    'upload-avatar' => 'Upload File and Set As Avatar',
     'upload-new-avatar' => 'Upload New Avatar',
     'without-avatar' => 'Without Avatar',
-    'upload-file' => 'Upload File',
+    'upload-file' => 'File for Uploading',
+    'browse' => 'Browse',
 ];

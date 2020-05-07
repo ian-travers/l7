@@ -28,8 +28,9 @@ return [
     'new-question' => 'Первый раз на NFSU Cup?',
     'select-image-for-avatar' => 'Изображение для аватара',
     'avatar' => 'Аватар',
-    'upload-avatar' => 'Загрузить аватар',
+    'upload-avatar' => 'Загрузить файл и установить как аватар',
     'upload-new-avatar' => 'Загрузить новый аватар',
     'without-avatar' => 'Не использовать аватар',
     'upload-file' => 'Файл для загрузки',
+    'browse' => 'Выбрать',
 ];

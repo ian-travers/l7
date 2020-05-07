@@ -81,7 +81,14 @@
                                     <a href="#" class="btn btn-light btn-sm border">{{ __('auth.without-avatar') }}</a>
 
                                     {{-- Modal form--}}
-                                    <avatar-form></avatar-form>
+                                    <avatar-form
+                                        header_title="{{ __('auth.select-image-for-avatar') }}"
+                                        placeholder="{{ __('auth.upload-file') }}"
+                                        browse_caption="{{ __('auth.browse') }}"
+                                        upload_caption="{{ __('auth.upload-avatar') }}"
+                                        no_img_warning_title="{{ __('flash.warning') }}"
+                                        no_img_warning_message="{{ __('flash.image-not-selected') }}"
+                                    ></avatar-form>
                                     {{-- End Modal--}}
                                 </div>
                             </div>
