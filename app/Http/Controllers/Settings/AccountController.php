@@ -82,6 +82,10 @@ class AccountController extends Controller
 
         $user->withoutAvatar();
 
+        if (request()->wantsJson()) {
+            return response([], Response::HTTP_OK);
+        }
+
         return back()->with('flash', json_encode([
             'title' => __('flash.success'),
             'message' => __('flash.avatar-is-removed'),

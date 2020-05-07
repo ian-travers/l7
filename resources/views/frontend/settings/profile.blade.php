@@ -78,12 +78,13 @@
                                         {{ __('auth.upload-new-avatar') }}
                                     </button>
                                     <br>
-
-                                    <form method="post" action="{{ route('settings.profile.no-avatar') }}">
-
-                                        @csrf
-                                        <button type="submit" class="btn btn-light btn-sm border">{{ __('auth.without-avatar') }}</button>
-                                    </form>
+                                    <without-avatar-form
+                                        button_caption="{{ __('auth.without-avatar') }}"
+                                        form_accent="{{ __('flash.hey') }}"
+                                        form_question="{{ __('flash.confirm-avatar-removing') }}"
+                                        yes="{{ __('misc.yes') }}"
+                                        no="{{ __('misc.no') }}"
+                                    ></without-avatar-form>
                                     {{-- Modal form--}}
                                     <avatar-form
                                         header_title="{{ __('auth.select-image-for-avatar') }}"

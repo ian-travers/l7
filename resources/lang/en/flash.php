@@ -9,4 +9,6 @@ return [
     'avatar-is-updated' => 'Avatar has been updated.',
     'avatar-is-removed' => 'Avatar has been removed from your profile.',
     'profile-updated' => 'Profile has been updated.',
+    'hey' => 'Hey!',
+    'confirm-avatar-removing' => 'Do you seriously want to remove the avatar?',
 ];

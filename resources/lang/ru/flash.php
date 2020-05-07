@@ -9,4 +9,6 @@ return [
     'avatar-is-updated' => 'Аватар установлен.',
     'avatar-is-removed' => 'Аватар удален из вашего профиля.',
     'profile-updated' => 'Профиль сохранен.',
+    'hey' => 'Эй!',
+    'confirm-avatar-removing' => 'Серьезно хотите убрать аватар?',
 ];

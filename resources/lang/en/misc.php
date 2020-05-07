@@ -8,4 +8,6 @@ return [
     'optional' => 'optional',
     'update' => 'Update',
     'browse' => 'Browse...',
+    'yes' => 'Yes',
+    'no' => 'No',
 ];

@@ -29,15 +29,10 @@
                                         class="browse btn btn-primary"
                                         @click="browse"
                                         v-text="browse_caption"
-                                    >
-                                    </button>
+                                    ></button>
                                 </div>
                             </div>
-                            <img
-                                :src="avatar"
-                                id="preview"
-                                class="img-thumbnail" alt=""
-                            >
+                            <img :src="avatar" id="preview" class="img-thumbnail" alt="">
                         </div>
                         <div class="modal-footer d-block">
                             <div class="text-center">
@@ -46,8 +41,7 @@
                                     class="btn btn-primary"
                                     @click="persist"
                                     v-text="upload_caption"
-                                >
-                                </button>
+                                ></button>
                             </div>
                         </div>
                     </div>
