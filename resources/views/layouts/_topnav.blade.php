@@ -55,7 +55,7 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 
-                            @if(Auth::user()->avatar_path)
+                            @if(Auth::user()->hasAvatar())
 
                                 <img src="{{ asset('storage/' . Auth::user()->avatar_path) }}" class="rounded-circle mr-1" width="30" height="30">
 

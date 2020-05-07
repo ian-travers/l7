@@ -22,4 +22,17 @@ class UserTest extends TestCase
 
         $this->assertNull($user->avatar_path);
     }
+
+    /** @test */
+    function check_has_avatar()
+    {
+        /** @var User $user */
+        $user = create(User::class, ['avatar_path' => 'avatars/default.webp']);
+
+        $this->assertTrue($user->hasAvatar());
+
+        $user->withoutAvatar();
+
+        $this->assertFalse($user->hasAvatar());
+    }
 }

@@ -1,5 +1,5 @@
 <template>
-    <form method="post">
+    <form v-if="has_avatar" method="post">
         <button
             type="button"
             class="btn btn-light btn-sm border"
@@ -11,7 +11,12 @@
 
 <script>
     export default {
-        props: ['button_caption', 'form_accent', 'form_question', 'yes', 'no'],
+        props: {
+            has_avatar: Boolean,
+            button_caption: String,
+            form_accent: String,
+            form_question: String,
+        },
 
         methods: {
             submitForm() {
@@ -33,7 +38,7 @@
                             instance.hide({ transitionOut: 'fadeOut' }, toast, 'buttonNo');
                         }, true],
                     ],
-                    onClosed: function(instance, toast, closedBy){
+                    onClosing: function(instance, toast, closedBy){
                         if (closedBy === 'buttonYes') {
                             axios.post('/settings/profile/no-avatar');
                             window.location.replace(location.pathname);

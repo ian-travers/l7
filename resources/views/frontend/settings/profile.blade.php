@@ -59,7 +59,7 @@
 
                                     <p>{{ __('auth.avatar') }}</p>
 
-                                    @if($user->avatar_path)
+                                    @if($user->hasAvatar())
                                         <img src="{{ asset('storage/' . $user->avatar_path) }}" alt="" width="100%">
 
                                     @else
@@ -79,11 +79,10 @@
                                     </button>
                                     <br>
                                     <without-avatar-form
+                                        {{ $user->hasAvatar() ? 'has_avatar' : '' }}
                                         button_caption="{{ __('auth.without-avatar') }}"
                                         form_accent="{{ __('flash.hey') }}"
                                         form_question="{{ __('flash.confirm-avatar-removing') }}"
-                                        yes="{{ __('misc.yes') }}"
-                                        no="{{ __('misc.no') }}"
                                     ></without-avatar-form>
                                     {{-- Modal form--}}
                                     <avatar-form
