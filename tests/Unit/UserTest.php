@@ -24,15 +24,11 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    function check_has_avatar()
+    function user_get_proper_pre_made_avatar_index()
     {
         /** @var User $user */
-        $user = create(User::class, ['avatar_path' => 'avatars/default.webp']);
+        $user = make(User::class, ['avatar_path' => 'avatars/pre/1.png']);
 
-        $this->assertTrue($user->hasAvatar());
-
-        $user->withoutAvatar();
-
-        $this->assertFalse($user->hasAvatar());
+        $this->assertEquals('1', $user->getPreMadeAvatarIndex());
     }
 }

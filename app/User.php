@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Storage;
+use Str;
 
 /**
  * App\User
@@ -89,7 +90,20 @@ class User extends Authenticatable
 
     public function hasAvatar(): bool
     {
-//        return $this->avatar_path && Storage::disk('public')->exists($this->avatar_path);
-        return $this->avatar_path ? true : false;
+        return $this->avatar_path && Storage::disk('public')->exists($this->avatar_path);
+    }
+
+    public function getPreMadeAvatarIndex(): string
+    {
+        return $this->hasPreMadeAvatar() ? Str::of($this->avatar_path)->after('pre/')->before('.') : '';
+    }
+
+    private function hasPreMadeAvatar(): bool
+    {
+        if ($this->hasAvatar()) {
+            return strpos($this->avatar_path, '/pre/');
+        }
+
+        return false;
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'settings' => 'Settings',
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'reset-password' => 'Reset Password',
@@ -34,4 +35,5 @@ return [
     'upload-file' => 'File for Uploading',
     'browse' => 'Browse',
     'have-not-avatar' => 'You have not an avatar.',
+    'pre-made-avatars' => 'Avatars gallery',
 ];

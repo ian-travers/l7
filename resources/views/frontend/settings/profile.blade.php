@@ -51,38 +51,14 @@
 
                                     <div class="form-group text-center">
                                         <p class="text-left">{{ __('auth.pre-made-avatars') }}</p>
-                                        <label class="d-inline mx-1">
-                                            <input type="radio" name="test" value="1" checked>
-                                            <img src="{{ asset('avatars/pre/1.png') }}" height="20%" width="20%">
-                                        </label>
-                                        <label class="d-inline mx-1">
-                                            <input type="radio" name="test" value="2">
-                                            <img src="{{ asset('avatars/pre/2.png') }}" height="20%" width="20%">
-                                        </label>
-                                        <label class="d-inline mx-1">
-                                            <input type="radio" name="test" value="3">
-                                            <img src="{{ asset('avatars/pre/3.png') }}" height="20%" width="20%">
-                                        </label>
-                                        <label class="d-inline mx-1">
-                                            <input type="radio" name="test" value="4">
-                                            <img src="{{ asset('avatars/pre/4.png') }}" height="20%" width="20%">
-                                        </label>
-                                        <label class="d-inline mx-1">
-                                            <input type="radio" name="test" value="5">
-                                            <img src="{{ asset('avatars/pre/5.png') }}" height="20%" width="20%">
-                                        </label>
-                                        <label class="d-inline mx-1">
-                                            <input type="radio" name="test" value="6">
-                                            <img src="{{ asset('avatars/pre/6.png') }}" height="20%" width="20%">
-                                        </label>
-                                        <label class="d-inline mx-1">
-                                            <input type="radio" name="test" value="7">
-                                            <img src="{{ asset('avatars/pre/7.png') }}" height="20%" width="20%">
-                                        </label>
-                                        <label class="d-inline mx-1">
-                                            <input type="radio" name="test" value="8">
-                                            <img src="{{ asset('avatars/pre/8.png') }}" height="20%" width="20%">
-                                        </label>
+
+                                        @for ($i = 1; $i <= 8 ; $i++)
+                                            <label class="d-inline mx-1">
+                                                <input type="radio" name="avatar_path" value="{{ $i }}" {{ $user->getPreMadeAvatarIndex() == $i ? 'checked' : '' }}>
+                                                <img src="{{ asset("avatars/pre/$i.png") }}" width="20%" alt="">
+                                            </label>
+
+                                        @endfor
                                     </div>
 
                                     <button type="submit" class="btn btn-primary btn-lg">

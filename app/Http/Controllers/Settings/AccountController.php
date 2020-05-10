@@ -26,7 +26,8 @@ class AccountController extends Controller
         $this->validate(request(), [
             'nickname' => 'required|string|min:3|max:15|regex:/^[a-zA-Z0-9]{3,15}$/s|unique:users,nickname,' . $user->id,
             'name' => 'nullable|string|max:40',
-            'country' => 'required|string:2'
+            'country' => 'required|string:2',
+            'avatar_path' => 'nullable|string|max:1|regex:/^[1-8]{1}$/s',
         ]);
 
         $user->update([
@@ -34,6 +35,12 @@ class AccountController extends Controller
             'name' => request('name'),
             'country' => request('country'),
         ]);
+
+        if (request()->has('avatar_path')) {
+            $user->update([
+                'avatar_path' => 'avatars/pre/' . request('avatar_path') . '.png',
+            ]);
+        }
 
         return back()->with('flash', json_encode([
             'title' => __('flash.success'),
