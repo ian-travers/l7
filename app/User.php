@@ -89,6 +89,7 @@ class User extends Authenticatable
 
     public function hasAvatar(): bool
     {
-        return $this->avatar_path && Storage::disk('public')->exists($this->avatar_path);
+//        return $this->avatar_path && Storage::disk('public')->exists($this->avatar_path);
+        return $this->avatar_path ? true : false;
     }
 }
