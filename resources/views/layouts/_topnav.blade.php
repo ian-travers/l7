@@ -57,7 +57,7 @@
 
                             @if(Auth::user()->hasAvatar())
 
-                                <img src="{{ asset('storage/' . Auth::user()->avatar_path) }}" class="rounded-circle mr-1" width="30" height="30">
+                                <img src="{{ asset(Auth::user()->avatar_path) }}" class="rounded-circle mr-1" width="30" height="30">
 
                             @endif
 

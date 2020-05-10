@@ -49,6 +49,42 @@
                                                         value="{{ old('country', $user->country) }}"></select-country>
                                     </div>
 
+                                    <div class="form-group text-center">
+                                        <p class="text-left">{{ __('auth.pre-made-avatars') }}</p>
+                                        <label class="d-inline mx-1">
+                                            <input type="radio" name="test" value="1" checked>
+                                            <img src="{{ asset('avatars/pre/1.png') }}" height="20%" width="20%">
+                                        </label>
+                                        <label class="d-inline mx-1">
+                                            <input type="radio" name="test" value="2">
+                                            <img src="{{ asset('avatars/pre/2.png') }}" height="20%" width="20%">
+                                        </label>
+                                        <label class="d-inline mx-1">
+                                            <input type="radio" name="test" value="3">
+                                            <img src="{{ asset('avatars/pre/3.png') }}" height="20%" width="20%">
+                                        </label>
+                                        <label class="d-inline mx-1">
+                                            <input type="radio" name="test" value="4">
+                                            <img src="{{ asset('avatars/pre/4.png') }}" height="20%" width="20%">
+                                        </label>
+                                        <label class="d-inline mx-1">
+                                            <input type="radio" name="test" value="5">
+                                            <img src="{{ asset('avatars/pre/5.png') }}" height="20%" width="20%">
+                                        </label>
+                                        <label class="d-inline mx-1">
+                                            <input type="radio" name="test" value="6">
+                                            <img src="{{ asset('avatars/pre/6.png') }}" height="20%" width="20%">
+                                        </label>
+                                        <label class="d-inline mx-1">
+                                            <input type="radio" name="test" value="7">
+                                            <img src="{{ asset('avatars/pre/7.png') }}" height="20%" width="20%">
+                                        </label>
+                                        <label class="d-inline mx-1">
+                                            <input type="radio" name="test" value="8">
+                                            <img src="{{ asset('avatars/pre/8.png') }}" height="20%" width="20%">
+                                        </label>
+                                    </div>
+
                                     <button type="submit" class="btn btn-primary btn-lg">
                                         {{ __('misc.update') }}
                                     </button>
@@ -60,7 +96,7 @@
                                     <p>{{ __('auth.avatar') }}</p>
 
                                     @if($user->hasAvatar())
-                                        <img src="{{ asset('storage/' . $user->avatar_path) }}" alt="" width="100%">
+                                        <img src="{{ asset($user->avatar_path) }}" alt="" width="100%">
 
                                     @else
                                         <p>{{ __('auth.have-not-avatar') }}</p>
