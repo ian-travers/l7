@@ -2,9 +2,11 @@
 
 namespace Tests\Feature\Settings;
 
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
+use phpDocumentor\Reflection\Types\Integer;
 use Storage;
 use Tests\TestCase;
 
@@ -86,5 +88,29 @@ class AvatarTest extends TestCase
         // Removing avatar
         $this->json('post', 'settings/profile/no-avatar');
         Storage::disk('public')->assertMissing('avatars/' . $newFile->hashName());
+    }
+
+    /** @test */
+    function avatar_file_is_deleted_when_user_change_custom_avatar_to_pre_made()
+    {
+        /** @var User $user */
+        $user = create(User::class);
+        $this->signIn($user);
+
+        Storage::fake('public');
+
+        $this->json('post', 'settings/profile/avatar', [
+            'avatar' => $file = UploadedFile::fake()->image('avatar.jpg'),
+        ]);
+
+        Storage::disk('public')->assertExists('avatars/' . $file->hashName());
+
+        $this->json('post', 'settings/profile', [
+            'nickname' => $user->nickname,
+            'country' => $user->country,
+            'avatar_path' => '1',
+        ]);
+
+        Storage::disk('public')->assertMissing('avatars/' . $file->hashName());
     }
 }

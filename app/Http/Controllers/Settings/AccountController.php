@@ -37,6 +37,7 @@ class AccountController extends Controller
         ]);
 
         if (request()->has('avatar_path')) {
+            $user->removeAvatarFile();
             $user->update([
                 'avatar_path' => 'avatars/pre/' . request('avatar_path') . '.png',
             ]);
