@@ -40,8 +40,10 @@
                     ],
                     onClosing: function(instance, toast, closedBy){
                         if (closedBy === 'buttonYes') {
-                            axios.post('/settings/profile/no-avatar');
-                            window.location.replace(location.pathname);
+                            axios.post('/settings/profile/no-avatar')
+                                .then( () => {
+                                    window.location.replace(location.pathname);
+                                });
                         }
                     },
                 });

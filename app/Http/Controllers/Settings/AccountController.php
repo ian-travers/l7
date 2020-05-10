@@ -67,13 +67,7 @@ class AccountController extends Controller
         ]);
 
         if (request()->wantsJson()) {
-            return response([
-                'flash' => [
-                    'title' => __('flash.warning'),
-                    'message' => __('flash.image-not-selected'),
-                ],
-                'reload' => route('settings.profile'),
-            ], Response::HTTP_OK);
+            return response([], Response::HTTP_OK);
         }
 
         return back()->with('flash', json_encode([

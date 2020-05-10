@@ -85,6 +85,10 @@ class User extends Authenticatable
 
     public function removeAvatarFile(): bool
     {
+        if ($this->hasPreMadeAvatar()) {
+            return false;
+        }
+
         return Storage::disk('public')->delete($this->avatar_path);
     }
 

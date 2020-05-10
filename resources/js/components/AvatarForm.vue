@@ -53,7 +53,7 @@
 
 <script>
     export default {
-        props: ['placeholder', 'browse_caption', 'header_title', 'upload_caption', 'no_img_warning_title', 'no_img_warning_message'],
+        props: ['placeholder', 'browse_caption', 'header_title', 'upload_caption', 'no_img_error_title', 'no_img_error_message'],
 
         data() {
             return {
@@ -87,14 +87,14 @@
                     data.append('avatar', this.file);
 
                     axios.post('/settings/profile/avatar', data)
-                        .then(response => {
-                            window.location.replace(response.data.reload);
+                        .then( () => {
+                            window.location.replace(location.pathname);
                         });
 
                 } else {
-                    iziToast.warning({
-                        title: this.no_img_warning_title,
-                        message: this.no_img_warning_message
+                    iziToast.error({
+                        title: this.no_img_error_title,
+                        message: this.no_img_error_message
                     });
                 }
             }

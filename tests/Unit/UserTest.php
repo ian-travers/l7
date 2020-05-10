@@ -31,4 +31,13 @@ class UserTest extends TestCase
 
         $this->assertEquals('1', $user->getPreMadeAvatarIndex());
     }
+
+    /** @test */
+    function user_can_not_remove_pre_made_avatar_image_file()
+    {
+        /** @var User $user */
+        $user = make(User::class, ['avatar_path' => 'avatars/pre/1.png']);
+
+        $this->assertFalse($user->removeAvatarFile());
+    }
 }
