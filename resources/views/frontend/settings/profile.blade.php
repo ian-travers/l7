@@ -54,7 +54,7 @@
 
                                         @for ($i = 1; $i <= 8 ; $i++)
                                             <label class="d-inline mx-1">
-                                                <input type="radio" name="avatar_path" value="{{ $i }}" {{ $user->getPreMadeAvatarIndex() == $i ? 'checked' : '' }}>
+                                                <input type="radio" name="avatar" value="{{ $i }}" {{ $user->getPreMadeAvatarIndex() == $i ? 'checked' : '' }}>
                                                 <img src="{{ asset("avatars/pre/$i.png") }}" width="20%" alt="">
                                             </label>
 

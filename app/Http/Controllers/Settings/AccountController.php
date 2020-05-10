@@ -27,7 +27,7 @@ class AccountController extends Controller
             'nickname' => 'required|string|min:3|max:15|regex:/^[a-zA-Z0-9]{3,15}$/s|unique:users,nickname,' . $user->id,
             'name' => 'nullable|string|max:40',
             'country' => 'required|string:2',
-            'avatar_path' => 'nullable|string|max:1|regex:/^[1-8]{1}$/s',
+            'avatar' => 'nullable|string|max:1|regex:/^[1-8]{1}$/s',
         ]);
 
         $user->update([
@@ -36,10 +36,10 @@ class AccountController extends Controller
             'country' => request('country'),
         ]);
 
-        if (request()->has('avatar_path')) {
+        if (request()->has('avatar')) {
             $user->removeAvatarFile();
             $user->update([
-                'avatar_path' => 'avatars/pre/' . request('avatar_path') . '.png',
+                'avatar_path' => 'avatars/pre/' . request('avatar') . '.png',
             ]);
         }
 

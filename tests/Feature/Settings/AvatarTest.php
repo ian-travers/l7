@@ -108,7 +108,7 @@ class AvatarTest extends TestCase
         $this->json('post', 'settings/profile', [
             'nickname' => $user->nickname,
             'country' => $user->country,
-            'avatar_path' => '1',
+            'avatar' => '1',
         ]);
 
         Storage::disk('public')->assertMissing('avatars/' . $file->hashName());
