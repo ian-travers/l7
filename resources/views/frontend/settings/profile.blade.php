@@ -8,9 +8,10 @@
             </div>
             <div class="col-md-9">
                 <div class="card">
+                    <div class="card-header">
+                        <span class="h3">{{ __('settings.profile') }}</span>
+                    </div>
                     <div class="card-body">
-                        <h3>{{ __('settings.profile') }}</h3>
-                        <hr>
                         <div class="row">
                             <div class="col-md-7">
                                 <form action="{{ route('settings.profile.update') }}" method="post">
@@ -50,11 +51,12 @@
                                     </div>
 
                                     <div class="form-group text-center">
-                                        <p class="text-left">{{ __('auth.pre-made-avatars') }}</p>
+                                        <label class="d-block text-left">{{ __('auth.pre-made-avatars') }}</label>
 
                                         @for ($i = 1; $i <= 8 ; $i++)
                                             <label class="d-inline mx-1">
-                                                <input type="radio" name="avatar" value="{{ $i }}" {{ $user->getPreMadeAvatarIndex() == $i ? 'checked' : '' }}>
+                                                <input type="radio" name="avatar"
+                                                       value="{{ $i }}" {{ $user->getPreMadeAvatarIndex() == $i ? 'checked' : '' }}>
                                                 <img src="{{ asset("avatars/pre/$i.png") }}" width="20%" alt="">
                                             </label>
 
@@ -69,7 +71,7 @@
                             <div class="col-md-5">
                                 <div class="text-center">
 
-                                    <p>{{ __('auth.avatar') }}</p>
+                                    <label>{{ __('auth.avatar') }}</label>
 
                                     @if($user->hasAvatar())
                                         <img src="{{ asset($user->avatar_path) }}" alt="" width="100%">

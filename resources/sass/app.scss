@@ -39,6 +39,10 @@ body {
     flex-direction: column;
 }
 
+label {
+    font-weight: bold;
+}
+
 .bg-image {
     background: url("../../public/images/map.png");
     background-repeat: no-repeat;
