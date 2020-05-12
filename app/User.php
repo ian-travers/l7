@@ -94,7 +94,9 @@ class User extends Authenticatable
 
     public function hasAvatar(): bool
     {
-        return $this->avatar_path && Storage::disk('public')->exists($this->avatar_path);
+//        return (bool) $this->avatar_path && Storage::disk('public')->exists($this->avatar_path);
+
+        return (bool) $this->avatar_path;
     }
 
     public function getPreMadeAvatarIndex(): string
