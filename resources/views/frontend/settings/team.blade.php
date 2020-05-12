@@ -1,6 +1,6 @@
 @php /** @var \App\User $user */ @endphp
 
-<x-frontend-layout :title="__('settings.team') . ':: ' .config('app.name')">
+<x-frontend-layout :title="__('settings.team')">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
