@@ -109,7 +109,7 @@ class AccountController extends Controller
         $user = auth()->user();
 
         $this->validate(request(), [
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'email' => 'required|string|email:filter|max:255|unique:users,email,' . $user->id,
         ]);
 
         $user->update([

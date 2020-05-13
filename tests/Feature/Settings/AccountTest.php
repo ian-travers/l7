@@ -39,5 +39,8 @@ class AccountTest extends TestCase
 
         $this->post('/settings/account/email', ['email' => '@'])
             ->assertSessionHasErrors('email');
+
+        $this->post('/settings/account/email', ['email' => 'one@two'])
+            ->assertSessionHasErrors('email');
     }
 }
