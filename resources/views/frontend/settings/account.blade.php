@@ -18,11 +18,26 @@
                             </div>
                             <div class="card-body">
                                 <p>{{ __('auth.change-email-message') }}</p>
-                                <div class="form-group">
-                                    <label for="email">{{ __('auth.email') }}</label>
-                                    <input id="email" class="form-control" name="email" value="{{ $user->email }}">
-                                </div>
-                                <button class="btn btn-primary btn-lg w-30">{{ __('misc.update') }}</button>
+                                <form action="{{ route('settings.account.email') }}" method="post">
+
+                                    @csrf
+
+                                    <div class="form-group">
+                                        <label for="email">{{ __('auth.email') }}</label>
+                                        <input
+                                            id="email"
+                                            class="form-control @error('email') is-invalid @enderror"
+                                            name="email"
+                                            value="{{ old('email', $user->email) }}" required
+                                        >
+
+                                        @error('email')
+                                        <span class="invalid-feedback"
+                                              role="alert"><strong>{{ $message }}</strong></span>
+                                        @enderror
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-lg w-30">{{ __('misc.update') }}</button>
+                                </form>
                             </div>
                         </div>
 

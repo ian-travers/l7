@@ -22,6 +22,7 @@ Route::group(['middleware' => 'language'], function () {
             Route::post('/profile/avatar', 'AccountController@updateAvatar')->name('profile.avatar');
             Route::post('/profile/no-avatar', 'AccountController@removeAvatar')->name('profile.no-avatar');
             Route::get('/account', 'AccountController@account')->name('account');
+            Route::post('/account/email', 'AccountController@updateEmail')->name('account.email');
             Route::get('/team', 'AccountController@team')->name('team');
         }
     );

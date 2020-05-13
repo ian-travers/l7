@@ -99,6 +99,29 @@ class AccountController extends Controller
         return view('frontend.settings.account', ['user' => auth()->user()]);
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws ValidationException
+     */
+    public function updateEmail()
+    {
+        /** @var User $user */
+        $user = auth()->user();
+
+        $this->validate(request(), [
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+        ]);
+
+        $user->update([
+            'email' => request('email'),
+        ]);
+
+        return back()->with('flash', json_encode([
+            'title' => __('flash.success'),
+            'message' => __('flash.email-updated'),
+        ]));
+    }
+
     public function team()
     {
         return view('frontend.settings.team', ['user' => auth()->user()]);
