@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Hash;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 
@@ -119,6 +120,29 @@ class AccountController extends Controller
         return back()->with('flash', json_encode([
             'title' => __('flash.success'),
             'message' => __('flash.email-updated'),
+        ]));
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws ValidationException
+     */
+    public function changePassword()
+    {
+        /** @var User $user */
+        $user = auth()->user();
+
+        $this->validate(request(), [
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        $user->update([
+            'password' => Hash::make(request('password')),
+        ]);
+
+        return back()->with('flash', json_encode([
+            'title' => __('flash.success'),
+            'message' => __('flash.password-changed'),
         ]));
     }
 

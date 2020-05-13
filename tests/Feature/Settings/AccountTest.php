@@ -4,6 +4,7 @@ namespace Tests\Feature\Settings;
 
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\Response;
 use Tests\TestCase;
 
 class AccountTest extends TestCase
@@ -18,7 +19,12 @@ class AccountTest extends TestCase
 
         $this->signIn($user);
 
-        $this->post('/settings/account/email', ['email' => 'new@mail.com']);
+        $this->post('/settings/account/email', ['email' => 'new@mail.com'])
+            ->assertStatus(Response::HTTP_FOUND)
+            ->assertSessionHas('flash', json_encode([
+                'title' => __('flash.success'),
+                'message' => __('flash.email-updated'),
+            ]));
 
         $this->assertEquals('new@mail.com', $user->email);
     }
@@ -42,5 +48,40 @@ class AccountTest extends TestCase
 
         $this->post('/settings/account/email', ['email' => 'one@two'])
             ->assertSessionHasErrors('email');
+    }
+
+    /** @test */
+    function user_must_provide_unique_email()
+    {
+        /** @var User $user */
+        $user = create(User::class);
+
+        // Create another user with specific email
+        create(User::class, ['email' => 'john@mail.com']);
+
+        $this->signIn($user);
+
+        $this->post('/settings/account/email', ['email' => 'john@mail.com'])
+            ->assertSessionHasErrors('email');
+    }
+
+    /** @test */
+    function user_may_change_password()
+    {
+        /** @var User $user */
+        $user = create(User::class);
+
+        $this->signIn($user);
+
+        $this->post('/settings/account/password', [
+            'password' => 'newpassword',
+            'password_confirmation' => 'newpassword',
+        ])
+            ->assertStatus(Response::HTTP_FOUND)
+            ->assertSessionHas('flash', json_encode([
+                'title' => __('flash.success'),
+                'message' => __('flash.password-changed'),
+            ]));
+
     }
 }

@@ -36,7 +36,8 @@
                                               role="alert"><strong>{{ $message }}</strong></span>
                                         @enderror
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-lg w-30">{{ __('misc.update') }}</button>
+                                    <button type="submit"
+                                            class="btn btn-primary btn-lg w-30">{{ __('misc.update') }}</button>
                                 </form>
                             </div>
                         </div>
@@ -48,9 +49,64 @@
                             <div class="card-body">
                                 <p>{{ __('auth.change-password-message') }}</p>
                                 <button
-                                    class="btn btn-outline-dark btn-lg w-30">{{ __('auth.change-password') }}</button>
+                                    type="button"
+                                    data-toggle="modal"
+                                    data-target="#changePasswordForm"
+                                    class="btn btn-outline-dark btn-lg w-30"
+                                >
+                                    {{ __('auth.change-password') }}
+                                </button>
                             </div>
                         </div>
+
+
+                        <div id="changePasswordForm" class="modal fade" tabindex="-1" role="dialog">
+                            <form method="post" action="{{ route('settings.account.password') }}">
+
+                                @csrf
+
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">{{ __('auth.changing-password') }}</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="password">{{ __('auth.new-password') }}</label>
+                                                <input id="password" type="password"
+                                                       class="form-control @error('password') is-invalid @enderror"
+                                                       name="password"
+                                                       required>
+
+                                                @error('password')
+                                                <span class="invalid-feedback"
+                                                      role="alert"><strong>{{ $message }}</strong></span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="password-confirm">{{ __('auth.confirm-password') }}</label>
+                                                <input id="password-confirm" type="password" class="form-control"
+                                                       name="password_confirmation" required>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer d-block">
+                                            <div class="text-center">
+                                                <button
+                                                    type="submit"
+                                                    class="btn btn-primary"
+                                                >{{ __('auth.persist-new-password') }}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
 
                         <div class="card mt-4">
                             <div class="card-header text-white bg-warning">
