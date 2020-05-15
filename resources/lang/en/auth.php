@@ -45,4 +45,6 @@ return [
     'delete-account' => 'Delete account',
     'delete-account-warning' => 'Once you delete your account, there is no going back. Please be certain.',
     'delete-your-account' => 'Delete your account...',
+    'email-updated' => 'E-mail has been updated',
+    'password-changed' => 'Password has been changed',
 ];

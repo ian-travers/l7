@@ -61,20 +61,19 @@
 
 
                         <div id="changePasswordForm" class="modal fade" tabindex="-1" role="dialog">
-                            <form method="post" action="{{ route('settings.account.password') }}">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">{{ __('auth.changing-password') }}</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post">
 
-                                @csrf
-
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">{{ __('auth.changing-password') }}</h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
+                                            @csrf
                                             <div class="form-group">
                                                 <label for="password">{{ __('auth.new-password') }}</label>
                                                 <input id="password" type="password"
@@ -82,10 +81,10 @@
                                                        name="password"
                                                        required>
 
-                                                @error('password')
-                                                <span class="invalid-feedback"
-                                                      role="alert"><strong>{{ $message }}</strong></span>
-                                                @enderror
+{{--                                                @error('password')--}}
+                                                <span class="invalid-feedback" id="password-error"
+                                                      role="alert"><strong id="password-error-message"></strong></span>
+{{--                                                @enderror--}}
                                             </div>
 
                                             <div class="form-group">
@@ -93,18 +92,19 @@
                                                 <input id="password-confirm" type="password" class="form-control"
                                                        name="password_confirmation" required>
                                             </div>
-                                        </div>
-                                        <div class="modal-footer d-block">
-                                            <div class="text-center">
-                                                <button
-                                                    type="submit"
-                                                    class="btn btn-primary"
-                                                >{{ __('auth.persist-new-password') }}</button>
-                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer d-block">
+                                        <div class="text-center">
+                                            <button
+                                                id="submitChangePasswordForm"
+                                                type="button"
+                                                class="btn btn-primary"
+                                            >{{ __('auth.persist-new-password') }}</button>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
 
 
@@ -123,4 +123,30 @@
             </div>
         </div>
     </div>
+
+    @section('script')
+        <script type="text/javascript">
+            $('body').on('click', '#submitChangePasswordForm', function () {
+                axios.post('/settings/account/password', {
+                    password: $('#password').val(),
+                    password_confirmation: $('#password-confirm').val()
+                })
+                    .then( () => {
+                        $('#changePasswordForm').modal('hide');
+                        iziToast.success({
+                            title: "{{ __('flash.success') }}",
+                            message: "{{ __('auth.password-changed') }}"
+                        });
+
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            console.log(error.response.data.errors.password[0]);
+                            $('#password').addClass('is-invalid');
+                            $('#password-error-message').html(error.response.data.errors.password[0]);
+                        }
+                    });
+            });
+        </script>
+    @endsection
 </x-frontend-layout>

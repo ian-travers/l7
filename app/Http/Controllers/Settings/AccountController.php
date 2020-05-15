@@ -119,7 +119,7 @@ class AccountController extends Controller
 
         return back()->with('flash', json_encode([
             'title' => __('flash.success'),
-            'message' => __('flash.email-updated'),
+            'message' => __('auth.email-updated'),
         ]));
     }
 
@@ -142,7 +142,7 @@ class AccountController extends Controller
 
         return back()->with('flash', json_encode([
             'title' => __('flash.success'),
-            'message' => __('flash.password-changed'),
+            'message' => __('auth.password-changed'),
         ]));
     }
 
