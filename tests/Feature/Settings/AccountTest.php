@@ -3,6 +3,7 @@
 namespace Tests\Feature\Settings;
 
 use App\User;
+use Hash;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
 use Tests\TestCase;
@@ -83,5 +84,21 @@ class AccountTest extends TestCase
                 'message' => __('auth.password-changed'),
             ]));
 
+    }
+
+    /** @test */
+    function user_can_delete_own_account()
+    {
+        $this->withoutExceptionHandling();
+        /** @var User $user */
+        $user = create(User::class, ['password' => Hash::make('11111111')]);
+
+        $this->signIn($user);
+
+        $this->post('/settings/account', [
+            'passwordCheck' => '11111111',
+            'verifyPhrase' => 'delete my account',
+        ])
+            ->assertRedirect('/');
     }
 }

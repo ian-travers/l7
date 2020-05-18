@@ -5,7 +5,7 @@ Route::group(['middleware' => 'language'], function () {
         return view('welcome');
     });
 
-    Auth::routes();
+    Auth::routes(['confirm' => false]);
 
     Route::get('/home', 'HomeController@index')->name('home');
 
@@ -23,6 +23,7 @@ Route::group(['middleware' => 'language'], function () {
             Route::post('/profile/no-avatar', 'AccountController@removeAvatar')->name('profile.no-avatar');
 
             Route::get('/account', 'AccountController@account')->name('account');
+            Route::post('/account', 'AccountController@deleteAccount')->name('account.delete');
             Route::post('/account/email', 'AccountController@updateEmail')->name('account.email');
             Route::post('/account/password', 'AccountController@changePassword')->name('account.password');
 

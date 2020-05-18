@@ -124,7 +124,6 @@ class AccountController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\RedirectResponse
      * @throws ValidationException
      */
     public function changePassword()
@@ -144,6 +143,26 @@ class AccountController extends Controller
             'title' => __('flash.success'),
             'message' => __('auth.password-changed'),
         ]));
+    }
+
+    /**
+     * @throws ValidationException
+     * @throws \Exception
+     */
+    public function deleteAccount()
+    {
+        /** @var User $user */
+        $user = auth()->user();
+
+        $this->validate(request(), [
+            'passwordCheck' => 'required|password',
+            'verifyPhrase' => 'required|regex:/^delete my account$/s'
+        ]);
+
+        auth()->logout();
+//        $user->delete();
+
+        return redirect('/');
     }
 
     public function team()
