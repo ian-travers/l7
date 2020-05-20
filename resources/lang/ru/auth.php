@@ -47,4 +47,13 @@ return [
     'delete-your-account' => 'Удалить вашу учетную запись...',
     'email-updated' => 'Адрес email изменен',
     'password-changed' => 'Пароль изменен',
+    'delete-account-form-header' => ':name, уверены, что хотите сделать это?',
+    'password-check' => 'Подтвердите своим паролем',
+    'verify-phrase-start' => 'Для проверки наберите',
+    'verify-phrase' => 'delete my account',
+    'verify-phrase-end' => 'в строке ниже:',
+    'delete-account-now' => 'Удалить аккаунт',
+    'delete-modal-alert' => 'Это бля пиздец как важно. После удаления отменить эту оперцию будет невозможно!',
+    'delete-modal-paragraph' => 'Ваш аккаунт будет удален немедленно. Ваше имя пользователя станет недоступным для регистрации на NFSU Cup. Ваша турнирная статистика, а также комментарии и иная активность останутся на сайте.',
+    'account-deleted' => 'Учетная запись удалена'
 ];

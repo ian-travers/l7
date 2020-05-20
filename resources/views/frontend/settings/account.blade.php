@@ -110,7 +110,7 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">{{ __('auth.delete-account-form-header') }}</h5>
+                                        <h5 class="modal-title">{{ __('auth.delete-account-form-header', ['name' => $user->nickname]) }}</h5>
                                         <button type="button" class="close" data-dismiss="modal"
                                                 aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
@@ -119,9 +119,11 @@
                                     <form method="post">
 
                                         @csrf
-                                        @method('delete')
-
                                         <div class="modal-body">
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ __('auth.delete-modal-alert') }}
+                                            </div>
+                                            <p>{{ __('auth.delete-modal-paragraph') }}</p>
                                             <div class="form-group">
                                                 <label for="password-check">{{ __('auth.password-check') }}</label>
                                                 <input id="password-check" type="password"
@@ -134,7 +136,11 @@
                                                         id="password-check-error-message"></strong></span>
                                             </div>
                                             <div class="form-group">
-                                                <label for="verify-phrase">{{ __('auth.verify-phrase') }}</label>
+                                                <label for="verify-phrase">
+                                                    {{ __('auth.verify-phrase-start') }}
+                                                    <em class="font-weight-normal">{{ __('auth.verify-phrase') }}</em>
+                                                    {{ __('auth.verify-phrase-end') }}
+                                                </label>
                                                 <input id="verify-phrase" type="text"
                                                        class="form-control @error('verifyPhrase') is-invalid @enderror"
                                                        name="verifyPhrase"
@@ -152,7 +158,7 @@
                                                     id="submitDeleteAccountForm"
                                                     type="button"
                                                     class="btn btn-primary"
-                                                >{{ __('auth.delete-account') }}</button>
+                                                >{{ __('auth.delete-account-now') }}</button>
                                             </div>
                                         </div>
                                     </form>
@@ -216,7 +222,7 @@
                             });
                             iziToast.info({
                                 title: "{{ __('flash.info') }}",
-                                message: "{{ __('flash.redirecting') }}"
+                                message: "{{ __('flash.redirecting-home') }}"
                             });
                             setTimeout(function () {
                                 window.location = location.origin;

@@ -47,4 +47,13 @@ return [
     'delete-your-account' => 'Delete your account...',
     'email-updated' => 'E-mail has been updated',
     'password-changed' => 'Password has been changed',
+    'delete-account-form-header' => ':name, are you sure you want to do this?',
+    'password-check' => 'Confirm your password',
+    'verify-phrase-start' => 'To verify, type',
+    'verify-phrase' => 'delete my account',
+    'verify-phrase-end' => 'below:',
+    'delete-account-now' => 'Delete account now',
+    'delete-modal-alert' => 'This is extremely important. It will be impossible to cancel this operation.',
+    'delete-modal-paragraph' => 'I will immediately delete your account, and your username won\'t be available to anyone on NFSU Cup. Your whole tourney\'s statistics, comment and other activities will remain on the site.',
+    'account-deleted' => 'Account has been deleted'
 ];

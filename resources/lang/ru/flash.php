@@ -11,4 +11,5 @@ return [
     'profile-updated' => 'Профиль сохранен.',
     'hey' => 'Эй!',
     'confirm-avatar-removing' => 'Серьезно хотите убрать аватар?',
+    'redirecting-home' => 'Переход на главную страницу',
 ];
