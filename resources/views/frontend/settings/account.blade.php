@@ -216,6 +216,7 @@
                         verifyPhrase: $('#verify-phrase').val()
                     })
                         .then(() => {
+                            $('#deleteAccountForm').modal('hide');
                             iziToast.success({
                                 title: "{{ __('flash.success') }}",
                                 message: "{{ __('auth.account-deleted') }}"

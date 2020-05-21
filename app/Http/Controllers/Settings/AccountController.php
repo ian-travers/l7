@@ -160,7 +160,8 @@ class AccountController extends Controller
         ]);
 
         auth()->logout();
-//        $user->delete();
+        $user->removeAvatarFile();
+        $user->delete();
 
         return redirect('/');
     }
