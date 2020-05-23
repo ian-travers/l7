@@ -2,19 +2,19 @@
 
 namespace Tests\Feature\User;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\Response;
 use Tests\TestCase;
 
 class TestingTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    use RefreshDatabase;
+    /** @test */
+    function user_can_visit_racer_test_page()
     {
-        $response = $this->get('/');
+        $this->withoutExceptionHandling();
+        $this->signIn();
 
-        $response->assertStatus(200);
+        $this->get('/tests/racer')->assertStatus(Response::HTTP_OK);
     }
 }
