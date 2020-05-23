@@ -44,4 +44,32 @@ class TestQuestion extends Model
             'correct_answer' => $correctAnswer,
         ]);
     }
+
+    public function answers()
+    {
+        return $this->hasMany(TestAnswer::class, 'question_id');
+    }
+
+    public function addAnswer(string $answerEn, string $answerRu, string $index): void
+    {
+        $this->answers()->create([
+            'answer_en' => $answerEn,
+            'answer_ru' => $answerRu,
+            'index' => $index,
+        ]);
+    }
+
+    public function editAnswer($id, $answerEn, $answerRu, $index): void
+    {
+        $answer = $this->answers()->findOrFail($id);
+
+        $answer->edit($answerEn, $answerRu, $index);
+    }
+
+    public function removeAnswer(int $id): void
+    {
+        $answer = $this->answers()->findOrFail($id);
+
+        $answer->delete();
+    }
 }
