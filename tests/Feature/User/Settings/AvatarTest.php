@@ -1,12 +1,11 @@
 <?php
 
-namespace Tests\Feature\Settings;
+namespace Tests\Feature\User\Settings;
 
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
-use phpDocumentor\Reflection\Types\Integer;
 use Storage;
 use Tests\TestCase;
 
