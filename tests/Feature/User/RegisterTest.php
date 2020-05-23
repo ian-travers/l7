@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\User;
 
-use App\User;
+use App\Entities\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -13,6 +13,7 @@ class RegisterTest extends TestCase
     /** @test */
     function guest_can_register_an_account_with_valid_form_data()
     {
+        $this->withoutExceptionHandling();
         $user = [
             'nickname' => 'first',
             'email' => 'first@tasd.com',

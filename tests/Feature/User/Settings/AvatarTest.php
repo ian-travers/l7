@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\User\Settings;
 
-use App\User;
+use App\Entities\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;

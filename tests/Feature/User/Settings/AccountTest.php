@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\User\Settings;
 
-use App\User;
+use App\Entities\User;
 use Hash;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;

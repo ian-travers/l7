@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Entities\User;
 use Hash;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
