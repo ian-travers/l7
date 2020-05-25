@@ -5,38 +5,49 @@
             <span class="navbar-brand h3">NFSU Cup</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('nav.toggle-nav') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ __('News') }}</a>
+                    <a class="nav-link" href="#">{{ __('nav.news') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ __('Tourneys') }}</a>
+                    <a class="nav-link" href="#">{{ __('nav.tourneys') }}</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button"
-                       data-toggle="dropdown">{{ __('Stats') }}</a>
+                       data-toggle="dropdown">{{ __('nav.stats') }}</a>
                     <div class="dropdown-menu navbar-nfsu-cup border border-light">
-                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('Personal Standings') }}</a>
-                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('Teams Standings') }}</a>
-                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('Country Standings') }}</a>
+                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu"
+                           href="#">{{ __('nav.personal-standings') }}</a>
+                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('nav.clan-standings') }}</a>
+                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu"
+                           href="#">{{ __('nav.countries-standings') }}</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button"
-                       data-toggle="dropdown">{{ __('Game Server') }} <span class="caret"></span>
+                       data-toggle="dropdown">{{ __('nav.game-server') }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu navbar-nfsu-cup border border-light">
-                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('Monitor') }}</a>
+                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('nav.monitor') }}</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('Best Performers') }}</a>
-                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('Ratings') }}</a>
+                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu"
+                           href="#">{{ __('nav.best-performers') }}</a>
+                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('nav.ratings') }}</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('nav.about') }}</a>
                     </div>
                 </li>
+
+                @if(auth()->user() && auth()->user()->isAdmin())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.dashboard') }}">{{ __('nav.adm') }}</a>
+                    </li>
+                @endif
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -57,7 +68,8 @@
 
                             @if(Auth::user()->hasAvatar())
 
-                                <img src="{{ asset(Auth::user()->avatar_path) }}" class="rounded-circle mr-1" width="30" height="30">
+                                <img src="{{ asset(Auth::user()->avatar_path) }}" class="rounded-circle mr-1" width="30"
+                                     height="30">
 
                             @endif
 
