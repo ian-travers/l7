@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $question_en
  * @property string $question_ru
  * @property int $correct_answer
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Test\TestAnswer[] $answers
+ * @property-read int|null $answers_count
  * @method static Builder|TestQuestion newModelQuery()
  * @method static Builder|TestQuestion newQuery()
  * @method static Builder|TestQuestion query()

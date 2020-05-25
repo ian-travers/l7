@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('name')->nullable();
             $table->string('country', 2);
             $table->string('locale', 2)->default(config('app.locale'));
+            $table->string('role', 20)->default('user');
+            $table->boolean('is_admin')->default(false);
             $table->string('avatar_path')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
