@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Settings;
 
-use App\Http\Controllers\Controller;
 use App\Entities\User;
+use App\Http\Controllers\Controller;
 use Hash;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
