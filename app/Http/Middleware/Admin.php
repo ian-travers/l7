@@ -13,6 +13,7 @@ class Admin
         }
 
         return redirect(route('root'))->with('flash', json_encode([
+            'type' => 'warning',
             'title' => __('flash.warning'),
             'message' => __('flash.not-enough-rights'),
         ]));

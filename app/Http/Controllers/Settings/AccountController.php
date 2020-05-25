@@ -45,6 +45,7 @@ class AccountController extends Controller
         }
 
         return back()->with('flash', json_encode([
+            'type' => 'success',
             'title' => __('flash.success'),
             'message' => __('flash.profile-updated'),
         ]));
@@ -73,6 +74,7 @@ class AccountController extends Controller
         }
 
         return back()->with('flash', json_encode([
+            'type' => 'success',
             'title' => __('flash.success'),
             'message' => __('flash.avatar-is-updated'),
         ]));
@@ -90,6 +92,7 @@ class AccountController extends Controller
         }
 
         return back()->with('flash', json_encode([
+            'type' => 'success',
             'title' => __('flash.success'),
             'message' => __('flash.avatar-is-removed'),
         ]));
@@ -118,6 +121,7 @@ class AccountController extends Controller
         ]);
 
         return back()->with('flash', json_encode([
+            'type' => 'success',
             'title' => __('flash.success'),
             'message' => __('auth.email-updated'),
         ]));
@@ -140,6 +144,7 @@ class AccountController extends Controller
         ]);
 
         return back()->with('flash', json_encode([
+            'type' => 'success',
             'title' => __('flash.success'),
             'message' => __('auth.password-changed'),
         ]));

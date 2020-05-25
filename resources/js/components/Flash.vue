@@ -9,10 +9,43 @@
             if (this.content) {
                 const data = JSON.parse(this.content);
 
-                iziToast.success({
-                    title: data.title,
-                    message: data.message,
-                })
+                switch (data.type) {
+                    case 'success':
+                        iziToast.success({
+                            title: data.title,
+                            message: data.message,
+                        });
+                        break;
+
+                    case 'info':
+                        iziToast.info({
+                            title: data.title,
+                            message: data.message,
+                        });
+                        break;
+
+                    case 'warning':
+                        iziToast.warning({
+                            title: data.title,
+                            message: data.message,
+                        });
+                        break;
+
+                    case 'error':
+                        iziToast.error({
+                            title: data.title,
+                            message: data.message,
+                        });
+                        break;
+
+                    default:
+                        iziToast.info({
+                            title: data.title,
+                            message: data.message,
+                        });
+                }
+
+
             }
         },
     }
