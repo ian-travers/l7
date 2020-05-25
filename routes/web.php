@@ -3,7 +3,7 @@
 Route::group(['middleware' => 'language'], function () {
     Route::get('/', function () {
         return view('welcome');
-    });
+    })->name('root');
 
     Auth::routes(['confirm' => false]);
 
@@ -42,4 +42,13 @@ Route::group(['middleware' => 'language'], function () {
             Route::get('/racer', 'TestsController@racerTest')->name('racer-test');
         }
     );
+
+    Route::group([
+        'middleware' => ['auth', 'admin'],
+        'prefix' => '/adm',
+        'namespace' => 'Backend',
+        'as' => 'admin.'
+    ], function () {
+        Route::get('/', 'DashboardController@show')->name('dashboard');
+    });
 });
