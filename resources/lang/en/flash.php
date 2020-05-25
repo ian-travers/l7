@@ -12,4 +12,5 @@ return [
     'hey' => 'Hey!',
     'confirm-avatar-removing' => 'Do you seriously want to remove the avatar?',
     'redirecting-home' => 'Redirecting to the home page',
+    'not-enough-rights' => 'Not enough rights',
 ];

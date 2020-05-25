@@ -12,4 +12,5 @@ return [
     'hey' => 'Эй!',
     'confirm-avatar-removing' => 'Серьезно хотите убрать аватар?',
     'redirecting-home' => 'Переход на главную страницу',
+    'not-enough-rights' => 'Недостаточно прав',
 ];

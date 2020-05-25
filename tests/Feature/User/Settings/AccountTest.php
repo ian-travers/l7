@@ -23,6 +23,7 @@ class AccountTest extends TestCase
         $this->post('/settings/account/email', ['email' => 'new@mail.com'])
             ->assertStatus(Response::HTTP_FOUND)
             ->assertSessionHas('flash', json_encode([
+                'type' => 'success',
                 'title' => __('flash.success'),
                 'message' => __('auth.email-updated'),
             ]));
@@ -80,6 +81,7 @@ class AccountTest extends TestCase
         ])
             ->assertStatus(Response::HTTP_FOUND)
             ->assertSessionHas('flash', json_encode([
+                'type' => 'success',
                 'title' => __('flash.success'),
                 'message' => __('auth.password-changed'),
             ]));

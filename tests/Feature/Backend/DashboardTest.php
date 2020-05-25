@@ -40,6 +40,11 @@ class DashboardTest extends TestCase
 
         $this->get('/adm')
             ->assertStatus(Response::HTTP_FOUND)
-            ->assertRedirect('/');
+            ->assertRedirect('/')
+            ->assertSessionHas('flash', json_encode([
+                'type' => 'warning',
+                'title' => __('flash.warning'),
+                'message' => __('flash.not-enough-rights'),
+            ]));
     }
 }
