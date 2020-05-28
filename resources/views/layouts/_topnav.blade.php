@@ -43,11 +43,11 @@
                     </div>
                 </li>
 
-                @if(auth()->user() && auth()->user()->isAdmin())
+                @can('admin')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.dashboard') }}">{{ __('nav.adm') }}</a>
                     </li>
-                @endif
+                @endcan
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -66,14 +66,14 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 
-                            @if(Auth::user()->hasAvatar())
+                            @if(auth()->user()->hasAvatar())
 
-                                <img src="{{ asset(Auth::user()->avatar_path) }}" class="rounded-circle mr-1" width="30"
+                                <img src="{{ asset(auth()->user()->avatar_path) }}" class="rounded-circle mr-1" width="30"
                                      height="30">
 
                             @endif
 
-                            {{ Auth::user()->nickname }} <span class="caret"></span>
+                            {{ auth()->user()->nickname }} <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right navbar-nfsu-cup border border-light"
