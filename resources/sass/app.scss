@@ -86,8 +86,13 @@ label {
 footer {
     background-color: $nfsu-game-color;
 }
-.navbar-nfsu-cup {
+
+.bg-nfsu-cup {
     background-color: $nfsu-game-color;
+}
+
+.border-nfsu-cup {
+    border-color: $nfsu-game-color !important;
 }
 
 .logo-img {

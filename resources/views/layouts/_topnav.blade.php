@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark navbar-nfsu-cup">
+<nav class="navbar navbar-expand-md navbar-dark bg-nfsu-cup">
     <div class="container">
         <a href="{{ url('/') }}">
             <img class="logo-img rounded-circle" src="/images/logo.png" alt="NFSU Cup">
@@ -20,7 +20,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button"
                        data-toggle="dropdown">{{ __('nav.stats') }}</a>
-                    <div class="dropdown-menu navbar-nfsu-cup border border-light">
+                    <div class="dropdown-menu bg-nfsu-cup border border-light">
                         <a class="dropdown-item dropdown-nfsu nav-link-nfsu"
                            href="#">{{ __('nav.personal-standings') }}</a>
                         <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('nav.clan-standings') }}</a>
@@ -32,7 +32,7 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button"
                        data-toggle="dropdown">{{ __('nav.game-server') }} <span class="caret"></span>
                     </a>
-                    <div class="dropdown-menu navbar-nfsu-cup border border-light">
+                    <div class="dropdown-menu bg-nfsu-cup border border-light">
                         <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('nav.monitor') }}</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item dropdown-nfsu nav-link-nfsu"
@@ -76,7 +76,7 @@
                             {{ auth()->user()->nickname }} <span class="caret"></span>
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-right navbar-nfsu-cup border border-light"
+                        <div class="dropdown-menu dropdown-menu-right bg-nfsu-cup border border-light"
                              aria-labelledby="navbarDropdown">
                             <a class="dropdown-item dropdown-nfsu nav-link-nfsu"
                                href="{{ route('settings.profile') }}">{{ __('auth.settings') }}</a>
