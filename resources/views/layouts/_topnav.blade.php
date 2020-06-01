@@ -98,7 +98,7 @@
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ language()->flag() }}
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-nfsu-cup border border-light">
+                    <div class="dropdown-menu dropdown-menu-right bg-nfsu-cup border border-light">
                         {{ language()->flags() }}
                     </div>
                 </li>
