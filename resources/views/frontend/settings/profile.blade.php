@@ -1,4 +1,4 @@
-@php /** @var \App\User $user */ @endphp
+@php /** @var App\Entities\User $user */ @endphp
 
 <x-frontend-layout :title="__('settings.profile')">
     <div class="container">
