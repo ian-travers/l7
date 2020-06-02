@@ -50,5 +50,8 @@ Route::group(['middleware' => 'language'], function () {
         'as' => 'admin.'
     ], function () {
         Route::get('/', 'DashboardController@show')->name('dashboard');
+        Route::get('/tests', 'Tests\QuestionsController@index')->name('tests.questions');
+        Route::get('/tests/create', 'Tests\QuestionsController@create')->name('tests.questions.create');
+        Route::post('/tests', 'Tests\QuestionsController@store')->name('tests.questions.store');
     });
 });

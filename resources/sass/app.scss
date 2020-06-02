@@ -43,6 +43,10 @@ label {
     font-weight: bold;
 }
 
+.stick-top {
+    vertical-align: top !important;
+}
+
 .bg-image {
     background: url("../../public/images/map.png");
     background-repeat: no-repeat;
@@ -128,6 +132,14 @@ footer {
 }
 
 // widths
+.w-10 {
+    width: 10% !important;
+}
+
+.w-20 {
+    width: 20% !important;
+}
+
 .w-30 {
     width: 30% !important;
 }

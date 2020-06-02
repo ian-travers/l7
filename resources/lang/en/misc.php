@@ -10,4 +10,10 @@ return [
     'browse' => 'Browse...',
     'yes' => 'Yes',
     'no' => 'No',
+    'create' => 'Create',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'save' => 'Save',
+    'actions' => 'Actions',
+    'confirm-delete' => 'Confirm deleting?',
 ];

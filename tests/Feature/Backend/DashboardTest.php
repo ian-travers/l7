@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Backend;
 
-use App\Entities\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
 use Tests\TestCase;
@@ -10,20 +9,6 @@ use Tests\TestCase;
 class DashboardTest extends TestCase
 {
     use RefreshDatabase;
-
-    /** @test */
-    function admins_can_view_backend_dashboard()
-    {
-        $this->withoutExceptionHandling();
-        /** @var User $admin */
-        $admin = create(User::class);
-
-        $admin->setAdminRights();
-
-        $this->signIn($admin);
-
-        $this->get('/adm')->assertOk();
-    }
 
     /** @test */
     function guests_cannot_view_backend_dashboard()
