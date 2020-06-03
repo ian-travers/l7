@@ -19,6 +19,8 @@ class CreateTestAnswersTable extends Migration
             $table->string('answer_en');
             $table->string('answer_ru');
             $table->unsignedTinyInteger('index');
+
+            $table->foreign('question_id')->references('id')->on('test_questions')->onDelete('cascade');
         });
     }
 
