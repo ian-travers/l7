@@ -66,6 +66,25 @@ class QuestionsTest extends TestCase
     }
 
     /** @test */
+    function unauthorized_users_cannot_delete_test_question()
+    {
+        $this->signIn();
+
+        $question = create(TestQuestion::class);
+
+        $this->delete("/adm/tests/{$question->id}", $question->toArray())
+            ->assertStatus(Response::HTTP_FOUND)
+            ->assertRedirect('/')
+            ->assertSessionHas('flash', json_encode([
+                'type' => 'warning',
+                'title' => __('flash.warning'),
+                'message' => __('flash.not-enough-rights'),
+            ]));
+
+        $this->assertDatabaseHas('test_questions', $question->toArray());
+    }
+
+    /** @test */
     function authorized_user_can_create_a_question()
     {
         /** @var User $admin */
@@ -106,6 +125,22 @@ class QuestionsTest extends TestCase
         $this->assertEquals('New ru', $question->question_ru);
         $this->assertEquals('2', $question->correct_answer);
         $this->assertDatabaseHas('test_questions', $question->toArray());
+    }
+
+    /** @test */
+    function authorized_user_can_delete_a_question()
+    {
+        /** @var User $admin */
+        $admin = factory(User::class)->states('admin')->create();
+        $this->signIn($admin);
+
+        /** @var TestQuestion $question */
+        $question = create(TestQuestion::class);
+
+        $this->delete("/adm/tests/{$question->id}", $question->toArray())
+            ->assertStatus(Response::HTTP_FOUND);
+
+        $this->assertDatabaseMissing('test_questions', $question->toArray());
     }
 
     /** @test */

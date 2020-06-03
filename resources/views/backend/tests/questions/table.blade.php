@@ -16,7 +16,7 @@
         <tr>
             <td class="text-center">
                 <a href="{{ route('admin.tests.questions.edit', $question) }}" class="btn btn-primary btn-sm fa fa-edit" title="{{ __('misc.edit') }}"></a>
-                <form class="d-inline" action="#" method="post">
+                <form class="d-inline" action="{{ route('admin.tests.questions.delete', $question) }}" method="post">
 
                     @method('delete')
                     @csrf

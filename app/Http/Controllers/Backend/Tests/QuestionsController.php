@@ -58,6 +58,22 @@ class QuestionsController extends Controller
     }
 
     /**
+     * @param TestQuestion $question
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
+    public function remove(TestQuestion $question)
+    {
+        $question->delete();
+
+        return redirect()->route('admin.tests.questions')->with('flash', json_encode([
+            'type' => 'success',
+            'title' => __('flash.success'),
+            'message' => __('flash.question-deleted'),
+        ]));
+    }
+
+    /**
      * @return array
      * @throws \Illuminate\Validation\ValidationException
      */

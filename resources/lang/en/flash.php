@@ -15,4 +15,5 @@ return [
     'not-enough-rights' => 'Not enough rights',
     'question-saved' => 'Question has been saved',
     'question-updated' => 'Question has been updated',
+    'question-deleted' => 'Question has been deleted',
 ];

@@ -15,4 +15,5 @@ return [
     'not-enough-rights' => 'Недостаточно прав',
     'question-saved' => 'Вопрос сохранен',
     'question-updated' => 'Вопрос изменен',
+    'question-deleted' => 'Вопрос удален',
 ];

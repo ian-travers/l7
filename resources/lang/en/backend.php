@@ -11,5 +11,6 @@ return [
     'question_en' => 'Question in English',
     'question_ru' => 'Question in Russian',
     'correct_answer' => 'Correct answer',
+    'new-question' => 'New question',
     'edit-question' => 'Edit question',
 ];
