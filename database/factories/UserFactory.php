@@ -26,3 +26,9 @@ $factory->state(User::class, 'unverified', function () {
         'email_verified_at' => null,
     ];
 });
+
+$factory->state(User::class, 'admin', function () {
+    return [
+        'is_admin' => true,
+    ];
+});

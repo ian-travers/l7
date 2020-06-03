@@ -15,7 +15,7 @@
     @foreach($questions as $question)
         <tr>
             <td class="text-center">
-                <a href="#" class="btn btn-primary btn-sm fa fa-edit" title="{{ __('misc.edit') }}"></a>
+                <a href="{{ route('admin.tests.questions.edit', $question) }}" class="btn btn-primary btn-sm fa fa-edit" title="{{ __('misc.edit') }}"></a>
                 <form class="d-inline" action="#" method="post">
 
                     @method('delete')

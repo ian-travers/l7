@@ -53,5 +53,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/tests', 'Tests\QuestionsController@index')->name('tests.questions');
         Route::get('/tests/create', 'Tests\QuestionsController@create')->name('tests.questions.create');
         Route::post('/tests', 'Tests\QuestionsController@store')->name('tests.questions.store');
+        Route::get('/tests/{question}/edit', 'Tests\QuestionsController@edit')->name('tests.questions.edit');
+        Route::patch('/tests/{question}', 'Tests\QuestionsController@update')->name('tests.questions.update');
     });
 });

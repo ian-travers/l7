@@ -13,4 +13,6 @@ return [
     'confirm-avatar-removing' => 'Серьезно хотите убрать аватар?',
     'redirecting-home' => 'Переход на главную страницу',
     'not-enough-rights' => 'Недостаточно прав',
+    'question-saved' => 'Вопрос сохранен',
+    'question-updated' => 'Вопрос изменен',
 ];

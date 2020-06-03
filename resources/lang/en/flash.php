@@ -13,4 +13,6 @@ return [
     'confirm-avatar-removing' => 'Do you seriously want to remove the avatar?',
     'redirecting-home' => 'Redirecting to the home page',
     'not-enough-rights' => 'Not enough rights',
+    'question-saved' => 'Question has been saved',
+    'question-updated' => 'Question has been updated',
 ];

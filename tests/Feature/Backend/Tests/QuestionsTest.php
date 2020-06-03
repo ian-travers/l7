@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Backend;
 
+use App\Entities\Test\TestQuestion;
 use App\Entities\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
@@ -24,7 +25,7 @@ class QuestionsTest extends TestCase
     }
 
     /** @test */
-    function users_cannot_manage_tests()
+    function unauthorized_users_cannot_add_test_question()
     {
         $this->signIn();
 
@@ -48,38 +49,71 @@ class QuestionsTest extends TestCase
     }
 
     /** @test */
-    function authenticated_user_can_create_a_question()
+    function unauthorized_users_cannot_edit_test_question()
+    {
+        $this->signIn();
+
+        $question = create(TestQuestion::class);
+
+        $this->get("/adm/tests/{$question->id}/edit", $question->toArray())
+            ->assertStatus(Response::HTTP_FOUND)
+            ->assertRedirect('/')
+            ->assertSessionHas('flash', json_encode([
+                'type' => 'warning',
+                'title' => __('flash.warning'),
+                'message' => __('flash.not-enough-rights'),
+            ]));
+    }
+
+    /** @test */
+    function authorized_user_can_create_a_question()
     {
         /** @var User $admin */
-        $admin = create(User::class);
-
-        $admin->setAdminRights();
-
+        $admin = factory(User::class)->states('admin')->create();
         $this->signIn($admin);
 
+        $question = create(TestQuestion::class);
 
-        $question = [
-            'question_en' => 'In English',
-            'question_ru' => 'In Russian',
-            'correct_answer' => '1',
-        ];
-
-        $this->post(route('admin.tests.questions.store', $question))
+        $this->post(route('admin.tests.questions.store', $question->toArray()))
             ->assertRedirect(route('admin.tests.questions'));
 
-        $this->assertDatabaseHas('test_questions', $question);
+        $this->assertDatabaseHas('test_questions', $question->toArray());
+    }
+
+    /** @test */
+    function authorized_user_can_edit_a_question()
+    {
+        /** @var User $admin */
+        $admin = factory(User::class)->states('admin')->create();
+        $this->signIn($admin);
+
+        /** @var TestQuestion $question */
+        $question = create(TestQuestion::class);
+
+        $this->get("/adm/tests/{$question->id}/edit")
+            ->assertOk();
+
+        $question->question_en = 'New en';
+        $question->question_ru = 'New ru';
+        $question->correct_answer = '2';
+
+        $this->patch("/adm/tests/{$question->id}", $question->toArray())
+            ->assertStatus(Response::HTTP_FOUND);
+
+        $question = $question->fresh();
+
+        $this->assertEquals('New en', $question->question_en);
+        $this->assertEquals('New ru', $question->question_ru);
+        $this->assertEquals('2', $question->correct_answer);
+        $this->assertDatabaseHas('test_questions', $question->toArray());
     }
 
     /** @test */
     function question_requires_en_text()
     {
         /** @var User $admin */
-        $admin = create(User::class);
-
-        $admin->setAdminRights();
-
+        $admin = factory(User::class)->states('admin')->create();
         $this->signIn($admin);
-
 
         $question = [
             'question_en' => null,
@@ -96,12 +130,8 @@ class QuestionsTest extends TestCase
     function question_requires_ru_text()
     {
         /** @var User $admin */
-        $admin = create(User::class);
-
-        $admin->setAdminRights();
-
+        $admin = factory(User::class)->states('admin')->create();
         $this->signIn($admin);
-
 
         $question = [
             'question_en' => 'In English',
@@ -118,12 +148,8 @@ class QuestionsTest extends TestCase
     function question_requires_correct_answer()
     {
         /** @var User $admin */
-        $admin = create(User::class);
-
-        $admin->setAdminRights();
-
+        $admin = factory(User::class)->states('admin')->create();
         $this->signIn($admin);
-
 
         $question = [
             'question_en' => 'In English',
