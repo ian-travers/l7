@@ -57,5 +57,15 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/tests/{question}', 'Tests\QuestionsController@show')->name('tests.questions.show');
         Route::patch('/tests/{question}', 'Tests\QuestionsController@update')->name('tests.questions.update');
         Route::delete('/tests/{question}', 'Tests\QuestionsController@remove')->name('tests.questions.delete');
+
+        Route::group([
+            'prefix' => '/tests/{question}/answers',
+        ], function () {
+            Route::get('/create', 'Tests\AnswersController@create')->name('tests.answers.create');
+            Route::post('', 'Tests\AnswersController@store')->name('tests.answers.store');
+            Route::get('/{answer}/edit', 'Tests\AnswersController@edit')->name('tests.answers.edit');
+            Route::patch('/{answer}', 'Tests\AnswersController@update')->name('tests.answers.update');
+            Route::delete('/{answer}', 'Tests\AnswersController@remove')->name('tests.answers.delete');
+        });
     });
 });

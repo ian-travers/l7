@@ -91,7 +91,7 @@ class QuestionsTest extends TestCase
         $admin = factory(User::class)->states('admin')->create();
         $this->signIn($admin);
 
-        $question = create(TestQuestion::class);
+        $question = make(TestQuestion::class);
 
         $this->post(route('admin.tests.questions.store', $question->toArray()))
             ->assertRedirect(route('admin.tests.questions'));
