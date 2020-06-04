@@ -14,6 +14,11 @@ class QuestionsController extends Controller
         return view('backend.tests.questions.index', compact('questions'));
     }
 
+    public function show(TestQuestion $question)
+    {
+        return view('backend.tests.questions.show', compact('question'));
+    }
+
     public function create()
     {
         $question = new TestQuestion();

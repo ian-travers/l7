@@ -13,4 +13,7 @@ return [
     'correct_answer' => 'Правильный ответ',
     'new-question' => 'Новый вопрос',
     'edit-question' => 'Редактирование вопроса',
+    'show-question' => 'Просмотр вопроса',
+    'answer-options' => 'Варианты ответов',
+    'tests.answers-not-found' => 'Пока еще нет ни одного ответа',
 ];

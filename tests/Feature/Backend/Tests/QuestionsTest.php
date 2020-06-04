@@ -109,9 +109,6 @@ class QuestionsTest extends TestCase
         /** @var TestQuestion $question */
         $question = create(TestQuestion::class);
 
-        $this->get("/adm/tests/{$question->id}/edit")
-            ->assertOk();
-
         $question->question_en = 'New en';
         $question->question_ru = 'New ru';
         $question->correct_answer = '2';

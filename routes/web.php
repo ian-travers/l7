@@ -54,6 +54,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/tests/create', 'Tests\QuestionsController@create')->name('tests.questions.create');
         Route::post('/tests', 'Tests\QuestionsController@store')->name('tests.questions.store');
         Route::get('/tests/{question}/edit', 'Tests\QuestionsController@edit')->name('tests.questions.edit');
+        Route::get('/tests/{question}', 'Tests\QuestionsController@show')->name('tests.questions.show');
         Route::patch('/tests/{question}', 'Tests\QuestionsController@update')->name('tests.questions.update');
         Route::delete('/tests/{question}', 'Tests\QuestionsController@remove')->name('tests.questions.delete');
     });

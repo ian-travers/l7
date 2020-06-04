@@ -13,4 +13,7 @@ return [
     'correct_answer' => 'Correct answer',
     'new-question' => 'New question',
     'edit-question' => 'Edit question',
+    'show-question' => 'Show question',
+    'answer-options' => 'Answer options',
+    'tests.answers-not-found' => 'There is no answers yet',
 ];
