@@ -3,7 +3,7 @@
 <table class="table table-sm table-bordered mb-0">
     <thead>
     <tr>
-        <th class="text-center stick-top w-10">{{ __('misc.actions') }}</th>
+        <th class="text-center stick-top w-15">{{ __('misc.actions') }}</th>
         <th class="stick-top">{{ __('backend.question_en') }}</th>
         <th class="stick-top">{{ __('backend.question_ru') }}</th>
         <th class="text-center stick-top w-10">{{ __('backend.correct_answer') }}</th>
