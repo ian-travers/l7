@@ -141,4 +141,70 @@ class AnswersTest extends TestCase
 
         $this->assertDatabaseMissing('test_answers', $answer);
     }
+
+    /** @test */
+    function answer_required_valid_english_text()
+    {
+        /** @var User $admin */
+        $admin = factory(User::class)->states('admin')->create();
+        $this->signIn($admin);
+
+        /** @var TestQuestion $question */
+        $question = create(TestQuestion::class);
+
+        $answer = [
+            'answer_en' => '',
+            'answer_ru' => 'ru',
+            'index' => '1',
+        ];
+
+        $this->post("/adm/tests/{$question->id}/answers", $answer)
+            ->assertSessionHasErrors('answer_en');
+
+        $this->assertDatabaseMissing('test_answers', $answer);
+    }
+
+    /** @test */
+    function answer_required_valid_russian_text()
+    {
+        /** @var User $admin */
+        $admin = factory(User::class)->states('admin')->create();
+        $this->signIn($admin);
+
+        /** @var TestQuestion $question */
+        $question = create(TestQuestion::class);
+
+        $answer = [
+            'answer_en' => 'en',
+            'answer_ru' => '',
+            'index' => '1',
+        ];
+
+        $this->post("/adm/tests/{$question->id}/answers", $answer)
+            ->assertSessionHasErrors('answer_ru');
+
+        $this->assertDatabaseMissing('test_answers', $answer);
+    }
+
+    /** @test */
+    function answer_required_valid_index()
+    {
+        /** @var User $admin */
+        $admin = factory(User::class)->states('admin')->create();
+        $this->signIn($admin);
+
+        /** @var TestQuestion $question */
+        $question = create(TestQuestion::class);
+
+        $answer = [
+            'answer_en' => 'en',
+            'answer_ru' => 'ru',
+            'index' => '10', // might be 1-9
+        ];
+
+        $this->post("/adm/tests/{$question->id}/answers", $answer)
+            ->assertSessionHasErrors('index');
+
+        $this->assertDatabaseMissing('test_answers', $answer);
+    }
 }

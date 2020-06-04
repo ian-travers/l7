@@ -13,9 +13,15 @@ class AnswersController extends Controller
 
     }
 
+    /**
+     * @param TestQuestion $question
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function store(TestQuestion $question)
     {
-        $question->addAnswer(request('answer_en'), request('answer_ru'), request('index'));
+        $answer = $this->validateRequest();
+        $question->addAnswer($answer['answer_en'], $answer['answer_ru'], $answer['index']);
 
         return redirect()->route('admin.tests.questions.show', $question);
     }
@@ -25,9 +31,16 @@ class AnswersController extends Controller
 
     }
 
+    /**
+     * @param TestQuestion $question
+     * @param TestAnswer $answer
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function update(TestQuestion $question, TestAnswer $answer)
     {
-        $question->editAnswer($answer->id, request('answer_en'), request('answer_ru'), request('index'));
+        $updAnswer = $this->validateRequest();
+        $question->editAnswer($answer->id, $updAnswer['answer_en'], $updAnswer['answer_ru'], $updAnswer['index']);
 
         return redirect()->route('admin.tests.questions.show', $question);
     }
@@ -37,5 +50,18 @@ class AnswersController extends Controller
         $question->removeAnswer($answer->id);
 
         return redirect()->route('admin.tests.questions.show', $question);
+    }
+
+    /**
+     * @return array
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    private function validateRequest()
+    {
+        return $this->validate(request(), [
+            'answer_en' => 'required|string|max:255',
+            'answer_ru' => 'required|string|max:255',
+            'index' => 'required|string|max:1|regex:/^[1-9]{1}$/s',
+        ]);
     }
 }
