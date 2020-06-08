@@ -10,9 +10,7 @@
                 @include('backend.tests.questions._form')
                 <div class="d-flex justify-content-between align-items-end">
                     <div class="d-flex justify-content-between align-items-end">
-                        <button type="submit" class="btn btn-lg btn-primary mr-2">{{ __('misc.save') }}</button>
-                        <a href="{{ route('admin.tests.questions') }}"
-                           class="btn btn-sm btn-secondary">{{ __('misc.cancel') }}</a>
+                        <button type="submit" class="btn btn-primary">{{ __('misc.save') }}</button>
                     </div>
                 </div>
 
