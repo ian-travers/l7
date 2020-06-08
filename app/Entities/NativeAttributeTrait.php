@@ -2,7 +2,6 @@
 
 namespace App\Entities;
 
-
 trait NativeAttributeTrait
 {
     public function GetNativeAttributeValue(string $attr)
