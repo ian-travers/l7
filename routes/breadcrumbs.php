@@ -41,4 +41,3 @@ Breadcrumbs::for('admin.tests.answers.edit', function (BreadcrumbsGenerator $tra
     $trail->parent('admin.tests.questions.show', $question);
     $trail->push(__('backend.edit-answer'));
 });
-
