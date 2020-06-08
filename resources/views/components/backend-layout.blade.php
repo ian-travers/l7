@@ -21,9 +21,11 @@
     @include('layouts._topnav')
 
     <flash content="{{ session('flash') }}"></flash>
-
     <main class="py-2">
         <div class="container">
+
+            @section('breadcrumbs', Breadcrumbs::render())
+            @yield('breadcrumbs')
             <div class="row">
                 <div class="col-3">
                     <x-dashboard-left-menu/>

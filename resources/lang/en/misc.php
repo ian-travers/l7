@@ -16,4 +16,5 @@ return [
     'save' => 'Save',
     'actions' => 'Actions',
     'confirm-delete' => 'Confirm deleting?',
+    'main' => 'Main',
 ];
