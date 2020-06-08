@@ -1,11 +1,15 @@
+@php /* @var App\Entities\Test\TestQuestion $question */ @endphp
+
 <x-backend-layout :title="__('backend.show-question')">
     <div class="card">
         <div class="card-header">
             <div class="d-flex align-items-center justify-content-between">
                 <div class="align-items-center">
                     <span class="h3">{{ __('backend.show-question') }}</span>
-                    <a href="{{ route('admin.tests.questions.edit', $question) }}" class="btn btn-sm btn-primary mt-n2">{{ __('misc.edit') }}</a>
-                    <form class="d-inline" action="{{ route('admin.tests.questions.delete', $question) }}" method="post">
+                    <a href="{{ route('admin.tests.questions.edit', $question) }}"
+                       class="btn btn-sm btn-primary mt-n2">{{ __('misc.edit') }}</a>
+                    <form class="d-inline" action="{{ route('admin.tests.questions.delete', $question) }}"
+                          method="post">
 
                         @method('delete')
                         @csrf
@@ -14,7 +18,8 @@
                     </form>
                 </div>
                 <div>
-                    <a href="{{ route('admin.tests.questions') }}" class="btn btn-sm btn-primary">{{ __('backend.tests.questions') }}</a>
+                    <a href="{{ route('admin.tests.questions') }}"
+                       class="btn btn-sm btn-primary">{{ __('backend.tests.questions') }}</a>
                 </div>
             </div>
         </div>
@@ -34,9 +39,10 @@
                 </tr>
             </table>
             <h4>{{ __('backend.answer-options') }}</h4>
-            <a href="#" class="btn btn-sm btn-success">{{ __('misc.create') }}</a>
+            <a href="{{ route('admin.tests.answers.create', $question) }}"
+               class="btn btn-sm btn-success">{{ __('misc.create') }}</a>
+            <div class="mt-2">
 
-            <div>
                 @include('backend.tests.answers.table')
             </div>
         </div>

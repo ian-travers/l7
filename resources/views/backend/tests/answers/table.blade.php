@@ -14,8 +14,10 @@
             <td>{{ $answer->answer_en }}</td>
             <td>{{ $answer->answer_ru }}</td>
             <td class="text-center">
-                <a href="#" class="btn btn-primary btn-sm fa fa-edit" title="{{ __('misc.edit') }}"></a>
-                <form class="d-inline" action="#" method="post">
+                <a href="{{ route('admin.tests.answers.edit', [$question, $answer]) }}"
+                   class="btn btn-primary btn-sm fa fa-edit" title="{{ __('misc.edit') }}"></a>
+                <form class="d-inline" action="{{ route('admin.tests.answers.delete', [$question, $answer]) }}"
+                      method="post">
 
                     @method('delete')
                     @csrf
@@ -25,11 +27,10 @@
             </td>
         </tr>
 
-
     @empty
         {{ __('backend.tests.answers-not-found') }}
+
     @endforelse
     </tbody>
-
 </table>
 

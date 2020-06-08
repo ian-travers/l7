@@ -10,7 +10,9 @@ class AnswersController extends Controller
 {
     public function create(TestQuestion $question)
     {
+        $answer = new TestAnswer();
 
+        return view('backend.tests.answers.create', compact('question', 'answer'));
     }
 
     /**
@@ -28,7 +30,7 @@ class AnswersController extends Controller
 
     public function edit(TestQuestion $question, TestAnswer $answer)
     {
-
+        return view('backend.tests.answers.edit', compact('question', 'answer'));
     }
 
     /**

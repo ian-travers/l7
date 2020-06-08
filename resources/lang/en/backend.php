@@ -16,4 +16,9 @@ return [
     'show-question' => 'Show question',
     'answer-options' => 'Answer options',
     'tests.answers-not-found' => 'There is no answers yet',
+    'new-answer' => 'New answer',
+    'edit-answer' => 'Edit answer',
+    'answer_en' => 'Answer in English',
+    'answer_ru' => 'Answer in Russian',
+    'index' => 'Index',
 ];
