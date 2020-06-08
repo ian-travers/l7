@@ -5,8 +5,7 @@
         <div class="card-header">
             <span class="h4">{{ __('backend.new-answer') }}</span>
             <div class="bg-secondary mx-n2 p-2">
-                <p class="text-light h5 mt-2">{{ $question->question_en }}</p>
-                <p class="text-light h5">{{ $question->question_ru }}</p>
+                <p class="text-light h5">{{ $question->question }}</p>
             </div>
         </div>
         <div class="card-body">

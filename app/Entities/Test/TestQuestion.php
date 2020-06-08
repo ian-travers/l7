@@ -2,6 +2,7 @@
 
 namespace App\Entities\Test;
 
+use App\Entities\NativeAttributeTrait;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,6 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TestQuestion extends Model
 {
+    use NativeAttributeTrait;
+
     public $timestamps = false;
 
     protected $guarded = [];
@@ -68,10 +71,22 @@ class TestQuestion extends Model
         $answer->edit($answerEn, $answerRu, $index);
     }
 
+    /**
+     * @param int $id
+     * @throws \Exception
+     */
     public function removeAnswer(int $id): void
     {
         $answer = $this->answers()->findOrFail($id);
 
         $answer->delete();
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getQuestionAttribute()
+    {
+        return $this->GetNativeAttributeValue('question');
     }
 }

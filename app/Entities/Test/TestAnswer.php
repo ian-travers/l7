@@ -2,6 +2,7 @@
 
 namespace App\Entities\Test;
 
+use App\Entities\NativeAttributeTrait;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,6 +27,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TestAnswer extends Model
 {
+    use NativeAttributeTrait;
+
     public $timestamps = false;
 
     protected $guarded = [];
@@ -42,5 +45,13 @@ class TestAnswer extends Model
             'answer_ru' =>$answerRu,
             'index' => $index,
         ]);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAnswerAttribute()
+    {
+        return $this->GetNativeAttributeValue('answer');
     }
 }

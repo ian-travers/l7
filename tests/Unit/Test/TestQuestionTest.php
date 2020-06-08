@@ -79,4 +79,19 @@ class TestQuestionTest extends TestCase
 
         $this->assertDatabaseMissing('test_answers', $answer->toArray());
     }
+
+    /** @test */
+    function it_gets_native_question()
+    {
+        /** @var TestQuestion $question */
+        $question = make(TestQuestion::class);
+
+        app()->setLocale('en');
+
+        $this->assertEquals('English', $question->question);
+
+        app()->setLocale('ru');
+
+        $this->assertEquals('Русский', $question->question);
+    }
 }
