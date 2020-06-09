@@ -36,7 +36,6 @@ Route::group(['middleware' => 'language'], function () {
             'prefix' => 'tests',
             'as' => 'tests.',
             'namespace' => 'Tests',
-            'middleware' => ['auth'],
         ],
         function () {
             Route::get('/racer', 'TestsController@racerTest')->name('racer-test');
