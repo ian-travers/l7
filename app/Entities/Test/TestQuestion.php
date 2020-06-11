@@ -89,4 +89,22 @@ class TestQuestion extends Model
     {
         return $this->GetNativeAttributeValue('question');
     }
+
+    /**
+     * @param int $count
+     * @return TestQuestion[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public static function getRacerTestQuestions(int $count = 6)
+    {
+        return self::get()->shuffle()->take($count);
+    }
+
+    /**
+     * @param string $index
+     * @return bool
+     */
+    public function isCorrectAnswer(string $index)
+    {
+        return $this->correct_answer == $index;
+    }
 }

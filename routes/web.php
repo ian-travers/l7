@@ -39,6 +39,7 @@ Route::group(['middleware' => 'language'], function () {
         ],
         function () {
             Route::get('/racer', 'TestsController@racerTest')->name('racer-test');
+            Route::post('/racer', 'TestsController@checkRacerTest')->name('check-racer-test');
         }
     );
 

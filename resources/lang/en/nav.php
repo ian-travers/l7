@@ -14,4 +14,5 @@ return [
     'ratings' => 'Ratings',
     'about' => 'About',
     'adm' => 'Dashboard',
+    'test' => 'Test',
 ];

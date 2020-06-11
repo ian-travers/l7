@@ -9,6 +9,7 @@ use Tests\TestCase;
 class RacerTest extends TestCase
 {
     use RefreshDatabase;
+
     /** @test */
     function anyone_can_visit_racer_test_page()
     {

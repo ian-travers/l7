@@ -42,6 +42,9 @@
                         <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('nav.about') }}</a>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('tests.racer-test') }}">{{ __('nav.test') }}</a>
+                </li>
 
                 @can('admin')
                     <li class="nav-item">

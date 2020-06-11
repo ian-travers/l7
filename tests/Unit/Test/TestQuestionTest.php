@@ -94,4 +94,23 @@ class TestQuestionTest extends TestCase
 
         $this->assertEquals('Русский', $question->question);
     }
+
+    /** @test */
+    function it_may_check_correct_answer()
+    {
+        /** @var TestQuestion $question */
+        $question = make(TestQuestion::class); // factory make correct_answer = 1
+
+        $this->assertTrue($question->isCorrectAnswer('1'));
+        $this->assertFalse($question->isCorrectAnswer('2'));
+    }
+
+    /** @test */
+    function it_can_get_a_certain_number_of_questions()
+    {
+        create(TestQuestion::class, [], 20);
+
+        $this->assertCount(6, TestQuestion::getRacerTestQuestions()); // default value
+        $this->assertCount(8, TestQuestion::getRacerTestQuestions(8)); // set by parameter
+    }
 }
