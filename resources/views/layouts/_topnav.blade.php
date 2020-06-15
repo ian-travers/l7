@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-nfsu-cup">
+<nav class="navbar navbar-expand-md navbar-dark bg-nfsu-cup border-bottom border-info">
     <div class="container">
         <a href="{{ url('/') }}">
             <img class="logo-img rounded-circle" src="/images/logo.png" alt="NFSU Cup">

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="h-100" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,15 +16,23 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css', 'build') }}" rel="stylesheet">
 </head>
-<body class="bg-image">
-<div id="app" class="full-overlay darkest-overlay">
-    @include('layouts._topnav')
+<body class="bg-image h-100">
+<div id="app" class="full-overlay darkest-overlay d-flex flex-column h-100">
+    <header>
+
+        @include('layouts._topnav')
+    </header>
 
     <flash content="{{ session('flash') }}"></flash>
 
     <main class="py-4">
         {{ $slot }}
     </main>
+
+    <footer class="mt-auto">
+
+        @include('layouts._footer')
+    </footer>
 </div>
 
 <!-- Scripts -->
