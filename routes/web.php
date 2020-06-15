@@ -68,4 +68,9 @@ Route::group(['middleware' => 'language'], function () {
             Route::delete('/{answer}', 'Tests\AnswersController@remove')->name('tests.answers.delete');
         });
     });
+
+    // Static pages. Should be at the bottom
+    Route::get('/{page}', 'StaticPagesController')
+        ->name('page')
+        ->where('page', 'rules|about|about/cup|about/contact|about/donate|help|help/gameplay|help/faq|download|download/nfsu|download/nfsu-save|download/nfsu-client|download/nfsu-save-patcher');
 });
