@@ -67,6 +67,13 @@ Route::group(['middleware' => 'language'], function () {
             Route::patch('/{answer}', 'Tests\AnswersController@update')->name('tests.answers.update');
             Route::delete('/{answer}', 'Tests\AnswersController@remove')->name('tests.answers.delete');
         });
+
+        Route::get('/pages', 'Pages\PagesController@index')->name('pages');
+        Route::get('/pages/create', 'Pages\PagesController@create')->name('pages.create');
+        Route::post('/pages', 'Pages\PagesController@store')->name('pages.store');
+        Route::get('/pages/{page}/edit', 'Pages\PagesController@edit')->name('pages.edit');
+        Route::patch('/pages/{page}', 'Pages\PagesController@update')->name('pages.update');
+        Route::delete('/pages/{page}', 'Pages\PagesController@remove')->name('pages.delete');
     });
 
     // Static pages. Should be at the bottom

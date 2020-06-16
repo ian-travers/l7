@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $correct_answer
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Test\TestAnswer[] $answers
  * @property-read int|null $answers_count
+ * @property-read string|null $question
  * @method static Builder|TestQuestion newModelQuery()
  * @method static Builder|TestQuestion newQuery()
  * @method static Builder|TestQuestion query()

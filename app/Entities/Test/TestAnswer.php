@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $answer_en
  * @property string $answer_ru
  * @property int $index
+ * @property-read string|null $answer
  * @property-read \App\Entities\Test\TestQuestion $question
  * @method static Builder|TestAnswer newModelQuery()
  * @method static Builder|TestAnswer newQuery()
