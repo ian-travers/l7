@@ -73,6 +73,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::post('/pages', 'Pages\PagesController@store')->name('pages.store');
         Route::get('/pages/{page}/edit', 'Pages\PagesController@edit')->name('pages.edit');
         Route::patch('/pages/{page}', 'Pages\PagesController@update')->name('pages.update');
+        Route::get('/pages/{page}', 'Pages\PagesController@show')->name('pages.show');
         Route::delete('/pages/{page}', 'Pages\PagesController@remove')->name('pages.delete');
     });
 

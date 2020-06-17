@@ -8,12 +8,7 @@
 
                 @csrf
                 @include('backend.tests.questions._form')
-                <div class="d-flex justify-content-between align-items-end">
-                    <div class="d-flex justify-content-between align-items-end">
-                        <button type="submit" class="btn btn-primary">{{ __('misc.save') }}</button>
-                    </div>
-                </div>
-
+                <button type="submit" class="btn btn-primary w-15">{{ __('misc.save') }}</button>
             </form>
         </div>
     </div>

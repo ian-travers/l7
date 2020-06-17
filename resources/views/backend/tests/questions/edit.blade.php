@@ -9,12 +9,7 @@
                 @csrf
                 @method('patch')
                 @include('backend.tests.questions._form')
-                <div class="d-flex justify-content-between align-items-end">
-                    <div class="d-flex justify-content-between align-items-end">
-                        <button type="submit" class="btn btn-primary">{{ __('misc.update') }}</button>
-                    </div>
-                </div>
-
+                <button type="submit" class="btn btn-primary">{{ __('misc.update') }}</button>
             </form>
         </div>
     </div>

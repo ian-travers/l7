@@ -13,9 +13,7 @@
 
                 @csrf
                 @include('backend.tests.questions._answerForm')
-                <div>
-                    <button type="submit" class="btn btn-primary">{{ __('misc.save') }}</button>
-                </div>
+                <button type="submit" class="btn btn-primary w-15">{{ __('misc.save') }}</button>
             </form>
         </div>
     </div>

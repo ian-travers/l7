@@ -2,8 +2,8 @@
 
 namespace App\Entities;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * App\Entities\Page
@@ -20,6 +20,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $seo
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|Page[] $children
+ * @property-read int|null $children_count
+ * @property-read int $depth
+ * @property-read Page|null $parent
  * @method static Builder|Page newModelQuery()
  * @method static Builder|Page newQuery()
  * @method static Builder|Page query()
@@ -35,9 +39,45 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Page whereTitleEn($value)
  * @method static Builder|Page whereTitleRu($value)
  * @method static Builder|Page whereUpdatedAt($value)
+ * @method static Builder|Page roots()
  * @mixin \Eloquent
  */
 class Page extends Model
 {
+    use NativeAttributeTrait;
+
     protected $guarded = [];
+
+    public function parent()
+    {
+        return $this->belongsTo(static::class, 'parent_id', 'id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(static::class, 'parent_id', 'id');
+    }
+
+    public function getDepthAttribute()
+    {
+        return $this->calcDepth();
+    }
+
+    private function calcDepth(): int
+    {
+        return $this->parent ? 1 + $this->parent->calcDepth() : 0;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLinkAttribute()
+    {
+        return $this->GetNativeAttributeValue('link');
+    }
+
+    public function scopeRoots(Builder $query)
+    {
+        return $query->where('parent_id', null);
+    }
 }

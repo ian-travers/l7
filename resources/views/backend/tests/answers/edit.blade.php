@@ -15,9 +15,7 @@
                 @csrf
                 @method('patch')
                 @include('backend.tests.questions._answerForm')
-                <div>
-                    <button type="submit" class="btn btn-primary">{{ __('misc.update') }}</button>
-                </div>
+                <button type="submit" class="btn btn-primary w-15">{{ __('misc.update') }}</button>
             </form>
         </div>
     </div>

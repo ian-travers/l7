@@ -10,6 +10,9 @@
             <li class="list-group-item @if($controller == 'QuestionsController') active-vertical-menu @endif">
                 <a href="{{ route('admin.tests.questions') }}">{{ __('backend.tests') }}</a>
             </li>
+            <li class="list-group-item @if($controller == 'PagesController') active-vertical-menu @endif">
+                <a href="{{ route('admin.pages') }}">{{ __('backend.pages') }}</a>
+            </li>
         </ul>
     </nav>
 </div>
