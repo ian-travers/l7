@@ -34,7 +34,4 @@ return [
     'new-page' => 'New page',
     'edit-page' => 'Edit page',
     'show-page' => 'Show page',
-    'page-saved' => 'Page has been saved',
-    'page-updated' => 'Page has been updated',
-    'page-deleted' => 'Page has been deleted',
 ];

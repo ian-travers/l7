@@ -16,4 +16,7 @@ return [
     'question-saved' => 'Question has been saved',
     'question-updated' => 'Question has been updated',
     'question-deleted' => 'Question has been deleted',
+    'page-saved' => 'Page has been saved',
+    'page-updated' => 'Page has been updated',
+    'page-deleted' => 'Page has been deleted',
 ];

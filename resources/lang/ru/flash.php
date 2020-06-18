@@ -16,4 +16,7 @@ return [
     'question-saved' => 'Вопрос сохранен',
     'question-updated' => 'Вопрос изменен',
     'question-deleted' => 'Вопрос удален',
+    'page-saved' => 'Страница сохранена',
+    'page-updated' => 'Страница изменена',
+    'page-deleted' => 'Страница удалена',
 ];
