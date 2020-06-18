@@ -1,4 +1,4 @@
-@php /* @var App\Entities\Page $rootPage */ @endphp
+@php /* @var \App\Entities\Page\Page $rootPage */ @endphp
 
 @foreach($rootPages as $rootPage)
     <option value="{{ $rootPage->id }}"

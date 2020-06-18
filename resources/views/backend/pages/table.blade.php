@@ -1,4 +1,4 @@
-@php /* @var App\Entities\Page $page */ @endphp
+@php /* @var \App\Entities\Page\Page $page */ @endphp
 
 <table class="table table-sm table-bordered mb-0">
     <thead>

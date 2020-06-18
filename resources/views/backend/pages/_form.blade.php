@@ -1,4 +1,4 @@
-@php /* @var App\Entities\Page $page */ @endphp
+@php /* @var \App\Entities\Page\Page $page */ @endphp
 
 <div class="d-flex justify-content-between align-content-between">
     <div class="form-group w-50 mr-2">

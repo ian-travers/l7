@@ -1,6 +1,6 @@
 <?php
 
-use App\Entities\Page;
+use App\Entities\Page\Page;
 use App\Entities\Test\TestQuestion;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 

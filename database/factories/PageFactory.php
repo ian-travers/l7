@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Entities\Page;
+use App\Entities\Page\Page;
 
 $factory->define(Page::class, function () {
     return [

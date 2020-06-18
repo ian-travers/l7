@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Entities;
+namespace App\Entities\Page;
 
+use App\Entities\NativeAttributeTrait;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Entities\Page
+ * App\Entities\Page\Page
  *
  * @property int $id
  * @property int|null $parent_id

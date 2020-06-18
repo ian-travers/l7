@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Backend\Pages;
 
-use App\Entities\Page;
+use App\Entities\Page\Page;
 use App\Entities\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;

@@ -1,4 +1,4 @@
-@php /* @var App\Entities\Page $page */ @endphp
+@php /* @var \App\Entities\Page\Page $page */ @endphp
 
 <x-backend-layout :title="__('backend.show-page')">
     <div class="card">

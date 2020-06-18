@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Pages;
 
-use App\Entities\Page;
+use App\Entities\Page\Page;
 use App\Http\Controllers\Controller;
 
 class PagesController extends Controller
@@ -45,7 +45,7 @@ class PagesController extends Controller
     }
 
     /**
-     * @param Page $page
+     * @param \App\Entities\Page\Page $page
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -66,7 +66,7 @@ class PagesController extends Controller
     }
 
     /**
-     * @param Page $page
+     * @param \App\Entities\Page\Page $page
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
