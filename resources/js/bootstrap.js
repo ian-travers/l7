@@ -12,6 +12,7 @@ try {
 
     require('bootstrap');
     require('bootstrap-select');
+    require('summernote/dist/summernote-bs4.min');
 
 } catch (e) {}
 
