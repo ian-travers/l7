@@ -13,6 +13,7 @@ try {
     require('bootstrap');
     require('bootstrap-select');
     require('summernote/dist/summernote-bs4.min');
+    require('summernote/dist/lang/summernote-ru-RU.min');
 
 } catch (e) {}
 

@@ -110,9 +110,30 @@
     <input type="text" id="seo-keywords" name="seo[keywords]" value="{{ old('seo-keywords', $page->seo['keywords']) }}"
            class="form-control">
     <label for="seo-description">{{ __('backend.seo-description') }}</label>
-    <input type="text" id="seo-description" name="seo[description]" value="{{ old('seo-description', $page->seo['description']) }}"
+    <input type="text" id="seo-description" name="seo[description]"
+           value="{{ old('seo-description', $page->seo['description']) }}"
            class="form-control">
 </div>
+
+@section('script')
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            let locale = "{{ language()->getLongCode() }}";
+            console.log(locale);
+            $('#content-en').summernote({
+                height: 250,
+                minHeight: 150,
+                lang: locale,
+            });
+            $('#content-ru').summernote({
+                height: 250,
+                minHeight: 150,
+                lang: locale,
+            });
+        });
+    </script>
+@endsection
 
 
 
