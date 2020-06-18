@@ -18,7 +18,7 @@ class CreatePagesTable extends Migration
             $table->string('title_ru');
             $table->text('content_en');
             $table->text('content_ru');
-            $table->text('seo')->nullable();
+            $table->json('seo')->nullable();
             $table->timestamps();
         });
     }

@@ -49,6 +49,10 @@ class Page extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'seo' => 'array',
+    ];
+
     public function parent()
     {
         return $this->belongsTo(static::class, 'parent_id', 'id');

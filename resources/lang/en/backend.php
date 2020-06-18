@@ -22,6 +22,7 @@ return [
     'answer_ru' => 'Answer in Russian',
     'index' => 'Index',
     'pages' => 'Pages',
+    'pages-not-found' => 'There is no pages yet.',
     'title_en' => 'Title Eng',
     'title_ru' => 'Title Rus',
     'link_en' => 'Link Eng',
@@ -34,4 +35,7 @@ return [
     'new-page' => 'New page',
     'edit-page' => 'Edit page',
     'show-page' => 'Show page',
+    'seo-title'=> 'Title',
+    'seo-keywords'=> 'keywords',
+    'seo-description'=> 'Description',
 ];

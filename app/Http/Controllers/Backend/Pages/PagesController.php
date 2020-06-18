@@ -95,6 +95,7 @@ class PagesController extends Controller
             'title_ru' => 'required|string|max:255',
             'content_en' => 'required',
             'content_ru' => 'required',
+            'seo' => 'nullable',
         ]);
     }
 
