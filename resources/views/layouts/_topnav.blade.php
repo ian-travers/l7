@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-nfsu-cup border-bottom border-info">
+<nav class="navbar navbar-expand-md navbar-dark bg-nfsu-cup border-bottom border-info position-relative">
     <div class="container">
         <a href="{{ url('/') }}">
             <img class="logo-img rounded-circle" src="/images/logo.png" alt="NFSU Cup">
@@ -95,17 +95,18 @@
                             </form>
                         </div>
                     </li>
+
                 @endguest
-                <li class="dropdown navbar-nfsu-cup">
-                    <a id="selectLang" class="nav-link" href="#" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ language()->flag() }}
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right bg-nfsu-cup border border-light">
-                        {{ language()->flags() }}
-                    </div>
-                </li>
             </ul>
+        </div>
+    </div>
+    <div class="dropdown navbar-nav position-absolute" style="right: .15em;">
+        <a id="selectLang" class="nav-link" href="#" role="button"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            {{ language()->flag() }}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right bg-nfsu-cup border border-light">
+            {{ language()->flags() }}
         </div>
     </div>
 </nav>
