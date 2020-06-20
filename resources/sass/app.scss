@@ -58,11 +58,10 @@ label {
 }
 
 .bg-image {
-    background: url("../../public/images/map.png");
+    background: url("../../public/images/map-d50.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    min-height: 100vh;
 }
 
 .border-2 {
@@ -79,14 +78,6 @@ label {
     left: 0;
     width: 100%;
     min-height: 100vh;
-}
-
-.dark-overlay {
-    background: rgba(0, 0, 0, 0.3);
-}
-
-.darkest-overlay {
-    background: rgba(0, 0, 0, 0.5);
 }
 
 .app-content {

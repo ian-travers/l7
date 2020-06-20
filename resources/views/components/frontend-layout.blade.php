@@ -17,7 +17,7 @@
     <link href="{{ mix('css/app.css', 'build') }}" rel="stylesheet">
 </head>
 <body class="bg-image">
-<div id="app" class="full-overlay darkest-overlay d-flex flex-column h-100">
+<div id="app" class="full-overlay d-flex flex-column h-100">
     <header>
 
         @include('layouts._topnav')

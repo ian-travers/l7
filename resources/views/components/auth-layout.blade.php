@@ -10,7 +10,7 @@
     <link href="{{ mix('css/app.css', 'build') }}" rel="stylesheet">
 </head>
 <body class="bg-image">
-<div id="app" class="full-overlay dark-overlay">
+<div id="app" class="full-overlay">
     <div class="d-flex py-4">
         <div class="container constrain">
             <div class="row justify-content-center">
