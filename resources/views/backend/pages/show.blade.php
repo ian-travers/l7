@@ -47,11 +47,11 @@
                 </tr>
                 <tr>
                     <th>{{ __('backend.content_en') }}</th>
-                    <td>{{ $page->content_en }}</td>
+                    <td>{!! $page->content_en !!}</td>
                 </tr>
                 <tr>
                     <th>{{ __('backend.content_ru') }}</th>
-                    <td>{{ $page->content_ru }}</td>
+                    <td>{!! $page->content_ru !!}</td>
                 </tr>
             </table>
         </div>

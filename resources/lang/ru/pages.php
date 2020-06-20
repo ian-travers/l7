@@ -3,8 +3,9 @@
 return [
     'about' => 'О проекте',
     'about.cup' => 'NFSU Cup',
+    'about.server' => 'NFSU сервер',
     'about.contact' => 'Контакт',
-    'about.donate' => 'Донат',
+    'about.donate' => 'Поддержка',
     'help' => 'Помощь',
     'help.gameplay' => 'Геймплей',
     'help.faq' => 'FAQ',

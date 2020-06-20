@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\Page\Page;
+
 class StaticPagesController extends Controller
 {
-    public function __invoke(string $page)
+    public function __invoke(string $path)
     {
-        return view('frontend.pages.' . $page);
+        $page = Page::where('path', "/{$path}")->first();
+
+        return view('frontend.pages.' . $path, compact('page'));
     }
 }

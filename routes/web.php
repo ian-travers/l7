@@ -78,7 +78,7 @@ Route::group(['middleware' => 'language'], function () {
     });
 
     // Static pages. Should be at the bottom
-    Route::get('/{page}', 'StaticPagesController')
+    Route::get('/{path}', 'StaticPagesController')
         ->name('page')
-        ->where('page', 'rules|about|about/cup|about/contact|about/donate|help|help/gameplay|help/faq|download|download/nfsu|download/nfsu-save|download/nfsu-client|download/nfsu-save-patcher');
+        ->where('path', 'rules|about|about/cup|about/server|about/contact|about/donate|help|help/gameplay|help/faq|download|download/nfsu|download/nfsu-save|download/nfsu-client|download/nfsu-save-patcher');
 });

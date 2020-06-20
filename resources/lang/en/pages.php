@@ -2,7 +2,8 @@
 
 return [
     'about' => 'About',
-    'about.cup' => 'About NFSU Cup',
+    'about.cup' => 'NFSU Cup',
+    'about.server' => 'NFSU Server',
     'about.contact' => 'Contact me',
     'about.donate' => 'Donate',
     'help' => 'Help',

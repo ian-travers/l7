@@ -81,6 +81,11 @@ class Page extends Model
         return $this->GetNativeAttributeValue('link');
     }
 
+    public function getContentAttribute()
+    {
+        return $this->GetNativeAttributeValue('content');
+    }
+
     public function scopeRoots(Builder $query)
     {
         return $query->where('parent_id', null);
