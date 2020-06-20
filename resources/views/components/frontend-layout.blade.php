@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="h-100" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +16,7 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css', 'build') }}" rel="stylesheet">
 </head>
-<body class="bg-image h-100">
+<body class="bg-image">
 <div id="app" class="full-overlay darkest-overlay d-flex flex-column h-100">
     <header>
 
