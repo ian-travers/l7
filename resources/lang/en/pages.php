@@ -1,9 +1,10 @@
 <?php
 
 return [
+    'rules' => 'Rules',
     'about' => 'About',
-    'about.cup' => 'NFSU Cup',
-    'about.server' => 'NFSU Server',
+    'about.cup' => 'NFSU Tourney\'s series' ,
+    'about.server' => 'NFSU Game Server',
     'about.contact' => 'Contact me',
     'about.donate' => 'Donate',
     'help' => 'Help',

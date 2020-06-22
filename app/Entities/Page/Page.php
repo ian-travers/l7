@@ -76,6 +76,14 @@ class Page extends Model
     /**
      * @return string|null
      */
+    public function getTitleAttribute()
+    {
+        return $this->GetNativeAttributeValue('title');
+    }
+
+    /**
+     * @return string|null
+     */
     public function getLinkAttribute()
     {
         return $this->GetNativeAttributeValue('link');

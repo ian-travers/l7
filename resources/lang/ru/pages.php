@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'rules' => 'Правила',
     'about' => 'О проекте',
     'about.cup' => 'NFSU Cup',
     'about.server' => 'NFSU сервер',

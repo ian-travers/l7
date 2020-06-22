@@ -8,8 +8,8 @@ class StaticPagesController extends Controller
 {
     public function __invoke(string $path)
     {
-        $page = Page::where('path', "/{$path}")->first();
+        $page = Page::where('path', "/{$path}")->firstOrFail();
 
-        return view('frontend.pages.' . $path, compact('page'));
+        return view('frontend.pages.tenplate', compact('page'));
     }
 }
