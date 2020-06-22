@@ -132,6 +132,14 @@ footer {
     }
 }
 
+// Links color for info colored text
+.link-text-info {
+    color: $info-link-color;
+    @include hover-focus {
+        color: $white;
+    }
+}
+
 // Select options class
 .inline-flag {
     margin-right: 3px;
