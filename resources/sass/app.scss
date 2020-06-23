@@ -64,6 +64,13 @@ label {
     background-attachment: fixed;
 }
 
+.bg-error-404 {
+    background: url("../../public/images/mystery-man.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 .border-2 {
     border-width:2px !important;
 }
