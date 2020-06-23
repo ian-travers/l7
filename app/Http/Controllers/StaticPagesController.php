@@ -10,6 +10,6 @@ class StaticPagesController extends Controller
     {
         $page = Page::where('path', "/{$path}")->firstOrFail();
 
-        return view('frontend.pages.tenplate', compact('page'));
+        return view('frontend.pages.template', compact('page'));
     }
 }
