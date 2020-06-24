@@ -43,6 +43,18 @@ Route::group(['middleware' => 'language'], function () {
         }
     );
 
+    Route::group(
+        [
+            'prefix' => 'rules',
+            'as' => 'rules.',
+            'namespace' => 'Rules',
+        ],
+        function () {
+            Route::get('', 'RulesController@show')->name('rules-show');
+            Route::post('', 'RulesController@check')->name('rules-check');
+        }
+    );
+
     Route::group([
         'middleware' => ['auth', 'admin'],
         'prefix' => '/adm',

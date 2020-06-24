@@ -229,22 +229,5 @@ class PagesTableSeeder extends Seeder
                 'description' => 'Patcher for save files NFS Underground. Quick way to change TJ uniques set, career progress, money etc.'
             ],
         ]);
-
-        // 14 rules
-        create(Page::class, [
-            'parent_id' => null,
-            'path' => "/rules",
-            'link_en' => "Rules",
-            'link_ru' => "Правила",
-            'title_en' => 'Rules of NFSU Cup',
-            'title_ru' => "Правила турниров NFSU Cup",
-            'content_en' => '<h1 class="text-center">Downloads on NFSU Cup</h1><p style="text-align: left;">Under construction...</p>',
-            'content_ru' => '<h1 class="text-center">Загрузки на NFSU Cup</h1><p style="text-align: left;">Строится еще...</p>',
-            'seo' => [
-                'title' => 'Rules of NFSU Cup',
-                'keywords' => 'rules NFSU Cup, tourneys NFSU Cup, tourney rules NFSU Cup',
-                'description' => 'Rules of tourneys on NFSU Cup.'
-            ],
-        ]);
     }
 }
