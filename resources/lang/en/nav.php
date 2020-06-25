@@ -3,6 +3,7 @@
 return [
     'toggle-nav' => 'Toggle navigation',
     'news' => 'News',
+    'rules' => 'Rules',
     'tourneys' => 'Tourneys',
     'stats' => 'Stats',
     'personal-standings' => 'Personal standings',

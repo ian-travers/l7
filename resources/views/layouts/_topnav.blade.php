@@ -12,7 +12,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ __('nav.news') }}</a>
+                    <a class="nav-link" href="{{ route('rules.rules-show') }}">{{ __('nav.rules') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">{{ __('nav.tourneys') }}</a>
