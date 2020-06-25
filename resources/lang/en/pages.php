@@ -3,7 +3,7 @@
 return [
     'rules' => 'Rules',
     'about' => 'About',
-    'about.cup' => 'NFSU Tourney\'s series' ,
+    'about.cup' => 'NFSU Tourney\'s series',
     'about.server' => 'NFSU Game Server',
     'about.contact' => 'Contact me',
     'about.donate' => 'Donate',

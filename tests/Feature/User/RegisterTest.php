@@ -24,7 +24,7 @@ class RegisterTest extends TestCase
         ];
 
         $this->post('/register', $user)
-            ->assertRedirect('/home');
+            ->assertRedirect('/');
 
         $this->assertEquals(1, User::count());
     }
