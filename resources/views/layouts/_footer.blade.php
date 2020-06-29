@@ -4,7 +4,7 @@
             <a class="nav-link lead py-0" href="{{ route('page', 'about') }}">{{ __('pages.about') }}</a>
             <a class="nav-link ml-3 py-0" href="{{ route('page', 'about/cup') }}">{{ __('pages.about.cup') }}</a>
             <a class="nav-link ml-3 py-0" href="{{ route('page', 'about/server') }}">{{ __('pages.about.server') }}</a>
-            <a class="nav-link ml-3 py-0" href="{{ route('page', 'about/contact') }}">{{ __('pages.about.contact') }}</a>
+            <a class="nav-link ml-3 py-0" href="{{ route('contact.contact-show') }}">{{ __('pages.about.contact') }}</a>
             <a class="nav-link ml-3 py-0" href="{{ route('page', 'about/donate') }}">{{ __('pages.about.donate') }}</a>
         </div>
     </div>

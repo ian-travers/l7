@@ -17,8 +17,8 @@ class PagesTableSeeder extends Seeder
             'link_ru' => 'О проекте',
             'title_en' => 'About',
             'title_ru' => 'О проекте',
-            'content_en' => '<h1 class="text-center"><b>NFSU Cup</b>&nbsp;for whose who like to play</span></h1><h1 class="text-center">Need for Speed Underground online.</h1><p style="text-align: left;">I\'m supporting community where people&nbsp;who consider NFS Underground the best ever game.&nbsp;The release of the game in 2003 made a splash. There were so many people that it was impossible to enter the room. Now is another time ...</p><p style="text-align: left;">More information can be found in the following sections:</p><p style="text-align: left;"><a href="/about/cup" class="link-text-info">About NFSU Cup</a></p><p style="text-align: left;"><a href="/about/server" class="link-text-info">About game server</a></p><p style="text-align: left;">You can also <a href="/about/contact" class="link-text-info">contact me</a> or <a href="/about/donate" class="link-text-info">support</a> the project.</p>',
-            'content_ru' => '<h1 class="text-center"><b>NFSU Cup</b>&nbsp;&mdash; это для тех, кто любит играть</h1><h1 class="text-center">Need for Speed Underground онлайн.</h1><p style="text-align: left;">Я предоставляю возможность гонять онлайн и поддерживаю сообщество людей, для которых NFS Underground не просто старая игра, а незабываемая атмосфера, драйв или просто хорошее воспоминание. Выход этой игры в 2003 был настоящим фурором. На сервере в комнату не войти было, столько народа играло. Сейчас уже другое время...</p><p style="text-align: left;">Немного более информации можно найти:</p><p style="text-align: left;"><a href="/about/cup" class="link-text-info">О NFSU Cup</a></p><p style="text-align: left;"><a href="/about/server" class="link-text-info">О NFSU сервере</a></p><p style="text-align: left;">Можете еще <a href="/about/contact" class="link-text-info">связаться</a> со мной или <a href="/about/donate" class="link-text-info">поддержать</a> проект.</p>',
+            'content_en' => '<h1 class="text-center"><b>NFSU Cup</b>&nbsp;for whose who like to play</span></h1><h1 class="text-center">Need for Speed Underground online.</h1><p style="text-align: left;">I\'m supporting community where people&nbsp;who consider NFS Underground the best ever game.&nbsp;The release of the game in 2003 made a splash. There were so many people that it was impossible to enter the room. Now is another time ...</p><p style="text-align: left;">More information can be found in the following sections:</p><p style="text-align: left;"><a href="/about/cup" class="link-text-info">About NFSU Cup</a></p><p style="text-align: left;"><a href="/about/server" class="link-text-info">About game server</a></p><p style="text-align: left;">You can also <a href="/contact" class="link-text-info">contact me</a> or <a href="/about/donate" class="link-text-info">support</a> the project.</p>',
+            'content_ru' => '<h1 class="text-center"><b>NFSU Cup</b>&nbsp;&mdash; это для тех, кто любит играть</h1><h1 class="text-center">Need for Speed Underground онлайн.</h1><p style="text-align: left;">Я предоставляю возможность гонять онлайн и поддерживаю сообщество людей, для которых NFS Underground не просто старая игра, а незабываемая атмосфера, драйв или просто хорошее воспоминание. Выход этой игры в 2003 был настоящим фурором. На сервере в комнату не войти было, столько народа играло. Сейчас уже другое время...</p><p style="text-align: left;">Немного более информации можно найти:</p><p style="text-align: left;"><a href="/about/cup" class="link-text-info">О NFSU Cup</a></p><p style="text-align: left;"><a href="/about/server" class="link-text-info">О NFSU сервере</a></p><p style="text-align: left;">Можете еще <a href="/contact" class="link-text-info">связаться</a> со мной или <a href="/about/donate" class="link-text-info">поддержать</a> проект.</p>',
             'seo' => [
                 'title' => 'About nfsu-cup.com',
                 'keywords' => 'NFS underground, NFS Underground online',
@@ -60,24 +60,7 @@ class PagesTableSeeder extends Seeder
             ],
         ]);
 
-        // 4 about/contact
-        create(Page::class, [
-            'parent_id' => 1,
-            'path' => '/about/contact',
-            'link_en' => 'Contact me',
-            'link_ru' => 'Контакт',
-            'title_en' => 'Contact me form',
-            'title_ru' => 'Форма для связи с разработчиком',
-            'content_en' => '<h1 class="text-center">Contact me form</h1><p style="text-align: left;">Under construction...</p>',
-            'content_ru' => '<h1 class="text-center">Форма связи с разработчиком</h1><p style="text-align: left;">Строится еще...</p>',
-            'seo' => [
-                'title' => 'Contact NFSU Cup developer',
-                'keywords' => 'NFSU Cup developer, Contact form, NFS underground, NFS Underground online, NFS Underground server',
-                'description' => 'Contact with NFSU Cup developer form'
-            ],
-        ]);
-
-        // 5 about/donate
+        // 4 about/donate
         create(Page::class, [
             'parent_id' => 1,
             'path' => '/about/donate',
@@ -94,7 +77,7 @@ class PagesTableSeeder extends Seeder
             ],
         ]);
 
-        // 6 help
+        // 5 help
         create(Page::class, [
             'parent_id' => null,
             'path' => '/help',
@@ -111,9 +94,9 @@ class PagesTableSeeder extends Seeder
             ],
         ]);
 
-        // 7 help/gameplay
+        // 6 help/gameplay
         create(Page::class, [
-            'parent_id' => 6,
+            'parent_id' => 5,
             'path' => '/help/gameplay',
             'link_en' => 'Gameplay',
             'link_ru' => 'Геймплей',
@@ -128,9 +111,9 @@ class PagesTableSeeder extends Seeder
             ],
         ]);
 
-        // 8 help/faq
+        // 7 help/faq
         create(Page::class, [
-            'parent_id' => 6,
+            'parent_id' => 5,
             'path' => '/help/faq',
             'link_en' => 'Faq',
             'link_ru' => 'FAQ',
@@ -145,7 +128,7 @@ class PagesTableSeeder extends Seeder
             ],
         ]);
 
-        // 9 download
+        // 8 download
         create(Page::class, [
             'parent_id' => null,
             'path' => '/download',
@@ -162,9 +145,9 @@ class PagesTableSeeder extends Seeder
             ],
         ]);
 
-        // 10 download/nfsu
+        // 9 download/nfsu
         create(Page::class, [
-            'parent_id' => 9,
+            'parent_id' => 8,
             'path' => '/download/nfsu',
             'link_en' => 'NFS Underground',
             'link_ru' => 'NFS Underground',
@@ -179,9 +162,9 @@ class PagesTableSeeder extends Seeder
             ],
         ]);
 
-        // 11 download/nfsu-client
+        // 10 download/nfsu-client
         create(Page::class, [
-            'parent_id' => 9,
+            'parent_id' => 8,
             'path' => '/download/nfsu-client',
             'link_en' => 'NFS client',
             'link_ru' => 'NFS клиент',
@@ -196,9 +179,9 @@ class PagesTableSeeder extends Seeder
             ],
         ]);
 
-        // 12 download/nfsu-save
+        // 11 download/nfsu-save
         create(Page::class, [
-            'parent_id' => 9,
+            'parent_id' => 8,
             'path' => '/download/nfsu-save',
             'link_en' => 'NFSU save',
             'link_ru' => 'NFSU сохранение',
@@ -213,9 +196,9 @@ class PagesTableSeeder extends Seeder
             ],
         ]);
 
-        // 13 download/nfsu-save-patcher
+        // 12 download/nfsu-save-patcher
         create(Page::class, [
-            'parent_id' => 9,
+            'parent_id' => 8,
             'path' => '/download/nfsu-save-patcher',
             'link_en' => 'NFSU Save Patcher',
             'link_ru' => 'NFSU Save Patcher',

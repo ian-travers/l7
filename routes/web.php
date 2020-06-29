@@ -55,6 +55,17 @@ Route::group(['middleware' => 'language'], function () {
         }
     );
 
+    Route::group(
+        [
+            'prefix' => 'contact',
+            'as' => 'contact.',
+        ],
+        function () {
+            Route::get('', 'ContactController@create')->name('contact-show');
+            Route::post('', 'ContactController@store')->name('contact-send');
+        }
+    );
+
     Route::group([
         'middleware' => ['auth', 'admin'],
         'prefix' => '/adm',
