@@ -51,8 +51,18 @@ class PagesTableSeeder extends Seeder
             'link_ru' => 'Загрузки',
             'title_en' => 'Downloads on NFSU Cup',
             'title_ru' => 'Файлы для загрузки на NFSU Cup',
-            'content_en' => '<h1 class="text-center">Downloads on NFSU Cup</h1><p style="text-align: left;">Under construction...</p>',
-            'content_ru' => '<h1 class="text-center">Загрузки на NFSU Cup</h1><p style="text-align: left;">Строится еще...</p>',
+            'content_en' => '<h1 class="text-center">Downloads on NFSU Cup</h1>
+<p>There is the page where you will find all of the necessary files to play NFS Underground. Each of them can be downloaded for free. No viruses, no ads. Needed files only. Each download is a zip folder with certain size. Check for size before unzipping.</p>
+<p><a href="/download/nfsu" class="link-text-info">Need for Speed Underground</a>&nbsp;&mdash; the game</p>
+<p><a href="/download/nfsu-client" class="link-text-info">NFSU Client</a>&nbsp;&mdash; client for internet or lan multiplayer</p>
+<p><a href="/download/nfsu-save" class="link-text-info">NFSU Save</a>&nbsp;&mdash; save files</p>
+<p><a href="/download/nfsu-save-patcher" class="link-text-info">NFSU Save patcher</a>&nbsp;&mdash; editor of the save files</p>',
+            'content_ru' => '<h1 class="text-center">Загрузки на NFSU Cup</h1>
+<p>На этой странице вы найдете все необходимое для игры в NFS Underground (включая файлы для игры по интернет / локальной сети). Все указанные ниже загрузки доступные напрямую с сайта, без зеркал, файловых хранилищ и т.п. Не содержат вирусов, рекламы и другой хрени. Только необходимые для игры файлы. Каждая загрузка является zip-архивом определенного размера, указанного в описании. Сверьте размер скачанного архива перед распаковкой.</p>
+<p><a href="/download/nfsu" class="link-text-info">Need for Speed Underground</a>&nbsp;&mdash; игра</p>
+<p><a href="/download/nfsu-client" class="link-text-info">NFSU клиент</a>&nbsp;&mdash; клиент для игры по интернету или сети</p>
+<p><a href="/download/nfsu-save" class="link-text-info">NFSU сохранение</a>&nbsp;&mdash; сохранение</p>
+<p><a href="/download/nfsu-save-patcher" class="link-text-info">NFSU Save patcher</a>&nbsp;&mdash; редактор сохранений</p>',
             'seo' => [
                 'title' => 'Downloads on NFSU Cup',
                 'keywords' => 'download NFSU, download NFSU client, download NFSU save, download NFSU save patcher',
@@ -164,8 +174,42 @@ class PagesTableSeeder extends Seeder
             'link_ru' => 'NFS Underground',
             'title_en' => 'Need for Speed Underground (PC 2003)',
             'title_ru' => 'Need for Speed Underground (PC 2003)',
-            'content_en' => '<h1 class="text-center">Need for Speed Underground (PC 2003) on NFSU Cup</h1><p style="text-align: left;">Under construction...</p>',
-            'content_ru' => '<h1 class="text-center">Need for Speed Underground (PC 2003) на NFSU Cup</h1><p style="text-align: left;">Строится еще...</p>',
+            'content_en' => '<h1 class="text-center">Need for Speed Underground (PC 2003) on NFSU Cup</h1>
+<p class="text-center my-3"><a href="/storage/files/nfsu.zip" class="btn btn-outline-primary w-40"><span class="h2"> Download</span></a></p>
+<div class="d-flex mb-3">
+<div class="w-20">Size</div>
+<div>967,743,249 bytes. (zip folder)</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">Brief</div>
+<div>Need for Speed Underground video game of 2003. Arcade racing.<br>Developed by — EA Black Box (ex Black Box Games).<br>Version: 1.4.<br>Language: english. <br>Features: no-cd, intro video was cut.</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">Setup</div>
+<div>Unzip to desired folder.<br>Create a shortcut wherever you want for executable speed.exe.<br>You can change shortcut icon by the NFSU_icon.ico.<br>The game is ready to start.</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">See also</div>
+<div><a href="/help/gameplay" class="link-text-info">Gameplay</a>, <a href="/help/faq" class="link-text-info">Faq</a>, <a href="/download/nfsu-client" class="link-text-info">NFSU Client</a>.</div>
+</div>',
+            'content_ru' => '<h1 class="text-center">Need for Speed Underground (PC 2003) на NFSU Cup</h1>
+<p class="text-center my-3"><a href="/storage/files/nfsu-client.zip" class="btn btn-outline-primary w-40"><span class="h2">Скачать</span></a></p>
+<div class="d-flex mb-3">
+<div class="w-20">Размер</div>
+<div>967,743,249 байт. (zip архив)</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">Краткое описание</div>
+<div>Need for Speed Underground компьютерная игра 2003 г. Аркадная гонка, автосимулятор.<br>Разработка — EA Black Box (доя 2002 года Black Box Games).<br>Версия: 1.4.<br>Язык: английский.<br>Особенности: no-cd, обрезан вступительный ролик.</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">Установка</div>
+<div>Распаковать архив в любую папку на вашем компьютере.<br>Создать ярлык для запуска файла speed.exe.<br>В свойствах ярлыка сменить значок на NFSU_icon.ico (находится в той же папке, что и speed.exe).<br>Игра готова к запуску.</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">См. также</div>
+<div><a href="/help/gameplay" class="link-text-info">Геймплей</a>, <a href="/help/faq" class="link-text-info">FAQ</a>, <a href="/download/nfsu-client" class="link-text-info">NFSU Клиент</a>.</div>
+</div>',
             'seo' => [
                 'title' => 'Need for Speed Underground (PC 2003)',
                 'keywords' => 'download nfs underground on NFSU Cup, NFS Underground server',
@@ -181,8 +225,44 @@ class PagesTableSeeder extends Seeder
             'link_ru' => 'NFS клиент',
             'title_en' => 'NFS Underground Client',
             'title_ru' => 'NFS Underground клиент',
-            'content_en' => '<h1 class="text-center">NFS Underground Client on NFSU Cup</h1><p style="text-align: left;">Under construction...</p>',
-            'content_ru' => '<h1 class="text-center">NFS Underground клиент на NFSU Cup</h1><p style="text-align: left;">Строится еще...</p>',
+            'content_en' => '
+<h1 class="text-center">NFS Underground Client on NFSU Cup</h1>
+<p class="text-center my-3"><a href="/storage/files/nfsu-client.zip" class="btn btn-outline-primary w-40"><span class="h2">Download</span></a></p>
+<div class="d-flex mb-3">
+<div class="w-20">Size</div>
+<div>45,753 bytes. (zip-folder)</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">Brief</div>
+<div>Utility for Need for Speed Underground multiplayer over internet or local network.<br>Author 3PriedeZ.</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">Setup</div>
+<div>Unzip an any folder. Create a shortcut for executable.</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">See also</div>
+<div><a href="/help/gameplay" class="link-text-info">Gameplay</a>, <a href="/help/faq" class="link-text-info">Faq</a>.</div>
+</div>',
+            'content_ru' => '
+<h1 class="text-center">NFS Underground клиент на NFSU Cup</h1>
+<p class="text-center my-3"><a href="/storage/files/nfsu-client.zip" class="btn btn-outline-primary w-40"><span class="h2">Скачать</span></a></p>
+<div class="d-flex mb-3">
+<div class="w-20">Размер</div>
+<div>45,753 байт. (zip архив)</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">Краткое описание</div>
+<div>Утилита, необходимая для игры в Need for Speed Underground по интернету (локальной сети).<br>Для нормальной работы в Windows 7 и более поздних, возможно, понадобится запускать эту утилиту от имени правами администратора.</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">Установка</div>
+<div>Архив распаковать в любую папку на вашем компьютере. Создать ярлык для запуска файла.</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">См. также</div>
+<div><a href="/help/gameplay" class="link-text-info">Геймплей</a>, <a href="/help/faq" class="link-text-info">FAQ</a>.</div>
+</div>',
             'seo' => [
                 'title' => 'NFS Underground Client',
                 'keywords' => 'download client nfs underground, NFS Underground server, NFS Underground client',
@@ -198,8 +278,47 @@ class PagesTableSeeder extends Seeder
             'link_ru' => 'NFSU сохранение',
             'title_en' => 'NFSU save files',
             'title_ru' => 'NFSU файлы сохранения',
-            'content_en' => '<h1 class="text-center">NFSU save files on NFSU Cup</h1><p style="text-align: left;">Under construction...</p>',
-            'content_ru' => '<h1 class="text-center">NFS Underground файлы сохранения на NFSU Cup</h1><p style="text-align: left;">Строится еще...</p>',
+            'content_en' => '<h1 class="text-center">NFSU save files on NFSU Cup</h1>
+<p class="text-center my-3"><a href="/storage/files/nfsu-save.zip" class="btn btn-outline-primary w-40"><span class="h2">Download</span></a></p>
+<div class="d-flex mb-3">
+<div class="w-20">Size</div>
+<div>9 309 bytes. (zip-folder)</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">Brief</div>
+<div>Savegame profile files by Stox.<br>ГThe Racer from XRT clan (ex RR).<br>All the underground mode events except last are passed.<br>All magazine covers are opened.<br>XRT clan vynils are presented.</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">Setup</div>
+<div>
+ Unzip into:<br><code>c:\Documents and Settings\All Users\Application Data\</code> for Window XP<br><code>c:\Users\All Users\</code> for Windows 7 or later.
+<div class="d-flex alert alert-warning mt-3"><div class="align-self-center"><span class="fa fa-exclamation-circle pr-3">&nbsp;Important!</span></div><div>Backup your profile (folder <span class="text-danger">NFS Underground</span>)<br>before unzipping.</div></div></div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">See also</div>
+<div><a href="/download/nfsu-save-patcher" class="link-text-info">Save patcher</a>, <a href="/help/faq" class="link-text-info">Faq</a>.</div>
+</div>',
+            'content_ru' => '
+<h1 class="text-center">NFS Underground файлы сохранения на NFSU Cup</h1>
+<p class="text-center my-3"><a href="/storage/files/nfsu-save.zip" class="btn btn-outline-primary w-40"><span class="h2">Скачать</span></a></p>
+<div class="d-flex mb-3">
+<div class="w-20">Размер</div>
+<div>9 309 байт. (zip-архив)</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">Краткое описание</div>
+<div>Сохранение игрока по имени Stox.<br>Гонщик из команды XRT (ранее RR).<br>Все события в режиме карьеры, кроме последнего, пройдены.<br>Все обложки журналов открыты.<br>Машина раскрашена в цвета клана XRT.</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">Установка</div>
+<div>
+ Распаковать архив в папку:<br><code>c:\Documents and Settings\All Users\Application Data\</code> для Window XP<br><code>c:\Users\All Users\</code> для Windows 7 и более поздних.
+<div class="d-flex alert alert-warning mt-3"><div class="align-self-center"><span class="fa fa-exclamation-circle pr-3">&nbsp;Важно!</span></div><div>Если вы уже играли в NFS Undergound, то сделайте резервную копию папки<br><span class="text-danger">NFS Underground</span> прежде чем распаковывать файлы из архива.</div></div></div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">См. также</div>
+<div><a href="/download/nfsu-save-patcher" class="link-text-info">Редактор сохранений</a>, <a href="/help/faq" class="link-text-info">FAQ</a>.</div>
+</div>',
             'seo' => [
                 'title' => 'NFSU save files',
                 'keywords' => 'download nfs underground save files, NFS Underground server, NFS Underground career',
@@ -215,8 +334,42 @@ class PagesTableSeeder extends Seeder
             'link_ru' => 'NFSU Save Patcher',
             'title_en' => 'NFSU save files patcher',
             'title_ru' => 'NFSU Save Patcher',
-            'content_en' => '<h1 class="text-center">NFSU Save Patcher on NFSU Cup</h1><p style="text-align: left;">Under construction...</p>',
-            'content_ru' => '<h1 class="text-center">NFSU Save Patcher (редактор сохранений) на NFSU Cup</h1><p style="text-align: left;">Строится еще...</p>',
+            'content_en' => '<h1 class="text-center">NFSU Save Patcher on NFSU Cup</h1>
+<p class="text-center my-3"><a href="/storage/files/nfsu-save-patcher.zip" class="btn btn-outline-primary w-40"><span class="h2">Download</span></a></p>
+<div class="d-flex mb-3">
+<div class="w-20">Size</div>
+<div>167 704 bytes. (zip folder)</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">Brief</div>
+<div>Save Patcher allows you edit NFS Underground savegame files<br>Main feature: update car performance.<br>Features:<br>unlock some items<br>change money<br>change statistics<br>change style points.<br>Author mift0.</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">Setup</div>
+<div>Unzip to any folder.<br>Create a shortcut for executable.</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">See also</div>
+<div><a href="/download/nfsu-save" class="link-text-info">NFSU Save</a>, <a href="/help/faq" class="link-text-info">Faq</a>.</div>
+</div>',
+            'content_ru' => '<h1 class="text-center">NFSU Save Patcher (редактор сохранений) на NFSU Cup</h1>
+<p class="text-center my-3"><a href="/storage/files/nfsu-save-patcher.zip" class="btn btn-outline-primary w-40"><span class="h2">Скачать</span></a></p>
+<div class="d-flex mb-3">
+<div class="w-20">Размер</div>
+<div>167 704 байт. (zip-архив)</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">Краткое описание</div>
+<div>Редактор сохранений NFS Underground.<br>Позволяет открыть трассы, изменинь статистику, количество денег и очков стиля.<br>Главное назначение: менять настройки автомобиля.<br>Автор mift0.</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">Установка</div>
+<div>Архив распаковать в любую папку на вашем компьютере.<br>Создать ярлык для запуска файла.</div>
+</div>
+<div class="d-flex mb-3">
+<div class="w-20">См. также</div>
+<div><a href="/download/nfsu-save" class="link-text-info">NFSU сохрание</a>, <a href="/help/faq" class="link-text-info">FAQ</a>.</div>
+</div>',
             'seo' => [
                 'title' => 'NFSU save files patcher',
                 'keywords' => 'download nfs underground save files patcher, NFS Underground career, NFS Underground tuning',
