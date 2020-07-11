@@ -133,6 +133,7 @@ class Ratings
                 'loses' => $record->$mode->loses,
                 'avg_opps_rating' => $record->$mode->avgOppsRating,
                 'avg_opps_REP' => $record->$mode->avgOppsREP,
+                'wins_percent' => $record->$mode->winsPercent,
                 'disc_percent' => $record->$mode->discPercent,
             ];
         }
