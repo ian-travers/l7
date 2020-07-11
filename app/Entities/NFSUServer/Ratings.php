@@ -48,7 +48,6 @@ class Ratings
      * int OppsRating_Drift;
      * }
      */
-
     const OFFSET_OVERALL = 20;
     const OFFSET_CIRCUIT = 48;
     const OFFSET_SPRINT = 76;

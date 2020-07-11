@@ -30,7 +30,7 @@ class RealServerInfo implements ServerInterface
 
     public function __construct(string $ip = null, string $port = null)
     {
-        $this->ip =  $ip ?: config('nfsu-server.ip');
+        $this->ip = $ip ?: config('nfsu-server.ip');
         $this->port = $port ?: config('nfsu-server.port');
 
         $fp = @fsockopen($this->ip, $this->port, $errno, $errstr, 10);
@@ -47,10 +47,10 @@ class RealServerInfo implements ServerInterface
          * 0|20|1650849|*nix|2.5|NFSU Cup|0|0|0~~~A.GLOBAL|0|[]A.SANDBOX|0|[]B.GLOBAL|0|[]B.SANDBOX|0|[]C.GLOBAL|0|[]C.SANDBOX|0|[]D.GLOBAL|0|[]D.SANDBOX|0|[]E.GLOBAL|0|[]E.SANDBOX|0|[]E.TOURNEY|0|[]F.GLOBAL|0|[]F.SANDBOX|0|[]F.TOURNEY|0|[]G.GLOBAL|0|[]G.SANDBOX|0|[]G.TOURNEY|0|[]H.GLOBAL|0|[]H.SANDBOX|0|[]H.TOURNEY|0|[]
          */
 
-        if ( strlen(trim($this->_serverData)) > 0 ) {
+        if (strlen(trim($this->_serverData)) > 0) {
 
             // Separate Overall server data and Rooms data
-            $data = explode("~~~",$this->_serverData);
+            $data = explode('~~~', $this->_serverData);
             $overall_data = $data[0];
             $rooms_data = $data[1];
 
@@ -73,25 +73,23 @@ class RealServerInfo implements ServerInterface
             $rooms = [];
 
             for ($i = 0; $i < count($arr_rooms); $i++) {
-                $temp_data = explode("[", $arr_rooms[$i]);
-                $room_data = explode("|", $temp_data[0]);
+                $temp_data = explode('[', $arr_rooms[$i]);
+                $room_data = explode('|', $temp_data[0]);
 
                 if (count($room_data) < 2) {
                     $room_data[1] = 0;
                 }
 
-                $room_internal_name = str_replace("\"", "", $room_data[0]);
+                $room_internal_name = str_replace('"', '', $room_data[0]);
                 $room_type = substr($room_internal_name, 0, 1);
                 $room_name = substr($room_internal_name, 2);
                 $room_players_count = $room_data[1];
 
                 $players = [];
 
-                if ((int)$room_data[1] > 0)
-                {
-                    $players_names = explode("|", $temp_data[1]);
-                    for ($j = 0; $j < count($players_names); $j++)
-                    {
+                if ((int)$room_data[1] > 0) {
+                    $players_names = explode('|', $temp_data[1]);
+                    for ($j = 0; $j < count($players_names); $j++) {
                         if (strlen(trim($players_names[$j]))) {
                             $players[] = $players_names[$j];
                         }
@@ -106,31 +104,30 @@ class RealServerInfo implements ServerInterface
                 ];
             }
 
-            foreach ($rooms as $room)
-            {
+            foreach ($rooms as $room) {
                 switch ($room['type']) {
-                    case "A":
+                    case 'A':
                         array_push($this->roomsA, $room);
                         break;
-                    case "B":
+                    case 'B':
                         array_push($this->roomsB, $room);
                         break;
-                    case "C":
+                    case 'C':
                         array_push($this->roomsC, $room);
                         break;
-                    case "D":
+                    case 'D':
                         array_push($this->roomsD, $room);
                         break;
-                    case "E":
+                    case 'E':
                         array_push($this->roomsE, $room);
                         break;
-                    case "F":
+                    case 'F':
                         array_push($this->roomsF, $room);
                         break;
-                    case "G":
+                    case 'G':
                         array_push($this->roomsG, $room);
                         break;
-                    case "H":
+                    case 'H':
                         array_push($this->roomsH, $room);
                         break;
                 }
@@ -180,7 +177,7 @@ class RealServerInfo implements ServerInterface
 
     public function playersInRaces(): ?int
     {
-        return ($this->version >='2') ? (int)$this->playersInRaces : null;
+        return ($this->version >= '2') ? (int)$this->playersInRaces : null;
     }
 
     public function isBanNewRooms(): ?bool
