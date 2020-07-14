@@ -4,34 +4,17 @@ namespace App\Entities\NFSUServer;
 
 class RealServerInfo implements ServerInterface
 {
+    use ServerRoutines;
+
     private $ip;
     private $port;
-    private $isOnline = false;
-
     private $_serverData;
-
-    private $playersCount;
-    private $roomsCount;
-    private $onlineTime;
-    private $platform;
-    private $version;
-    private $name;
-    private $banCheaters;
-    private $playersInRaces;
-    private $banNewRooms;
-    private $roomsA = []; // Ranked Circuit
-    private $roomsB = []; // Ranked Sprint
-    private $roomsC = []; // Ranked Drift
-    private $roomsD = []; // Ranked Drag
-    private $roomsE = []; // Unranked Circuit
-    private $roomsF = []; // Unranked Sprint
-    private $roomsG = []; // Unranked Drift
-    private $roomsH = []; // Unranked Drag
 
     public function __construct(string $ip = null, string $port = null)
     {
         $this->ip = $ip ?: config('nfsu-server.ip');
         $this->port = $port ?: config('nfsu-server.port');
+        $this->isOnline = false;
 
         $fp = @fsockopen($this->ip, $this->port, $errno, $errstr, 10);
         if ($fp) {
@@ -133,95 +116,5 @@ class RealServerInfo implements ServerInterface
                 }
             }
         }
-    }
-
-    public function isOnline(): bool
-    {
-        return $this->isOnline;
-    }
-
-    public function playersCount(): int
-    {
-        return (int)$this->playersCount;
-    }
-
-    public function roomsCount(): int
-    {
-        return (int)$this->roomsCount;
-    }
-
-    public function onlineInSeconds(): int
-    {
-        return $this->onlineTime;
-    }
-
-    public function platform(): string
-    {
-        return $this->platform;
-    }
-
-    public function version(): string
-    {
-        return $this->version;
-    }
-
-    public function name(): string
-    {
-        return $this->name;
-    }
-
-    public function isBanCheaters(): ?bool
-    {
-        return ($this->version >= '2') ? (bool)$this->banCheaters : null;
-    }
-
-    public function playersInRaces(): ?int
-    {
-        return ($this->version >= '2') ? (int)$this->playersInRaces : null;
-    }
-
-    public function isBanNewRooms(): ?bool
-    {
-        return ($this->version >= '2') ? (bool)$this->banNewRooms : null;
-    }
-
-    public function roomsCircuitRanked(): array
-    {
-        return $this->roomsA;
-    }
-
-    public function roomsSprintRanked(): array
-    {
-        return $this->roomsB;
-    }
-
-    public function roomsDriftRanked(): array
-    {
-        return $this->roomsC;
-    }
-
-    public function roomsDragRanked(): array
-    {
-        return $this->roomsD;
-    }
-
-    public function roomsCircuitUnranked(): array
-    {
-        return $this->roomsE;
-    }
-
-    public function roomsSprintUnranked(): array
-    {
-        return $this->roomsF;
-    }
-
-    public function roomsDriftUnranked(): array
-    {
-        return $this->roomsG;
-    }
-
-    public function roomsDragUnranked(): array
-    {
-        return $this->roomsH;
     }
 }
