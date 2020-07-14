@@ -22,42 +22,28 @@ class RankingRecord
 
     public function populateMode(string $mode, string $data, int $offset): void
     {
-        $this->$mode->wins = hexdec(self::str2Hex(substr($data, $offset, 4)));
-        $this->$mode->REP = hexdec(self::str2Hex(substr($data, $offset + 12, 4)));
-        $this->$mode->loses = hexdec(self::str2Hex(substr($data, $offset + 4, 4)));
-        $this->$mode->winsPercent = (hexdec(self::str2Hex(substr($data, $offset, 4)))
-            + hexdec(self::str2Hex(substr($data, $offset + 4, 4)))
-            + hexdec(self::str2Hex(substr($data, $offset + 8, 4)))) == 0
+        $this->$mode->wins = hexdec(NFSUServerHelper::str2Hex(substr($data, $offset, 4)));
+        $this->$mode->REP = hexdec(NFSUServerHelper::str2Hex(substr($data, $offset + 12, 4)));
+        $this->$mode->loses = hexdec(NFSUServerHelper::str2Hex(substr($data, $offset + 4, 4)));
+        $this->$mode->winsPercent = (hexdec(NFSUServerHelper::str2Hex(substr($data, $offset, 4)))
+            + hexdec(NFSUServerHelper::str2Hex(substr($data, $offset + 4, 4)))
+            + hexdec(NFSUServerHelper::str2Hex(substr($data, $offset + 8, 4)))) == 0
             ? '0%' :
-            round((hexdec(self::str2Hex(substr($data, $offset, 4))))
-                / (hexdec(self::str2Hex(substr($data, $offset, 4)))
-                    + hexdec(self::str2Hex(substr($data, $offset + 4, 4)))
-                    + hexdec(self::str2Hex(substr($data, $offset + 8, 4))))
+            round((hexdec(NFSUServerHelper::str2Hex(substr($data, $offset, 4))))
+                / (hexdec(NFSUServerHelper::str2Hex(substr($data, $offset, 4)))
+                    + hexdec(NFSUServerHelper::str2Hex(substr($data, $offset + 4, 4)))
+                    + hexdec(NFSUServerHelper::str2Hex(substr($data, $offset + 8, 4))))
                 * 100) . '%';
-        $this->$mode->discPercent = (hexdec(self::str2Hex(substr($data, $offset, 4)))
-            + hexdec(self::str2Hex(substr($data, $offset + 4, 4)))
-            + hexdec(self::str2Hex(substr($data, $offset + 8, 4)))) == 0
+        $this->$mode->discPercent = (hexdec(NFSUServerHelper::str2Hex(substr($data, $offset, 4)))
+            + hexdec(NFSUServerHelper::str2Hex(substr($data, $offset + 4, 4)))
+            + hexdec(NFSUServerHelper::str2Hex(substr($data, $offset + 8, 4)))) == 0
             ? '0%' :
-            round((hexdec(self::str2Hex(substr($data, $offset + 8, 4))))
-                / (hexdec(self::str2Hex(substr($data, $offset, 4)))
-                    + hexdec(self::str2Hex(substr($data, $offset + 4, 4)))
-                    + hexdec(self::str2Hex(substr($data, $offset + 8, 4))))
+            round((hexdec(NFSUServerHelper::str2Hex(substr($data, $offset + 8, 4))))
+                / (hexdec(NFSUServerHelper::str2Hex(substr($data, $offset, 4)))
+                    + hexdec(NFSUServerHelper::str2Hex(substr($data, $offset + 4, 4)))
+                    + hexdec(NFSUServerHelper::str2Hex(substr($data, $offset + 8, 4))))
                 * 100) . '%';
-        $this->$mode->avgOppsREP = hexdec(self::str2Hex(substr($data, $offset + 16, 4)));
-        $this->$mode->avgOppsRating = hexdec(self::str2Hex(substr($data, $offset + 20, 4)));
-    }
-
-    private static function str2Hex($str): string
-    {
-        $hex = '';
-        for ($i = 3; $i >= 0; $i--) {
-            if (ord($str[$i]) > 15) {
-                $hex .= dechex(ord($str[$i]));
-            } else {
-                $hex .= '0' . dechex(ord($str[$i]));
-            }
-        }
-
-        return $hex;
+        $this->$mode->avgOppsREP = hexdec(NFSUServerHelper::str2Hex(substr($data, $offset + 16, 4)));
+        $this->$mode->avgOppsRating = hexdec(NFSUServerHelper::str2Hex(substr($data, $offset + 20, 4)));
     }
 }
