@@ -197,4 +197,12 @@ footer {
     td {
         border: $table-border-width solid $monitor-border-color;
     }
+
+    thead {
+        th,
+        td {
+            border-bottom-width: 2 * $table-border-width;
+            border-bottom-color: $monitor-border-color;
+        }
+    }
 }

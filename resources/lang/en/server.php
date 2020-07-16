@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'ratings' => 'Ratings',
     'monitor' => 'Monitor',
     'offline' => 'The Server is offline now.',
     'check-back-later' => 'Check back later.',
@@ -14,4 +15,18 @@ return [
     'enabled' => 'enabled',
     'disabled' => 'disabled',
     'online-since' => 'Online since',
+    'overall' => 'Overall',
+    'circuit' => 'Circuit',
+    'sprint' => 'Sprint',
+    'drag' => 'Drag',
+    'drift' => 'Drift',
+    'rating' => 'Rank',
+    'player-name' => 'Username',
+    'REP' => 'Reputation',
+    'wins' => 'Wins',
+    'loses' => 'Loses',
+    'wins-percent' => 'Wins %',
+    'avg-opps-REP' => 'Avg. Opp. REP',
+    'avg-opps-rating' => 'Avg. Opp. Rank',
+    'disconnections-percent' => 'Disconnects',
 ];

@@ -37,7 +37,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item dropdown-nfsu nav-link-nfsu"
                            href="#">{{ __('nav.best-performers') }}</a>
-                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('nav.ratings') }}</a>
+                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="{{ route('server.ratings') }}">{{ __('nav.ratings') }}</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('nav.about') }}</a>
                     </div>

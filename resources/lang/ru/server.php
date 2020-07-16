@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'ratings' => 'Рейтинг',
     'monitor' => 'Монитор',
     'offline' => 'Игровой сервер сейчас не в сети.',
     'check-back-later' => 'Проверьте позже.',
@@ -14,4 +15,18 @@ return [
     'enabled' => 'разрешено',
     'disabled' => 'запрещено',
     'online-since' => 'Онлайн с',
+    'overall' => 'Общий',
+    'circuit' => 'Кольцо',
+    'sprint' => 'Спринт',
+    'drag' => 'Дрэг',
+    'drift' => 'Дрифт',
+    'rating' => 'Рейт',
+    'player-name' => 'Ник',
+    'REP' => 'REP',
+    'wins' => 'Победы',
+    'loses' => 'Поражения',
+    'wins-percent' => 'Победы %',
+    'avg-opps-REP' => 'Ср. REP соп.',
+    'avg-opps-rating' => 'Ср. Рейт соп.',
+    'disconnections-percent' => 'Дисконнекты',
 ];
