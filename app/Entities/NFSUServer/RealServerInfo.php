@@ -2,11 +2,12 @@
 
 namespace App\Entities\NFSUServer;
 
+use Carbon\Carbon;
+
 class RealServerInfo implements ServerInterface
 {
     use ServerRoutines;
 
-    private $ip;
     private $port;
     private $_serverData;
 
@@ -22,6 +23,14 @@ class RealServerInfo implements ServerInterface
             $this->_serverData = fgets($fp);
             $this->initFields();
         }
+    }
+
+    public function onlineTimeForHumans(): string
+    {
+        $d = Carbon::now();
+        $d->subSeconds($this->onlineTime);
+
+        return __('server.online-since') . ' ' . $d->format('d.m.Y' ) . ' (' . $d->longAbsoluteDiffForHumans() . ').';
     }
 
     public function initFields(): void
@@ -45,6 +54,7 @@ class RealServerInfo implements ServerInterface
             $this->platform = $data[3];
             $this->version = $data[4];
             $this->name = $data[5];
+
             if ($this->version == '2.5') {
                 $this->banCheaters = $data[6];
                 $this->playersInRaces = $data[7];

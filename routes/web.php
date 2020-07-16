@@ -57,6 +57,16 @@ Route::group(['middleware' => 'language'], function () {
 
     Route::group(
         [
+            'prefix' => 'server',
+            'as' => 'server.',
+        ],
+        function () {
+            Route::get('monitor', 'NFSUServerController@monitor')->name('monitor');
+        }
+    );
+
+    Route::group(
+        [
             'prefix' => 'contact',
             'as' => 'contact.',
         ],

@@ -33,7 +33,7 @@
                        data-toggle="dropdown">{{ __('nav.game-server') }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu bg-nfsu-cup border border-light">
-                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('nav.monitor') }}</a>
+                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="{{ route('server.monitor') }}">{{ __('nav.monitor') }}</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item dropdown-nfsu nav-link-nfsu"
                            href="#">{{ __('nav.best-performers') }}</a>

@@ -4,6 +4,7 @@ namespace App\Entities\NFSUServer;
 
 trait ServerRoutines
 {
+    private $ip;
     private $isOnline;
     private $playersCount;
     private $roomsCount;
@@ -22,6 +23,11 @@ trait ServerRoutines
     private $roomsF = []; // Unranked Sprint
     private $roomsG = []; // Unranked Drift
     private $roomsH = []; // Unranked Drag
+
+    public function ip()
+    {
+        return $this->ip;
+    }
 
     public function isOnline(): bool
     {

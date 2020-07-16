@@ -173,3 +173,28 @@ footer {
 .radio-wo[type=radio]:checked + img {
     outline: 2px solid $nfsu-game-color;
 }
+
+.ls-2 {
+    letter-spacing: .2em;
+}
+
+.ls-3 {
+    letter-spacing: .3em;
+}
+
+.ls-4 {
+    letter-spacing: .4em;
+}
+
+.ls-5 {
+    letter-spacing: .5em;
+}
+
+.table-bordered-info {
+    border: $table-border-width solid $monitor-border-color;
+
+    th,
+    td {
+        border: $table-border-width solid $monitor-border-color;
+    }
+}
