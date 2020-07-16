@@ -30,7 +30,7 @@ class RealServerInfo implements ServerInterface
         $d = Carbon::now();
         $d->subSeconds($this->onlineTime);
 
-        return __('server.online-since') . ' ' . $d->format('d.m.Y' ) . ' (' . $d->longAbsoluteDiffForHumans() . ').';
+        return __('server.online-since') . ' ' . $d->format('d.m.Y') . ' (' . $d->longAbsoluteDiffForHumans() . ').';
     }
 
     public function initFields(): void

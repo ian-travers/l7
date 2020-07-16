@@ -25,7 +25,7 @@ class FakeServerInfo implements ServerInterface
         $this->banCheaters = true;
         $this->playersInRaces = 5;
         $this->banNewRooms = true;
-        $this->ip ='1.0.0.0';
+        $this->ip = '1.0.0.0';
 
         $players = ['newbie', 'oldie'];
 
@@ -42,6 +42,6 @@ class FakeServerInfo implements ServerInterface
         $d = Carbon::now();
         $d->subSeconds($this->onlineTime);
 
-        return __('server.online-since') . ' ' . $d->format('d.m.Y' ) . ' (' . $d->longAbsoluteDiffForHumans() . ').';
+        return __('server.online-since') . ' ' . $d->format('d.m.Y') . ' (' . $d->longAbsoluteDiffForHumans() . ').';
     }
 }

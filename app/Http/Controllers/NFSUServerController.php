@@ -34,11 +34,11 @@ class NFSUServerController extends Controller
 
     public function bestPerformers()
     {
-
+        //
     }
 
     public function about()
     {
-
+        //
     }
 }
