@@ -160,11 +160,11 @@ class ServerRankingsTest extends TestCase
     }
 
     /** @test */
-    function it_throws_domain_exception_when_invalid_player_name()
+    function it_returns_empty_array_when_unknown_player_name_provided()
     {
-        $this->expectException('DomainException');
-        $this->expectExceptionMessage('Player was not found');
+        $playerInfo = $this->rankings->playerInfo('NOBODY|&');
 
-        $this->rankings->playerInfo('invalid');
+        $this->assertTrue(is_array($playerInfo));
+        $this->assertCount(0, $playerInfo);
     }
 }
