@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'ratings' => 'Рейтинг',
+    'ratings' => 'Рейтинги',
     'monitor' => 'Монитор',
     'offline' => 'Игровой сервер сейчас не в сети.',
     'check-back-later' => 'Проверьте позже.',
@@ -21,7 +21,7 @@ return [
     'drag' => 'Дрэг',
     'drift' => 'Дрифт',
     'rating' => 'Рейт',
-    'player-name' => 'Ник',
+    'player-name' => 'Игрок',
     'REP' => 'REP',
     'wins' => 'Победы',
     'loses' => 'Поражения',
@@ -29,4 +29,6 @@ return [
     'avg-opps-REP' => 'Ср. REP соп.',
     'avg-opps-rating' => 'Ср. Рейт соп.',
     'disconnections-percent' => 'Дисконнекты',
+    'search-placeholder' => 'Поиск игрока...',
+    'player-not-found' => 'На сервере нет информации об игроке: <b>:name</b>',
 ];

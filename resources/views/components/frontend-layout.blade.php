@@ -23,6 +23,7 @@
         @include('layouts._topnav')
     </header>
 
+    @yield('info')
     <flash content="{{ session('flash') }}"></flash>
 
     <main class="py-4">

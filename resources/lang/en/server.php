@@ -29,4 +29,6 @@ return [
     'avg-opps-REP' => 'Avg. Opp. REP',
     'avg-opps-rating' => 'Avg. Opp. Rank',
     'disconnections-percent' => 'Disconnects',
+    'search-placeholder' => 'Search for username...',
+    'player-not-found' => 'Server has no information about username: <b>:name</b>',
 ];

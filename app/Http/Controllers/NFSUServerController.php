@@ -29,7 +29,18 @@ class NFSUServerController extends Controller
         $drift = array_slice($ratings->drift(), 0, 100);
         $drag = array_slice($ratings->drag(), 0, 100);
 
-        return view('frontend.server.ratings', compact('overall', 'circuit', 'sprint', 'drift', 'drag'));
+        $playerInfo = [];
+        if ($username = request('u')) {
+            if (empty($playerInfo = $ratings->playerInfo($username))) {
+                return redirect()->refresh()->with('flash', json_encode([
+                    'type' => 'warning',
+                    'title' => __('flash.warning'),
+                    'message' => __('server.player-not-found', ['name' => $username]),
+                ]));
+            }
+        }
+
+        return view('frontend.server.ratings', compact('overall', 'circuit', 'sprint', 'drift', 'drag', 'playerInfo'));
     }
 
     public function bestPerformers()

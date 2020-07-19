@@ -142,10 +142,14 @@ class Ratings
         return $collection->sortByDesc('REP');
     }
 
-    public function playerInfo(string $name)
+    /**
+     * @param string $name
+     * @return array
+     */
+    public function playerInfo(string $name): array
     {
         if (!$playerRawData = collect($this->rawData)->firstWhere('name', $name)) {
-            throw new DomainException("Player was not found. ({$name})");
+            return [];
         }
 
         $overallRanking = $this->modeRanking('overall');

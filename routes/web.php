@@ -62,7 +62,7 @@ Route::group(['middleware' => 'language'], function () {
         ],
         function () {
             Route::get('monitor', 'NFSUServerController@monitor')->name('monitor');
-            Route::get('ratings', 'NFSUServerController@ratings')->name('ratings');
+            Route::get('ratings', 'NFSUServerController@ratings')->middleware('throttle:12,1')->name('ratings');
         }
     );
 
