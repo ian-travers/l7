@@ -37,7 +37,7 @@ class ServerBestPerformersTest extends TestCase
     function it_returns_empty_array_if_file_does_not_exists()
     {
         $bp = new BestPerformers(__DIR__, $this->trackID); // there should not be "s1001.dat" file
-        $result = $bp->getAll();
+        $result = $bp->rating();
 
         $this->assertTrue(is_array($result));
         $this->assertEmpty($result);
@@ -46,19 +46,19 @@ class ServerBestPerformersTest extends TestCase
     /** @test */
     function it_returns_valid_track_id()
     {
-        $this->assertEquals('1001', $this->bestPerformers->getTrackId());
+        $this->assertEquals('1001', $this->bestPerformers->trackId());
     }
 
     /** @test */
     function it_returns_valid_track_name()
     {
-        $this->assertEquals('Market Street', $this->bestPerformers->getTrackName());
+        $this->assertEquals('Market Street', $this->bestPerformers->trackName());
     }
 
     /** @test */
     function it_returns_array_if_file_exists()
     {
-        $result = $this->bestPerformers->getAll();
+        $result = $this->bestPerformers->rating();
 
         $this->assertTrue(is_array($result));
         $this->assertGreaterThan(0, count($result));
@@ -69,13 +69,48 @@ class ServerBestPerformersTest extends TestCase
     }
 
     /** @test */
+    function it_returns_all_circuit_tracks_info()
+    {
+        $result = $this->bestPerformers->circuits(__DIR__ . '/../../NFSUServerData');
+
+        $this->assertTrue(is_array($result));
+        $this->assertCount(8, $result);
+    }
+
+    /** @test */
+    function it_returns_all_sprint_tracks_info()
+    {
+        $result = $this->bestPerformers->sprints(__DIR__ . '/../../NFSUServerData');
+
+        $this->assertTrue(is_array($result));
+        $this->assertCount(8, $result);
+    }
+
+    /** @test */
+    function it_returns_all_drift_tracks_info()
+    {
+        $result = $this->bestPerformers->drifts(__DIR__ . '/../../NFSUServerData');
+
+        $this->assertTrue(is_array($result));
+        $this->assertCount(8, $result);
+    }
+
+    /** @test */
+    function it_returns_all_drag_tracks_info()
+    {
+        $result = $this->bestPerformers->drags(__DIR__ . '/../../NFSUServerData');
+
+        $this->assertTrue(is_array($result));
+        $this->assertCount(6, $result);
+    }
+
+    /** @test */
     function returned_arrays_are_properly_sorted_for_circuit_tracks()
     {
-        $trackIds = ['1001', '1002', '1003', '1004', '1005', '1006', '1007', '1008'];
+        $circuitRatings = $this->bestPerformers->circuits(__DIR__ . '/../../NFSUServerData');
 
-        foreach ($trackIds as $trackId) {
-            $bp = new BestPerformers(__DIR__ . '/../../NFSUServerData', $trackId);
-            $rating = $bp->getAll();
+        foreach ($circuitRatings as $rating) {
+            ;
             $this->assertLessThanOrEqual((int)$rating[array_key_last($rating)]['score'], (int)$rating[array_key_first($rating)]['score']);
         }
     }
@@ -83,11 +118,10 @@ class ServerBestPerformersTest extends TestCase
     /** @test */
     function returned_arrays_are_properly_sorted_for_sprint_tracks()
     {
-        $trackIds = ['1102', '1103', '1104', '1105', '1106', '1107', '1108', '1109'];
+        $sprintRatings = $this->bestPerformers->sprints(__DIR__ . '/../../NFSUServerData');
 
-        foreach ($trackIds as $trackId) {
-            $bp = new BestPerformers(__DIR__ . '/../../NFSUServerData', $trackId);
-            $rating = $bp->getAll();
+        foreach ($sprintRatings as $rating) {
+            ;
             $this->assertLessThanOrEqual((int)$rating[array_key_last($rating)]['score'], (int)$rating[array_key_first($rating)]['score']);
         }
     }
@@ -95,11 +129,10 @@ class ServerBestPerformersTest extends TestCase
     /** @test */
     function returned_arrays_are_properly_sorted_for_drift_tracks()
     {
-        $trackIds = ['1301', '1302', '1303', '1304', '1305', '1306', '1307', '1308'];
+        $driftRatings = $this->bestPerformers->drifts(__DIR__ . '/../../NFSUServerData');
 
-        foreach ($trackIds as $trackId) {
-            $bp = new BestPerformers(__DIR__ . '/../../NFSUServerData', $trackId);
-            $rating = $bp->getAll();
+        foreach ($driftRatings as $rating) {
+            ;
             $this->assertGreaterThanOrEqual((int)$rating[array_key_last($rating)]['score'], (int)$rating[array_key_first($rating)]['score']);
         }
     }
@@ -107,12 +140,22 @@ class ServerBestPerformersTest extends TestCase
     /** @test */
     function returned_arrays_are_properly_sorted_for_drag_tracks()
     {
-        $trackIds = ['1201', '1202', '1206', '1207', '1210', '1214'];
+        $dragRatings = $this->bestPerformers->drags(__DIR__ . '/../../NFSUServerData');
 
-        foreach ($trackIds as $trackId) {
-            $bp = new BestPerformers(__DIR__ . '/../../NFSUServerData', $trackId);
-            $rating = $bp->getAll();
+        foreach ($dragRatings as $rating) {
+            ;
             $this->assertLessThanOrEqual((int)$rating[array_key_last($rating)]['score'], (int)$rating[array_key_first($rating)]['score']);
         }
     }
+
+//    function returned_arrays_are_properly_sorted_for_drag_tracks()
+//    {
+//        $trackIds = ['1201', '1202', '1206', '1207', '1210', '1214'];
+//
+//        foreach ($trackIds as $trackId) {
+//            $bp = new BestPerformers(__DIR__ . '/../../NFSUServerData', $trackId);
+//            $rating = $bp->trackRating();
+//            $this->assertLessThanOrEqual((int)$rating[array_key_last($rating)]['score'], (int)$rating[array_key_first($rating)]['score']);
+//        }
+//    }
 }

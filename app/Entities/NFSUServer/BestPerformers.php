@@ -14,6 +14,11 @@ class BestPerformers
     private $filename;
     private $rawData = [];
 
+    private $circuitIds = ['1001', '1002', '1003', '1004', '1005', '1006', '1007', '1008'];
+    private $sprintIds = ['1102', '1103', '1104', '1105', '1106', '1107', '1108', '1109'];
+    private $dragIds = ['1201', '1202', '1206', '1207', '1210', '1214'];
+    private $driftIds = ['1301', '1302', '1303', '1304', '1305', '1306', '1307', '1308'];
+
     public function __construct(string $path, string $trackId)
     {
         $spg = new SpecificGameData();
@@ -32,17 +37,17 @@ class BestPerformers
         $this->filename = "{$path}/s{$trackId}.dat";
     }
 
-    public function getTrackId(): string
+    public function trackId(): string
     {
         return $this->trackId;
     }
 
-    public function getTrackName(): string
+    public function trackName(): string
     {
         return $this->tracks[$this->trackId];
     }
 
-    public function getAll(): array
+    public function rating(): array
     {
         return !file_exists($this->filename)
             ? []
@@ -84,5 +89,39 @@ class BestPerformers
         }
 
         return $this->rawData;
+    }
+
+    public function circuits(string $path): array
+    {
+        return $this->modeAllTracks($path, 'circuit');
+    }
+
+    public function sprints(string $path): array
+    {
+        return $this->modeAllTracks($path, 'sprint');
+    }
+
+    public function drifts(string $path): array
+    {
+        return $this->modeAllTracks($path, 'drift');
+    }
+
+    public function drags(string $path): array
+    {
+        return $this->modeAllTracks($path, 'drag');
+    }
+
+    private function modeAllTracks(string $path, string $mode): array
+    {
+        $idsName = $mode . 'Ids';
+
+        $result = [];
+
+        foreach ($this->$idsName as $trackId) {
+            $bp = new self($path, $trackId);
+            $result[$trackId] = $bp->rating();
+        }
+
+        return $result;
     }
 }
