@@ -5,7 +5,7 @@ namespace Tests\Unit\NFSUServer;
 use App\Entities\NFSUServer\Ratings;
 use Tests\TestCase;
 
-class ServerRankingsTest extends TestCase
+class RankingsTest extends TestCase
 {
     public $rankings;
 

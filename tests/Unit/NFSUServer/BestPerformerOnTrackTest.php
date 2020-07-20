@@ -5,7 +5,7 @@ namespace Tests\Unit\NFSUServer;
 use App\Entities\NFSUServer\BestPerformersOnTrack;
 use Tests\TestCase;
 
-class ServerBestPerformerOnTrackTest extends TestCase
+class BestPerformerOnTrackTest extends TestCase
 {
     public $bestPerformer;
     public $testDataPath = __DIR__ . '/../../NFSUServerData';

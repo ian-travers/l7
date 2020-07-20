@@ -6,7 +6,7 @@ use App\Entities\NFSUServer\FakeServerInfo;
 use App\Entities\NFSUServer\RealServerInfo;
 use Tests\TestCase;
 
-class ServerInfoTest extends TestCase
+class InfoTest extends TestCase
 {
     public $server;
 

@@ -5,7 +5,7 @@ namespace Tests\Unit\NFSUServer;
 use App\Entities\NFSUServer\BestPerformers;
 use Tests\TestCase;
 
-class ServerBestPerformersTest extends TestCase
+class BestPerformersTest extends TestCase
 {
     public $bestPerformers;
 
