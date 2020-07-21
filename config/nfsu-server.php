@@ -21,4 +21,15 @@ return [
     |
     */
     'port' => env('NFSU_SERVER_PORT', '10980'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | NFSU Server Data Path
+    |--------------------------------------------------------------------------
+    |
+    | This value is the path to NFSU Server Data Files.
+    | Ratings and Best Performers depends on those files.
+    |
+    */
+    'path' => env('NFSU_SERVER_DATA_PATH'),
 ];

@@ -18,7 +18,7 @@ class NFSUServerController extends Controller
     public function ratings()
     {
         try {
-            $ratings = new Ratings(__DIR__ . '/../../../tests/NFSUServerData/stat.dat');
+            $ratings = new Ratings(config('nfsu-server.path') . '/stat.dat');
         } catch (DomainException $e) {
             return abort(500);
         }
