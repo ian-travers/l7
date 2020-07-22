@@ -18,16 +18,20 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $title_ru
  * @property string $content_en
  * @property string $content_ru
- * @property string|null $seo
+ * @property array|null $seo
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|Page[] $children
  * @property-read int|null $children_count
- * @property-read int $depth
+ * @property-read mixed $content
+ * @property-read mixed $depth
+ * @property-read string|null $link
+ * @property-read string|null $title
  * @property-read Page|null $parent
  * @method static Builder|Page newModelQuery()
  * @method static Builder|Page newQuery()
  * @method static Builder|Page query()
+ * @method static Builder|Page roots()
  * @method static Builder|Page whereContentEn($value)
  * @method static Builder|Page whereContentRu($value)
  * @method static Builder|Page whereCreatedAt($value)
@@ -40,7 +44,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Page whereTitleEn($value)
  * @method static Builder|Page whereTitleRu($value)
  * @method static Builder|Page whereUpdatedAt($value)
- * @method static Builder|Page roots()
  * @mixin \Eloquent
  */
 class Page extends Model
