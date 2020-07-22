@@ -37,6 +37,11 @@ class BestPerformersOnTrack
         return $this->trackId;
     }
 
+    public function isDriftTrack(): bool
+    {
+        return substr($this->trackId, 1, 1) == '3';
+    }
+
     public function trackName(): string
     {
         return $this->tracks[$this->trackId];
@@ -64,6 +69,7 @@ class BestPerformersOnTrack
             array_push($this->rawData, [
                 'name' => $name,
                 'score' => $score,
+                'result_for_humans' => $this->isDriftTrack() ? number_format($score, 0, '', ' ') : $this->toMinSec($score),
                 'car' => $this->cars[$car],
                 'direction' => $this->directions[$direction],
             ]);
@@ -84,5 +90,21 @@ class BestPerformersOnTrack
         }
 
         return $this->rawData;
+    }
+
+    private function toMinSec(int $milliseconds = 0): string
+    {
+        $result = '';
+        if ($milliseconds) {
+            $minutes = floor($milliseconds / 60000);
+            $seconds = floor(($milliseconds - ($minutes * 60000)) / 1000);
+            $mseconds = $milliseconds % 1000;
+
+            $minutes ? $result .= (string)$minutes . ':' : null;
+            $seconds < 10 ? $result .= '0' . (string)$seconds . '.' : $result .= (string)$seconds . '.';
+            $mseconds < 100 ? ($mseconds ? $result .= '0' . (string)$mseconds : $result .= '000') : $result .= (string)$mseconds;
+        }
+
+        return substr($result, 0, strlen($result) - 1);
     }
 }

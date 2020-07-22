@@ -31,4 +31,9 @@ return [
     'disconnections-percent' => 'Дисконнекты',
     'search-placeholder' => 'Поиск игрока...',
     'player-not-found' => 'На сервере нет информации об игроке: <b>:name</b>',
+    'time' => 'Время',
+    'score' => 'Очки',
+    'car' => 'Машина',
+    'direction' => 'Направление',
+    'track-info-empty' => 'На сервере нет информации о результатах заездов по этому треку.',
 ];

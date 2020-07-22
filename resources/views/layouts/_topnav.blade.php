@@ -33,11 +33,13 @@
                        data-toggle="dropdown">{{ __('nav.game-server') }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu bg-nfsu-cup border border-light">
-                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="{{ route('server.monitor') }}">{{ __('nav.monitor') }}</a>
+                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu"
+                           href="{{ route('server.monitor') }}">{{ __('nav.monitor') }}</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item dropdown-nfsu nav-link-nfsu"
-                           href="#">{{ __('nav.best-performers') }}</a>
-                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="{{ route('server.ratings') }}">{{ __('nav.ratings') }}</a>
+                           href="{{ route('server.best-performers') }}">{{ __('nav.best-performers') }}</a>
+                        <a class="dropdown-item dropdown-nfsu nav-link-nfsu"
+                           href="{{ route('server.ratings') }}">{{ __('nav.ratings') }}</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="#">{{ __('nav.about') }}</a>
                     </div>
@@ -71,7 +73,8 @@
 
                             @if(auth()->user()->hasAvatar())
 
-                                <img src="{{ asset(auth()->user()->avatar_path) }}" class="rounded-circle mr-1" width="30"
+                                <img src="{{ asset(auth()->user()->avatar_path) }}" class="rounded-circle mr-1"
+                                     width="30"
                                      height="30">
 
                             @endif

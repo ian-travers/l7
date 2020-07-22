@@ -31,4 +31,9 @@ return [
     'disconnections-percent' => 'Disconnects',
     'search-placeholder' => 'Search for username...',
     'player-not-found' => 'Server has no information about username: <b>:name</b>',
+    'time' => 'time',
+    'score' => 'Score',
+    'car' => 'Car',
+    'direction' => 'Direction',
+    'track-info-empty' => 'Server has no information about this track.',
 ];

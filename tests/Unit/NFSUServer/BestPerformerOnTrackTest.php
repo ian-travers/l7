@@ -57,6 +57,17 @@ class BestPerformerOnTrackTest extends TestCase
     }
 
     /** @test */
+    function it_checks_is_drift()
+    {
+        $this->assertFalse($this->bestPerformer->isDriftTrack());
+
+        $driftTrackBestPerformers = new BestPerformersOnTrack($this->testDataPath, '1301');
+
+        $this->assertTrue($driftTrackBestPerformers->isDriftTrack());
+
+    }
+
+    /** @test */
     function it_returns_array_if_file_exists()
     {
         $result = $this->bestPerformer->rating();

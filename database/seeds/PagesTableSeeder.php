@@ -318,7 +318,7 @@ class PagesTableSeeder extends Seeder
 <div class="w-20">Установка</div>
 <div>
  Распаковать архив в папку:<br><code>c:\Documents and Settings\All Users\Application Data\</code> для Window XP<br><code>c:\Users\All Users\</code> для Windows 7 и более поздних.
-<div class="d-flex alert alert-warning mt-3"><div class="align-self-center"><span class="fa fa-exclamation-circle pr-3">&nbsp;Важно!</span></div><div>Если вы уже играли в NFS Undergound, то сделайте резервную копию папки<br><span class="text-danger">NFS Underground</span> прежде чем распаковывать файлы из архива.</div></div></div>
+<div class="d-flex alert alert-warning mt-3"><div class="align-self-center"><span class="fa fa-exclamation-circle pr-3">&nbsp;Важно!</span></div><div>Если вы уже играли в NFS Underground, то сделайте резервную копию папки<br><span class="text-danger">NFS Underground</span> прежде чем распаковывать файлы из архива.</div></div></div>
 </div>
 <div class="d-flex mb-3">
 <div class="w-20">См. также</div>

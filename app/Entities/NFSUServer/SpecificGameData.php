@@ -50,16 +50,16 @@ class SpecificGameData
             '1102' => 'Liberty Gardens',
             '1103' => 'Broadway',
             '1104' => 'Lock Up',
-            '1105' => '9<sup>th</sup> Frey',
+            '1105' => '9th Frey',
             '1106' => 'Bedard Bridge',
             '1107' => 'Spillway',
-            '1108' => '1<sup>st</sup> Ave. Truck Stop',
-            '1109' => '7<sup>th</sup> Sparling',
-            '1201' => '14<sup>th</sup> and Vine Construction',
+            '1108' => '1st Ave. Truck Stop',
+            '1109' => '7th Sparling',
+            '1201' => '14th and Vine Construction',
             '1202' => 'Highway 1',
             '1206' => 'Main Street',
             '1207' => 'Commercial',
-            '1210' => '14<sup>th</sup> and Vine',
+            '1210' => '14th and Vine',
             '1214' => 'Main Street Construction',
             '1301' => 'Drift Track 1',
             '1302' => 'Drift Track 2',
@@ -106,5 +106,25 @@ class SpecificGameData
         return array_key_exists($index, $this->tracks)
             ? $this->tracks[$index]
             : 'Unknown track';
+    }
+
+    public function tracksCircuit(): array
+    {
+        return array_slice($this->tracks, 0, 8);
+    }
+
+    public function tracksSprint(): array
+    {
+        return array_slice($this->tracks, 8, 8);
+    }
+
+    public function tracksDrag(): array
+    {
+        return array_slice($this->tracks, 16, 6);
+    }
+
+    public function tracksDrift(): array
+    {
+        return array_slice($this->tracks, 22);
     }
 }

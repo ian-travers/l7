@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\NFSUServer\BestPerformers;
 use App\Entities\NFSUServer\Ratings;
 use App\Entities\NFSUServer\RealServerInfo;
+use App\Entities\NFSUServer\SpecificGameData;
 use DomainException;
 
 class NFSUServerController extends Controller
@@ -45,7 +47,13 @@ class NFSUServerController extends Controller
 
     public function bestPerformers()
     {
-        //
+        $bp = new BestPerformers(config('nfsu-server.path'));
+
+        $allTracks = $bp->all();
+
+        $sgd = new SpecificGameData();
+
+        return view('frontend.server.best-performers', compact('allTracks', 'sgd'));
     }
 
     public function about()
