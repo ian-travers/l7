@@ -2,11 +2,14 @@
 
 namespace App\Entities;
 
+use App\Entities\Blog\Post\Post;
+use DomainException;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use InvalidArgumentException;
 use Storage;
 use Str;
 
@@ -30,6 +33,8 @@ use Str;
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Blog\Post\Post[] $posts
+ * @property-read int|null $posts_count
  * @method static Builder|User newModelQuery()
  * @method static Builder|User newQuery()
  * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
@@ -91,11 +96,11 @@ class User extends Authenticatable
     public function changeRole($role): void
     {
         if (!array_key_exists($role, self::rolesList())) {
-            throw new \InvalidArgumentException('Неизвестная роль "' . $role . '"');
+            throw new InvalidArgumentException('Unknown role "' . $role . '"');
         }
 
         if ($this->role === $role) {
-            throw new \DomainException('Эта роль уже назначена');
+            throw new DomainException('This role has already been assigned');
         }
 
         $this->update(['role' => $role]);
@@ -158,5 +163,10 @@ class User extends Authenticatable
         }
 
         return false;
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'author_id');
     }
 }

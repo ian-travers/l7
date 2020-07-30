@@ -64,3 +64,24 @@ Breadcrumbs::for('admin.pages.edit', function (BreadcrumbsGenerator $trail, Page
     $trail->parent('admin.pages.show', $page);
     $trail->push(__('backend.edit-page'), route('admin.pages.edit', $page));
 });
+
+// User Posts
+Breadcrumbs::for('user.posts', function (BreadcrumbsGenerator $trail) {
+    $trail->parent('root');
+    $trail->push(__('user.posts'), route('user.posts'));
+});
+
+Breadcrumbs::for('user.posts.create', function (BreadcrumbsGenerator $trail) {
+    $trail->parent('user.posts');
+    $trail->push(__('post.new-post'));
+});
+
+//Breadcrumbs::for('user.show', function (BreadcrumbsGenerator $trail, Post $post) {
+//    $trail->parent('user.posts');
+//    $trail->push(__('user.show-post'), route('user.show', $post));
+//});
+
+//Breadcrumbs::for('user.edit', function (BreadcrumbsGenerator $trail, Post $post) {
+//    $trail->parent('user.show', $post);
+//    $trail->push(__('user.edit-page'), route('user.posts.edit', $post));
+//});

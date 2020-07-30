@@ -15,5 +15,11 @@ class ComposerServiceProvider extends ServiceProvider
 
             return $view->with(compact('controller', 'action'));
         });
+
+        view()->composer('components.user-left-menu', function (View $view) {
+            [$controller, $action] = explode('@', class_basename(Route::getCurrentRoute()->action['controller']));
+
+            return $view->with(compact('controller', 'action'));
+        });
     }
 }

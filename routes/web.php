@@ -33,6 +33,20 @@ Route::group(['middleware' => 'language'], function () {
 
     Route::group(
         [
+            'prefix' => 'user',
+            'as' => 'user.',
+            'namespace' => 'User',
+            'middleware' => ['auth'],
+        ],
+        function () {
+            Route::get('/posts', 'PostsController@index')->name('posts');
+            Route::get('/posts/create', 'PostsController@create')->name('posts.create');
+            Route::post('/posts', 'PostsController@store')->name('posts.store');
+        }
+    );
+
+    Route::group(
+        [
             'prefix' => 'tests',
             'as' => 'tests.',
             'namespace' => 'Tests',
