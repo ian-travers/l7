@@ -1,0 +1,50 @@
+@php /* @var App\Entities\Blog\Post\Post $post */ @endphp
+
+<div class="form-group">
+    <label for="title">{{ __('user.post-title') }}</label>
+    <input type="text" id="title" name="title" value="{{ old('title', $post->title) }}"
+           class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" autofocus>
+    @if($errors->has('title'))
+        <div class="invalid-feedback">
+            <strong>{{ $errors->first('title') }}</strong>
+        </div>
+    @endif
+</div>
+
+<div class="form-group">
+    <label for="excerpt">{{ __('user.post-excerpt') }}</label>
+    <textarea id="excerpt" name="excerpt" class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}">
+        {{ old('excerpt', $post->excerpt) }}
+    </textarea>
+    @if($errors->has('excerpt'))
+        <div class="invalid-feedback">
+            <strong>{{ $errors->first('excerpt') }}</strong>
+        </div>
+    @endif
+</div>
+
+<div class="form-group">
+    <label for="body">{{ __('user.post-body') }}</label>
+    <textarea id="body" name="body" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}" rows="6">
+        {{ old('body', $post->body) }}
+    </textarea>
+    @if($errors->has('body'))
+        <div class="invalid-feedback">
+            <strong>{{ $errors->first('body') }}</strong>
+        </div>
+    @endif
+</div>
+
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            let locale = "{{ language()->getLongCode() }}";
+            console.log(locale);
+            $('#body').summernote({
+                height: 250,
+                minHeight: 150,
+                lang: locale,
+            });
+        });
+    </script>
+@endsection

@@ -9,20 +9,17 @@ use Illuminate\Validation\ValidationException;
 
 class PostsController extends Controller
 {
-    /**
-     * @var User
-     */
-    private $user;
-
     public function __construct()
     {
         $this->middleware('auth');
-        $this->user = auth()->user();
     }
 
     public function index()
     {
-        $posts = Post::paginate(20);
+        /** @var User $user */
+        $user = auth()->user();
+
+        $posts = $user->posts()->latest()->paginate(6);
 
         return view('frontend.user.posts.index', compact('posts'));
     }
@@ -38,9 +35,16 @@ class PostsController extends Controller
      */
     public function store()
     {
-        $this->user->posts()->create($this->validateRequest());
+        /** @var User $user */
+        $user = auth()->user();
 
-        return 'post store';
+        $user->posts()->create($this->validateRequest());
+
+        return redirect()->route('user.posts')->with('flash', json_encode([
+            'type' => 'success',
+            'title' => __('flash.success'),
+            'message' => __('flash.post-saved'),
+        ]));
     }
 
     /**
@@ -49,15 +53,13 @@ class PostsController extends Controller
      */
     private function validateRequest()
     {
-        return $this->validate(request(), [
+        $formData =  $this->validate(request(), [
             'title' => 'required|string|max:255',
             'excerpt' => 'required',
             'body' => 'required',
             'image' => 'nullable',
-            'published_at' => 'nullable',
-            'deleted_at' => 'nullable',
-            'slug' => 'nullable',
-            'view_count' => 'nullable',
         ]);
+
+        return $formData + ['slug' => $formData['title']];
     }
 }
