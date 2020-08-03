@@ -1,4 +1,4 @@
-<x-user-layout :title="__('post.index')">
+<x-user-layout :title="__('user.posts')">
     <div class="card">
         <div class="card-header">
             <span class="h2 d-block">{{ __('user.posts') }}</span>

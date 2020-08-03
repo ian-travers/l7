@@ -210,3 +210,16 @@ footer {
 .form-control.is-info {
     border-color: $monitor-border-color;
 }
+
+#image-upload {
+    display: none;
+}
+
+.hint {
+    font-size: .6rem;
+}
+
+.required-field:after {
+    content: " *";
+    color: red;
+}

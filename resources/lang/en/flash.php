@@ -19,4 +19,7 @@ return [
     'page-saved' => 'Page has been saved',
     'page-updated' => 'Page has been updated',
     'page-deleted' => 'Page has been deleted',
+    'post-saved' => 'Post has been saved',
+    'post-updated' => 'Post has been updated',
+    'post-deleted' => 'Post has been deleted',
 ];

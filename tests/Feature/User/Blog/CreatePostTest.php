@@ -4,6 +4,7 @@ namespace Tests\Feature\User;
 
 use App\Entities\Blog\Post\Post;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\Response;
 use Tests\TestCase;
 
 class CreatePostTest extends TestCase
@@ -19,7 +20,7 @@ class CreatePostTest extends TestCase
         $post = make(Post::class);
 
         $this->post('/user/posts', $post->toArray())
-            ->assertOk();
+            ->assertStatus(Response::HTTP_FOUND);
 
         $this->assertDatabaseHas('posts', $post->toArray());
     }
@@ -33,14 +34,14 @@ class CreatePostTest extends TestCase
         $post = make(Post::class, ['title' => 'The same title']);
 
         $this->post('/user/posts', $post->toArray())
-            ->assertOk();
+            ->assertStatus(Response::HTTP_FOUND);
         $this->assertDatabaseHas('posts', $post->toArray());
 
         /** @var Post $anotherPost */
         $anotherPost = make(Post::class, ['title' => 'The same title']);
 
         $this->post('/user/posts', $anotherPost->toArray())
-            ->assertOk();
+            ->assertStatus(Response::HTTP_FOUND);
 
         $anotherPost = Post::find(2);
 

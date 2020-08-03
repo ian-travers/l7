@@ -73,7 +73,7 @@ Breadcrumbs::for('user.posts', function (BreadcrumbsGenerator $trail) {
 
 Breadcrumbs::for('user.posts.create', function (BreadcrumbsGenerator $trail) {
     $trail->parent('user.posts');
-    $trail->push(__('post.new-post'));
+    $trail->push(__('user.create-post'));
 });
 
 //Breadcrumbs::for('user.show', function (BreadcrumbsGenerator $trail, Post $post) {

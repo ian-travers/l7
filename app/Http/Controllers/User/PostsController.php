@@ -6,6 +6,7 @@ use App\Entities\Blog\Post\Post;
 use App\Entities\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
+use Str;
 
 class PostsController extends Controller
 {
@@ -18,6 +19,8 @@ class PostsController extends Controller
     {
         /** @var User $user */
         $user = auth()->user();
+
+        dd('index');
 
         $posts = $user->posts()->latest()->paginate(6);
 
@@ -38,7 +41,19 @@ class PostsController extends Controller
         /** @var User $user */
         $user = auth()->user();
 
-        $user->posts()->create($this->validateRequest());
+        $formData = $this->validateRequest();
+
+//        dd($formData);
+
+        $user->posts()->create([
+            'title' => $formData['title'],
+            'slug' => Str::slug($formData['title']),
+            'excerpt' => $formData['excerpt'],
+            'body' => $formData['body'],
+            'image' => $formData['image'] ? $formData['image']->store('blogs', 'public') : null,
+        ]);
+
+//        dd('12300');
 
         return redirect()->route('user.posts')->with('flash', json_encode([
             'type' => 'success',
@@ -53,11 +68,11 @@ class PostsController extends Controller
      */
     private function validateRequest()
     {
-        $formData =  $this->validate(request(), [
+        $formData = $this->validate(request(), [
             'title' => 'required|string|max:255',
             'excerpt' => 'required',
             'body' => 'required',
-            'image' => 'nullable',
+            'image' => 'nullable|image',
         ]);
 
         return $formData + ['slug' => $formData['title']];
