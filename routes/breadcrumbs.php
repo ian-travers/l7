@@ -1,5 +1,6 @@
 <?php
 
+use App\Entities\Blog\Post\Post;
 use App\Entities\Page\Page;
 use App\Entities\Test\TestQuestion;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
@@ -76,12 +77,7 @@ Breadcrumbs::for('user.posts.create', function (BreadcrumbsGenerator $trail) {
     $trail->push(__('user.create-post'));
 });
 
-//Breadcrumbs::for('user.show', function (BreadcrumbsGenerator $trail, Post $post) {
-//    $trail->parent('user.posts');
-//    $trail->push(__('user.show-post'), route('user.show', $post));
-//});
-
-//Breadcrumbs::for('user.edit', function (BreadcrumbsGenerator $trail, Post $post) {
-//    $trail->parent('user.show', $post);
-//    $trail->push(__('user.edit-page'), route('user.posts.edit', $post));
-//});
+Breadcrumbs::for('user.posts.edit', function (BreadcrumbsGenerator $trail, Post $post) {
+    $trail->parent('user.posts');
+    $trail->push(__('user.edit-page'), route('user.posts.edit', $post));
+});

@@ -4,6 +4,7 @@ return [
     'sections' => 'Sections',
     'tourneys' => 'Tourneys',
     'posts' => 'Blog posts',
+    'required-fields' => 'required fields',
     'create-post' => 'Create post',
     'edit-post' => 'Edit post',
     'show-post' => 'Show post',

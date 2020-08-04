@@ -12,6 +12,13 @@ class CreatePostTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    function guest_can_not_see_create_post_page()
+    {
+        $this->get(route('user.posts.create'))
+            ->assertRedirect(route('login'));
+    }
+
+    /** @test */
     function user_can_create_a_post()
     {
         $this->signIn();
@@ -47,5 +54,35 @@ class CreatePostTest extends TestCase
 
         $this->assertDatabaseHas('posts', $anotherPost->getAttributes());
         $this->assertNotEquals($post->slug, $anotherPost->slug);
+    }
+
+    /** @test */
+    function post_requires_a_title()
+    {
+        $this->preparePost(['title' => null])
+            ->assertSessionHasErrors('title');
+    }
+
+    /** @test */
+    function post_requires_an_excerpt()
+    {
+        $this->preparePost(['excerpt' => null])
+            ->assertSessionHasErrors('excerpt');
+    }
+
+    /** @test */
+    function post_requires_a_body()
+    {
+        $this->preparePost(['body' => null])
+            ->assertSessionHasErrors('body');
+    }
+
+    protected function preparePost(array $overrides = [])
+    {
+        $this->signIn();
+
+        $post = make(Post::class, $overrides);
+
+        return $this->post(route('user.posts.store'), $post->toArray());
     }
 }

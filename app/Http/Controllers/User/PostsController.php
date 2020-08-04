@@ -20,8 +20,6 @@ class PostsController extends Controller
         /** @var User $user */
         $user = auth()->user();
 
-        dd('index');
-
         $posts = $user->posts()->latest()->paginate(6);
 
         return view('frontend.user.posts.index', compact('posts'));
@@ -43,22 +41,50 @@ class PostsController extends Controller
 
         $formData = $this->validateRequest();
 
-//        dd($formData);
-
         $user->posts()->create([
             'title' => $formData['title'],
             'slug' => Str::slug($formData['title']),
             'excerpt' => $formData['excerpt'],
             'body' => $formData['body'],
-            'image' => $formData['image'] ? $formData['image']->store('blogs', 'public') : null,
+            'image' => isset($formData['image']) ? $formData['image']->store('blogs', 'public') : null,
         ]);
-
-//        dd('12300');
 
         return redirect()->route('user.posts')->with('flash', json_encode([
             'type' => 'success',
             'title' => __('flash.success'),
             'message' => __('flash.post-saved'),
+        ]));
+    }
+
+    public function edit(Post $post)
+    {
+        return view('frontend.user.posts.edit', ['post' => $post]);
+    }
+
+    /**
+     * @param Post $post
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws ValidationException
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function update(Post $post)
+    {
+        $this->authorize('update', $post);
+
+        $formData = $this->validateRequest();
+
+        $post->update([
+            'title' => $formData['title'],
+            'slug' => Str::slug($formData['title']),
+            'excerpt' => $formData['excerpt'],
+            'body' => $formData['body'],
+            'image' => isset($formData['image']) ? $formData['image']->store('blogs', 'public') : null,
+        ]);
+
+        return redirect()->route('user.posts')->with('flash', json_encode([
+            'type' => 'success',
+            'title' => __('flash.success'),
+            'message' => __('flash.post-updated'),
         ]));
     }
 

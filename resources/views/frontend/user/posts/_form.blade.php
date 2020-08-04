@@ -15,9 +15,7 @@
 
         <div class="form-group">
             <label for="excerpt" class="required-field">{{ __('user.post-excerpt') }}</label>
-            <textarea id="excerpt" name="excerpt" class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}">
-        {{ old('excerpt', $post->excerpt) }}
-    </textarea>
+            <textarea id="excerpt" name="excerpt" class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}">{{ old('excerpt', $post->excerpt) }}</textarea>
             @if($errors->has('excerpt'))
                 <div class="invalid-feedback">
                     <strong>{{ $errors->first('excerpt') }}</strong>
@@ -37,9 +35,7 @@
 
 <div class="form-group">
     <label for="body" class="required-field">{{ __('user.post-body') }}</label>
-    <textarea id="body" name="body" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}" rows="6">
-        {{ old('body', $post->body) }}
-    </textarea>
+    <textarea id="body" name="body" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}" rows="6">{{ old('body', $post->body) }}</textarea>
     @if($errors->has('body'))
         <div class="invalid-feedback">
             <strong>{{ $errors->first('body') }}</strong>

@@ -11,7 +11,9 @@
     <tbody>
     @foreach($posts as $post)
         <tr>
-        <td></td>
+        <td class="text-center">
+            <a href="{{ route('user.posts.edit', $post) }}" class="btn btn-sm btn-outline-primary fa fa-edit" title="{{ __('misc.edit') }}"></a>
+        </td>
         <td>{{ $post->title }}</td>
         <td>{{ $post->excerpt }}</td>
         </tr>
