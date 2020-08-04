@@ -85,8 +85,8 @@ class Post extends Model
 
     public function setSlugAttribute($value)
     {
-        $this->attributes['slug'] = Post::firstWhere('slug', $value)
-            ? Str::slug(trim($this->title)) . '_' . Str::random(2)
+        $this->attributes['slug'] = static::firstWhere('slug', $value)
+            ? Str::slug(trim($this->title)) . '-' . $this->id
             : Str::slug(trim($this->title));
     }
 }
