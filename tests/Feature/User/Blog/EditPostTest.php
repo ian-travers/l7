@@ -20,17 +20,17 @@ class EditPostTest extends TestCase
     }
 
     /** @test */
-    function unauthorized_users_may_not_update_posts()
-    {
-        $post = $this->preparePost();
-
-        $this->signIn();
-
-        $this->patch(route('user.posts.update', $post), [
-            'title' => 'New title',
-            'body' => 'New body'
-        ])->assertStatus(Response::HTTP_FORBIDDEN);
-    }
+//    function unauthorized_users_may_not_update_posts()
+//    {
+//        $post = $this->preparePost();
+//
+//        $this->signIn();
+//
+//        $this->patch(route('user.posts.update', $post), [
+//            'title' => 'New title',
+//            'body' => 'New body'
+//        ])->assertStatus(Response::HTTP_FORBIDDEN);
+//    }
 
     /** @test */
     function author_can_edit_own_post()
