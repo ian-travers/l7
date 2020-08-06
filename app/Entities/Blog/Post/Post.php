@@ -4,9 +4,9 @@ namespace App\Entities\Blog\Post;
 
 use App\Entities\Blog\Tag;
 use App\Entities\User;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Storage;
 use Str;
 
 /**
@@ -27,25 +27,27 @@ use Str;
  * @property-read \App\Entities\User $author
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Blog\Tag[] $tags
  * @property-read int|null $tags_count
- * @method static Builder|Post newModelQuery()
- * @method static Builder|Post newQuery()
- * @method static \Illuminate\Database\Query\Builder|Post onlyTrashed()
- * @method static Builder|Post query()
- * @method static Builder|Post whereAuthorId($value)
- * @method static Builder|Post whereBody($value)
- * @method static Builder|Post whereCreatedAt($value)
- * @method static Builder|Post whereDeletedAt($value)
- * @method static Builder|Post whereExcerpt($value)
- * @method static Builder|Post whereId($value)
- * @method static Builder|Post whereImage($value)
- * @method static Builder|Post wherePublishedAt($value)
- * @method static Builder|Post whereSlug($value)
- * @method static Builder|Post whereTitle($value)
- * @method static Builder|Post whereUpdatedAt($value)
- * @method static Builder|Post whereViewsCount($value)
- * @method static \Illuminate\Database\Query\Builder|Post withTrashed()
- * @method static \Illuminate\Database\Query\Builder|Post withoutTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post newQuery()
+ * @method static \Illuminate\Database\Query\Builder|\App\Entities\Blog\Post\Post onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post whereAuthorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post whereExcerpt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post whereViewsCount($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Entities\Blog\Post\Post withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Entities\Blog\Post\Post withoutTrashed()
  * @mixin \Eloquent
+ * @noinspection PhpFullyQualifiedNameUsageInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
  */
 class Post extends Model
 {
@@ -81,6 +83,21 @@ class Post extends Model
         }
 
         $this->tags()->sync($tagIds);
+    }
+
+    public function hasImage(): bool
+    {
+        return (bool)$this->image;
+    }
+
+    public function withoutImage(): void
+    {
+        if ($this->hasImage()) {
+            Storage::disk('public')->delete($this->image);
+            $this->update([
+                'image' => null,
+            ]);
+        }
     }
 
     public function setSlugAttribute($value)
