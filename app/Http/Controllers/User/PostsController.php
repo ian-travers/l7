@@ -103,6 +103,11 @@ class PostsController extends Controller
         $post->withoutImage();
     }
 
+    public function remove(Post $post)
+    {
+        return $post->getAttributes();
+    }
+
     /**
      * @return array
      * @throws ValidationException

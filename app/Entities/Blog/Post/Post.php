@@ -100,6 +100,11 @@ class Post extends Model
         }
     }
 
+    public function imageUrl(): ?string
+    {
+        return $this->image ? asset($this->image) : null;
+    }
+
     public function setSlugAttribute($value)
     {
         $this->attributes['slug'] = static::firstWhere('slug', $value)
