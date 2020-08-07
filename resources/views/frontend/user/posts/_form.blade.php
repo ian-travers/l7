@@ -29,6 +29,11 @@
             button_caption="{{ __('user.select-image') }}"
             remove="{{ __('user.remove-image') }}"
             hint="{{ __('user.image-hint') }}"
+            initial_image="{{ $post->image ? asset($post->image) : null }}"
+            post_id="{{ $post->id }}"
+            caution="{{ __('user.caution') }}"
+            save_warning="{{ __('user.save-warning') }}"
+            remove_image_question="{{ __('user.remove-image-question') }}"
         ></image-upload>
     </div>
 </div>

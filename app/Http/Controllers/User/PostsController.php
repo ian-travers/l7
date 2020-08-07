@@ -72,13 +72,23 @@ class PostsController extends Controller
         $this->authorize('update', $post);
 
         $formData = $this->validateRequest();
+//        dd($formData);
+
+        $imageFilename = isset($formData['image']) ? $formData['image']->store('blogs', 'public') : null;
+
+        if ($imageFilename) {
+            $post->withoutImage();
+            $post->update([
+                'image' => $imageFilename,
+            ]);
+
+        }
 
         $post->update([
             'title' => $formData['title'],
             'slug' => Str::slug($formData['title']),
             'excerpt' => $formData['excerpt'],
             'body' => $formData['body'],
-            'image' => isset($formData['image']) ? $formData['image']->store('blogs', 'public') : null,
         ]);
 
         return redirect()->route('user.posts')->with('flash', json_encode([
@@ -86,6 +96,11 @@ class PostsController extends Controller
             'title' => __('flash.success'),
             'message' => __('flash.post-updated'),
         ]));
+    }
+
+    public function removeImage(Post $post)
+    {
+        $post->withoutImage();
     }
 
     /**

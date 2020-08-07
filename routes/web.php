@@ -44,6 +44,7 @@ Route::group(['middleware' => 'language'], function () {
             Route::post('/posts', 'PostsController@store')->name('posts.store');
             Route::get('/posts/{post}/edit', 'PostsController@edit')->name('posts.edit');
             Route::patch('/posts/{post}', 'PostsController@update')->name('posts.update');
+            Route::patch('/posts/{post}/no-image', 'PostsController@removeImage')->name('posts.no-image');
         }
     );
 

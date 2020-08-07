@@ -79,5 +79,5 @@ Breadcrumbs::for('user.posts.create', function (BreadcrumbsGenerator $trail) {
 
 Breadcrumbs::for('user.posts.edit', function (BreadcrumbsGenerator $trail, Post $post) {
     $trail->parent('user.posts');
-    $trail->push(__('user.edit-page'), route('user.posts.edit', $post));
+    $trail->push(__('user.edit-post'), route('user.posts.edit', $post));
 });
