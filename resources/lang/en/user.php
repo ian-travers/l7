@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'cabinet' => 'Cabinet',
     'sections' => 'Sections',
     'tourneys' => 'Tourneys',
     'posts' => 'Blog posts',

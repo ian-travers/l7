@@ -86,6 +86,9 @@
                              aria-labelledby="navbarDropdown">
                             <a class="dropdown-item dropdown-nfsu nav-link-nfsu"
                                href="{{ route('settings.profile') }}">{{ __('auth.settings') }}</a>
+                            <a class="dropdown-item dropdown-nfsu nav-link-nfsu"
+                               href="{{ route('user.posts') }}">{{ __('user.cabinet') }}</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item dropdown-nfsu nav-link-nfsu" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -93,7 +96,6 @@
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-
                                 @csrf
                             </form>
                         </div>

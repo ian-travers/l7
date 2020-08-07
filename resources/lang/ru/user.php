@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'cabinet' => 'Кабинет',
     'sections' => 'Разделы',
     'tourneys' => 'Турниры',
     'posts' => 'Записи блога',
