@@ -43,4 +43,20 @@ class PostTest extends TestCase
         $this->assertFalse($post->hasImage());
         Storage::disk('public')->assertMissing('blogs/' . $image->hashName());
     }
+
+    /** @test */
+    function post_excerpt_is_sanitized_automatically()
+    {
+        $post = make(Post::class, ['excerpt' => "<script>alert('Get')</script><p>Allowed</p>"]);
+
+        $this->assertEquals("<p>Allowed</p>", $post->excerpt);
+    }
+
+    /** @test */
+    function post_body_is_sanitized_automatically()
+    {
+        $post = make(Post::class, ['body' => "<script>alert('Get')</script><p>Allowed</p>"]);
+
+        $this->assertEquals("<p>Allowed</p>", $post->body);
+    }
 }

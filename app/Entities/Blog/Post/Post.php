@@ -6,6 +6,7 @@ use App\Entities\Blog\Tag;
 use App\Entities\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Purify;
 use Storage;
 use Str;
 
@@ -110,5 +111,15 @@ class Post extends Model
         $this->attributes['slug'] = static::firstWhere('slug', $value)
             ? Str::slug(trim($this->title)) . '-' . $this->id
             : Str::slug(trim($this->title));
+    }
+
+    public function getExcerptAttribute(?string $excerpt): ?string
+    {
+        return str_replace(['{{', '}}', '{!!', '!!}'], ['{[', ']}', '{[!', '!]}'], Purify::clean($excerpt));
+    }
+
+    public function getBodyAttribute(?string $body): ?string
+    {
+        return str_replace(['{{', '}}', '{!!', '!!}'], ['{[', ']}', '{[!', '!]}'], Purify::clean($body));
     }
 }
