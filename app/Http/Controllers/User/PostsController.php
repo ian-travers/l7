@@ -56,8 +56,15 @@ class PostsController extends Controller
         ]));
     }
 
+    /**
+     * @param Post $post
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function edit(Post $post)
     {
+        $this->authorize('update', $post);
+
         return view('frontend.user.posts.edit', ['post' => $post]);
     }
 
@@ -72,7 +79,6 @@ class PostsController extends Controller
         $this->authorize('update', $post);
 
         $formData = $this->validateRequest();
-//        dd($formData);
 
         $imageFilename = isset($formData['image']) ? $formData['image']->store('blogs', 'public') : null;
 
@@ -103,9 +109,22 @@ class PostsController extends Controller
         $post->withoutImage();
     }
 
+    /**
+     * @param Post $post
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function remove(Post $post)
     {
-        return $post->getAttributes();
+        $this->authorize('update', $post);
+
+        $post->delete();
+
+        return redirect()->route('user.posts')->with('flash', json_encode([
+            'type' => 'success',
+            'title' => __('flash.success'),
+            'message' => __('flash.post-deleted'),
+        ]));
     }
 
     /**
