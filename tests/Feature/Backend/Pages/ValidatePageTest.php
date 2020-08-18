@@ -11,19 +11,19 @@ class ValidatePageTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected function prepareTest(string $field): Page
+    protected function prepareTest(): Page
     {
         /** @var User $admin */
         $admin = factory(User::class)->states('admin')->create();
         $this->signIn($admin);
 
-        return make(Page::class, [$field => null]);
+        return make(Page::class);
     }
 
     /** @test */
     function page_requires_path()
     {
-        $page = $this->prepareTest('path');
+        $page = $this->prepareTest();
 
         $this->post(route('admin.pages.store', $page))
             ->assertSessionHasErrors('path');
@@ -33,7 +33,7 @@ class ValidatePageTest extends TestCase
     /** @test */
     function page_requires_link_in_english()
     {
-        $page = $this->prepareTest('link_en');
+        $page = $this->prepareTest();
 
         $this->post(route('admin.pages.store', $page))
             ->assertSessionHasErrors('link_en');
@@ -43,7 +43,7 @@ class ValidatePageTest extends TestCase
     /** @test */
     function page_requires_link_in_russian()
     {
-        $page = $this->prepareTest('link_ru');
+        $page = $this->prepareTest();
 
         $this->post(route('admin.pages.store', $page))
             ->assertSessionHasErrors('link_ru');
@@ -53,7 +53,7 @@ class ValidatePageTest extends TestCase
     /** @test */
     function page_requires_title_in_english()
     {
-        $page = $this->prepareTest('title_en');
+        $page = $this->prepareTest();
 
         $this->post(route('admin.pages.store', $page))
             ->assertSessionHasErrors('title_en');
@@ -63,7 +63,7 @@ class ValidatePageTest extends TestCase
     /** @test */
     function page_requires_title_in_russian()
     {
-        $page = $this->prepareTest('title_ru');
+        $page = $this->prepareTest();
 
         $this->post(route('admin.pages.store', $page))
             ->assertSessionHasErrors('title_ru');
@@ -73,7 +73,7 @@ class ValidatePageTest extends TestCase
     /** @test */
     function page_requires_content_in_english()
     {
-        $page = $this->prepareTest('content_en');
+        $page = $this->prepareTest();
 
         $this->post(route('admin.pages.store', $page))
             ->assertSessionHasErrors('content_en');
@@ -83,7 +83,7 @@ class ValidatePageTest extends TestCase
     /** @test */
     function page_requires_content_in_russian()
     {
-        $page = $this->prepareTest('content_ru');
+        $page = $this->prepareTest();
 
         $this->post(route('admin.pages.store', $page))
             ->assertSessionHasErrors('content_ru');

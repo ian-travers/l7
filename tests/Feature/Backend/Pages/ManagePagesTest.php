@@ -69,7 +69,7 @@ class ManagePagesTest extends TestCase
     }
 
     /** @test */
-    function authorized_user_can_create_a_question()
+    function authorized_user_can_create_a_page()
     {
         /** @var User $admin */
         $admin = factory(User::class)->states('admin')->create();
@@ -84,7 +84,7 @@ class ManagePagesTest extends TestCase
     }
 
     /** @test */
-    function authorized_user_can_edit_the_question()
+    function authorized_user_can_edit_the_page()
     {
         /** @var User $admin */
         $admin = factory(User::class)->states('admin')->create();
@@ -108,7 +108,7 @@ class ManagePagesTest extends TestCase
     }
 
     /** @test */
-    function authorized_user_can_delete_the_question()
+    function authorized_user_can_delete_the_page()
     {
         $this->withoutExceptionHandling();
         /** @var User $admin */

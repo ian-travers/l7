@@ -128,6 +128,16 @@ Route::group(['middleware' => 'language'], function () {
         Route::patch('/pages/{page}', 'Pages\PagesController@update')->name('pages.update');
         Route::get('/pages/{page}', 'Pages\PagesController@show')->name('pages.show');
         Route::delete('/pages/{page}', 'Pages\PagesController@remove')->name('pages.delete');
+
+        Route::group([
+            'prefix' => '/posts',
+            'namespace' => 'Posts',
+        ], function () {
+            Route::get('', 'PostsController@index')->name('posts');
+            Route::get('/{post}/edit', 'PostsController@edit')->name('posts.edit');
+            Route::patch('/{post}', 'PostsController@update')->name('posts.update');
+            Route::delete('/{post}', 'PostsController@remove')->name('posts.delete');
+        });
     });
 
     // Static pages. Should be at the bottom

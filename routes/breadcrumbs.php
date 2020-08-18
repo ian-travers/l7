@@ -66,6 +66,17 @@ Breadcrumbs::for('admin.pages.edit', function (BreadcrumbsGenerator $trail, Page
     $trail->push(__('backend.edit-page'), route('admin.pages.edit', $page));
 });
 
+// Backend Posts
+Breadcrumbs::for('admin.posts', function (BreadcrumbsGenerator $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push(__('backend.posts'), route('admin.posts'));
+});
+
+Breadcrumbs::for('admin.posts.edit', function (BreadcrumbsGenerator $trail, Post $post) {
+    $trail->parent('admin.posts');
+    $trail->push(__('backend.edit-post'), route('admin.posts.edit', $post));
+});
+
 // User Posts
 Breadcrumbs::for('user.posts', function (BreadcrumbsGenerator $trail) {
     $trail->parent('root');
