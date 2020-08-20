@@ -55,9 +55,9 @@ class PostsController extends Controller
     public function remove(string $id)
     {
         $post = Post::withTrashed()->findOrFail($id);
-        $post->delete();
+        $post->forceDelete();
 
-        return redirect()->route('admin.posts')->with('flash', json_encode([
+        return redirect()->back()->with('flash', json_encode([
             'type' => 'success',
             'title' => __('flash.success'),
             'message' => __('flash.post-deleted'),

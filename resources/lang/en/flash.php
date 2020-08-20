@@ -22,4 +22,5 @@ return [
     'post-saved' => 'Post has been saved',
     'post-updated' => 'Post has been updated',
     'post-deleted' => 'Post has been deleted',
+    'post-restored' => 'Post has been restored',
 ];

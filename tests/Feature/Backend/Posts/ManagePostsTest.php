@@ -75,4 +75,28 @@ class ManagePostsTest extends TestCase
 
         $this->assertFalse($post->fresh()->trashed());
     }
+
+    /** @test */
+    function admin_can_delete_a_post()
+    {
+        /** @var Post $post */
+        $post = create(Post::class);
+
+        /** @var User $admin */
+        $admin = factory(User::class)->states('admin')->create();
+        $this->signIn($admin);
+
+        $postAsArray = $post->getAttributes();
+
+        $this->assertDatabaseHas('posts', $postAsArray);
+
+        $this->delete(route('admin.posts.delete', $post))
+            ->assertSessionHas('flash', json_encode([
+                'type' => 'success',
+                'title' => __('flash.success'),
+                'message' => __('flash.post-deleted'),
+            ]));
+
+        $this->assertDatabaseMissing('posts', $postAsArray);
+    }
 }
