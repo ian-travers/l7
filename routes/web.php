@@ -134,7 +134,8 @@ Route::group(['middleware' => 'language'], function () {
             'namespace' => 'Posts',
         ], function () {
             Route::get('', 'PostsController@index')->name('posts');
-            Route::get('/{post}/edit', 'PostsController@edit')->name('posts.edit');
+            Route::get('/{id}/edit', 'PostsController@edit')->name('posts.edit');
+            Route::patch('/{post}/restore', 'PostsController@restore')->name('posts.restore');
             Route::patch('/{post}', 'PostsController@update')->name('posts.update');
             Route::delete('/{post}', 'PostsController@remove')->name('posts.delete');
         });

@@ -122,4 +122,12 @@ class Post extends Model
     {
         return str_replace(['{{', '}}', '{!!', '!!}'], ['{[', ']}', '{[!', '!]}'], Purify::clean($body));
     }
+
+    // HTML Helpers
+    public function restoreLink(): string
+    {
+        return $this->trashed()
+            ? Str::replaceArray('?', [route('admin.posts.restore', $this), __('backend.restore')], '<a href="?"><span class="badge badge-success">?</span></a>')
+            : '';
+    }
 }

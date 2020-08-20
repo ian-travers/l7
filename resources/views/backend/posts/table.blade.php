@@ -26,7 +26,15 @@
             <td class="text-center"><img src="{{ $post->imageUrl() }}" width="150"></td>
             <td>{{ $post->author->nickname }}</td>
             <td>{{ $post->title }}</td>
-            <td><span class="badge {{ $post->trashed() ? 'badge-success' : 'badge-danger' }}">o</span></td>
+            <td class="text-center">
+                @if($post->trashed())
+                    <form action="{{ route('admin.posts.restore', $post) }}" method="post">
+                        @csrf
+                        @method('patch')
+                        <button type="submit" onclick="return confirm()" class="btn btn-sm btn-success">{{ __('backend.restore') }}</button>
+                    </form>
+                @endif
+            </td>
         </tr>
     @endforeach
     </tbody>

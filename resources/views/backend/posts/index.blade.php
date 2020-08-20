@@ -1,9 +1,9 @@
 @php /** @var \Illuminate\Contracts\Pagination\LengthAwarePaginator $posts */ @endphp
 
-<x-backend-layout :title="__('backend.posts')">
+<x-backend-layout :title="__('user.posts')">
     <div class="card">
         <div class="card-header">
-            <span class="h2 d-block">{{ __('backend.posts') }}</span>
+            <span class="h2 d-block">{{ __('user.posts') }}</span>
         </div>
         @if($posts->total())
             @include('backend.posts.table')

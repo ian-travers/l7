@@ -3,6 +3,7 @@
 namespace Tests\Feature\Backend\Posts;
 
 use App\Entities\Blog\Post\Post;
+use App\Entities\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
 use Tests\TestCase;
@@ -24,7 +25,7 @@ class ManagePostsTest extends TestCase
     {
         $this->signIn();
 
-        $this->get('/adm/pages')
+        $this->get('/adm/posts')
             ->assertStatus(Response::HTTP_FOUND)
             ->assertRedirect('/')
             ->assertSessionHas('flash', json_encode([
@@ -50,5 +51,28 @@ class ManagePostsTest extends TestCase
                 'title' => __('flash.warning'),
                 'message' => __('flash.not-enough-rights'),
             ]));
+    }
+
+    /** @test */
+    function admin_can_restore_a_post()
+    {
+        /** @var Post $post */
+        $post = create(Post::class);
+        $post->delete();
+
+        $this->assertTrue($post->trashed());
+
+        /** @var User $admin */
+        $admin = factory(User::class)->states('admin')->create();
+        $this->signIn($admin);
+
+        $this->patch(route('admin.posts.restore', $post))
+            ->assertSessionHas('flash', json_encode([
+                'type' => 'success',
+                'title' => __('flash.success'),
+                'message' => __('flash.post-restored'),
+            ]));
+
+        $this->assertFalse($post->fresh()->trashed());
     }
 }

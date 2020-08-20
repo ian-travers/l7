@@ -16,20 +16,23 @@ class PostsController extends Controller
         return view('backend.posts.index', compact('posts'));
     }
 
-    public function edit(Post $post)
+    public function edit(string $id)
     {
+        $post = Post::withTrashed()->find($id);
+
         return view('backend.posts.edit', ['post' => $post]);
     }
 
     /**
-     * @param Post $post
+     * @param string $id
      * @return \Illuminate\Http\RedirectResponse
      * @throws ValidationException
      */
-    public function update(Post $post)
+    public function update(string $id)
     {
         $formData = $this->validateRequest();
 
+        $post = Post::withTrashed()->findOrFail($id);
         $post->update([
             'title' => $formData['title'],
             'slug' => Str::slug($formData['title']),
@@ -37,7 +40,7 @@ class PostsController extends Controller
             'body' => $formData['body'],
         ]);
 
-        return redirect()->route('admin.posts')->with('flash', json_encode([
+        return redirect()->back()->with('flash', json_encode([
             'type' => 'success',
             'title' => __('flash.success'),
             'message' => __('flash.post-updated'),
@@ -45,19 +48,32 @@ class PostsController extends Controller
     }
 
     /**
-     * @param Post $post
+     * @param string $id
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function remove(Post $post)
+    public function remove(string $id)
     {
+        $post = Post::withTrashed()->findOrFail($id);
         $post->delete();
 
         return redirect()->route('admin.posts')->with('flash', json_encode([
-        'type' => 'success',
-        'title' => __('flash.success'),
-        'message' => __('flash.post-deleted'),
-    ]));
+            'type' => 'success',
+            'title' => __('flash.success'),
+            'message' => __('flash.post-deleted'),
+        ]));
+    }
+
+    public function restore(string $id)
+    {
+        $post = Post::withTrashed()->findOrFail($id);
+        $post->restore();
+
+        return redirect()->back()->with('flash', json_encode([
+            'type' => 'success',
+            'title' => __('flash.success'),
+            'message' => __('flash.post-restored'),
+        ]));
     }
 
     /**

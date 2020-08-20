@@ -61,7 +61,7 @@ Breadcrumbs::for('admin.pages.show', function (BreadcrumbsGenerator $trail, Page
     $trail->push(__('backend.show-page'), route('admin.pages.show', $page));
 });
 
-Breadcrumbs::for('admin.pages.edit', function (BreadcrumbsGenerator $trail, Page $page) {
+Breadcrumbs::for('admin.pages.edit', function (BreadcrumbsGenerator $trail, string $page) {
     $trail->parent('admin.pages.show', $page);
     $trail->push(__('backend.edit-page'), route('admin.pages.edit', $page));
 });
@@ -69,12 +69,12 @@ Breadcrumbs::for('admin.pages.edit', function (BreadcrumbsGenerator $trail, Page
 // Backend Posts
 Breadcrumbs::for('admin.posts', function (BreadcrumbsGenerator $trail) {
     $trail->parent('admin.dashboard');
-    $trail->push(__('backend.posts'), route('admin.posts'));
+    $trail->push(__('user.posts'), route('admin.posts'));
 });
 
-Breadcrumbs::for('admin.posts.edit', function (BreadcrumbsGenerator $trail, Post $post) {
+Breadcrumbs::for('admin.posts.edit', function (BreadcrumbsGenerator $trail, string $id) {
     $trail->parent('admin.posts');
-    $trail->push(__('backend.edit-post'), route('admin.posts.edit', $post));
+    $trail->push(__('user.edit-post'), route('admin.posts.edit', $id));
 });
 
 // User Posts
