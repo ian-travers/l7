@@ -4,6 +4,7 @@ namespace App\Entities\Blog\Post;
 
 use App\Entities\Blog\Tag;
 use App\Entities\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Purify;
@@ -17,8 +18,8 @@ use Str;
  * @property int $author_id
  * @property string $title
  * @property string $slug
- * @property string $excerpt
- * @property string $body
+ * @property string|null $excerpt
+ * @property string|null $body
  * @property string|null $image
  * @property int $views_count
  * @property \Illuminate\Support\Carbon|null $published_at
@@ -106,6 +107,23 @@ class Post extends Model
         return $this->image ? asset($this->image) : null;
     }
 
+    public function publish(): void
+    {
+        $this->published_at = Carbon::now();
+        $this->save();
+    }
+
+    public function unpublish(): void
+    {
+        $this->published_at = null;
+        $this->save();
+    }
+
+    public function published(): bool
+    {
+        return (bool)$this->published_at;
+    }
+
     public function setSlugAttribute($value)
     {
         $this->attributes['slug'] = static::firstWhere('slug', $value)
@@ -121,13 +139,5 @@ class Post extends Model
     public function getBodyAttribute(?string $body): ?string
     {
         return str_replace(['{{', '}}', '{!!', '!!}'], ['{[', ']}', '{[!', '!]}'], Purify::clean($body));
-    }
-
-    // HTML Helpers
-    public function restoreLink(): string
-    {
-        return $this->trashed()
-            ? Str::replaceArray('?', [route('admin.posts.restore', $this), __('backend.restore')], '<a href="?"><span class="badge badge-success">?</span></a>')
-            : '';
     }
 }

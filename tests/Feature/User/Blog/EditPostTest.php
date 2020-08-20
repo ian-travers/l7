@@ -20,17 +20,17 @@ class EditPostTest extends TestCase
     }
 
     /** @test */
-//    function unauthorized_users_may_not_update_posts()
-//    {
-//        $post = $this->preparePost();
-//
-//        $this->signIn();
-//
-//        $this->patch(route('user.posts.update', $post), [
-//            'title' => 'New title',
-//            'body' => 'New body'
-//        ])->assertStatus(Response::HTTP_FORBIDDEN);
-//    }
+    function unauthorized_users_may_not_update_posts()
+    {
+        $post = $this->preparePost();
+
+        $this->signIn();
+
+        $this->patch(route('user.posts.update', $post), [
+            'title' => 'New title',
+            'body' => 'New body'
+        ])->assertStatus(Response::HTTP_FORBIDDEN);
+    }
 
     /** @test */
     function author_can_edit_own_post()
@@ -101,7 +101,32 @@ class EditPostTest extends TestCase
             ->assertSessionHasErrors('body');
     }
 
-    protected function preparePost()
+    /** @test */
+    function just_created_post_is_not_published()
+    {
+        $post = $this->preparePost();
+
+        $this->assertFalse($post->published());
+    }
+
+    /** @test */
+    function author_can_publish_and_unpublish_own_post()
+    {
+        $this->signIn();
+
+        /** @var Post $post */
+        $post = create(Post::class, ['author_id' => auth()->id()]);
+
+        $this->patch(route('user.posts.publish', $post));
+
+        $this->assertTrue($post->fresh()->published());
+
+        $this->patch(route('user.posts.unpublish', $post));
+
+        $this->assertFalse($post->fresh()->published());
+    }
+
+    protected function preparePost(): Post
     {
         $this->signIn();
 

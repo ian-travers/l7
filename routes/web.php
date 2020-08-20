@@ -45,6 +45,8 @@ Route::group(['middleware' => 'language'], function () {
             Route::get('/posts/{post}/edit', 'PostsController@edit')->name('posts.edit');
             Route::patch('/posts/{post}', 'PostsController@update')->name('posts.update');
             Route::patch('/posts/{post}/no-image', 'PostsController@removeImage')->name('posts.no-image');
+            Route::patch('/posts/{post}/publish', 'PostsController@publish')->name('posts.publish');
+            Route::patch('/posts/{post}/unpublish', 'PostsController@unpublish')->name('posts.unpublish');
             Route::delete('/posts/{post}', 'PostsController@remove')->name('posts.delete');
         }
     );

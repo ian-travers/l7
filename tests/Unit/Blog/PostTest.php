@@ -59,4 +59,28 @@ class PostTest extends TestCase
 
         $this->assertEquals("<p>Allowed</p>", $post->body);
     }
+
+    /** @test */
+    function just_created_post_is_not_published()
+    {
+        /** @var Post $post */
+        $post = make(Post::class);
+
+        $this->assertFalse($post->published());
+    }
+
+    /** @test */
+    function post_may_be_published_and_may_be_unpublished()
+    {
+        /** @var Post $post */
+        $post = make(Post::class);
+
+        $post->publish();
+
+        $this->assertTrue($post->published());
+
+        $post->unpublish();
+
+        $this->assertFalse($post->published());
+    }
 }

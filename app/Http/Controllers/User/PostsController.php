@@ -49,7 +49,7 @@ class PostsController extends Controller
             'image' => isset($formData['image']) ? $formData['image']->store('blogs', 'public') : null,
         ]);
 
-        return redirect()->route('user.posts')->with('flash', json_encode([
+        return redirect()->back()->with('flash', json_encode([
             'type' => 'success',
             'title' => __('flash.success'),
             'message' => __('flash.post-saved'),
@@ -97,7 +97,7 @@ class PostsController extends Controller
             'body' => $formData['body'],
         ]);
 
-        return redirect()->route('user.posts')->with('flash', json_encode([
+        return redirect()->back()->with('flash', json_encode([
             'type' => 'success',
             'title' => __('flash.success'),
             'message' => __('flash.post-updated'),
@@ -120,10 +120,47 @@ class PostsController extends Controller
 
         $post->delete();
 
-        return redirect()->route('user.posts')->with('flash', json_encode([
+        return redirect()->back()->with('flash', json_encode([
             'type' => 'success',
             'title' => __('flash.success'),
             'message' => __('flash.post-deleted'),
+        ]));
+    }
+
+    /**
+     * @param Post $post
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function publish(Post $post)
+    {
+        $this->authorize('update', $post);
+
+        $post->publish();
+//        dd($post->toArray());
+
+        return redirect()->back()->with('flash', json_encode([
+            'type' => 'success',
+            'title' => __('flash.success'),
+            'message' => __('flash.post-published'),
+        ]));
+    }
+
+    /**
+     * @param Post $post
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function unpublish(Post $post)
+    {
+        $this->authorize('update', $post);
+
+        $post->unpublish();
+
+        return redirect()->back()->with('flash', json_encode([
+            'type' => 'success',
+            'title' => __('flash.success'),
+            'message' => __('flash.post-unpublished'),
         ]));
     }
 
