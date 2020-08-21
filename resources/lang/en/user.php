@@ -22,4 +22,5 @@ return [
     'remove-image' => 'Remove image',
     'remove-image-question' => 'Are you sure you want to remove current image?',
     'image-hint' => 'This image will precede your post',
+    'publication' => 'Publication',
 ];

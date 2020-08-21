@@ -23,4 +23,6 @@ return [
     'post-updated' => 'Post has been updated',
     'post-deleted' => 'Post has been deleted',
     'post-restored' => 'Post has been restored',
+    'post-published' => 'Post has been published',
+    'post-unpublished' => 'Post has been unpublished',
 ];
