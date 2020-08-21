@@ -87,7 +87,6 @@ class PostsController extends Controller
             $post->update([
                 'image' => $imageFilename,
             ]);
-
         }
 
         $post->update([
@@ -137,7 +136,6 @@ class PostsController extends Controller
         $this->authorize('update', $post);
 
         $post->publish();
-//        dd($post->toArray());
 
         return redirect()->back()->with('flash', json_encode([
             'type' => 'success',
