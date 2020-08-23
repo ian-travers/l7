@@ -17,4 +17,6 @@ return [
     'actions' => 'Actions',
     'confirm-delete' => 'Confirm deleting?',
     'main' => 'Main',
+    'news' => 'News',
+    'blogs' => 'Blogs',
 ];

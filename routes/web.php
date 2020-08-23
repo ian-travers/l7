@@ -9,6 +9,8 @@ Route::group(['middleware' => 'language'], function () {
 
     Route::get('/home', 'HomeController@index')->name('home');
 
+    Route::get('/blogs', 'BlogsController@index')->name('blogs');
+
     Route::group(
         [
             'prefix' => 'settings',

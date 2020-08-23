@@ -26,5 +26,17 @@
             <a class="nav-link ml-3 py-0" href="{{ route('page', 'download/nfsu-save-patcher') }}">{{ __('pages.downloads.nfsu-save-patcher') }}</a>
         </div>
     </div>
+
+    <div class="navbar navbar-dark mr-3">
+        <div class="navbar-nav">
+            <a class="nav-link lead py-0" href="#">{{ __('misc.news') }}</a>
+        </div>
+    </div>
+
+    <div class="navbar navbar-dark mr-3">
+        <div class="navbar-nav">
+            <a class="nav-link lead py-0" href="{{ route('blogs') }}">{{ __('misc.blogs') }}</a>
+        </div>
+    </div>
 </div>
 
