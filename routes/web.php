@@ -9,7 +9,14 @@ Route::group(['middleware' => 'language'], function () {
 
     Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::get('/blogs', 'BlogsController@index')->name('blogs');
+    Route::group([
+        'prefix' => 'blogs',
+        'as' => 'blogs'
+    ],
+        function () {
+            Route::get('', 'BlogsController@index');
+            Route::get('/{slug}', 'BlogsController@show')->middleware('throttle:4,1')->name('.show');
+        });
 
     Route::group(
         [

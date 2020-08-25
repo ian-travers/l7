@@ -12,4 +12,14 @@ class BlogsController extends Controller
 
         return view('frontend.blogs.index', compact('posts'));
     }
+
+    public function show(string $slug)
+    {
+        /** @var Post $post */
+        $post = Post::where('slug', $slug)->published()->firstOrFail();
+
+        $post->increment('views_count');
+
+        return view('frontend.blogs.show', compact('post'));
+    }
 }

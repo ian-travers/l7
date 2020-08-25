@@ -17,6 +17,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'slug' => Str::slug($title),
         'excerpt' => $faker->paragraph,
         'body' => $faker->paragraphs(4, true),
+        'views_count' => 0,
         'image' => null,
         'published_at' => null,
         'deleted_at' => null,
