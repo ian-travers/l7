@@ -106,7 +106,7 @@ class EditPostTest extends TestCase
     {
         $post = $this->preparePost();
 
-        $this->assertFalse($post->published());
+        $this->assertFalse($post->isPublished());
     }
 
     /** @test */
@@ -119,11 +119,11 @@ class EditPostTest extends TestCase
 
         $this->patch(route('user.posts.publish', $post));
 
-        $this->assertTrue($post->fresh()->published());
+        $this->assertTrue($post->fresh()->isPublished());
 
         $this->patch(route('user.posts.unpublish', $post));
 
-        $this->assertFalse($post->fresh()->published());
+        $this->assertFalse($post->fresh()->isPublished());
     }
 
     protected function preparePost(): Post

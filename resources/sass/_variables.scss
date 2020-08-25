@@ -19,8 +19,33 @@ $teal: #4dc0b5;
 $cyan: #6cb2eb;
 $cyan-light: #afd5f4;
 
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
 $nfsu-game-color: #003548;
 $accent-border-color: #e36209;
 $warning: #fd7e14;
 $info-link-color: $cyan-light;
 $monitor-border-color: $cyan;
+
+$pagination-color: $cyan;
+$pagination-bg: $nfsu-game-color;
+$pagination-border-color: $cyan;
+$pagination-hover-color:  lighten($pagination-color, 5);
+$pagination-hover-bg: lighten($pagination-bg, 5);
+$pagination-hover-border-color: $cyan;
+$pagination-active-color: $gray-100;
+$pagination-active-bg: $blue;
+$pagination-active-border-color: $cyan;
+$pagination-disabled-color: $gray-300 !default;
+$pagination-disabled-bg: $black !default;
+$pagination-disabled-border-color:  $gray-600 !default;

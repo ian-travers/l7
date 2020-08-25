@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Entities\Blog\Post\Post;
 
 class BlogsController extends Controller
 {
     public function index()
     {
-        return 0;
+        $posts = Post::with('author')->published()->paginate(6);
+
+        return view('frontend.blogs.index', compact('posts'));
     }
 }

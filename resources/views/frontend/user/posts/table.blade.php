@@ -27,7 +27,7 @@
             <td>{{ $post->title }}</td>
             <td>{{ $post->excerpt }}</td>
             <td class="text-center">
-                @if($post->published())
+                @if($post->isPublished())
                     <form action="{{route('user.posts.unpublish', $post)}}" method="post">
                         @method('patch')
                         @csrf

@@ -66,7 +66,7 @@ class PostTest extends TestCase
         /** @var Post $post */
         $post = make(Post::class);
 
-        $this->assertFalse($post->published());
+        $this->assertFalse($post->isPublished());
     }
 
     /** @test */
@@ -77,10 +77,10 @@ class PostTest extends TestCase
 
         $post->publish();
 
-        $this->assertTrue($post->published());
+        $this->assertTrue($post->isPublished());
 
         $post->unpublish();
 
-        $this->assertFalse($post->published());
+        $this->assertFalse($post->isPublished());
     }
 }

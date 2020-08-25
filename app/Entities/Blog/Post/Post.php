@@ -5,6 +5,7 @@ namespace App\Entities\Blog\Post;
 use App\Entities\Blog\Tag;
 use App\Entities\User;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Purify;
@@ -32,6 +33,7 @@ use Str;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post newQuery()
  * @method static \Illuminate\Database\Query\Builder|\App\Entities\Blog\Post\Post onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post published()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post whereAuthorId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post whereBody($value)
@@ -119,9 +121,9 @@ class Post extends Model
         $this->save();
     }
 
-    public function published(): bool
+    public function isPublished(): bool
     {
-        return (bool)$this->published_at;
+        return isset($this->published_at) ? $this->published_at <= Carbon::now() : false;
     }
 
     public function setSlugAttribute($value)
@@ -139,5 +141,10 @@ class Post extends Model
     public function getBodyAttribute(?string $body): ?string
     {
         return str_replace(['{{', '}}', '{!!', '!!}'], ['{[', ']}', '{[!', '!]}'], Purify::clean($body));
+    }
+
+    public function scopePublished(Builder $query): Builder
+    {
+        return $query->where('published_at', '<=', Carbon::now());
     }
 }

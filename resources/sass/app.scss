@@ -223,3 +223,21 @@ footer {
     content: " *";
     color: red;
 }
+
+// posts
+.post-image {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.post-image img {
+    width: 100%;
+    border: none;
+}
+
+// pagination
+.pagination {
+    justify-content: center;
+    margin-bottom: 0;
+}
+
