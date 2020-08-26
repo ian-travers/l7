@@ -5,7 +5,6 @@ namespace App\Entities;
 use App\Entities\Blog\Post\Post;
 use DomainException;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -35,28 +34,30 @@ use Str;
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Blog\Post\Post[] $posts
  * @property-read int|null $posts_count
- * @method static Builder|User newModelQuery()
- * @method static Builder|User newQuery()
- * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
- * @method static Builder|User query()
- * @method static Builder|User whereAvatarPath($value)
- * @method static Builder|User whereCountry($value)
- * @method static Builder|User whereCreatedAt($value)
- * @method static Builder|User whereDeletedAt($value)
- * @method static Builder|User whereEmail($value)
- * @method static Builder|User whereEmailVerifiedAt($value)
- * @method static Builder|User whereId($value)
- * @method static Builder|User whereIsAdmin($value)
- * @method static Builder|User whereLocale($value)
- * @method static Builder|User whereName($value)
- * @method static Builder|User whereNickname($value)
- * @method static Builder|User wherePassword($value)
- * @method static Builder|User whereRememberToken($value)
- * @method static Builder|User whereRole($value)
- * @method static Builder|User whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|User withTrashed()
- * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User newQuery()
+ * @method static \Illuminate\Database\Query\Builder|\App\Entities\User onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereAvatarPath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereIsAdmin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereNickname($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereRole($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Entities\User withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Entities\User withoutTrashed()
  * @mixin \Eloquent
+ * @noinspection PhpFullyQualifiedNameUsageInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
  */
 class User extends Authenticatable
 {

@@ -142,13 +142,26 @@ Route::group(['middleware' => 'language'], function () {
 
         Route::group([
             'prefix' => '/posts',
+            'as' => 'posts',
             'namespace' => 'Posts',
         ], function () {
-            Route::get('', 'PostsController@index')->name('posts');
-            Route::get('/{id}/edit', 'PostsController@edit')->name('posts.edit');
-            Route::patch('/{post}/restore', 'PostsController@restore')->name('posts.restore');
-            Route::patch('/{post}', 'PostsController@update')->name('posts.update');
-            Route::delete('/{post}', 'PostsController@remove')->name('posts.delete');
+            Route::get('', 'PostsController@index');
+            Route::get('/{id}/edit', 'PostsController@edit')->name('.edit');
+            Route::patch('/{post}/restore', 'PostsController@restore')->name('.restore');
+            Route::patch('/{post}', 'PostsController@update')->name('.update');
+            Route::delete('/{post}', 'PostsController@remove')->name('.delete');
+        });
+
+        Route::group([
+            'prefix' => '/news',
+            'as' => 'news',
+            'namespace' => 'News',
+        ], function () {
+            Route::get('', 'NewsController@index');
+            Route::get('/{id}/edit', 'NewsController@edit')->name('.edit');
+            Route::patch('/{news}/restore', 'NewsController@restore')->name('.restore');
+            Route::patch('/{news}', 'NewsController@update')->name('.update');
+            Route::delete('/{news}', 'NewsController@remove')->name('.delete');
         });
     });
 

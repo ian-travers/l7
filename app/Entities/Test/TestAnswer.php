@@ -3,7 +3,6 @@
 namespace App\Entities\Test;
 
 use App\Entities\NativeAttributeTrait;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -16,15 +15,17 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $index
  * @property-read string|null $answer
  * @property-read \App\Entities\Test\TestQuestion $question
- * @method static Builder|TestAnswer newModelQuery()
- * @method static Builder|TestAnswer newQuery()
- * @method static Builder|TestAnswer query()
- * @method static Builder|TestAnswer whereAnswerEn($value)
- * @method static Builder|TestAnswer whereAnswerRu($value)
- * @method static Builder|TestAnswer whereId($value)
- * @method static Builder|TestAnswer whereIndex($value)
- * @method static Builder|TestAnswer whereQuestionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestAnswer newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestAnswer newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestAnswer query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestAnswer whereAnswerEn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestAnswer whereAnswerRu($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestAnswer whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestAnswer whereIndex($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestAnswer whereQuestionId($value)
  * @mixin \Eloquent
+ * @noinspection PhpFullyQualifiedNameUsageInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
  */
 class TestAnswer extends Model
 {

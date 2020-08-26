@@ -36,7 +36,7 @@ class ManagePostsTest extends TestCase
     }
 
     /** @test */
-    function unauthorized_user_cannot_edit_the_page()
+    function unauthorized_user_cannot_edit_the_post()
     {
         $this->signIn();
 
