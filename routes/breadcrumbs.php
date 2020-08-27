@@ -57,12 +57,12 @@ Breadcrumbs::for('admin.pages.create', function (BreadcrumbsGenerator $trail) {
     $trail->push(__('backend.new-page'));
 });
 
-Breadcrumbs::for('admin.pages.show', function (BreadcrumbsGenerator $trail, $page) {
+Breadcrumbs::for('admin.pages.show', function (BreadcrumbsGenerator $trail, Page $page) {
     $trail->parent('admin.pages');
     $trail->push(__('backend.show-page'), route('admin.pages.show', $page));
 });
 
-Breadcrumbs::for('admin.pages.edit', function (BreadcrumbsGenerator $trail, $page) {
+Breadcrumbs::for('admin.pages.edit', function (BreadcrumbsGenerator $trail, Page $page) {
     $trail->parent('admin.pages.show', $page);
     $trail->push(__('backend.edit-page'), route('admin.pages.edit', $page));
 });
@@ -105,7 +105,7 @@ Breadcrumbs::for('admin.news.create', function (BreadcrumbsGenerator $trail) {
     $trail->push(__('backend.new-news'));
 });
 
-Breadcrumbs::for('admin.news.edit', function (BreadcrumbsGenerator $trail, $news) {
+Breadcrumbs::for('admin.news.edit', function (BreadcrumbsGenerator $trail, News $news) {
     $trail->parent('admin.news');
     $trail->push(__('backend.edit-news'), route('admin.news.edit', $news));
 });
