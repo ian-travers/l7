@@ -4,7 +4,7 @@
             <span class="h3 d-block">{{ __('backend.edit-page') }}</span>
         </div>
         <div class="card-body">
-            <form id="question-form" action="{{ route('admin.pages.update', $page) }}" method="post">
+            <form action="{{ route('admin.pages.update', $page) }}" method="post">
 
                 @csrf
                 @method('patch')

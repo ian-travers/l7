@@ -42,4 +42,10 @@ return [
     'seo-title'=> 'Title',
     'seo-keywords'=> 'keywords',
     'seo-description'=> 'Description',
+    'news' => 'Новости',
+    'news-not-found' => 'Пока нет ни одной новости.',
+    'new-news' => 'Новая новость',
+    'edit-news' => 'Редактирование новости',
+    'body_en' => 'Текст новости Eng',
+    'body_ru' => 'Текст новости Rus',
 ];

@@ -25,4 +25,8 @@ return [
     'post-restored' => 'Post has been restored',
     'post-published' => 'Post has been published',
     'post-unpublished' => 'Post has been unpublished',
+    'news-saved' => 'News has been saved',
+    'news-updated' => 'News has been updated',
+    'news-deleted' => 'News has been deleted',
+    'news-restored' => 'News has been restored',
 ];

@@ -1,6 +1,7 @@
 <?php
 
 use App\Entities\Blog\Post\Post;
+use App\Entities\News\News;
 use App\Entities\Page\Page;
 use App\Entities\Test\TestQuestion;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
@@ -56,12 +57,12 @@ Breadcrumbs::for('admin.pages.create', function (BreadcrumbsGenerator $trail) {
     $trail->push(__('backend.new-page'));
 });
 
-Breadcrumbs::for('admin.pages.show', function (BreadcrumbsGenerator $trail, Page $page) {
+Breadcrumbs::for('admin.pages.show', function (BreadcrumbsGenerator $trail, $page) {
     $trail->parent('admin.pages');
     $trail->push(__('backend.show-page'), route('admin.pages.show', $page));
 });
 
-Breadcrumbs::for('admin.pages.edit', function (BreadcrumbsGenerator $trail, string $page) {
+Breadcrumbs::for('admin.pages.edit', function (BreadcrumbsGenerator $trail, $page) {
     $trail->parent('admin.pages.show', $page);
     $trail->push(__('backend.edit-page'), route('admin.pages.edit', $page));
 });
@@ -91,4 +92,20 @@ Breadcrumbs::for('user.posts.create', function (BreadcrumbsGenerator $trail) {
 Breadcrumbs::for('user.posts.edit', function (BreadcrumbsGenerator $trail, Post $post) {
     $trail->parent('user.posts');
     $trail->push(__('user.edit-post'), route('user.posts.edit', $post));
+});
+
+// Backend News
+Breadcrumbs::for('admin.news', function (BreadcrumbsGenerator $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push(__('backend.news'), route('admin.news'));
+});
+
+Breadcrumbs::for('admin.news.create', function (BreadcrumbsGenerator $trail) {
+    $trail->parent('admin.news');
+    $trail->push(__('backend.new-news'));
+});
+
+Breadcrumbs::for('admin.news.edit', function (BreadcrumbsGenerator $trail, $news) {
+    $trail->parent('admin.news');
+    $trail->push(__('backend.edit-news'), route('admin.news.edit', $news));
 });

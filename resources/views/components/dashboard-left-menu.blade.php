@@ -7,6 +7,9 @@
             <li class="list-group-item">
                 <a href="#">{{ __('backend.users') }}</a>
             </li>
+            <li class="list-group-item @if($controller == 'NewsController') active-vertical-menu @endif">
+                <a href="{{ route('admin.news') }}">{{ __('backend.news') }}</a>
+            </li>
             <li class="list-group-item @if($controller == 'PostsController') active-vertical-menu @endif">
                 <a href="{{ route('admin.posts') }}">{{ __('user.posts') }}</a>
             </li>

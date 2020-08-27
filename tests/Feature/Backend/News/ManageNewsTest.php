@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Backend\News;
 
+use App\Entities\News\News;
+use App\Entities\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
 use Tests\TestCase;
@@ -31,5 +33,43 @@ class ManageNewsTest extends TestCase
                 'title' => __('flash.warning'),
                 'message' => __('flash.not-enough-rights'),
             ]));
+    }
+
+    /** @test */
+    function admin_can_create_a_news()
+    {
+        /** @var User $admin */
+        $admin = factory(User::class)->states('admin')->create();
+        $this->signIn($admin);
+
+        /** @var News $news */
+        $news = make(News::class, ['author_id' => $admin->id]);
+
+
+        $this->post('/adm/news', $news->toArray());
+
+        $this->assertDatabaseHas('news', $news->toArray());
+    }
+
+    /** @test */
+    function admin_can_edit_the_news()
+    {
+        $this->withoutExceptionHandling();
+        /** @var User $admin */
+        $admin = factory(User::class)->states('admin')->create();
+        $this->signIn($admin);
+
+        /** @var News $news */
+        $news = create(News::class, ['author_id' => $admin->id]);
+
+        $this->patch("/adm/news/{$news->id}", array_merge($news->toArray(), [
+            'title_en' => 'Title UPD',
+            'body_en' => 'New news body updated',
+        ]));
+
+        $news = $news->fresh();
+
+        $this->assertEquals('Title UPD', $news->title_en);
+        $this->assertEquals('New news body updated', $news->body_en);
     }
 }
