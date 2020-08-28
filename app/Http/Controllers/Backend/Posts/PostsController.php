@@ -76,6 +76,28 @@ class PostsController extends Controller
         ]));
     }
 
+    public function publish(Post $post)
+    {
+        $post->publish();
+
+        return redirect()->back()->with('flash', json_encode([
+            'type' => 'success',
+            'title' => __('flash.success'),
+            'message' => __('flash.post-published'),
+        ]));
+    }
+
+    public function unpublish(Post $post)
+    {
+        $post->unpublish();
+
+        return redirect()->back()->with('flash', json_encode([
+            'type' => 'success',
+            'title' => __('flash.success'),
+            'message' => __('flash.post-unpublished'),
+        ]));
+    }
+
     /**
      * @return array
      * @throws ValidationException

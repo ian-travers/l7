@@ -150,6 +150,8 @@ Route::group(['middleware' => 'language'], function () {
             Route::patch('/{post}/restore', 'PostsController@restore')->name('.restore');
             Route::patch('/{post}', 'PostsController@update')->name('.update');
             Route::delete('/{post}', 'PostsController@remove')->name('.delete');
+            Route::patch('/{post}/publish', 'PostsController@publish')->name('.publish');
+            Route::patch('/{post}/unpublish', 'PostsController@unpublish')->name('.unpublish');
         });
 
         Route::group([

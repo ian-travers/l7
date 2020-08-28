@@ -7,7 +7,7 @@
         <th class="w-15">{{ __('user.post-image') }}</th>
         <th>{{ __('user.post-title') }}</th>
         <th>{{ __('user.post-excerpt') }}</th>
-        <th>{{ __('user.publication') }}</th>
+        <th class="w-10">{{ __('user.publication') }}</th>
     </tr>
     </thead>
     <tbody>
