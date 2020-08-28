@@ -15,14 +15,20 @@
     @foreach($news as $new)
         <tr>
             <td class="text-center">
-                <a href="{{ route('admin.news.edit', ['news' => $new, 'page' => $news->currentPage()]) }}" class="btn btn-sm btn-outline-primary fa fa-edit"
+                <a href="{{ route('admin.news.edit', ['news' => $new, 'page' => $news->currentPage()]) }}"
+                   class="btn btn-sm btn-outline-primary fa fa-edit"
                    title="{{ __('misc.edit') }}"></a>
-                <form action="{{ route('admin.news.delete', $new) }}" method="post" class="d-inline ml-1">
-                    @csrf
-                    @method('delete')
-                    <button type="submit" onclick="return confirm()"
-                            class="btn btn-sm btn-outline-warning fa fa-trash" title="{{ __('backend.move-to-trash') }}"></button>
-                </form>
+                @if($new->trashed())
+                    <button type="button" class="btn btn-sm btn-outline-warning fa fa-trash ml-1 disabled"></button>
+                @else
+                    <form action="{{ route('admin.news.delete', $new) }}" method="post" class="d-inline ml-1">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" onclick="return confirm()"
+                                class="btn btn-sm btn-outline-warning fa fa-trash"
+                                title="{{ __('backend.move-to-trash') }}"></button>
+                    </form>
+                @endif
             </td>
             <td>{{ $new->title_en }}</td>
             <td>{{ $new->title_ru }}</td>
@@ -33,12 +39,16 @@
                     <form action="{{ route('admin.news.restore', $new) }}" method="post" class="d-inline ml-1">
                         @csrf
                         @method('patch')
-                        <button type="submit" onclick="return confirm()" class="btn btn-sm btn-success fa fa-trash-restore-alt" title="{{ __('backend.restore') }}"></button>
+                        <button type="submit" onclick="return confirm()"
+                                class="btn btn-sm btn-success fa fa-trash-restore-alt"
+                                title="{{ __('backend.restore') }}"></button>
                     </form>
                     <form action="{{ route('admin.news.force-delete', $new) }}" method="post" class="d-inline ml-1">
                         @csrf
                         @method('delete')
-                        <button type="submit" onclick="return confirm()" class="btn btn-sm btn-outline-danger fa fa-trash-alt" title="{{ __('backend.remove-from-trash') }}"></button>
+                        <button type="submit" onclick="return confirm()"
+                                class="btn btn-sm btn-outline-danger fa fa-trash-alt"
+                                title="{{ __('backend.remove-from-trash') }}"></button>
                     </form>
                 @endif
             </td>
