@@ -163,6 +163,7 @@ Route::group(['middleware' => 'language'], function () {
             Route::get('/{news}/edit', 'NewsController@edit')->name('.edit');
             Route::patch('/{news}', 'NewsController@update')->name('.update');
             Route::delete('/{news}', 'NewsController@remove')->name('.delete');
+            Route::delete('/{news}/force-delete', 'NewsController@forceRemove')->name('.force-delete');
             Route::patch('/{news}/restore', 'NewsController@restore')->name('.restore');
         });
     });

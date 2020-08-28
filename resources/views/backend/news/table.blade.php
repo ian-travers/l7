@@ -21,7 +21,7 @@
                     @csrf
                     @method('delete')
                     <button type="submit" onclick="return confirm()"
-                            class="btn btn-sm btn-outline-danger fa fa-trash-alt"></button>
+                            class="btn btn-sm btn-outline-warning fa fa-trash-alt"></button>
                 </form>
             </td>
             <td>{{ $new->title_en }}</td>
@@ -34,6 +34,11 @@
                         @csrf
                         @method('patch')
                         <button type="submit" onclick="return confirm()" class="btn btn-sm btn-success">{{ __('backend.restore') }}</button>
+                    </form>
+                    <form action="{{ route('admin.news.force-delete', $new) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" onclick="return confirm()" class="btn btn-sm btn-outline-danger fa fa-trash-alt"></button>
                     </form>
                 @endif
             </td>

@@ -56,6 +56,46 @@ class NewsController extends Controller
     }
 
     /**
+     * @param News $news
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
+    public function remove(News $news)
+    {
+        $news->delete();
+
+        return redirect()->back()->with('flash', json_encode([
+            'type' => 'success',
+            'title' => __('flash.success'),
+            'message' => __('flash.news-deleted'),
+        ]));
+    }
+
+    public function restore(string $id)
+    {
+        $news = News::withTrashed()->findOrFail($id);
+        $news->restore();
+
+        return redirect()->back()->with('flash', json_encode([
+            'type' => 'success',
+            'title' => __('flash.success'),
+            'message' => __('flash.news-restored'),
+        ]));
+    }
+
+    public function forceRemove(string $id)
+    {
+        $news = News::withTrashed()->findOrFail($id);
+        $news->forceDelete();
+
+        return redirect()->back()->with('flash', json_encode([
+            'type' => 'success',
+            'title' => __('flash.success'),
+            'message' => __('flash.news-force-deleted'),
+        ]));
+    }
+
+    /**
      * @return array
      * @throws \Illuminate\Validation\ValidationException
      */
