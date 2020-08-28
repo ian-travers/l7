@@ -7,7 +7,7 @@
         </div>
         @if($posts->total())
             @include('backend.posts.table')
-            <div class="px-3">
+            <div class="my-3">
                 {{ $posts->appends(request()->except('page'))->links() }}
             </div>
 

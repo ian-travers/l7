@@ -14,7 +14,7 @@
     @foreach($posts as $post)
         <tr>
             <td class="text-center">
-                <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-sm btn-outline-primary fa fa-edit"
+                <a href="{{ route('admin.posts.edit', ['id' => $post->id, 'page' => $posts->currentPage()]) }}" class="btn btn-sm btn-outline-primary fa fa-edit"
                    title="{{ __('misc.edit') }}"></a>
                 <form action="{{ route('admin.posts.delete', $post) }}" method="post" class="d-inline ml-1">
                     @csrf
@@ -23,7 +23,7 @@
                             class="btn btn-sm btn-outline-danger fa fa-trash-alt"></button>
                 </form>
             </td>
-            <td class="text-center"><img src="{{ $post->imageUrl() }}" width="150"></td>
+            <td class="text-center"><img src="{{ $post->imageUrl() }}" width="150" alt=""></td>
             <td>{{ $post->author->nickname }}</td>
             <td>{{ $post->title }}</td>
             <td class="text-center">

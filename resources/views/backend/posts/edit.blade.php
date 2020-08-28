@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="card-body">
-            <form id="post-form" action="{{ route('admin.posts.update', $post) }}" method="post" enctype="multipart/form-data">
+            <form id="post-form" action="{{ route('admin.posts.update', ['post' => $post, 'page' => request()->query('page')]) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('patch')
                 @include('backend.posts._form')

@@ -40,7 +40,7 @@ class PostsController extends Controller
             'body' => $formData['body'],
         ]);
 
-        return redirect()->back()->with('flash', json_encode([
+        return redirect()->route('admin.posts', ['page' => request()->query('page')])->with('flash', json_encode([
             'type' => 'success',
             'title' => __('flash.success'),
             'message' => __('flash.post-updated'),

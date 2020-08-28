@@ -15,7 +15,7 @@
     @foreach($news as $new)
         <tr>
             <td class="text-center">
-                <a href="{{ route('admin.news.edit', $new) }}" class="btn btn-sm btn-outline-primary fa fa-edit"
+                <a href="{{ route('admin.news.edit', ['news' => $new, 'page' => $news->currentPage()]) }}" class="btn btn-sm btn-outline-primary fa fa-edit"
                    title="{{ __('misc.edit') }}"></a>
                 <form action="{{ route('admin.news.delete', $new) }}" method="post" class="d-inline ml-1">
                     @csrf

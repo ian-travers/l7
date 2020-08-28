@@ -27,7 +27,7 @@ class NewsController extends Controller
     {
         News::create($this->validateRequest());
 
-        return redirect()->back()->with('flash', json_encode([
+        return redirect()->route('admin.news')->with('flash', json_encode([
             'type' => 'success',
             'title' => __('flash.success'),
             'message' => __('flash.news-saved'),
@@ -48,7 +48,7 @@ class NewsController extends Controller
     {
         $news->update($this->validateRequest());
 
-        return redirect()->back()->with('flash', json_encode([
+        return redirect()->route('admin.news', ['page' => request()->query('page')])->with('flash', json_encode([
             'type' => 'success',
             'title' => __('flash.success'),
             'message' => __('flash.news-updated'),

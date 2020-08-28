@@ -14,7 +14,7 @@
     @foreach($posts as $post)
         <tr>
             <td class="text-center">
-                <a href="{{ route('user.posts.edit', $post) }}" class="btn btn-sm btn-outline-primary fa fa-edit"
+                <a href="{{ route('user.posts.edit', ['post' => $post, 'page' => $posts->currentPage()]) }}" class="btn btn-sm btn-outline-primary fa fa-edit"
                    title="{{ __('misc.edit') }}"></a>
                 <form action="{{ route('user.posts.delete', $post) }}" method="post" class="d-inline ml-1">
                     @csrf

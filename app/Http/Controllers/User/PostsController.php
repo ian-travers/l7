@@ -49,7 +49,7 @@ class PostsController extends Controller
             'image' => isset($formData['image']) ? $formData['image']->store('blogs', 'public') : null,
         ]);
 
-        return redirect()->back()->with('flash', json_encode([
+        return redirect()->route('user.posts')->with('flash', json_encode([
             'type' => 'success',
             'title' => __('flash.success'),
             'message' => __('flash.post-saved'),
@@ -96,7 +96,7 @@ class PostsController extends Controller
             'body' => $formData['body'],
         ]);
 
-        return redirect()->back()->with('flash', json_encode([
+        return redirect()->route('user.posts', ['page' => request()->query('page')])->with('flash', json_encode([
             'type' => 'success',
             'title' => __('flash.success'),
             'message' => __('flash.post-updated'),
