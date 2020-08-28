@@ -20,7 +20,7 @@
                     @csrf
                     @method('delete')
                     <button type="submit" onclick="return confirm()"
-                            class="btn btn-sm btn-outline-danger fa fa-trash-alt"></button>
+                            class="btn btn-sm btn-outline-danger fa fa-trash-alt" title="{{ __('misc.delete') }}"></button>
                 </form>
             </td>
             <td class="text-center"><img src="{{ $post->imageUrl() }}" width="150" alt=""></td>
@@ -31,7 +31,7 @@
                     <form action="{{ route('admin.posts.restore', $post) }}" method="post">
                         @csrf
                         @method('patch')
-                        <button type="submit" onclick="return confirm()" class="btn btn-sm btn-success">{{ __('backend.restore') }}</button>
+                        <button type="submit" onclick="return confirm()" class="btn btn-sm btn-success fa fa-trash-restore-alt" title="{{ __('backend.restore') }}"></button>
                     </form>
                 @endif
             </td>

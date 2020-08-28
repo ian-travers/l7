@@ -48,4 +48,6 @@ return [
     'edit-news' => 'Edit news',
     'body_en' => 'Body Eng',
     'body_ru' => 'Body Rus',
+    'move-to-trash' => 'Move to trash',
+    'remove-from-trash' => 'Remove from trash',
 ];

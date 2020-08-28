@@ -8,7 +8,7 @@
         <th>{{ __('backend.title_ru') }}</th>
         <th>{{ __('backend.body_en') }}</th>
         <th>{{ __('backend.body_ru') }}</th>
-        <th>{{ __('backend.trashed') }}</th>
+        <th class="w-10">{{ __('backend.trashed') }}</th>
     </tr>
     </thead>
     <tbody>
@@ -21,7 +21,7 @@
                     @csrf
                     @method('delete')
                     <button type="submit" onclick="return confirm()"
-                            class="btn btn-sm btn-outline-warning fa fa-trash-alt"></button>
+                            class="btn btn-sm btn-outline-warning fa fa-trash" title="{{ __('backend.move-to-trash') }}"></button>
                 </form>
             </td>
             <td>{{ $new->title_en }}</td>
@@ -30,15 +30,15 @@
             <td>{{ $new->body_ru }}</td>
             <td class="text-center">
                 @if($new->trashed())
-                    <form action="{{ route('admin.news.restore', $new) }}" method="post">
+                    <form action="{{ route('admin.news.restore', $new) }}" method="post" class="d-inline ml-1">
                         @csrf
                         @method('patch')
-                        <button type="submit" onclick="return confirm()" class="btn btn-sm btn-success">{{ __('backend.restore') }}</button>
+                        <button type="submit" onclick="return confirm()" class="btn btn-sm btn-success fa fa-trash-restore-alt" title="{{ __('backend.restore') }}"></button>
                     </form>
-                    <form action="{{ route('admin.news.force-delete', $new) }}" method="post">
+                    <form action="{{ route('admin.news.force-delete', $new) }}" method="post" class="d-inline ml-1">
                         @csrf
                         @method('delete')
-                        <button type="submit" onclick="return confirm()" class="btn btn-sm btn-outline-danger fa fa-trash-alt"></button>
+                        <button type="submit" onclick="return confirm()" class="btn btn-sm btn-outline-danger fa fa-trash-alt" title="{{ __('backend.remove-from-trash') }}"></button>
                     </form>
                 @endif
             </td>

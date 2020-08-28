@@ -48,4 +48,6 @@ return [
     'edit-news' => 'Редактирование новости',
     'body_en' => 'Текст новости Eng',
     'body_ru' => 'Текст новости Rus',
+    'move-to-trash' => 'В корзину',
+    'remove-from-trash' => 'Удалить из корзины',
 ];
