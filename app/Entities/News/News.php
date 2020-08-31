@@ -2,6 +2,9 @@
 
 namespace App\Entities\News;
 
+use App\Entities\NativeAttributeTrait;
+use App\Entities\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Str;
@@ -43,12 +46,33 @@ use Str;
  */
 class News extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, NativeAttributeTrait;
 
     protected $guarded = [];
 
-    public function setSlugAttribute($value)
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
+
+    public function setSlugAttribute()
     {
         $this->attributes['slug'] = Str::slug(trim($this->title_en));
+    }
+
+    public function getTitleAttribute()
+    {
+        return $this->GetNativeAttributeValue('title');
+    }
+
+    public function getBodyAttribute()
+    {
+        return $this->GetNativeAttributeValue('body');
+    }
+
+    public function createdAtHtml()
+    {
+        Carbon::setLocale(app()->getLocale());
+        return $this->created_at->toDateString() . ' (' .$this->created_at->diffForHumans() . ')';
     }
 }

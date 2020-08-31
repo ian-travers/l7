@@ -18,6 +18,15 @@ Route::group(['middleware' => 'language'], function () {
             Route::get('/{slug}', 'BlogsController@show')->middleware('throttle:4,1')->name('.show');
         });
 
+    Route::group([
+        'prefix' => 'news',
+        'as' => 'news'
+    ],
+        function () {
+            Route::get('', 'NewsController@index');
+            Route::get('/{slug}', 'NewsController@show')->name('.show');
+        });
+
     Route::group(
         [
             'prefix' => 'settings',

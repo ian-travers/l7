@@ -29,7 +29,7 @@
 
     <div class="navbar navbar-dark mr-3">
         <div class="navbar-nav">
-            <a class="nav-link lead py-0" href="#">{{ __('misc.news') }}</a>
+            <a class="nav-link lead py-0" href="{{ route('news') }}">{{ __('misc.news') }}</a>
         </div>
     </div>
 
