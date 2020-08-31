@@ -73,6 +73,7 @@ class News extends Model
     public function createdAtHtml()
     {
         Carbon::setLocale(app()->getLocale());
+
         return $this->created_at->toDateString() . ' (' .$this->created_at->diffForHumans() . ')';
     }
 }
