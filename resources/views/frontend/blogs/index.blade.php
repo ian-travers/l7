@@ -1,7 +1,7 @@
 @php  /** @var App\Entities\Blog\Post\Post $post */ @endphp
 
 <x-frontend-layout :title="__('misc.blogs')">
-    <div class="container-fluid text-info mt-n3">
+    <div class="container text-info mt-n3">
         @forelse($posts as $post)
             <div class="mb-3 border border-info p-3 mb-3">
 
