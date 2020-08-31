@@ -1,7 +1,7 @@
 @php  /** @var App\Entities\Blog\Post\Post $post */ @endphp
 
 <x-frontend-layout :title="__('misc.blogs')">
-    <div class="container-fluid text-info mt-n3">
+    <div class="container text-info mt-n3">
         @if($post->hasImage())
             <div class="text-center">
                 <img src="{{ asset($post->image) }}" alt="">

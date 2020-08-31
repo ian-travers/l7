@@ -8,7 +8,7 @@
                     <td>
                         <span class="fas fa-calendar-alt mr-2"></span>
                         {{ $new->createdAtHtml() }}:
-                        <a href="#"><strong>{{ $new->title }}</strong></a>
+                        <a href="{{ route('news.show', $new->slug) }}"><strong>{{ $new->title }}</strong></a>
                     </td>
                 </tr>
                 <tr>
@@ -17,7 +17,7 @@
                 </tr>
                 <tr>
                     <td class="text-right">
-                        <a href="#"><span class="fas fa-comments mr-2"></span>22</a>
+                        <a href="{{ route('news.show', $new->slug) }}"><span class="fas fa-comments mr-2"></span>22</a>
                     </td>
                 </tr>
             </table>
