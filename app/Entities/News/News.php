@@ -2,6 +2,7 @@
 
 namespace App\Entities\News;
 
+use App\Entities\Comment;
 use App\Entities\NativeAttributeTrait;
 use App\Entities\User;
 use Carbon\Carbon;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Str;
 
 /**
- * \App\Entities\News\News
+ * App\Entities\News\News
  *
  * @property int $id
  * @property int $author_id
@@ -23,6 +24,11 @@ use Str;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \App\Entities\User $author
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read mixed $body
+ * @property-read mixed $title
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\News\News newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\News\News newQuery()
  * @method static \Illuminate\Database\Query\Builder|\App\Entities\News\News onlyTrashed()
@@ -75,5 +81,10 @@ class News extends Model
         Carbon::setLocale(app()->getLocale());
 
         return $this->created_at->toDateString() . ' (' .$this->created_at->diffForHumans() . ')';
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }

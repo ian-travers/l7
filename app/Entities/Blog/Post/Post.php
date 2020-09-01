@@ -3,6 +3,7 @@
 namespace App\Entities\Blog\Post;
 
 use App\Entities\Blog\Tag;
+use App\Entities\Comment;
 use App\Entities\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
@@ -28,6 +29,8 @@ use Str;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \App\Entities\User $author
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Comment[] $comments
+ * @property-read int|null $comments_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Blog\Tag[] $tags
  * @property-read int|null $tags_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Blog\Post\Post newModelQuery()
@@ -146,5 +149,10 @@ class Post extends Model
     public function scopePublished(Builder $query): Builder
     {
         return $query->where('published_at', '<=', Carbon::now());
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }
