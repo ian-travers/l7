@@ -46,4 +46,49 @@ class Comment extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Create a comment and persist it.
+     *
+     * @param Model $commentable
+     * @param string $body
+     * @param User $author
+     * @param Comment|null $parent
+     *
+     * @return static
+     */
+    public function createComment(Model $commentable, string $body, User $author, self $parent = null): self
+    {
+        return $commentable->comments()->create([
+            'body' => $body,
+            'user_id' => $author->id,
+            'parent_id' => $parent ? $parent->id : null,
+        ]);
+    }
+
+    /**
+     * Update a comment by an ID
+     *
+     * @param int $id
+     * @param array $data
+     *
+     * @return bool
+     */
+    public function updateComment(int $id, array $data): bool
+    {
+        return (bool) static::find($id)->update($data);
+    }
+
+    /**
+     * Delete a comment by an ID
+     *
+     * @param int $id
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    public function deleteComment(int $id): bool
+    {
+        return (bool) static::find($id)->delete();
+    }
 }
