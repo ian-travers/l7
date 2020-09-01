@@ -87,4 +87,54 @@ class News extends Model
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
+
+    /**
+     * Create a comment
+     *
+     * @param string $body
+     * @param User $author
+     * @param Comment|null $parent
+     *
+     * @return Comment
+     */
+    public function comment(string $body, User $author, Comment $parent = null)
+    {
+        return Comment::createComment($this, $body, $author, $parent);
+    }
+
+    /**
+     * Update a comment
+     *
+     * @param $id
+     * @param $body
+     *
+     * @return bool
+     */
+    public function updateComment($id, $body)
+    {
+        return Comment::updateComment($id, $body);
+    }
+
+    /**
+     * Delete a comment
+     *
+     * @param $id
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    public function deleteComment($id)
+    {
+        return Comment::deleteComment($id);
+    }
+
+    /**
+     * The amount of comments assigned to this model
+     *
+     * @return int
+     */
+    public function commentsCount(): int
+    {
+        return $this->comments->count();
+    }
 }

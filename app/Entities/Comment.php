@@ -57,7 +57,7 @@ class Comment extends Model
      *
      * @return static
      */
-    public function createComment(Model $commentable, string $body, User $author, self $parent = null): self
+    public static function createComment(Model $commentable, string $body, User $author, self $parent = null): self
     {
         return $commentable->comments()->create([
             'body' => $body,
@@ -74,7 +74,7 @@ class Comment extends Model
      *
      * @return bool
      */
-    public function updateComment(int $id, array $data): bool
+    public static function updateComment(int $id, array $data)
     {
         return (bool) static::find($id)->update($data);
     }
@@ -87,7 +87,7 @@ class Comment extends Model
      * @return bool
      * @throws \Exception
      */
-    public function deleteComment(int $id): bool
+    public static function deleteComment(int $id): bool
     {
         return (bool) static::find($id)->delete();
     }
