@@ -29,4 +29,5 @@ return [
     'news-updated' => 'News has been updated',
     'news-deleted' => 'News has been deleted',
     'news-restored' => 'News has been restored',
+    'comment-added' => 'Comment has been added',
 ];

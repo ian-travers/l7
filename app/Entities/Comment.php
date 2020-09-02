@@ -4,6 +4,7 @@ namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Purify;
 
 /**
  * App\Entities\Comment
@@ -44,7 +45,7 @@ class Comment extends Model
 
     public function author()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
@@ -60,7 +61,7 @@ class Comment extends Model
     public static function createComment(Model $commentable, string $body, User $author, self $parent = null): self
     {
         return $commentable->comments()->create([
-            'body' => $body,
+            'body' => Purify::clean($body),
             'user_id' => $author->id,
             'parent_id' => $parent ? $parent->id : null,
         ]);

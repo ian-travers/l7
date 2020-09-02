@@ -29,4 +29,5 @@ return [
     'news-updated' => 'Новость изменена',
     'news-deleted' => 'Новость удалена',
     'news-restored' => 'Новость восстановлена',
+    'comment-added' => 'Комментарий добавлен',
 ];

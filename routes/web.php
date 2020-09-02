@@ -25,6 +25,7 @@ Route::group(['middleware' => 'language'], function () {
         function () {
             Route::get('', 'NewsController@index');
             Route::get('/{slug}', 'NewsController@show')->name('.show');
+            Route::post('/{slug}/comment', 'NewsController@comment')->name('.comment');
         });
 
     Route::group(
