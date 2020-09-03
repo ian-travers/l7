@@ -241,3 +241,13 @@ footer {
     margin-bottom: 0;
 }
 
+/* blog post comments */
+#comments .comment-item .comment-reply {
+    text-decoration: none;
+    border-bottom: 1px dotted #337ab7;
+    cursor: pointer;
+}
+
+#cancel-reply {
+    display: none;
+}

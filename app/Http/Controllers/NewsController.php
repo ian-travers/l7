@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\Comment;
 use App\Entities\News\News;
 
 class NewsController extends Controller
@@ -27,9 +28,10 @@ class NewsController extends Controller
         $news = News::where('slug', $slug)->firstOrFail();
 
         $body = request('body');
-        $parent_id = null;
 
-        $news->comment($body, auth()->user(), $parent_id);
+        $parent = Comment::findOrFail(request('parent_id'));
+
+        $news->comment($body, auth()->user(), $parent);
 
         return redirect()->back()->with('flash', json_encode([
             'type' => 'success',

@@ -6,6 +6,7 @@ use App\Entities\Comment;
 use App\Entities\NativeAttributeTrait;
 use App\Entities\User;
 use Carbon\Carbon;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Str;
@@ -92,7 +93,7 @@ class News extends Model
      * Create a comment
      *
      * @param string $body
-     * @param User $author
+     * @param User|Authenticatable $author
      * @param Comment|null $parent
      *
      * @return Comment

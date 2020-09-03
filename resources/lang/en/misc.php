@@ -24,4 +24,5 @@ return [
     'no-comments-yet' => 'There is no comments yet',
     'login-to-comment' => "You must <a href='/login'>login</a> to leave a comment",
     'leave-your-comment' => 'Leave your comment',
+    'reply' => 'Reply',
 ];

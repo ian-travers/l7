@@ -24,4 +24,5 @@ return [
     'no-comments-yet' => 'Пока нет комментариев',
     'login-to-comment' => "Вам нужно <a href='/login'>войти</a>, чтобы оставить свой комментарий",
     'leave-your-comment' => 'Добавить комментарий',
+    'reply' => 'Ответить',
 ];
