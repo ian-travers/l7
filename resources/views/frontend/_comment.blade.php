@@ -1,6 +1,6 @@
 @php /** @var App\Entities\CommentView $commentView */ @endphp
 
-<div class="comment-item border border-info mb-3 px-3 py-1" data-id="{{ $commentView->comment->id }}">
+<div class="comment-item border border-info mb-1 px-3 py-1" data-id="{{ $commentView->comment->id }}">
     <div class="d-flex">
         <div class="author-avatar py-3 mr-3">
             @if($commentView->comment->author->hasAvatar())
@@ -25,10 +25,8 @@
         </div>
     </div>
     <div class="reply-block"></div>
-    <div class="comments">
-        @foreach($commentView->children as $child)
-            @include('frontend._comment', ['commentView' => $child])
-        @endforeach
-    </div>
+    @foreach($commentView->children as $child)
+        @include('frontend._comment', ['commentView' => $child])
+    @endforeach
 </div>
 
