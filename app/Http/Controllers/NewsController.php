@@ -18,8 +18,9 @@ class NewsController extends Controller
     {
         /** @var News $news */
         $news = News::where('slug', $slug)->firstOrFail();
+        $commentViews = Comment::treeRecursive($news->comments, null);
 
-        return view('frontend.news.show', compact('news'));
+        return view('frontend.news.show', compact('news', 'commentViews'));
     }
 
     public function comment(string $slug)
@@ -27,9 +28,11 @@ class NewsController extends Controller
         /** @var News $news */
         $news = News::where('slug', $slug)->firstOrFail();
 
+        // TODO: validate request
+
         $body = request('body');
 
-        $parent = Comment::findOrFail(request('parent_id'));
+        $parent = request('parent_id') ? Comment::findOrFail(request('parent_id')) : null;
 
         $news->comment($body, auth()->user(), $parent);
 

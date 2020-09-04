@@ -1,4 +1,9 @@
-@php  /** @var App\Entities\News\News $news */ @endphp
+@php
+    /**
+      * @var App\Entities\News\News $news
+      * @var App\Entities\CommentView $commentView
+      */
+@endphp
 
 <x-frontend-layout :title="__('misc.news')">
     <div class="container text-info mt-n3">
@@ -13,35 +18,8 @@
 
         <h3 class="border-top border-info pt-3">{{ __('misc.comments') }}</h3>
         <div id="comments">
-            @forelse($news->comments as $comment)
-                <div class="comment-item border border-info mb-3 px-3 py-1" data-id="{{ $comment->id }}">
-                    <div class="d-flex">
-                        <div class="author-avatar py-3 mr-3">
-                            @if($comment->author->hasAvatar())
-                                <img src="{{ asset($comment->author->avatar_path) }}" class="rounded-circle"
-                                     width="50" height="50" alt="">
-                            @else
-                                <div style="width: 50px"></div>
-                            @endif
-                        </div>
-                        <div class="text-info w-100">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <strong>{{ $comment->author->nickname }}</strong>
-                                    <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span>
-                                </div>
-                                <div class="comment-reply">
-                                    <span class="fas fa-reply"></span>
-                                    {{ __('misc.reply') }}
-                                </div>
-                            </div>
-                            <div>{{ $comment->body }}</div>
-                        </div>
-                    </div>
-                    <div class="ml-3">
-                        <div class="reply-block"></div>
-                    </div>
-                </div>
+            @forelse($commentViews as $commentView)
+                @include('frontend._comment')
             @empty
                 <p>{{ __('misc.no-comments-yet') }}</p>
             @endforelse
@@ -75,14 +53,14 @@
                 let comment = link.closest('.comment-item');
                 $('#parent-id').val(comment.data('id'));
                 form.detach().appendTo(comment.find('.reply-block:first'));
-                document.getElementById('cancel-reply').style.display='inline-block';
+                document.getElementById('cancel-reply').style.display = 'inline-block';
                 return false;
             });
             $(document).on('click', '#comments #cancel-reply', function () {
                 let form = $('#reply-block');
                 $('#parent-id').removeAttr('value');
                 form.detach().appendTo('#root-level');
-                document.getElementById('cancel-reply').style.display='none';
+                document.getElementById('cancel-reply').style.display = 'none';
                 return false;
             });
         </script>

@@ -77,7 +77,7 @@ class Comment extends Model
      */
     public static function updateComment(int $id, array $data)
     {
-        return (bool) static::find($id)->update($data);
+        return (bool)static::find($id)->update($data);
     }
 
     /**
@@ -90,6 +90,20 @@ class Comment extends Model
      */
     public static function deleteComment(int $id): bool
     {
-        return (bool) static::find($id)->delete();
+        return (bool)static::find($id)->delete();
+    }
+
+    public static function treeRecursive(&$comments, $parentId): array
+    {
+        $items = [];
+
+        /** @var self $comment */
+        foreach ($comments as $comment) {
+            if ($comment->parent_id == $parentId) {
+                $items[] = new CommentView($comment, self::treeRecursive($comments, $comment->id));
+            }
+        }
+
+        return $items;
     }
 }
