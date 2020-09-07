@@ -11,6 +11,8 @@
         <p>
             <span class="fas fa-calendar-alt"></span>
             {{ $news->created_at->toDateString() }}
+            <span class="ml-3 fas fa-comments"></span>
+            {{ $news->commentsCount() }}
         </p>
         <div>
             {!! $news->body !!}
