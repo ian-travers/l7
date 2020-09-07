@@ -249,9 +249,9 @@ footer {
 }
 
 #comments .comment-item .comment-item .comment-item .comment-item .comment-item .comment-item .comment-item {
-    margin-left: -1rem !important;
-    margin-right: -1rem !important;
-    margin-bottom: -.25rem !important;
+    margin-left: calc(-1rem - 1px) !important;
+    margin-right: calc(-1rem - 1px) !important;
+    margin-bottom: calc(-.25rem - 1px) !important;
 }
 
 #cancel-reply {
