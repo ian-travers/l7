@@ -8,12 +8,12 @@
 <x-frontend-layout :title="__('misc.news')">
     <div class="container text-info mt-n3">
         <h2 class="text-center">{{ $news->title }}</h2>
-        <p>
-            <span class="fas fa-calendar-alt"></span>
+        <div class="p-2 my-3 border-left border-4 border-info">
+            <span class="ml-3 fas fa-calendar-alt"></span>
             {{ $news->created_at->toDateString() }}
             <span class="ml-3 fas fa-comments"></span>
             {{ $news->commentsCount() }}
-        </p>
+        </div>
         <div>
             {!! $news->body !!}
         </div>
