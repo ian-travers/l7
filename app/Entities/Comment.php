@@ -2,6 +2,7 @@
 
 namespace App\Entities;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Purify;
@@ -53,17 +54,17 @@ class Comment extends Model
      *
      * @param Model $commentable
      * @param string $body
-     * @param User $author
-     * @param Comment|null $parent
+     * @param User|Authenticatable $author
+     * @param int|null $parent_id
      *
      * @return static
      */
-    public static function createComment(Model $commentable, string $body, User $author, self $parent = null): self
+    public static function createComment($commentable, $body, $author, $parent_id = null): self
     {
         return $commentable->comments()->create([
             'body' => Purify::clean($body),
             'user_id' => $author->id,
-            'parent_id' => $parent ? $parent->id : null,
+            'parent_id' => $parent_id ? (int)$parent_id : null,
         ]);
     }
 
@@ -75,7 +76,7 @@ class Comment extends Model
      *
      * @return bool
      */
-    public static function updateComment(int $id, array $data)
+    public static function updateComment($id, $data)
     {
         return (bool)static::find($id)->update($data);
     }
@@ -88,7 +89,7 @@ class Comment extends Model
      * @return bool
      * @throws \Exception
      */
-    public static function deleteComment(int $id): bool
+    public static function deleteComment($id): bool
     {
         return (bool)static::find($id)->delete();
     }

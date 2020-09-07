@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Entities\Comment;
 use App\Entities\News\News;
+use Illuminate\Validation\ValidationException;
 
 class NewsController extends Controller
 {
@@ -28,18 +29,38 @@ class NewsController extends Controller
         /** @var News $news */
         $news = News::where('slug', $slug)->firstOrFail();
 
-        // TODO: validate request
+        // TODO: extract a trait or something
+        try {
+            $formData = $this->validateRequest();
+        } catch (ValidationException $e) {
+            throw new \DomainException($e->getMessage());
+        }
 
-        $body = request('body');
+        if ($formData['parent_id'] == $news->id) {
+            return redirect()->back()->with('flash', json_encode([
+                'type' => 'warning',
+                'title' => __('flash.warning'),
+                'message' => __('flash.wrong-parent'),
+            ]));
+        }
 
-        $parent = request('parent_id') ? Comment::findOrFail(request('parent_id')) : null;
-
-        $news->comment($body, auth()->user(), $parent);
+        $news->comment($formData['body'], auth()->user(), $formData['parent_id']);
 
         return redirect()->back()->with('flash', json_encode([
             'type' => 'success',
             'title' => __('flash.success'),
             'message' => __('flash.comment-added'),
         ]));
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function validateRequest()
+    {
+        return $this->validate(request(), [
+            'body' => 'required',
+            'parent_id' => 'nullable|exists:comments,id',
+        ]);
     }
 }

@@ -94,13 +94,13 @@ class News extends Model
      *
      * @param string $body
      * @param User|Authenticatable $author
-     * @param Comment|null $parent
+     * @param int|null $parent_id
      *
      * @return Comment
      */
-    public function comment(string $body, User $author, Comment $parent = null)
+    public function comment(string $body, User $author, ?int $parent_id = null)
     {
-        return Comment::createComment($this, $body, $author, $parent);
+        return Comment::createComment($this, $body, $author, $parent_id);
     }
 
     /**

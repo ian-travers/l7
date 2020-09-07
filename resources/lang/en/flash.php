@@ -30,4 +30,5 @@ return [
     'news-deleted' => 'News has been deleted',
     'news-restored' => 'News has been restored',
     'comment-added' => 'Comment has been added',
+    'wrong-parent' => 'Wrong parent comment',
 ];
