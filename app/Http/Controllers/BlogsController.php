@@ -18,10 +18,11 @@ class BlogsController extends Controller
     {
         /** @var Post $post */
         $post = Post::where('slug', $slug)->published()->firstOrFail();
+        $commentViews = Comment::treeRecursive($post->comments, null);
 
         $post->increment('views_count');
 
-        return view('frontend.blogs.show', compact('post'));
+        return view('frontend.blogs.show', compact('post', 'commentViews'));
     }
 
     public function comment(string $slug)

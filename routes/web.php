@@ -16,6 +16,7 @@ Route::group(['middleware' => 'language'], function () {
         function () {
             Route::get('', 'BlogsController@index');
             Route::get('/{slug}', 'BlogsController@show')->middleware('throttle:4,1')->name('.show');
+            Route::post('/{slug}/comment', 'BlogsController@comment')->name('.comment');
         });
 
     Route::group([
