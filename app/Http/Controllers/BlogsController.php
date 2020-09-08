@@ -37,7 +37,7 @@ class BlogsController extends Controller
                 'title' => __('flash.success'),
                 'message' => __('flash.wrong-parent'),
             ]));
-        };
+        }
 
         return redirect()->back()->with('flash', json_encode([
             'type' => 'success',
