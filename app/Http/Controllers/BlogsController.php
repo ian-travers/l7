@@ -31,6 +31,18 @@ class BlogsController extends Controller
     {
         $post = Post::where('slug', $slug)->firstOrFail();
 
-        $this->publishComment($post);
+        if (!$this->publishComment($post)) {
+            return redirect()->back()->with('flash', json_encode([
+                'type' => 'success',
+                'title' => __('flash.success'),
+                'message' => __('flash.wrong-parent'),
+            ]));
+        };
+
+        return redirect()->back()->with('flash', json_encode([
+            'type' => 'success',
+            'title' => __('flash.success'),
+            'message' => __('flash.comment-added'),
+        ]));
     }
 }

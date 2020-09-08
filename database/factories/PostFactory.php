@@ -4,6 +4,7 @@
 
 use App\Entities\Blog\Post\Post;
 use App\Entities\User;
+use Carbon\Carbon;
 use Faker\Generator as Faker;
 
 $factory->define(Post::class, function (Faker $faker) {
@@ -21,5 +22,11 @@ $factory->define(Post::class, function (Faker $faker) {
         'image' => null,
         'published_at' => null,
         'deleted_at' => null,
+    ];
+});
+
+$factory->state(Post::class, 'published', function () {
+    return [
+        'published_at' => Carbon::now()->subMinute(),
     ];
 });

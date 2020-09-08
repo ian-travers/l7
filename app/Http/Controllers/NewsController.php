@@ -29,7 +29,19 @@ class NewsController extends Controller
     {
         $news = News::where('slug', $slug)->firstOrFail();
 
-        $this->publishComment($news);
+        if (!$this->publishComment($news)) {
+            return redirect()->back()->with('flash', json_encode([
+                'type' => 'success',
+                'title' => __('flash.success'),
+                'message' => __('flash.wrong-parent'),
+            ]));
+        };
+
+        return redirect()->back()->with('flash', json_encode([
+            'type' => 'success',
+            'title' => __('flash.success'),
+            'message' => __('flash.comment-added'),
+        ]));
     }
 
     /**

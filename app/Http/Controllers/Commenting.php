@@ -9,7 +9,7 @@ trait Commenting
     /**
      * @param Model $model
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return bool
      * @throws \Illuminate\Validation\ValidationException
      */
     public function publishComment(Model $model)
@@ -17,20 +17,10 @@ trait Commenting
         $formData = $this->validateRequest();
 
         if ($formData['parent_id'] == $model->id) {
-            return redirect()->back()->with('flash', json_encode([
-                'type' => 'warning',
-                'title' => __('flash.warning'),
-                'message' => __('flash.wrong-parent'),
-            ]));
+            return false;
         }
 
-        $model->comment($formData['body'], auth()->user(), $formData['parent_id']);
-
-        return redirect()->back()->with('flash', json_encode([
-            'type' => 'success',
-            'title' => __('flash.success'),
-            'message' => __('flash.comment-added'),
-        ]));
+        return (bool)$model->comment($formData['body'], auth()->user(), $formData['parent_id']);
     }
 
     /**
