@@ -12,7 +12,7 @@ class CommentTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    function create_a_comment_test()
+    function create_a_comment()
     {
         $this->signIn();
 
@@ -25,7 +25,7 @@ class CommentTest extends TestCase
     }
 
     /** @test */
-    function update_a_comment_test()
+    function update_a_comment()
     {
         $this->signIn();
 
@@ -40,7 +40,7 @@ class CommentTest extends TestCase
     }
 
     /** @test */
-    function delete_a_comment_test()
+    function delete_a_comment()
     {
         $this->signIn();
 
