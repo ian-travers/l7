@@ -2,11 +2,10 @@
 
 namespace App\Entities\News;
 
-use App\Entities\Comment;
+use App\Entities\HasComments;
 use App\Entities\NativeAttributeTrait;
 use App\Entities\User;
 use Carbon\Carbon;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Str;
@@ -53,7 +52,7 @@ use Str;
  */
 class News extends Model
 {
-    use SoftDeletes, NativeAttributeTrait;
+    use SoftDeletes, NativeAttributeTrait, HasComments;
 
     protected $guarded = [];
 
@@ -82,60 +81,5 @@ class News extends Model
         Carbon::setLocale(app()->getLocale());
 
         return $this->created_at->toDateString() . ' (' .$this->created_at->diffForHumans() . ')';
-    }
-
-    public function comments()
-    {
-        return $this->morphMany(Comment::class, 'commentable');
-    }
-
-    /**
-     * Create a comment
-     *
-     * @param string $body
-     * @param User|Authenticatable $author
-     * @param int|null $parent_id
-     *
-     * @return Comment
-     */
-    public function comment(string $body, User $author, ?int $parent_id = null)
-    {
-        return Comment::createComment($this, $body, $author, $parent_id);
-    }
-
-    /**
-     * Update a comment
-     *
-     * @param $id
-     * @param $body
-     *
-     * @return bool
-     */
-    public function updateComment($id, $body)
-    {
-        return Comment::updateComment($id, $body);
-    }
-
-    /**
-     * Delete a comment
-     *
-     * @param $id
-     *
-     * @return bool
-     * @throws \Exception
-     */
-    public function deleteComment($id)
-    {
-        return Comment::deleteComment($id);
-    }
-
-    /**
-     * The amount of comments assigned to this model
-     *
-     * @return int
-     */
-    public function commentsCount(): int
-    {
-        return $this->comments->count();
     }
 }
