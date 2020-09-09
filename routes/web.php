@@ -16,7 +16,7 @@ Route::group(['middleware' => 'language'], function () {
         function () {
             Route::get('', 'BlogsController@index');
             Route::get('/{slug}', 'BlogsController@show')->middleware('throttle:4,1')->name('.show');
-            Route::post('/{slug}/comment', 'BlogsController@comment')->name('.comment');
+            Route::post('/{slug}/comment', 'BlogsController@comment')->middleware('auth')->name('.comment');
         });
 
     Route::group([
@@ -26,7 +26,7 @@ Route::group(['middleware' => 'language'], function () {
         function () {
             Route::get('', 'NewsController@index');
             Route::get('/{slug}', 'NewsController@show')->name('.show');
-            Route::post('/{slug}/comment', 'NewsController@comment')->name('.comment');
+            Route::post('/{slug}/comment', 'NewsController@comment')->middleware('auth')->name('.comment');
         });
 
     Route::group(

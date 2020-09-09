@@ -13,6 +13,27 @@ class CommentsTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    function guest_can_not_comment_news_and_post()
+    {
+        $comment = [
+            'body' => 'This is a comment',
+            'parent_id' => null,
+        ];
+
+        /** @var News $news */
+        $news = create(News::class);
+
+        $this->post(route('news.comment', $news->slug), $comment)
+            ->assertRedirect(route('login'));
+
+        /** @var Post $post */
+        $post = factory(Post::class)->states('published')->create();
+
+        $this->post(route('blogs.comment', $post->slug))
+            ->assertRedirect(route('login'));
+    }
+
+    /** @test */
     function authenticated_user_can_comment_a_news()
     {
         /** @var News $news */
@@ -54,5 +75,5 @@ class CommentsTest extends TestCase
             ->assertSee('This is a post comment');
     }
 
-    // TODO: edit && delete tests. Unauthorized users tests
+    // TODO: edit && delete tests
 }
