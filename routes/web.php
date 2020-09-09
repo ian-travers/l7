@@ -29,6 +29,15 @@ Route::group(['middleware' => 'language'], function () {
             Route::post('/{slug}/comment', 'NewsController@comment')->middleware('auth')->name('.comment');
         });
 
+    Route::group([
+        'prefix' => 'comments',
+        'as' => 'comments',
+        'middleware' => ['auth'],
+    ],
+        function () {
+            Route::patch('/{comment}', 'CommentsController@update')->name('.update');
+        });
+
     Route::group(
         [
             'prefix' => 'settings',
