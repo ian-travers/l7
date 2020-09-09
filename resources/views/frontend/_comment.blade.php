@@ -16,10 +16,25 @@
                     <strong>{{ $commentView->comment->author->nickname }}</strong>
                     <span class="text-muted">{{ $commentView->comment->created_at->diffForHumans() }}</span>
                 </div>
-                <div class="comment-reply">
-                    <span class="fas fa-reply"></span>
-                    {{ __('misc.reply') }}
-                </div>
+                @auth
+                    @if($commentView->comment->author->id == auth()->id())
+                        <div class="comment-actions dropdown navbar-dark">
+                            <span class="fas fa-ellipsis-v" type="button" data-toggle="dropdown"></span>
+                            <div class="dropdown-menu dropdown-menu-right bg-nfsu-cup border border-light">
+                                <div class="navbar-nav">
+                                    <button class="dropdown-item dropdown-nfsu nav-link-nfsu">{{ __('misc.edit') }}</button>
+                                    <button class="dropdown-item dropdown-nfsu nav-link-nfsu">{{ __('misc.delete') }}</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    @else
+                        <div class="comment-reply">
+                            <span class="fas fa-reply"></span>
+                            {{ __('misc.reply') }}
+                        </div>
+                    @endif
+                @endauth
             </div>
             <div>{{ $commentView->comment->body }}</div>
         </div>
