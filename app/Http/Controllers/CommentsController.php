@@ -29,6 +29,14 @@ class CommentsController extends Controller
     {
         $this->authorize('update', $comment);
 
+        if ($comment->hasChild()) {
+            return back()->with('flash', json_encode([
+                'type' => 'warning',
+                'title' => __('flash.warning'),
+                'message' => __('flash.comment-edit-only'),
+            ]));
+        }
+
         $comment->delete();
 
         return back()->with('flash', json_encode([

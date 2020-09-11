@@ -181,4 +181,24 @@ class CommentsTest extends TestCase
 
         $this->assertDatabaseMissing('comments', $cacheComment);
     }
+
+    /** @test */
+    function comment_with_child_can_not_be_deleted()
+    {
+        /** @var Comment $comment */
+        $comment = create(Comment::class);
+
+        /** Create a child comment */
+        create(Comment::class, ['parent_id' => $comment->id]);
+
+        $user = User::find($comment->user_id);
+
+        $this->signIn($user)
+            ->delete("/comments/{$comment->id}")
+            ->assertSessionHas('flash', json_encode([
+                'type' => 'warning',
+                'title' => __('flash.warning'),
+                'message' => __('flash.comment-edit-only'),
+            ]));
+    }
 }

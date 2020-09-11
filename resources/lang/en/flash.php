@@ -31,5 +31,6 @@ return [
     'news-restored' => 'News has been restored',
     'comment-added' => 'Comment has been added',
     'comment-deleted' => 'Comment has been deleted',
+    'comment-edit-only' => 'There is an answer to the comment. You can edit only!',
     'wrong-parent' => 'Wrong parent comment',
 ];

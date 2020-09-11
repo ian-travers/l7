@@ -107,4 +107,16 @@ class Comment extends Model
 
         return $items;
     }
+
+    public function hasChild(): bool
+    {
+        /** @var self $comment */
+        foreach (self::all() as $comment) {
+            if ($comment->parent_id == $this->id) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
