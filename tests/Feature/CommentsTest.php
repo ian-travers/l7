@@ -133,7 +133,7 @@ class CommentsTest extends TestCase
 
         $this->get(route('blogs.show', $post->slug))
             ->assertSee('Comment was updated')
-            ->assertDontSee('This is a news comment');
+            ->assertDontSee('This is a post comment');
     }
 
     /** @test */
