@@ -23,7 +23,11 @@
                             <div class="dropdown-menu dropdown-menu-right bg-nfsu-cup border border-light">
                                 <div class="navbar-nav">
                                     <button class="dropdown-item dropdown-nfsu nav-link-nfsu">{{ __('misc.edit') }}</button>
-                                    <button class="dropdown-item dropdown-nfsu nav-link-nfsu">{{ __('misc.delete') }}</button>
+                                    <form method="post" action="{{ route('comments.delete', $commentView->comment) }}">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="dropdown-item dropdown-nfsu nav-link-nfsu">{{ __('misc.delete') }}</button>
+                                    </form>
                                 </div>
 
                             </div>

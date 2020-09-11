@@ -139,24 +139,46 @@ class CommentsTest extends TestCase
     /** @test */
     function user_can_not_update_other_people_comment()
     {
-        /** @var News $news */
-        $news = create(News::class);
-
-        $this->signIn();
-
-        $comment = [
-            'body' => 'This is a news comment',
-            'parent_id' => null,
-        ];
-
-        $this->post(route('news.comment', $news->slug), $comment);
-
-        $comment = Comment::find(1);
+        /** @var Comment $comment */
+        $comment = create(Comment::class);
 
         $this->signIn(create(User::class));
 
         $this->patch("/comments/{$comment->id}", [
             'body' => 'Comment was updated',
         ])->assertStatus(Response::HTTP_FORBIDDEN);
+    }
+
+    /** @test */
+    function unauthorized_users_can_not_delete_comments()
+    {
+        /** @var Comment $comment */
+        $comment = create(Comment::class);
+
+        $this->delete("/comments/{$comment->id}")
+            ->assertRedirect(route('login'));
+
+        $this->signIn()
+            ->delete("/comments/{$comment->id}")
+            ->assertStatus(Response::HTTP_FORBIDDEN);
+    }
+
+    /** @test */
+    function authorized_users_can_delete_comments()
+    {
+        /** @var Comment $comment */
+        $comment = create(Comment::class);
+
+        $cacheComment = $comment->getAttributes();
+
+        $this->assertDatabaseHas('comments', $cacheComment);
+
+        $user = User::find($comment->user_id);
+
+        $this->signIn($user)
+            ->delete("/comments/{$comment->id}")
+            ->assertStatus(Response::HTTP_FOUND);
+
+        $this->assertDatabaseMissing('comments', $cacheComment);
     }
 }

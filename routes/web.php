@@ -36,6 +36,7 @@ Route::group(['middleware' => 'language'], function () {
     ],
         function () {
             Route::patch('/{comment}', 'CommentsController@update')->name('.update');
+            Route::delete('/{comment}', 'CommentsController@remove')->name('.delete');
         });
 
     Route::group(
