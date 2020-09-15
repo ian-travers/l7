@@ -44,4 +44,40 @@ class LikesTest extends TestCase
 
         $this->assertCount(1, $comment->likes);
     }
+
+    /** @test */
+    function authenticated_user_can_unlike_previously_liked_comment()
+    {
+        /** @var Comment $comment */
+        $comment = create(Comment::class);
+
+        $this->signIn();
+
+        $this->post('/comments/' . $comment->id . '/like');
+
+        $this->assertCount(1, $comment->likes);
+
+        $this->post('/comments/' . $comment->id . '/unlike');
+
+        $this->assertCount(0, $comment->fresh()->likes);
+    }
+
+    /** @test */
+    function authenticated_user_may_only_unlike_previously_liked_comment_once()
+    {
+        $this->withoutExceptionHandling();
+        /** @var Comment $comment */
+        $comment = create(Comment::class);
+
+        $this->signIn();
+
+        $this->post('/comments/' . $comment->id . '/like');
+
+        $this->assertCount(1, $comment->likes);
+
+        $this->post('/comments/' . $comment->id . '/unlike');
+        $this->post('/comments/' . $comment->id . '/unlike');
+
+        $this->assertCount(0, $comment->fresh()->likes);
+    }
 }

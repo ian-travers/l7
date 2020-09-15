@@ -39,6 +39,7 @@ Route::group(['middleware' => 'language'], function () {
             Route::delete('/{comment}', 'CommentsController@remove')->name('.delete');
 
             Route::post('/{comment}/like', 'LikesController@store')->name('.like');
+            Route::post('/{comment}/unlike', 'LikesController@remove')->name('.unlike');
         });
 
     Route::group(

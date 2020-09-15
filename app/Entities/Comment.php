@@ -136,6 +136,15 @@ class Comment extends Model
         }
     }
 
+    public function unlike()
+    {
+        $attributes = ['user_id' => auth()->id()];
+
+        if ($like = $this->likes()->where($attributes)->first()) {
+            return $like->delete();
+        }
+    }
+
     public function isLiked()
     {
         return $this->likes()->where(['user_id' => auth()->id()])->exists();

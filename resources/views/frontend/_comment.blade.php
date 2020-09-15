@@ -20,7 +20,11 @@
                         <strong>{{ $commentView->comment->author->nickname }}</strong>
                         <span class="text-muted">{{ $commentView->comment->created_at->diffForHumans() }}</span>
 
-                        <form class="d-inline ml-4" action="{{ route('comments.like', $commentView->comment) }}" method="post">
+                        <form
+                            class="d-inline ml-4"
+                            action="{{ $commentView->comment->isLiked() ? route('comments.unlike', $commentView->comment) : route('comments.like', $commentView->comment) }}"
+                            method="post"
+                        >
                             @csrf
                             <button
                                 class="btn bg-transparent {{ $commentView->comment->isLiked() ? 'text-warning' : 'text-info' }}"

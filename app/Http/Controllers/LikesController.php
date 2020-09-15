@@ -16,4 +16,15 @@ class LikesController extends Controller
             'message' => __('flash.mark-liked'),
         ]));
     }
+
+    public function remove(Comment $comment)
+    {
+        $comment->unlike();
+
+        return back()->with('flash', json_encode([
+            'type' => 'success',
+            'title' => __('flash.success'),
+            'message' => __('flash.mark-unliked'),
+        ]));
+    }
 }
