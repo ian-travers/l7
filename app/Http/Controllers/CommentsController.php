@@ -10,6 +10,7 @@ class CommentsController extends Controller
     /**
      * @param Comment $comment
      *
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -18,6 +19,13 @@ class CommentsController extends Controller
         $this->authorize('update', $comment);
 
         $comment->update($this->validate(request(), ['body' => 'required']));
+
+        if (request()->wantsJson()) {
+            return response([
+                'status' => __('flash.success'),
+                'message' => __('flash.updated'),
+            ]);
+        }
     }
 
     /**
@@ -38,6 +46,7 @@ class CommentsController extends Controller
                 ], Response::HTTP_UNPROCESSABLE_ENTITY);
             } else {
                 $comment->delete();
+
                 return response([
                     'status' => __('flash.success'),
                     'message' => __('flash.deleted'),
