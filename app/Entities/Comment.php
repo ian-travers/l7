@@ -20,6 +20,8 @@ use Purify;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Entities\User $author
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $commentable
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Like[] $likes
+ * @property-read int|null $likes_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Comment newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Comment newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Comment query()
@@ -118,5 +120,19 @@ class Comment extends Model
         }
 
         return false;
+    }
+
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'liked');
+    }
+
+    public function like()
+    {
+        $attributes = ['user_id' => auth()->id()];
+
+        if (!$this->likes()->where($attributes)->exists()) {
+            return $this->likes()->create($attributes);
+        }
     }
 }
