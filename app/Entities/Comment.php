@@ -135,4 +135,9 @@ class Comment extends Model
             return $this->likes()->create($attributes);
         }
     }
+
+    public function isLiked()
+    {
+        return $this->likes()->where(['user_id' => auth()->id()])->exists();
+    }
 }

@@ -35,4 +35,8 @@ return [
     'comment-deleted' => 'Comment has been deleted',
     'comment-edit-only' => 'There is an answer to the comment. You can edit only!',
     'wrong-parent' => 'Wrong parent comment',
+    'mark-liked' => 'Marked as liked',
+    'unmark-liked' => 'Unmarked as liked',
+    'mark-unliked' => 'Marked as unliked',
+    'unmark-unliked' => 'Unmarked as unliked',
 ];

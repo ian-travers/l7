@@ -19,6 +19,16 @@
                     <div>
                         <strong>{{ $commentView->comment->author->nickname }}</strong>
                         <span class="text-muted">{{ $commentView->comment->created_at->diffForHumans() }}</span>
+
+                        <form class="d-inline ml-4" action="{{ route('comments.like', $commentView->comment) }}" method="post">
+                            @csrf
+                            <button
+                                class="btn bg-transparent {{ $commentView->comment->isLiked() ? 'text-warning' : 'text-info' }}"
+                            >
+                                <span class="lead fas fa-thumbs-up"></span>
+                            </button>
+                        </form>
+                        <span>{{ $commentView->comment->likes_count }}</span>
                     </div>
                     @auth
                         @if($commentView->comment->author->id == auth()->id())

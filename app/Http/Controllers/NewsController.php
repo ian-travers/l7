@@ -19,7 +19,7 @@ class NewsController extends Controller
     public function show(string $slug)
     {
         /** @var News $news */
-        $news = News::where('slug', $slug)->firstOrFail();
+        $news = News::where('slug', $slug)->with('comments.likes')->firstOrFail();
         $commentViews = Comment::treeRecursive($news->comments, null);
 
         return view('frontend.news.show', compact('news', 'commentViews'));
