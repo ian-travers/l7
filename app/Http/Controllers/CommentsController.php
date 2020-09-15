@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entities\Comment;
+use Illuminate\Http\Response;
 
 class CommentsController extends Controller
 {
@@ -22,12 +23,27 @@ class CommentsController extends Controller
     /**
      * @param Comment $comment
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function remove(Comment $comment)
     {
         $this->authorize('update', $comment);
+
+        if (request()->wantsJson()) {
+            if ($comment->hasChild()) {
+                return response([
+                    'status' => __('flash.warning'),
+                    'message' => __('flash.comment-edit-only'),
+                ], Response::HTTP_UNPROCESSABLE_ENTITY);
+            } else {
+                $comment->delete();
+                return response([
+                    'status' => __('flash.success'),
+                    'message' => __('flash.deleted'),
+                ]);
+            }
+        }
 
         if ($comment->hasChild()) {
             return back()->with('flash', json_encode([

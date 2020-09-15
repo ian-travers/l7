@@ -3,7 +3,8 @@
 <comment
     :attributes="{{ $commentView->comment }}"
     success_title="{{ __('flash.success') }}"
-    success_message="{{ __('flash.updated') }}"
+    success_edit_message="{{ __('flash.updated') }}"
+    success_delete_message="{{ __('flash.deleted') }}"
     inline-template
     v-cloak>
     <div class="comment-item border border-info mb-1 px-3 py-1" data-id="{{ $commentView->comment->id }}">
@@ -30,13 +31,16 @@
                                     <div class="navbar-nav">
                                         <button class="dropdown-item dropdown-nfsu nav-link-nfsu"
                                                 @click="editing = true">{{ __('misc.edit') }}</button>
-                                        <form method="post"
-                                              action="{{ route('comments.delete', $commentView->comment) }}">
-                                            @csrf
-                                            @method('delete')
-                                            <button
-                                                class="dropdown-item dropdown-nfsu nav-link-nfsu">{{ __('misc.delete') }}</button>
-                                        </form>
+                                        <button class="dropdown-item dropdown-nfsu nav-link-nfsu"
+                                                @click="remove">{{ __('misc.delete') }}</button>
+
+{{--                                        <form method="post"--}}
+{{--                                              action="{{ route('comments.delete', $commentView->comment) }}">--}}
+{{--                                            @csrf--}}
+{{--                                            @method('delete')--}}
+{{--                                            <button--}}
+{{--                                                class="dropdown-item dropdown-nfsu nav-link-nfsu">{{ __('misc.delete') }}</button>--}}
+{{--                                        </form>--}}
                                     </div>
 
                                 </div>
