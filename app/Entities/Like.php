@@ -31,4 +31,11 @@ use Illuminate\Database\Eloquent\Model;
 class Like extends Model
 {
     protected $guarded = [];
+
+    public function toggle()
+    {
+        $this->is_dislike = !$this->is_dislike;
+
+        $this->save();
+    }
 }

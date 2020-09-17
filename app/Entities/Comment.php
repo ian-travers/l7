@@ -134,9 +134,13 @@ class Comment extends Model
         return $this->morphMany(Like::class, 'liked')->where(['is_dislike' => false]);
     }
 
-
     public function like()
     {
+        // toggle if used to dislike for current user
+        if ($dislike = $this->dislikes()->where(['user_id' => auth()->id()])->first()) {
+            return $dislike->toggle();
+        }
+
         $attributes = [
             'user_id' => auth()->id(),
             'is_dislike' => false,
@@ -177,6 +181,11 @@ class Comment extends Model
 
     public function dislike()
     {
+        // toggle if used to like for current user
+        if ($like = $this->likes()->where(['user_id' => auth()->id()])->first()) {
+            return $like->toggle();
+        }
+
         $attributes = [
             'user_id' => auth()->id(),
             'is_dislike' => true,

@@ -33,7 +33,6 @@ class DislikesTest extends TestCase
     /** @test */
     function authenticated_user_may_only_dislike_any_comment_once()
     {
-        $this->withoutExceptionHandling();
         /** @var Comment $comment */
         $comment = create(Comment::class);
 
@@ -65,7 +64,6 @@ class DislikesTest extends TestCase
     /** @test */
     function authenticated_user_may_only_undislike_previously_disliked_comment_once()
     {
-        $this->withoutExceptionHandling();
         /** @var Comment $comment */
         $comment = create(Comment::class);
 
@@ -79,5 +77,25 @@ class DislikesTest extends TestCase
         $this->post('/comments/' . $comment->id . '/undislike');
 
         $this->assertCount(0, $comment->fresh()->dislikes);
+    }
+
+    /** @test */
+    function authenticated_user_may_toggle_like_to_dislike_in_one_touch()
+    {
+        /** @var Comment $comment */
+        $comment = create(Comment::class);
+
+        $this->signIn();
+
+        $this->post('/comments/' . $comment->id . '/like');
+
+        $this->assertCount(0, $comment->dislikes);
+        $this->assertCount(1, $comment->likes);
+
+        $this->post('/comments/' . $comment->id . '/dislike');
+
+        $comment = $comment->fresh();
+        $this->assertCount(1, $comment->dislikes);
+        $this->assertCount(0, $comment->likes);
     }
 }
