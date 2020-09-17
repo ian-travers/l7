@@ -4,27 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Entities\Comment;
 
-class LikesController extends Controller
+class DislikesController extends Controller
 {
     public function store(Comment $comment)
     {
-        $comment->like();
+        $comment->dislike();
 
         return back()->with('flash', json_encode([
             'type' => 'success',
             'title' => __('flash.success'),
-            'message' => __('flash.mark-liked'),
+            'message' => __('flash.mark-disliked'),
         ]));
     }
 
     public function remove(Comment $comment)
     {
-        $comment->unlike();
+        $comment->undislike();
 
         return back()->with('flash', json_encode([
             'type' => 'success',
             'title' => __('flash.success'),
-            'message' => __('flash.unmark-liked'),
+            'message' => __('flash.unmark-disliked'),
         ]));
     }
 }

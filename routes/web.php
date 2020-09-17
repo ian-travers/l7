@@ -40,6 +40,9 @@ Route::group(['middleware' => 'language'], function () {
 
             Route::post('/{comment}/like', 'LikesController@store')->name('.like');
             Route::post('/{comment}/unlike', 'LikesController@remove')->name('.unlike');
+
+            Route::post('/{comment}/dislike', 'DislikesController@store')->name('.dislike');
+            Route::post('/{comment}/undislike', 'DislikesController@remove')->name('.undislike');
         });
 
     Route::group(

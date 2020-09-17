@@ -8,7 +8,9 @@ trait HasComments
 {
     public function comments()
     {
-        return $this->morphMany(Comment::class, 'commentable')->withCount('likes');
+        return $this->morphMany(Comment::class, 'commentable')
+            ->withCount('likes')
+            ->withCount('dislikes');
     }
 
     /**

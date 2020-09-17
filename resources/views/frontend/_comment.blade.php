@@ -27,12 +27,26 @@
                         >
                             @csrf
                             <button
-                                class="btn bg-transparent {{ $commentView->comment->isLiked() ? 'text-warning' : 'text-info' }}"
+                                class="btn bg-transparent {{ $commentView->comment->isLiked() ? 'text-success' : 'text-info' }}"
                             >
                                 <span class="lead fas fa-thumbs-up"></span>
                             </button>
                         </form>
                         <span>{{ $commentView->comment->likes_count }}</span>
+
+                        <form
+                            class="d-inline ml-4"
+                            action="{{ $commentView->comment->isDisliked() ? route('comments.undislike', $commentView->comment) : route('comments.dislike', $commentView->comment) }}"
+                            method="post"
+                        >
+                            @csrf
+                            <button
+                                class="btn bg-transparent {{ $commentView->comment->isDisliked() ? 'text-success' : 'text-info' }}"
+                            >
+                                <span class="lead fas fa-thumbs-down"></span>
+                            </button>
+                        </form>
+                        <span>{{ $commentView->comment->dislikes_count }}</span>
                     </div>
                     @auth
                         @if($commentView->comment->author->id == auth()->id())

@@ -20,6 +20,8 @@ use Purify;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Entities\User $author
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $commentable
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Like[] $dislikes
+ * @property-read int|null $dislikes_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Like[] $likes
  * @property-read int|null $likes_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Comment newModelQuery()
@@ -40,6 +42,10 @@ use Purify;
 class Comment extends Model
 {
     protected $guarded = ['id'];
+
+    protected $casts = [
+        'is_dislike' => 'boolean'
+    ];
 
     public function commentable(): MorphTo
     {
@@ -122,14 +128,19 @@ class Comment extends Model
         return false;
     }
 
+    // Likes
     public function likes()
     {
-        return $this->morphMany(Like::class, 'liked');
+        return $this->morphMany(Like::class, 'liked')->where(['is_dislike' => false]);
     }
+
 
     public function like()
     {
-        $attributes = ['user_id' => auth()->id()];
+        $attributes = [
+            'user_id' => auth()->id(),
+            'is_dislike' => false,
+        ];
 
         if (!$this->likes()->where($attributes)->exists()) {
             return $this->likes()->create($attributes);
@@ -138,7 +149,10 @@ class Comment extends Model
 
     public function unlike()
     {
-        $attributes = ['user_id' => auth()->id()];
+        $attributes = [
+            'user_id' => auth()->id(),
+            'is_dislike' => false,
+        ];
 
         if ($like = $this->likes()->where($attributes)->first()) {
             return $like->delete();
@@ -147,6 +161,51 @@ class Comment extends Model
 
     public function isLiked()
     {
-        return $this->likes()->where(['user_id' => auth()->id()])->exists();
+        return $this->likes()
+            ->where([
+                'user_id' => auth()->id(),
+                'is_dislike' => false,
+            ])
+            ->exists();
+    }
+
+    // Dislikes
+    public function dislikes()
+    {
+        return $this->morphMany(Like::class, 'liked')->where(['is_dislike' => true]);
+    }
+
+    public function dislike()
+    {
+        $attributes = [
+            'user_id' => auth()->id(),
+            'is_dislike' => true,
+        ];
+
+        if (!$this->dislikes()->where($attributes)->exists()) {
+            return $this->dislikes()->create($attributes);
+        }
+    }
+
+    public function undislike()
+    {
+        $attributes = [
+            'user_id' => auth()->id(),
+            'is_dislike' => true,
+        ];
+
+        if ($dislike = $this->dislikes()->where($attributes)->first()) {
+            return $dislike->delete();
+        }
+    }
+
+    public function isDisliked()
+    {
+        return $this->dislikes()
+            ->where([
+                'user_id' => auth()->id(),
+                'is_dislike' => true,
+            ])
+            ->exists();
     }
 }

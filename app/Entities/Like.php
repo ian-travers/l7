@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $user_id
  * @property int $liked_id
  * @property string $liked_type
+ * @property int $is_dislike
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like newModelQuery()
@@ -18,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like whereIsDislike($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like whereLikedId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like whereLikedType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like whereUpdatedAt($value)

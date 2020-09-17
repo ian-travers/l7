@@ -37,6 +37,6 @@ return [
     'wrong-parent' => 'Wrong parent comment',
     'mark-liked' => 'Marked as liked',
     'unmark-liked' => 'Unmarked as liked',
-    'mark-unliked' => 'Marked as unliked',
-    'unmark-unliked' => 'Unmarked as unliked',
+    'mark-disliked' => 'Marked as disliked',
+    'unmark-disliked' => 'Unmarked as disliked',
 ];
