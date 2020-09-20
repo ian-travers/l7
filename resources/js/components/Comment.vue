@@ -1,10 +1,11 @@
 <script>
     import Like from "./Like";
+    import Dislike from "./Dislike";
 
     export default {
         props: ['attributes'],
 
-        components: {Like},
+        components: {Like, Dislike},
 
         data() {
             return {

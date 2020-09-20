@@ -20,20 +20,7 @@
                         <strong>{{ $commentView->comment->author->nickname }}</strong>
                         <span class="text-muted">{{ $commentView->comment->created_at->diffForHumans() }}</span>
                         <like :comment="{{ $commentView->comment }}"></like>
-
-                        <form
-                            class="d-inline ml-4"
-                            action="{{ $commentView->comment->isDisliked() ? route('comments.undislike', $commentView->comment) : route('comments.dislike', $commentView->comment) }}"
-                            method="post"
-                        >
-                            @csrf
-                            <button
-                                class="btn bg-transparent {{ $commentView->comment->isDisliked() ? 'text-success' : 'text-info' }}"
-                            >
-                                <span class="lead fas fa-thumbs-down"></span>
-                            </button>
-                        </form>
-                        <span>{{ $commentView->comment->dislikes_count }}</span>
+                        <dislike :comment="{{ $commentView->comment }}"></dislike>
                     </div>
                     @auth
                         @if($commentView->comment->author->id == auth()->id())
