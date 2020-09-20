@@ -19,8 +19,9 @@
                     <div>
                         <strong>{{ $commentView->comment->author->nickname }}</strong>
                         <span class="text-muted">{{ $commentView->comment->created_at->diffForHumans() }}</span>
-                        <like :comment="{{ $commentView->comment }}"></like>
-                        <dislike :comment="{{ $commentView->comment }}"></dislike>
+{{--                        <like :comment="{{ $commentView->comment }}"></like>--}}
+{{--                        <dislike :comment="{{ $commentView->comment }}"></dislike>--}}
+                        <like-dislike :comment="{{ $commentView->comment }}"></like-dislike>
                     </div>
                     @auth
                         @if($commentView->comment->author->id == auth()->id())
