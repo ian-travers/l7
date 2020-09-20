@@ -47,6 +47,8 @@ class Comment extends Model
         'is_dislike' => 'boolean'
     ];
 
+    protected $appends = ['isLiked'];
+
     public function commentable(): MorphTo
     {
         return $this->morphTo();
@@ -171,6 +173,11 @@ class Comment extends Model
                 'is_dislike' => false,
             ])
             ->exists();
+    }
+
+    public function getIsLikedAttribute()
+    {
+        return $this->isLiked();
     }
 
     // Dislikes

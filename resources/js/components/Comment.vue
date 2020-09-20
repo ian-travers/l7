@@ -1,6 +1,10 @@
 <script>
+    import Like from "./Like";
+
     export default {
         props: ['attributes'],
+
+        components: {Like},
 
         data() {
             return {
@@ -14,12 +18,12 @@
                 axios.patch('/comments/' + this.attributes.id, {
                     body: this.body
                 })
-                .then(response => {
-                    iziToast.success({
-                        title: response.data.status,
-                        message: response.data.message,
+                    .then(response => {
+                        iziToast.success({
+                            title: response.data.status,
+                            message: response.data.message,
+                        });
                     });
-                });
 
                 this.editing = false;
             },

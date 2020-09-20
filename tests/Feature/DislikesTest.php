@@ -52,13 +52,11 @@ class DislikesTest extends TestCase
 
         $this->signIn();
 
-        $this->post('/comments/' . $comment->id . '/dislike');
-
-        $this->assertCount(1, $comment->dislikes);
+        $comment->dislikes();
 
         $this->post('/comments/' . $comment->id . '/undislike');
 
-        $this->assertCount(0, $comment->fresh()->dislikes);
+        $this->assertCount(0, $comment->dislikes);
     }
 
     /** @test */

@@ -19,12 +19,21 @@ class NewsController extends Controller
     public function show(string $slug)
     {
         /** @var News $news */
-        $news = News::where('slug', $slug)->with('comments.likes')->firstOrFail();
+        $news = News::where('slug', $slug)
+            ->with('comments')
+            ->firstOrFail();
+
         $commentViews = Comment::treeRecursive($news->comments, null);
 
         return view('frontend.news.show', compact('news', 'commentViews'));
     }
 
+    /**
+     * @param string $slug
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function comment(string $slug)
     {
         $news = News::where('slug', $slug)->firstOrFail();
