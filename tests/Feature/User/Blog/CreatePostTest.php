@@ -29,7 +29,7 @@ class CreatePostTest extends TestCase
         $this->post('/user/posts', $post->toArray())
             ->assertStatus(Response::HTTP_FOUND);
 
-        $this->assertDatabaseHas('posts', $post->toArray());
+        $this->assertDatabaseHas('posts', $post->getAttributes());
     }
 
     /** @test */
@@ -42,7 +42,7 @@ class CreatePostTest extends TestCase
 
         $this->post('/user/posts', $post->toArray())
             ->assertStatus(Response::HTTP_FOUND);
-        $this->assertDatabaseHas('posts', $post->toArray());
+        $this->assertDatabaseHas('posts', $post->getAttributes());
 
         /** @var Post $anotherPost */
         $anotherPost = make(Post::class, ['title' => 'The same title']);

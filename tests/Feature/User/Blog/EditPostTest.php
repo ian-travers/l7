@@ -43,8 +43,6 @@ class EditPostTest extends TestCase
         $this->post('/user/posts', $post->toArray())
             ->assertStatus(Response::HTTP_FOUND);
 
-        $this->assertDatabaseHas('posts', $post->toArray());
-
         $post = Post::find(1);
 
         $formData = [

@@ -7,12 +7,14 @@ use App\Entities\Comment;
 
 class BlogsController extends Controller
 {
-    use Commenting;
+    use Commenting, LikingDisliking;
 
     public function index()
     {
         $posts = Post::with('author')
             ->withCount('comments')
+            ->withCount('likes')
+            ->withCount('dislikes')
             ->published()
             ->paginate(6);
 
@@ -24,6 +26,8 @@ class BlogsController extends Controller
         /** @var Post $post */
         $post = Post::where('slug', $slug)
             ->withCount('comments')
+            ->withCount('likes')
+            ->withCount('dislikes')
             ->published()
             ->firstOrFail();
 
@@ -51,5 +55,25 @@ class BlogsController extends Controller
             'title' => __('flash.success'),
             'message' => __('flash.comment-added'),
         ]));
+    }
+
+    public function like(Post $post)
+    {
+        return $this->storeLike($post);
+    }
+
+    public function unlike(Post $post)
+    {
+        return $this->removeLike($post);
+    }
+
+    public function dislike(Post $post)
+    {
+        return $this->storeDislike($post);
+    }
+
+    public function undislike(Post $post)
+    {
+        return $this->removeDislike($post);
     }
 }

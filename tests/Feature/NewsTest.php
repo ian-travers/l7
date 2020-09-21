@@ -116,7 +116,6 @@ class NewsTest extends TestCase
     /** @test */
     function authenticated_user_may_only_dislike_any_news_once()
     {
-        $this->withoutExceptionHandling();
         /** @var News $news */
         $news = create(News::class);
 
@@ -131,7 +130,6 @@ class NewsTest extends TestCase
     /** @test */
     function authenticated_user_can_undislike_previously_disliked_news()
     {
-        $this->withoutExceptionHandling();
         /** @var News $news */
         $news = create(News::class);
 

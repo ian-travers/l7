@@ -4,6 +4,7 @@ namespace App\Entities\Blog\Post;
 
 use App\Entities\Blog\Tag;
 use App\Entities\HasComments;
+use App\Entities\HasLikesDislikes;
 use App\Entities\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
@@ -31,6 +32,12 @@ use Str;
  * @property-read User $author
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Comment[] $comments
  * @property-read int|null $comments_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Like[] $dislikes
+ * @property-read int|null $dislikes_count
+ * @property-read mixed $is_disliked
+ * @property-read mixed $is_liked
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Like[] $likes
+ * @property-read int|null $likes_count
  * @property-read \Illuminate\Database\Eloquent\Collection|Tag[] $tags
  * @property-read int|null $tags_count
  * @method static Builder|Post newModelQuery()
@@ -58,9 +65,11 @@ use Str;
  */
 class Post extends Model
 {
-    use SoftDeletes, HasComments;
+    use SoftDeletes, HasComments, HasLikesDislikes;
 
     protected $guarded = [];
+
+    protected $appends = ['isLiked', 'isDisliked'];
 
     protected $dates = ['published_at'];
 

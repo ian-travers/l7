@@ -17,6 +17,12 @@ Route::group(['middleware' => 'language'], function () {
             Route::get('', 'BlogsController@index');
             Route::get('/{slug}', 'BlogsController@show')->middleware('throttle:4,1')->name('.show');
             Route::post('/{slug}/comment', 'BlogsController@comment')->middleware('auth')->name('.comment');
+
+            Route::post('/{post}/like', 'BlogsController@like')->middleware('auth')->name('.like');
+            Route::post('/{post}/unlike', 'BlogsController@unlike')->middleware('auth')->name('.unlike');
+
+            Route::post('/{post}/dislike', 'BlogsController@dislike')->middleware('auth')->name('.dislike');
+            Route::post('/{post}/undislike', 'BlogsController@undislike')->middleware('auth')->name('.undislike');
         });
 
     Route::group([
