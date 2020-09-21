@@ -25,6 +25,8 @@ Vue.component('avatar-form', require('./components/AvatarForm').default);
 Vue.component('without-avatar-form', require('./components/WithoutAvatarForm').default);
 Vue.component('image-upload', require('./components/ImageUpload').default);
 Vue.component('comment', require('./components/Comment').default);
+Vue.component('all-news', require('./components/AllNews').default);
+Vue.component('news', require('./components/News').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

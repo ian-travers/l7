@@ -11,12 +11,12 @@ class NewsController extends Controller
 
     public function index()
     {
-        $news = News::latest()
+        $allNews = News::latest()
             ->withCount('likes')
             ->withCount('dislikes')
-            ->paginate(6);
+            ->paginate(4);
 
-        return view('frontend.news.index', compact('news'));
+        return view('frontend.news.index', compact('allNews'));
     }
 
     public function show(string $slug)

@@ -9,7 +9,6 @@ class CommentsController extends Controller
 {
     use LikingDisliking;
 
-
     /**
      * @param Comment $comment
      *
