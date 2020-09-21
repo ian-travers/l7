@@ -27,6 +27,12 @@ Route::group(['middleware' => 'language'], function () {
             Route::get('', 'NewsController@index');
             Route::get('/{slug}', 'NewsController@show')->name('.show');
             Route::post('/{slug}/comment', 'NewsController@comment')->middleware('auth')->name('.comment');
+
+            Route::post('/{news}/like', 'NewsController@like')->middleware('auth')->name('.like');
+            Route::post('/{news}/unlike', 'NewsController@unlike')->middleware('auth')->name('.unlike');
+
+            Route::post('/{news}/dislike', 'NewsController@dislike')->middleware('auth')->name('.dislike');
+            Route::post('/{news}/undislike', 'NewsController@undislike')->middleware('auth')->name('.undislike');
         });
 
     Route::group([

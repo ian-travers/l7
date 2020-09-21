@@ -7,11 +7,14 @@ use App\Entities\News\News;
 
 class NewsController extends Controller
 {
-    use Commenting;
+    use Commenting, LikingDisliking;
 
     public function index()
     {
-        $news = News::latest()->paginate(6);
+        $news = News::latest()
+            ->withCount('likes')
+            ->withCount('dislikes')
+            ->paginate(6);
 
         return view('frontend.news.index', compact('news'));
     }
@@ -21,6 +24,8 @@ class NewsController extends Controller
         /** @var News $news */
         $news = News::where('slug', $slug)
             ->with('comments')
+            ->withCount('likes')
+            ->withCount('dislikes')
             ->firstOrFail();
 
         $commentViews = Comment::treeRecursive($news->comments, null);
@@ -62,5 +67,25 @@ class NewsController extends Controller
             'body' => 'required',
             'parent_id' => 'nullable|exists:comments,id',
         ]);
+    }
+
+    public function like(News $news)
+    {
+        return $this->storeLike($news);
+    }
+
+    public function unlike(News $news)
+    {
+        return $this->removeLike($news);
+    }
+
+    public function dislike(News $news)
+    {
+        return $this->storeDislike($news);
+    }
+
+    public function undislike(News $news)
+    {
+        return $this->removeDislike($news);
     }
 }

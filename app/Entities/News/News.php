@@ -3,6 +3,7 @@
 namespace App\Entities\News;
 
 use App\Entities\HasComments;
+use App\Entities\HasLikesDislikes;
 use App\Entities\NativeAttributeTrait;
 use App\Entities\User;
 use Carbon\Carbon;
@@ -27,8 +28,14 @@ use Str;
  * @property-read User $author
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Comment[] $comments
  * @property-read int|null $comments_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Like[] $dislikes
+ * @property-read int|null $dislikes_count
  * @property-read mixed $body
+ * @property-read mixed $is_disliked
+ * @property-read mixed $is_liked
  * @property-read mixed $title
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Like[] $likes
+ * @property-read int|null $likes_count
  * @method static \Illuminate\Database\Eloquent\Builder|News newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|News newQuery()
  * @method static \Illuminate\Database\Query\Builder|News onlyTrashed()
@@ -52,9 +59,11 @@ use Str;
  */
 class News extends Model
 {
-    use SoftDeletes, NativeAttributeTrait, HasComments;
+    use SoftDeletes, NativeAttributeTrait, HasComments, HasLikesDislikes;
 
     protected $guarded = [];
+
+    protected $appends = ['isLiked', 'isDisliked'];
 
     public function author()
     {

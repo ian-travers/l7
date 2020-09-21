@@ -48,7 +48,7 @@ class ManageNewsTest extends TestCase
 
         $this->post('/adm/news', $news->toArray());
 
-        $this->assertDatabaseHas('news', $news->toArray());
+        $this->assertDatabaseHas('news', $news->getAttributes());
     }
 
     /** @test */
