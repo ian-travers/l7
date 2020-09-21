@@ -52,7 +52,13 @@
             },
 
             like() {
-                axios.post(this.endpointSuffix + '/like');
+                axios.post(this.endpointSuffix + '/like')
+                    .then(response => {
+                        iziToast.info({
+                            title: response.data.status,
+                            message: response.data.message,
+                        });
+                    });
 
                 this.isLiked = true;
                 this.likesCount++;
@@ -64,14 +70,26 @@
             },
 
             unlike() {
-                axios.post(this.endpointSuffix + '/unlike');
+                axios.post(this.endpointSuffix + '/unlike')
+                    .then(response => {
+                        iziToast.info({
+                            title: response.data.status,
+                            message: response.data.message,
+                        });
+                    });
 
                 this.isLiked = false;
                 this.likesCount--;
             },
 
             dislike() {
-                axios.post(this.endpointSuffix + '/dislike');
+                axios.post(this.endpointSuffix + '/dislike')
+                    .then(response => {
+                        iziToast.info({
+                            title: response.data.status,
+                            message: response.data.message,
+                        });
+                    });
 
                 this.isDisliked = true;
                 this.dislikesCount++;
@@ -83,7 +101,13 @@
             },
 
             undislike() {
-                axios.post(this.endpointSuffix + '/undislike');
+                axios.post(this.endpointSuffix + '/undislike')
+                    .then(response => {
+                        iziToast.info({
+                            title: response.data.status,
+                            message: response.data.message,
+                        });
+                    });
 
                 this.isDisliked = false;
                 this.dislikesCount--;

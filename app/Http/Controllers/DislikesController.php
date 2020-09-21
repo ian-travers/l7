@@ -10,21 +10,19 @@ class DislikesController extends Controller
     {
         $comment->dislike();
 
-        return back()->with('flash', json_encode([
-            'type' => 'success',
-            'title' => __('flash.success'),
+        return response([
+            'status' => __('flash.info'),
             'message' => __('flash.mark-disliked'),
-        ]));
+        ]);
     }
 
     public function remove(Comment $comment)
     {
         $comment->undislike();
 
-        return back()->with('flash', json_encode([
-            'type' => 'success',
-            'title' => __('flash.success'),
+        return response([
+            'status' => __('flash.info'),
             'message' => __('flash.unmark-disliked'),
-        ]));
+        ]);
     }
 }
