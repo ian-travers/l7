@@ -22,7 +22,7 @@
                     </tr>
                     <tr>
                         <td class="text-right">
-                            <a href="{{ route('news.show', $news->slug) }}"><span class="fas fa-comments mr-2"></span>{{ $news->commentsCount() }}</a>
+                            <a href="{{ route('news.show', $news->slug) }}"><span class="fas fa-comments mr-2"></span>{{ $news->comments_count }}</a>
                         </td>
                     </tr>
                 </table>

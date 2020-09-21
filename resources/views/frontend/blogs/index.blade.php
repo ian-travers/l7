@@ -27,7 +27,7 @@
                                 class="mr-3">{{ $post->author->nickname }}</span>
                             <span class="fas fa-calendar-alt mr-2"></span><span
                                 class="mr-3">{{ $post->published() ? $post->published_at->diffForHumans() : '' }}</span>
-                            <span class="fas fa-comments mr-2"></span><span class="mr-3">{{ $post->commentsCount() }}</span>
+                            <span class="fas fa-comments mr-2"></span><span class="mr-3">{{ $post->comments_count }}</span>
                         </div>
                     </div>
                 </div>

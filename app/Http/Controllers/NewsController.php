@@ -12,6 +12,7 @@ class NewsController extends Controller
     public function index()
     {
         $allNews = News::latest()
+            ->withCount('comments')
             ->withCount('likes')
             ->withCount('dislikes')
             ->paginate(4);
@@ -24,6 +25,7 @@ class NewsController extends Controller
         /** @var News $news */
         $news = News::where('slug', $slug)
             ->with('comments')
+            ->withCount('comments')
             ->withCount('likes')
             ->withCount('dislikes')
             ->firstOrFail();

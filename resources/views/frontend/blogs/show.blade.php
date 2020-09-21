@@ -14,7 +14,7 @@
             <span class="ml-3 fas fa-user"></span><span
                 class="ml-2">{{ $post->author->nickname }} {{ $post->author->name ? '(' . $post->author->name . ')' : '' }}</span>
             <span class="ml-3 fas fa-eye"></span><span class="ml-2">{{ $post->views_count }}</span>
-            <span class="ml-3 fas fa-comments"></span><span class="ml-2">{{ $post->commentsCount() }}</span>
+            <span class="ml-3 fas fa-comments"></span><span class="ml-2">{{ $post->comments_count }}</span>
         </div>
         <div>
             {!! $post->body !!}

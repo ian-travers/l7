@@ -11,7 +11,10 @@ class BlogsController extends Controller
 
     public function index()
     {
-        $posts = Post::with('author')->published()->paginate(6);
+        $posts = Post::with('author')
+            ->withCount('comments')
+            ->published()
+            ->paginate(6);
 
         return view('frontend.blogs.index', compact('posts'));
     }
@@ -19,7 +22,11 @@ class BlogsController extends Controller
     public function show(string $slug)
     {
         /** @var Post $post */
-        $post = Post::where('slug', $slug)->published()->firstOrFail();
+        $post = Post::where('slug', $slug)
+            ->withCount('comments')
+            ->published()
+            ->firstOrFail();
+
         $commentViews = Comment::treeRecursive($post->comments, null);
 
         $post->increment('views_count');

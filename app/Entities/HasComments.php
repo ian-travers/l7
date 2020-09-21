@@ -52,14 +52,4 @@ trait HasComments
     {
         return Comment::deleteComment($id);
     }
-
-    /**
-     * The amount of comments assigned to this model
-     *
-     * @return int
-     */
-    public function commentsCount(): int
-    {
-        return $this->comments->count();
-    }
 }
