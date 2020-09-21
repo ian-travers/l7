@@ -27,6 +27,8 @@ Vue.component('image-upload', require('./components/ImageUpload').default);
 Vue.component('comment', require('./components/Comment').default);
 Vue.component('all-news', require('./components/AllNews').default);
 Vue.component('news', require('./components/News').default);
+Vue.component('posts', require('./components/Posts').default);
+Vue.component('post', require('./components/Post').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
