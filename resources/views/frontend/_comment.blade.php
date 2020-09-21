@@ -1,14 +1,20 @@
-@php /** @var App\Entities\CommentView $commentView */ @endphp
+@php
+    /** @var App\Entities\CommentView $commentView */
+    /** @var App\Entities\Comment $comment */
+
+    $comment = $commentView->comment;
+@endphp
 
 <comment
-    :attributes="{{ $commentView->comment }}"
+    :attributes="{{ $comment }}"
     inline-template
     v-cloak>
-    <div class="comment-item border border-info mb-1 px-3 py-1" data-id="{{ $commentView->comment->id }}">
+    <div class="comment-item border border-info mb-1 px-3 py-1" data-id="{{ $comment->id }}">
         <div class="d-flex">
             <div class="author-avatar py-3 mr-3">
-                @if($commentView->comment->author->hasAvatar())
-                    <img src="{{ asset($commentView->comment->author->avatar_path) }}" class="rounded-circle"
+                @php @endphp
+                @if($comment->author->hasAvatar())
+                    <img src="{{ asset($comment->author->avatar_path) }}" class="rounded-circle"
                          width="50" height="50" alt="">
                 @else
                     <div style="width: 50px"></div>
@@ -17,14 +23,17 @@
             <div class="text-info w-100">
                 <div class="d-flex justify-content-between">
                     <div>
-                        <strong>{{ $commentView->comment->author->nickname }}</strong>
-                        <span class="text-muted">{{ $commentView->comment->created_at->diffForHumans() }}</span>
+                        <strong>{{ $comment->author->nickname }}</strong>
+                        <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span>
                         @auth()
-                            <like-dislike :comment="{{ $commentView->comment }}"></like-dislike>
+                            <like-dislike
+                                :model="{{ $comment }}"
+                                uri-suffix="comments"
+                            ></like-dislike>
                         @endauth
                     </div>
                     @auth
-                        @if($commentView->comment->author->id == auth()->id())
+                        @if($comment->author->id == auth()->id())
                             <div class="comment-actions dropdown navbar-dark">
                                 <span class="fas fa-ellipsis-v" type="button" data-toggle="dropdown"></span>
                                 <div class="dropdown-menu dropdown-menu-right bg-nfsu-cup border border-light">

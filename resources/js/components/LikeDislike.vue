@@ -17,14 +17,14 @@
 
 <script>
     export default {
-        props: ['comment'],
+        props: ['model', 'uri-suffix'],
 
         data() {
             return {
-                likesCount: this.comment.likes_count,
-                dislikesCount: this.comment.dislikes_count,
-                isLiked: this.comment.isLiked,
-                isDisliked: this.comment.isDisliked,
+                likesCount: this.model.likes_count,
+                dislikesCount: this.model.dislikes_count,
+                isLiked: this.model.isLiked,
+                isDisliked: this.model.isDisliked,
             }
         },
 
@@ -38,7 +38,7 @@
             },
 
             endpointSuffix() {
-                return '/comments/' + this.comment.id;
+                return `/${this.uriSuffix}/${this.model.id}`;
             }
         },
 

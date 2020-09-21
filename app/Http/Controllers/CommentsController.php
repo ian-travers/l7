@@ -9,10 +9,11 @@ class CommentsController extends Controller
 {
     use LikingDisliking;
 
+
     /**
      * @param Comment $comment
      *
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|Response
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -28,6 +29,12 @@ class CommentsController extends Controller
                 'message' => __('flash.updated'),
             ]);
         }
+
+        return back()->with('flash', json_encode([
+            'type' => 'success',
+            'title' => __('flash.success'),
+            'message' => __('flash.updated'),
+        ]));
     }
 
     /**
@@ -75,21 +82,21 @@ class CommentsController extends Controller
 
     public function like(Comment $comment)
     {
-        $this->storeLike($comment);
+        return $this->storeLike($comment);
     }
 
     public function unlike(Comment $comment)
     {
-        $this->removeLike($comment);
+        return $this->removeLike($comment);
     }
 
     public function dislike(Comment $comment)
     {
-        $this->storeDislike($comment);
+        return $this->storeDislike($comment);
     }
 
     public function undislike(Comment $comment)
     {
-        $this->removeDislike($comment);
+        return $this->removeDislike($comment);
     }
 }
