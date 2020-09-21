@@ -14,16 +14,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $is_dislike
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like whereIsDislike($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like whereLikedId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like whereLikedType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Like whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Like newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Like newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Like query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Like whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Like whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Like whereIsDislike($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Like whereLikedId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Like whereLikedType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Like whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Like whereUserId($value)
  * @mixin \Eloquent
  * @noinspection PhpFullyQualifiedNameUsageInspection
  * @noinspection PhpUnnecessaryFullyQualifiedNameInspection

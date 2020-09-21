@@ -19,28 +19,32 @@ use Purify;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Entities\User $author
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $commentable
+ * @property-read Model|\Eloquent $commentable
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Like[] $dislikes
  * @property-read int|null $dislikes_count
+ * @property-read mixed $is_disliked
+ * @property-read mixed $is_liked
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Like[] $likes
  * @property-read int|null $likes_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Comment newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Comment newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Comment query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Comment whereBody($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Comment whereCommentableId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Comment whereCommentableType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Comment whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Comment whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Comment whereParentId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Comment whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Comment whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereCommentableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereCommentableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUserId($value)
  * @mixin \Eloquent
  * @noinspection PhpFullyQualifiedNameUsageInspection
  * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
  */
 class Comment extends Model
 {
+    use HasLikesDislikes;
+
     protected $guarded = ['id'];
 
     protected $casts = [
@@ -128,105 +132,5 @@ class Comment extends Model
         }
 
         return false;
-    }
-
-    // Likes
-    public function likes()
-    {
-        return $this->morphMany(Like::class, 'liked')->where(['is_dislike' => false]);
-    }
-
-    public function like()
-    {
-        // toggle if used to dislike for current user
-        if ($dislike = $this->dislikes()->where(['user_id' => auth()->id()])->first()) {
-            return $dislike->toggle();
-        }
-
-        $attributes = [
-            'user_id' => auth()->id(),
-            'is_dislike' => false,
-        ];
-
-        if (!$this->likes()->where($attributes)->exists()) {
-            return $this->likes()->create($attributes);
-        }
-    }
-
-    public function unlike()
-    {
-        $attributes = [
-            'user_id' => auth()->id(),
-            'is_dislike' => false,
-        ];
-
-        if ($like = $this->likes()->where($attributes)->first()) {
-            return $like->delete();
-        }
-    }
-
-    public function isLiked()
-    {
-        return $this->likes()
-            ->where([
-                'user_id' => auth()->id(),
-                'is_dislike' => false,
-            ])
-            ->exists();
-    }
-
-    public function getIsLikedAttribute()
-    {
-        return $this->isLiked();
-    }
-
-    // Dislikes
-    public function dislikes()
-    {
-        return $this->morphMany(Like::class, 'liked')->where(['is_dislike' => true]);
-    }
-
-    public function dislike()
-    {
-        // toggle if used to like for current user
-        if ($like = $this->likes()->where(['user_id' => auth()->id()])->first()) {
-            return $like->toggle();
-        }
-
-        $attributes = [
-            'user_id' => auth()->id(),
-            'is_dislike' => true,
-        ];
-
-        if (!$this->dislikes()->where($attributes)->exists()) {
-            return $this->dislikes()->create($attributes);
-        }
-    }
-
-    public function undislike()
-    {
-        $attributes = [
-            'user_id' => auth()->id(),
-            'is_dislike' => true,
-        ];
-
-        if ($dislike = $this->dislikes()->where($attributes)->first()) {
-            return $dislike->delete();
-        }
-    }
-
-    public function isDisliked()
-    {
-        return $this->dislikes()
-            ->where([
-                'user_id' => auth()->id(),
-                'is_dislike' => true,
-            ])
-            ->exists();
-    }
-
-    public function getIsDislikedAttribute()
-    {
-        return $this->isDisliked();
     }
 }

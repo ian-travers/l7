@@ -32,29 +32,29 @@ use Str;
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Blog\Post\Post[] $posts
+ * @property-read \Illuminate\Database\Eloquent\Collection|Post[] $posts
  * @property-read int|null $posts_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User newQuery()
- * @method static \Illuminate\Database\Query\Builder|\App\Entities\User onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereAvatarPath($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereCountry($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereIsAdmin($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereLocale($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereNickname($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereRole($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Entities\User withTrashed()
- * @method static \Illuminate\Database\Query\Builder|\App\Entities\User withoutTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
+ * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAvatarPath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIsAdmin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNickname($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRole($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|User withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
  * @mixin \Eloquent
  * @noinspection PhpFullyQualifiedNameUsageInspection
  * @noinspection PhpUnnecessaryFullyQualifiedNameInspection

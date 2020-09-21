@@ -21,29 +21,29 @@ use Illuminate\Database\Eloquent\Model;
  * @property array|null $seo
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Page\Page[] $children
+ * @property-read \Illuminate\Database\Eloquent\Collection|Page[] $children
  * @property-read int|null $children_count
  * @property-read mixed $content
  * @property-read mixed $depth
  * @property-read string|null $link
  * @property-read string|null $title
- * @property-read \App\Entities\Page\Page|null $parent
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Page\Page newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Page\Page newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Page\Page query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Page\Page roots()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Page\Page whereContentEn($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Page\Page whereContentRu($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Page\Page whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Page\Page whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Page\Page whereLinkEn($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Page\Page whereLinkRu($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Page\Page whereParentId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Page\Page wherePath($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Page\Page whereSeo($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Page\Page whereTitleEn($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Page\Page whereTitleRu($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Page\Page whereUpdatedAt($value)
+ * @property-read Page|null $parent
+ * @method static Builder|Page newModelQuery()
+ * @method static Builder|Page newQuery()
+ * @method static Builder|Page query()
+ * @method static Builder|Page roots()
+ * @method static Builder|Page whereContentEn($value)
+ * @method static Builder|Page whereContentRu($value)
+ * @method static Builder|Page whereCreatedAt($value)
+ * @method static Builder|Page whereId($value)
+ * @method static Builder|Page whereLinkEn($value)
+ * @method static Builder|Page whereLinkRu($value)
+ * @method static Builder|Page whereParentId($value)
+ * @method static Builder|Page wherePath($value)
+ * @method static Builder|Page whereSeo($value)
+ * @method static Builder|Page whereTitleEn($value)
+ * @method static Builder|Page whereTitleRu($value)
+ * @method static Builder|Page whereUpdatedAt($value)
  * @mixin \Eloquent
  * @noinspection PhpFullyQualifiedNameUsageInspection
  * @noinspection PhpUnnecessaryFullyQualifiedNameInspection

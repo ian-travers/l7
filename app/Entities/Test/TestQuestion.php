@@ -15,13 +15,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entities\Test\TestAnswer[] $answers
  * @property-read int|null $answers_count
  * @property-read string|null $question
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestQuestion newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestQuestion newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestQuestion query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestQuestion whereCorrectAnswer($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestQuestion whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestQuestion whereQuestionEn($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestQuestion whereQuestionRu($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TestQuestion newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TestQuestion newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TestQuestion query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TestQuestion whereCorrectAnswer($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TestQuestion whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TestQuestion whereQuestionEn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TestQuestion whereQuestionRu($value)
  * @mixin \Eloquent
  * @noinspection PhpFullyQualifiedNameUsageInspection
  * @noinspection PhpUnnecessaryFullyQualifiedNameInspection

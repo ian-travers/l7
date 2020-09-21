@@ -15,14 +15,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $index
  * @property-read string|null $answer
  * @property-read \App\Entities\Test\TestQuestion $question
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestAnswer newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestAnswer newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestAnswer query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestAnswer whereAnswerEn($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestAnswer whereAnswerRu($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestAnswer whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestAnswer whereIndex($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Test\TestAnswer whereQuestionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TestAnswer newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TestAnswer newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TestAnswer query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TestAnswer whereAnswerEn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TestAnswer whereAnswerRu($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TestAnswer whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TestAnswer whereIndex($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TestAnswer whereQuestionId($value)
  * @mixin \Eloquent
  * @noinspection PhpFullyQualifiedNameUsageInspection
  * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
