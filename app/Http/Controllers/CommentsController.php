@@ -7,6 +7,8 @@ use Illuminate\Http\Response;
 
 class CommentsController extends Controller
 {
+    use LikingDisliking;
+
     /**
      * @param Comment $comment
      *
@@ -69,5 +71,25 @@ class CommentsController extends Controller
             'title' => __('flash.success'),
             'message' => __('flash.comment-deleted'),
         ]));
+    }
+
+    public function like(Comment $comment)
+    {
+        $this->storeLike($comment);
+    }
+
+    public function unlike(Comment $comment)
+    {
+        $this->removeLike($comment);
+    }
+
+    public function dislike(Comment $comment)
+    {
+        $this->storeDislike($comment);
+    }
+
+    public function undislike(Comment $comment)
+    {
+        $this->removeDislike($comment);
     }
 }

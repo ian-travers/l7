@@ -38,11 +38,11 @@ Route::group(['middleware' => 'language'], function () {
             Route::patch('/{comment}', 'CommentsController@update')->name('.update');
             Route::delete('/{comment}', 'CommentsController@remove')->name('.delete');
 
-            Route::post('/{comment}/like', 'LikesController@store')->name('.like');
-            Route::post('/{comment}/unlike', 'LikesController@remove')->name('.unlike');
+            Route::post('/{comment}/like', 'CommentsController@like')->name('.like');
+            Route::post('/{comment}/unlike', 'CommentsController@unlike')->name('.unlike');
 
-            Route::post('/{comment}/dislike', 'DislikesController@store')->name('.dislike');
-            Route::post('/{comment}/undislike', 'DislikesController@remove')->name('.undislike');
+            Route::post('/{comment}/dislike', 'CommentsController@dislike')->name('.dislike');
+            Route::post('/{comment}/undislike', 'CommentsController@undislike')->name('.undislike');
         });
 
     Route::group(
