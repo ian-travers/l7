@@ -6,7 +6,7 @@
 @endphp
 
 <x-frontend-layout :title="__('misc.news')">
-    <news inline-template>
+    <news :initial-comments-count="{{ $news->comments_count }}" inline-template>
         <div class="container text-info mt-n3">
             <h2 class="text-center">{{ $news->title }}</h2>
             <div class="p-2 my-3 border-left border-4 border-info">
@@ -17,7 +17,7 @@
                     uri-suffix="news"
                 ></like-dislike>
                 <span class="ml-5 fas fa-comments"></span>
-                {{ $news->comments_count }}
+                <span v-text="commentsCount"></span>
             </div>
             <div>
                 {!! $news->body !!}
@@ -25,11 +25,19 @@
 
             <h3 class="border-top border-info pt-3">{{ __('misc.comments') }}</h3>
             <div id="comments">
-                @forelse($commentViews as $commentView)
-                    @include('frontend._comment')
-                @empty
+                @if($news->comments_count)
+                    <comments
+                        :data="{{ json_encode($commentViews) }}"
+                        reply="{{ __('misc.reply') }}"
+                        edit="{{ __('misc.edit') }}"
+                        update="{{ __('misc.update') }}"
+                        cancel="{{ __('misc.cancel') }}"
+                        del="{{ __('misc.delete') }}"
+                        @removed="commentsCount--"
+                    ></comments>
+                @else
                     <p>{{ __('misc.no-comments-yet') }}</p>
-                @endforelse
+                @endif
             </div>
             <div id="root-level"></div>
 

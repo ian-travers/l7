@@ -25,6 +25,7 @@ class NewsController extends Controller
         /** @var News $news */
         $news = News::where('slug', $slug)
             ->with('comments')
+            ->with('comments.author')
             ->withCount('comments')
             ->withCount('likes')
             ->withCount('dislikes')

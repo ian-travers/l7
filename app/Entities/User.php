@@ -80,6 +80,8 @@ class User extends Authenticatable
         'is_admin' => 'boolean',
     ];
 
+    protected $appends = ['hasAvatar'];
+
     public static function rolesList(): array
     {
         return [
@@ -147,9 +149,12 @@ class User extends Authenticatable
 
     public function hasAvatar(): bool
     {
-//        return (bool) $this->avatar_path && Storage::disk('public')->exists($this->avatar_path);
+        return (bool) $this->avatar_path && Storage::disk('public')->exists($this->avatar_path);
+    }
 
-        return (bool) $this->avatar_path;
+    public function getHasAvatarAttribute()
+    {
+        return $this->hasAvatar();
     }
 
     public function getPreMadeAvatarIndex(): string
