@@ -11,13 +11,6 @@ class NewsTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    function guest_can_not_like_any_news()
-    {
-        $this->post('/news/1/like')
-            ->assertRedirect('/login');
-    }
-
-    /** @test */
     function authenticated_user_can_like_any_news()
     {
         $this->withoutExceptionHandling();

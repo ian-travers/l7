@@ -16,7 +16,6 @@ class ManagePagesTest extends TestCase
     function guests_cannot_manage_pages()
     {
         $this->get('/adm/pages')
-            ->assertStatus(Response::HTTP_FOUND)
             ->assertRedirect('/login');
     }
 

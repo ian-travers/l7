@@ -16,15 +16,12 @@ class AnswersTest extends TestCase
     function guests_cannot_manage_question_answers()
     {
         $this->get("/adm/tests/1")
-            ->assertStatus(Response::HTTP_FOUND)
             ->assertRedirect('/login');
 
         $this->get("/adm/tests/1/answers/create")
-            ->assertStatus(Response::HTTP_FOUND)
             ->assertRedirect('/login');
 
         $this->get("/adm/tests/1/answers/1/edit")
-            ->assertStatus(Response::HTTP_FOUND)
             ->assertRedirect('/login');
     }
 
@@ -38,7 +35,6 @@ class AnswersTest extends TestCase
         $this->signIn();
 
         $this->get("/adm/tests/{$question->id}/answers/create")
-            ->assertStatus(Response::HTTP_FOUND)
             ->assertRedirect('/')
             ->assertSessionHas('flash', json_encode([
                 'type' => 'warning',
@@ -47,7 +43,6 @@ class AnswersTest extends TestCase
             ]));
 
         $this->get("/adm/tests/{$question->id}/answers/{$question->answers->first()->id}/edit")
-            ->assertStatus(Response::HTTP_FOUND)
             ->assertRedirect('/')
             ->assertSessionHas('flash', json_encode([
                 'type' => 'warning',
@@ -56,7 +51,6 @@ class AnswersTest extends TestCase
             ]));
 
         $this->delete("/adm/tests/{$question->id}/answers/{$question->answers->first()->id}")
-            ->assertStatus(Response::HTTP_FOUND)
             ->assertRedirect('/')
             ->assertSessionHas('flash', json_encode([
                 'type' => 'warning',

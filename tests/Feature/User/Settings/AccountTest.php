@@ -5,7 +5,6 @@ namespace Tests\Feature\User\Settings;
 use App\Entities\User;
 use Hash;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\Response;
 use Tests\TestCase;
 
 class AccountTest extends TestCase
@@ -21,7 +20,6 @@ class AccountTest extends TestCase
         $this->signIn($user);
 
         $this->post('/settings/account/email', ['email' => 'new@mail.com'])
-            ->assertStatus(Response::HTTP_FOUND)
             ->assertSessionHas('flash', json_encode([
                 'type' => 'success',
                 'title' => __('flash.success'),
@@ -79,7 +77,6 @@ class AccountTest extends TestCase
             'password' => 'newpassword',
             'password_confirmation' => 'newpassword',
         ])
-            ->assertStatus(Response::HTTP_FOUND)
             ->assertSessionHas('flash', json_encode([
                 'type' => 'success',
                 'title' => __('flash.success'),

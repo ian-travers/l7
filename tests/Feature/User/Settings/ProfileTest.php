@@ -13,7 +13,6 @@ class ProfileTest extends TestCase
     /** @test */
     function user_can_update_profile()
     {
-        $this->withoutExceptionHandling();
         /** @var User $user */
         $user = create(User::class);
         $this->signIn($user);

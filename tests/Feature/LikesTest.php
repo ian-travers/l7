@@ -15,6 +15,10 @@ class LikesTest extends TestCase
     {
         $this->post('/comments/1/like')
             ->assertRedirect('/login');
+        $this->post('/news/1/like')
+            ->assertRedirect('/login');
+        $this->post('/blogs/1/like')
+            ->assertRedirect('/login');
     }
 
     /** @test */

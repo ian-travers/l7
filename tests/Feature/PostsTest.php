@@ -11,13 +11,6 @@ class PostsTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    function guest_can_not_like_any_post()
-    {
-        $this->post('/blogs/1/like')
-            ->assertRedirect('/login');
-    }
-
-    /** @test */
     function authenticated_user_can_like_any_post()
     {
         $this->withoutExceptionHandling();

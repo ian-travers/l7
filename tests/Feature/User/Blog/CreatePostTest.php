@@ -26,8 +26,7 @@ class CreatePostTest extends TestCase
         /** @var Post $post */
         $post = make(Post::class);
 
-        $this->post('/user/posts', $post->toArray())
-            ->assertStatus(Response::HTTP_FOUND);
+        $this->post('/user/posts', $post->toArray());
 
         $this->assertDatabaseHas('posts', $post->getAttributes());
     }

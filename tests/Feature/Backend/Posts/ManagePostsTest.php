@@ -15,8 +15,7 @@ class ManagePostsTest extends TestCase
     /** @test */
     function guests_cannot_manage_posts()
     {
-        $this->get('/adm/pages')
-            ->assertStatus(Response::HTTP_FOUND)
+        $this->get('/adm/posts')
             ->assertRedirect('/login');
     }
 
@@ -44,7 +43,6 @@ class ManagePostsTest extends TestCase
         $post = create(Post::class);
 
         $this->get("/adm/posts/{$post->id}/edit", $post->toArray())
-            ->assertStatus(Response::HTTP_FOUND)
             ->assertRedirect('/')
             ->assertSessionHas('flash', json_encode([
                 'type' => 'warning',

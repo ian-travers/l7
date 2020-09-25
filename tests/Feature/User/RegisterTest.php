@@ -13,7 +13,6 @@ class RegisterTest extends TestCase
     /** @test */
     function guest_can_register_an_account_with_valid_form_data()
     {
-        $this->withoutExceptionHandling();
         $user = [
             'nickname' => 'first',
             'email' => 'first@tasd.com',

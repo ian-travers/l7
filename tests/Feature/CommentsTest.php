@@ -22,16 +22,11 @@ class CommentsTest extends TestCase
             'parent_id' => null,
         ];
 
-        /** @var News $news */
-        $news = create(News::class);
+        $slug = 'slug';
 
-        $this->post(route('news.comment', $news->slug), $comment)
+        $this->post(route('news.comment', $slug), $comment)
             ->assertRedirect(route('login'));
-
-        /** @var Post $post */
-        $post = factory(Post::class)->states('published')->create();
-
-        $this->post(route('blogs.comment', $post->slug))
+        $this->post(route('blogs.comment', $slug), $comment)
             ->assertRedirect(route('login'));
     }
 

@@ -13,7 +13,6 @@ class BlogsTest extends TestCase
     /** @test */
     function views_count_increments_each_time_the_post_is_read()
     {
-        $this->withoutExceptionHandling();
         /** @var Post $post */
         $post = create(Post::class);
         $post->publish();

@@ -16,7 +16,6 @@ class ManageNewsTest extends TestCase
     function guests_cannot_manage_news()
     {
         $this->get('/adm/news')
-            ->assertStatus(Response::HTTP_FOUND)
             ->assertRedirect('/login');
     }
 

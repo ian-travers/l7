@@ -3,7 +3,6 @@
 namespace Tests\Feature\Backend;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\Response;
 use Tests\TestCase;
 
 class DashboardTest extends TestCase
@@ -14,7 +13,6 @@ class DashboardTest extends TestCase
     function guests_cannot_view_backend_dashboard()
     {
         $this->get('/adm')
-            ->assertStatus(Response::HTTP_FOUND)
             ->assertRedirect('/login');
     }
 
@@ -24,7 +22,6 @@ class DashboardTest extends TestCase
         $this->signIn();
 
         $this->get('/adm')
-            ->assertStatus(Response::HTTP_FOUND)
             ->assertRedirect('/')
             ->assertSessionHas('flash', json_encode([
                 'type' => 'warning',

@@ -16,11 +16,10 @@ class QuestionsTest extends TestCase
     function guests_cannot_manage_tests()
     {
         $this->get('/adm/tests')
-            ->assertStatus(Response::HTTP_FOUND)
             ->assertRedirect('/login');
-
         $this->get('/adm/tests/create')
-            ->assertStatus(Response::HTTP_FOUND)
+            ->assertRedirect('/login');
+        $this->get('/adm/tests/1/edit')
             ->assertRedirect('/login');
     }
 
@@ -29,17 +28,7 @@ class QuestionsTest extends TestCase
     {
         $this->signIn();
 
-        $this->get('/adm/tests')
-            ->assertStatus(Response::HTTP_FOUND)
-            ->assertRedirect('/')
-            ->assertSessionHas('flash', json_encode([
-                'type' => 'warning',
-                'title' => __('flash.warning'),
-                'message' => __('flash.not-enough-rights'),
-            ]));
-
         $this->get('/adm/tests/create')
-            ->assertStatus(Response::HTTP_FOUND)
             ->assertRedirect('/')
             ->assertSessionHas('flash', json_encode([
                 'type' => 'warning',
@@ -56,7 +45,6 @@ class QuestionsTest extends TestCase
         $question = create(TestQuestion::class);
 
         $this->get("/adm/tests/{$question->id}/edit", $question->toArray())
-            ->assertStatus(Response::HTTP_FOUND)
             ->assertRedirect('/')
             ->assertSessionHas('flash', json_encode([
                 'type' => 'warning',
@@ -73,7 +61,6 @@ class QuestionsTest extends TestCase
         $question = create(TestQuestion::class);
 
         $this->delete("/adm/tests/{$question->id}", $question->toArray())
-            ->assertStatus(Response::HTTP_FOUND)
             ->assertRedirect('/')
             ->assertSessionHas('flash', json_encode([
                 'type' => 'warning',

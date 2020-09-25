@@ -40,8 +40,7 @@ class EditPostTest extends TestCase
         /** @var Post $post */
         $post = make(Post::class, ['author_id' => auth()->id()]);
 
-        $this->post('/user/posts', $post->toArray())
-            ->assertStatus(Response::HTTP_FOUND);
+        $this->post('/user/posts', $post->toArray());
 
         $post = Post::find(1);
 

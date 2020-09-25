@@ -15,6 +15,10 @@ class DislikesTest extends TestCase
     {
         $this->post('/comments/1/dislike')
             ->assertRedirect('/login');
+        $this->post('/news/1/dislike')
+            ->assertRedirect('/login');
+        $this->post('/blogs/1/dislike')
+            ->assertRedirect('/login');
     }
 
     /** @test */
