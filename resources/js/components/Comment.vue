@@ -108,7 +108,7 @@
             },
 
             canUpdate() {
-                return this.author.id == window.App.user.id;
+                return this.authorize(user => this.author.id == user.id);
             }
         },
 
@@ -131,13 +131,18 @@
                 if (confirm()) {
                     axios.delete('/comments/' + this.comment.id)
                         .then((response) => {
+                            // $(this.$el).fadeOut(500, () => {
+                            //     iziToast.success({
+                            //         title: response.data.status,
+                            //         message: response.data.message,
+                            //     })
+                            // });
+
                             this.$emit('deleted', this.comment.id);
-                            $(this.$el).fadeOut(500, () => {
-                                iziToast.success({
-                                    title: response.data.status,
-                                    message: response.data.message,
-                                })
-                            });
+                            iziToast.success({
+                                title: response.data.status,
+                                message: response.data.message,
+                            })
                         })
                         .catch((error) => {
                             iziToast.warning({
