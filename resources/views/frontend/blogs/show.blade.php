@@ -1,7 +1,7 @@
 @php  /** @var App\Entities\Blog\Post\Post $post */ @endphp
 
 <x-frontend-layout :title="__('misc.blogs')">
-    <post inline-template>
+    <post :initial-comments-count="{{ $post->comments_count }}" inline-template>
         <div class="container text-info mt-n3">
             @if($post->hasImage())
                 <div class="text-center">
@@ -19,7 +19,7 @@
                     :model="{{ $post }}"
                     uri-suffix="blogs"
                 ></like-dislike>
-                <span class="ml-5 fas fa-comments"></span><span class="ml-2">{{ $post->comments_count }}</span>
+                <span class="ml-5 fas fa-comments"></span><span class="ml-2" v-text="commentsCount"></span>
             </div>
             <div>
                 {!! $post->body !!}
@@ -27,11 +27,19 @@
 
             <h3 class="border-top border-info pt-3">{{ __('misc.comments') }}</h3>
             <div id="comments">
-                @forelse($commentViews as $commentView)
-                    @include('frontend._comment')
-                @empty
+                @if($post->comments_count)
+                    <comments
+                        :data="{{ json_encode($commentViews) }}"
+                        reply="{{ __('misc.reply') }}"
+                        edit="{{ __('misc.edit') }}"
+                        update="{{ __('misc.update') }}"
+                        cancel="{{ __('misc.cancel') }}"
+                        del="{{ __('misc.delete') }}"
+                        @removed="commentsCount--"
+                    ></comments>
+                @else
                     <p>{{ __('misc.no-comments-yet') }}</p>
-                @endforelse
+                @endif
             </div>
             <div id="root-level"></div>
             @guest
@@ -55,9 +63,3 @@
         @include('frontend._commentJs')
     </post>
 </x-frontend-layout>
-<script>
-    import LikeDislike from "../../../js/components/LikeDislike";
-    export default {
-        components: {LikeDislike}
-    }
-</script>

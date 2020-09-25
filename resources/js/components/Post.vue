@@ -1,7 +1,16 @@
 <script>
+    import Comments from "./Comments";
     import LikeDislike from "./LikeDislike";
 
     export default {
-        components: {LikeDislike},
+        props: ['initialCommentsCount'],
+
+        components: {Comments, LikeDislike},
+
+        data() {
+            return {
+                commentsCount: this.initialCommentsCount,
+            }
+        },
     }
 </script>

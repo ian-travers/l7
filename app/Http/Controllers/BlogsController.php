@@ -25,6 +25,8 @@ class BlogsController extends Controller
     {
         /** @var Post $post */
         $post = Post::where('slug', $slug)
+            ->with('comments')
+            ->with('comments.author')
             ->withCount('comments')
             ->withCount('likes')
             ->withCount('dislikes')
