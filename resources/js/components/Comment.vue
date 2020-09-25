@@ -20,41 +20,37 @@
                             class="text-muted"
                             v-text="comment.created_at"
                         ></span>
-<!--                        @auth()-->
                         <like-dislike
+                            v-if="signedIn"
                             :model="comment"
                             uri-suffix="comments"
                         ></like-dislike>
-<!--                        @endauth-->
                     </div>
-<!--                    @auth-->
-<!--                    @if($comment->author->id == auth()->id())-->
-                    <div class="comment-actions dropdown navbar-dark">
-                        <span class="fas fa-ellipsis-v" type="button" data-toggle="dropdown"></span>
-                        <div class="dropdown-menu dropdown-menu-right bg-nfsu-cup border border-light">
-                            <div class="navbar-nav">
-                                <button class="dropdown-item dropdown-nfsu nav-link-nfsu"
-                                        @click="editing = true">{{ edit }}
-                                </button>
-                                <button class="dropdown-item dropdown-nfsu nav-link-nfsu"
-                                        @click="remove">{{ del }}
-                                </button>
+                    <div v-if="signedIn">
+                        <div
+                            v-if="canUpdate"
+                            class="comment-actions dropdown navbar-dark"
+                        >
+                            <span class="fas fa-ellipsis-v" type="button" data-toggle="dropdown"></span>
+                            <div class="dropdown-menu dropdown-menu-right bg-nfsu-cup border border-light">
+                                <div class="navbar-nav">
+                                    <button class="dropdown-item dropdown-nfsu nav-link-nfsu"
+                                            @click="editing = true">{{ edit }}
+                                    </button>
+                                    <button class="dropdown-item dropdown-nfsu nav-link-nfsu"
+                                            @click="remove">{{ del }}
+                                    </button>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="comment-reply">
+                        <div
+                            v-else
+                            class="comment-reply"
+                        >
                             <span class="fas fa-reply"></span>
                             <span v-text="reply"></span>
                         </div>
-
                     </div>
-<!--                    @else-->
-<!--                    <div class="comment-reply">-->
-<!--                        <span class="fas fa-reply"></span>-->
-<!--                        <span v-text="reply"></span>-->
-<!--                    </div>-->
-<!--                    @endif-->
-<!--                    @endauth-->
                 </div>
                 <div class="py-1">
                     <div v-if="editing" class="form-group">
@@ -105,6 +101,14 @@
         computed: {
             avatarSrc() {
                 return `/storage/${this.author.avatar_path}`;
+            },
+
+            signedIn() {
+                return window.App.signedIn;
+            },
+
+            canUpdate() {
+                return this.author.id == window.App.user.id;
             }
         },
 
