@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Entities\Blog\Post\Post;
 use App\Entities\Comment;
+use App\Entities\Like;
 use App\Entities\News\News;
 use App\Entities\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -195,5 +196,32 @@ class CommentsTest extends TestCase
                 'title' => __('flash.warning'),
                 'message' => __('flash.comment-edit-only'),
             ]));
+    }
+
+    /** @test */
+    function after_deleting_a_comment_all_associated_liked_and_dislikes_are_deleted_too()
+    {
+        $this->signIn();
+
+        /** @var Comment $comment */
+        $comment = create(Comment::class);
+
+        $comment->like();
+
+        $this->assertEquals(1, Like::count());
+
+        $comment->delete();
+
+        $this->assertEquals(0, Like::count());
+
+        $comment = create(Comment::class);
+
+        $comment->dislike();
+
+        $this->assertEquals(1, Like::count());
+
+        $comment->delete();
+
+        $this->assertEquals(0, Like::count());
     }
 }

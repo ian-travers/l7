@@ -4,6 +4,15 @@ namespace App\Entities;
 
 trait HasLikesDislikes
 {
+    // Deleting all associated likes & dislikes
+    protected static function bootHasLikesDislikes()
+    {
+        static::deleting(function ($model) {
+            $model->likes->each->delete();
+            $model->dislikes->each->delete();
+        });
+    }
+
     // Likes
     public function likes()
     {
